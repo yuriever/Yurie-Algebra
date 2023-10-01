@@ -1,6 +1,6 @@
 # Yurie/Algebra
 
-A Mathematica package for implementing and managing finitely presented associative algebras.
+A Mathematica paclet for implementing and managing finitely presented associative algebras.
 
 ## How to use
 
