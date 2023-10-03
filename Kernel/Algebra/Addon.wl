@@ -34,7 +34,7 @@ commOddSim::usage =
     "simplify the anti-commutator.";
 
 commDefine::usage = 
-    "define commutation relations.";
+    "define commutation relations with condition, order-reversing or anti-commutator.";
 
 
 (* ::Subsubsection:: *)
@@ -135,44 +135,40 @@ commOddSim[x__] :=
 commDefine/:(
     commDefine[x_,y_,
         OrderlessPatternSequence[
-            sign:1|-1|"boson"|"fermion"|"even"|"odd":"boson",
-            order:"normal"|"reverse":"normal"
+            sign:(0|1):0,
+            order:(Normal|Reverse):Normal
         ]
     ]:>result_
 ) :=
-    If[ order==="normal",
+    If[ order===Normal,
         Inactive[RuleDelayed][
             x**y,
-            `commDefine`sign@sign*stripPatternToExpr@y**stripPatternToExpr@x+result
+            (-1)^sign*stripPatternToExpr@y**stripPatternToExpr@x+result
         ]//Activate,
         Inactive[RuleDelayed][
             y**x,
-            `commDefine`sign@sign*stripPatternToExpr@x**stripPatternToExpr@y-result
+            (-1)^sign*stripPatternToExpr@x**stripPatternToExpr@y-result
         ]//Activate
     ];
 
 commDefine/:(
     commDefine[x_,y_,
         OrderlessPatternSequence[
-            sign:1|-1|"boson"|"fermion"|"even"|"odd":"boson",
-            order:"normal"|"reverse":"normal"
+            sign:(0|1):0,
+            order:(Normal|Reverse):Normal
         ]
     ]:>Verbatim[Condition][result_,condition_]
 ) :=
-    If[ order==="normal",
+    If[ order===Normal,
         Inactive[RuleDelayed][
             x**y,
-            Condition[`commDefine`sign@sign*stripPatternToExpr@y**stripPatternToExpr@x+result,condition]
+            Condition[(-1)^sign*stripPatternToExpr@y**stripPatternToExpr@x+result,condition]
         ]//Activate,
         Inactive[RuleDelayed][
             y**x,
-            Condition[`commDefine`sign@sign*stripPatternToExpr@x**stripPatternToExpr@y-result,condition]
+            Condition[(-1)^sign*stripPatternToExpr@x**stripPatternToExpr@y-result,condition]
         ]//Activate
     ];
-
-(*specify the sign of generators.*)
-`commDefine`sign[1] = `commDefine`sign["boson"] = `commDefine`sign["even"] = 1;
-`commDefine`sign[-1] = `commDefine`sign["fermion"] = `commDefine`sign["odd"] = -1;
 
 
 (* ::Subsection:: *)
@@ -188,9 +184,9 @@ adjoint[op_,order_:1][expr_] :=
     comm@@Join[ConstantArray[op,order],{expr}];
 
 
-adjointExp[op_,orderMax_,parameter_:1][expr_] :=
+adjointExp[op_,max_,parameter_:1][expr_] :=
     Module[ {order},
-        Sum[adjoint[op,order][expr]*parameter^order/order!,{order,0,orderMax}]
+        Sum[adjoint[op,order][expr]*parameter^order/order!,{order,0,max}]
     ];
 
 
@@ -208,9 +204,9 @@ operatorPower[op_,order_:1] :=
     NonCommutativeMultiply@@ConstantArray[op,order];
 
 
-operatorExp[op_,orderMax_,parameter_:1] :=
+operatorExp[op_,max_,parameter_:1] :=
     Module[ {order},
-        Sum[operatorPower[op,order] parameter^order/order!,{order,0,orderMax}]
+        Sum[operatorPower[op,order] parameter^order/order!,{order,0,max}]
     ];
 
 

@@ -24,7 +24,7 @@ Needs["Yurie`Cluster`"];
 
 
 (*algebraCluster::usage = 
-	"cluster algebra.";*)
+    "cluster algebra.";*)
 
 operator::usage = 
     "planet operator.";
@@ -32,6 +32,7 @@ relation::usage =
     "planet relation.";
 printing::usage = 
     "planet printing.";
+
 
 algebraDefine::usage = 
     "define algebras.";
@@ -107,14 +108,10 @@ id::usage =
 tensorThread::usage = 
     "composite tensors over multiplication according to tensorRank.";
 
-tensorRank::usage =
-    "tensor-rank of generators.";
 tensorRankSet::usage =
     "set the tensor-rank of generators.";
 tensorRankGet::usage =
     "get the tensor-rank of operators.";
-tensorRankEqualQ::usage = 
-    "check whether the ranks of two tensors are equal."
 
 
 (* ::Subsection:: *)
@@ -216,7 +213,7 @@ Get["Yurie`Algebra`Tensor`"];
 
 
 (* ::Subsection:: *)
-(*Initiation*)
+(*Cluster initiation*)
 
 
 clusterInit[
@@ -228,7 +225,30 @@ clusterInit[
 ];
 
 
-algebraPreset[];
+(* ::Subsubsection:: *)
+(*Cache*)
+
+
+starPostIntercept[algebraCluster,"starDefaultUpdate",defaultStar_] :=
+    (
+        $operatorCache = clusterPropGet[algebraCluster,"starDefaultData"][operator];
+        $operatorPatternCache = Alternatives@@$operatorCache;
+        $relationCache = clusterPropGet[algebraCluster,"starDefaultData"][relation];
+        $printingCache = clusterPropGet[algebraCluster,"starDefaultData"][printing];
+    );
+
+
+(* ::Subsubsection:: *)
+(*Preset*)
+
+
+Module[ {alg},
+    algebraDefine@algebraInternal[];
+    Table[
+        algebraAdd[{alg},algebraInternal[alg]],
+        {alg,algebraInternal[]}
+    ];
+];
 
 
 (* ::Subsection:: *)

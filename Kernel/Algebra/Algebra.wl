@@ -41,14 +41,6 @@ algebraShow::usage =
     "show the algebra.";
 
 
-(* ::Section:: *)
-(*Private*)
-
-
-algebraPreset::usage = 
-    "define the preset algebras.";
-
-
 (* ::Subsection:: *)
 (*Begin*)
 
@@ -74,18 +66,6 @@ patternAlgList = {(_String|_Symbol)..};
 
 
 (* ::Subsubsection:: *)
-(*Cache*)
-
-
-starPostIntercept[algebraCluster,"starDefaultUpdate",defaultStar_] :=
-    (
-        $operatorCache = clusterPropGet[algebraCluster,"starDefaultData"][operator];
-        $relationCache = clusterPropGet[algebraCluster,"starDefaultData"][relation];
-        $printingCache = clusterPropGet[algebraCluster,"starDefaultData"][printing];
-    );
-
-
-(* ::Subsubsection:: *)
 (*algebraDefine*)
 
 
@@ -104,20 +84,6 @@ algebraDefineQ[alg:patternAlg] :=
     MemberQ[clusterPropGet[algebraCluster,"starList"],alg];
 
 algebraDefineQ[_] = False;
-
-
-(* ::Subsubsection:: *)
-(*algebraPreset*)
-
-
-algebraPreset[] :=
-    Module[ {alg},
-        algebraDefine@algebraInternal[];
-        Table[
-            algebraAdd[{alg},algebraInternal[alg]],
-            {alg,algebraInternal[]}
-        ];
-    ];
 
 
 (* ::Subsubsection:: *)

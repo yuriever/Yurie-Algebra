@@ -25,6 +25,8 @@ algebraCluster::usage =
 
 $operatorCache::usage = 
 	"operator cache.";
+$operatorPatternCache::usage = 
+	"operator pattern cache.";
 $relationCache::usage = 
 	"relation cache.";
 $printingCache::usage = 
@@ -55,6 +57,8 @@ Begin["`Private`"];
 
 
 $operatorCache={};
+
+$operatorPatternCache=_;
 
 $relationCache={};
 

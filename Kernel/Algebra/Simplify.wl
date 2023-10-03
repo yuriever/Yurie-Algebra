@@ -23,6 +23,7 @@ algebraSimplify::usage =
     "simplify the expression by the default algebra.";
 algebraPrint::usage = 
     "format the expression by the default algebra.";
+
     
 scalarQ::usage =
     "check whether the expression is C-number by the default algebra.";
@@ -83,15 +84,18 @@ algebraPrint[expr_] :=
 
 
 scalarQ[expr_] :=
-    FreeQ[expr,Alternatives@@$operatorCache];
+    FreeQ[expr,$operatorPatternCache];
 
 
 operatorQ[expr__] :=
-    Not@FreeQ[expr,Alternatives@@$operatorCache];
+    Not@FreeQ[expr,$operatorPatternCache];
 
 
-generatorQ[op_Symbol|op_Symbol[___]|op_Symbol[___][___]] :=
-    MemberQ[$operatorCache,op];
+generatorQ[expr_Symbol] :=
+    MemberQ[$operatorCache,expr];
+
+generatorQ[expr_] :=
+    MemberQ[$operatorCache,Head@expr];
 
 
 (* ::Subsection:: *)
@@ -119,13 +123,13 @@ algSE//Attributes =
     {HoldFirst};
 
 algSE[expr_] :=
-    algebraPrint[HoldForm@expr]==algebraPrint@algebraSimplify[expr];
+    expr==algebraSimplify[expr];
 
 algFSE//Attributes = 
     {HoldFirst};
 
 algFSE[expr_] :=
-    algebraPrint[HoldForm@expr]==algebraPrint@FullSimplify@algebraSimplify[expr];
+    expr==FullSimplify@algebraSimplify[expr];
 
 
 algEqualQ[x_,y_] :=

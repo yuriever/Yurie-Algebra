@@ -20,21 +20,22 @@ id::usage =
     "identity of tensor product.";
 
 tensorThread::usage = 
-    "composite tensors over multiplication according to tensorRank.";
+    "composite tensors over multiplication according to tensor-rank.";
 
-tensorRank::usage =
-    "tensor-rank of generators.";
 tensorRankSet::usage =
     "set the tensor-rank of generators.";
 tensorRankGet::usage =
     "get the tensor-rank of operators.";
-tensorRankEqualQ::usage = 
-    "check whether the ranks of two tensors are equal."
 
 
 (* ::Section:: *)
 (*Private*)
 
+
+tensorRank::usage =
+    "tensor-rank of generators.";
+tensorRankEqualQ::usage = 
+    "check whether the ranks of two tensors are equal."
 
 dummyHead::usage = 
     "head placeholder used by tensorThread.";
@@ -57,11 +58,11 @@ tensorRank[_] = 1;
 
 
 tensorRankEqualQ[op1_,op2_] :=
-    Equal@@Map[Total]@Map[tensorRank,{List@@op1,List@@op2},{2}]
+    Total[tensorRank/@op1,AllowedHeads->CircleTimes]==Total[tensorRank/@op2,AllowedHeads->CircleTimes];
 
 
 tensorRankSet[op_?generatorQ,rank_] :=
-    tensorRank[op] ^= rank;    
+    tensorRank[op] = rank;    
 
 
 tensorRankGet[_?scalarQ] =
