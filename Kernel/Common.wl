@@ -20,17 +20,17 @@ ClearAll["`*"];
 
 
 algebraCluster::usage = 
-	"cluster algebra.";
+    "cluster algebra.";
 
 
 $operatorCache::usage = 
-	"operator cache.";
+    "operator cache.";
 $operatorPatternCache::usage = 
-	"operator pattern cache.";
+    "operator pattern cache.";
 $relationCache::usage = 
-	"relation cache.";
+    "relation cache.";
 $printingCache::usage = 
-	"printing cache.";
+    "printing cache.";
 
 
 (* ::Subsection:: *)
@@ -56,13 +56,13 @@ Begin["`Private`"];
 (*Symbols*)
 
 
-$operatorCache={};
+$operatorCache = {};
 
-$operatorPatternCache=_;
+$operatorPatternCache = _;
 
-$relationCache={};
+$relationCache = {};
 
-$printingCache={};
+$printingCache = {};
 
 
 (* ::Subsection:: *)

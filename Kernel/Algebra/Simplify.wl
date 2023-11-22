@@ -50,14 +50,14 @@ algFSP::usage =
     "algebraSimplify + FullSimplify + algebraPrint.";
 
 algSE::usage =
-    "return a formatted equation with the input at RHS and the simplified one at LHS.";
+    "return an equation with the input at right side and the simplified one at left side.";
 algFSE::usage =
-    "return a formatted equation with the input at RHS and the fully simplified one at LHS.";
+    "return an equation with the input at right side and the fully simplified one at left side.";
 
 algEqualQ::usage =
     "x==y for Q-numbers.";
 algSameQ::usage =
-    "x==y for Q-numbers.";
+    "x===y for Q-numbers.";
 
 
 (* ::Section:: *)
