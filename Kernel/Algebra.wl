@@ -229,7 +229,7 @@ clusterInit[
 (*Cache*)
 
 
-starPostIntercept[algebraCluster,"starDefaultUpdate",defaultStar_] :=
+starPostIntercept[algebraCluster,"starUpdateDefault",defaultStar_] :=
     (
         $operatorCache = clusterPropGet[algebraCluster,"starDefaultData"][operator];
         $operatorPatternCache = Alternatives@@$operatorCache;

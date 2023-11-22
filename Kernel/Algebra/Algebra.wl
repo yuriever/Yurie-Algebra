@@ -91,10 +91,7 @@ algebraDefineQ[_] = False;
 
 
 algebraDefault[algList:patternAlgList] :=
-    (
-        starDefault[algebraCluster,algList];
-        Print["Default algebras: ",Row[algList,", "],"."];
-    );
+	starDefault[algebraCluster,algList];
 
 algebraDefault[alg:patternAlg] :=
     algebraDefault[{alg}];

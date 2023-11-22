@@ -147,7 +147,7 @@ commDefine/:(
         ]//Activate,
         Inactive[RuleDelayed][
             y**x,
-            (-1)^sign*stripPatternToExpr@x**stripPatternToExpr@y-result
+            (-1)^sign*stripPatternToExpr@x**stripPatternToExpr@y-(-1)^sign*result
         ]//Activate
     ];
 
@@ -166,7 +166,7 @@ commDefine/:(
         ]//Activate,
         Inactive[RuleDelayed][
             y**x,
-            Condition[(-1)^sign*stripPatternToExpr@x**stripPatternToExpr@y-result,condition]
+            Condition[(-1)^sign*stripPatternToExpr@x**stripPatternToExpr@y-(-1)^sign*result,condition]
         ]//Activate
     ];
 
