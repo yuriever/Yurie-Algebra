@@ -37,8 +37,11 @@ $printingCache::usage =
 (*Utilities*)
 
 
-stripPatternToExpr;
-hideContextInRelation;
+stripPatternToExpr::usage = 
+	"strip an algebra pattern into an expression.";
+
+hideContextInRelation::usage = 
+	"hide context in algebra relations.";
 
 
 (* ::Section:: *)
@@ -76,6 +79,7 @@ stripPatternToExpr[pattern_] :=
                 Verbatim[PatternTest]|Verbatim[Condition]
         )[$$pattern_,_]:>$$pattern
     };
+
 
 hideContextInRelation/:MakeBoxes[hideContextInRelation[expr_],form_] := 
     Block[ {Internal`$ContextMarks = False},

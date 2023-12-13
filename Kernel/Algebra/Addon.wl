@@ -63,8 +63,6 @@ operatorExp::usage =
 
 innerProduct::usage =
     "inner product of two vectors, A \[CircleTimes] A -> k.";
-innerProductSim::usage = 
-    "simplify the inner product.";
 
 
 (* ::Subsubsection:: *)
@@ -218,11 +216,7 @@ innerProduct[x_,y_] :=
     SuperDagger[x]**y;
 
 innerProduct[x_] :=
-    innerProduct[x,x];
-
-
-innerProductSim[args__] :=
-    innerProduct[args]//algebraSimplify; 
+    SuperDagger[x]**x;
 
 
 (* ::Subsection:: *)

@@ -165,8 +165,6 @@ operatorExp::usage =
 
 innerProduct::usage =
     "inner product of two vectors, A \[CircleTimes] A -> k.";
-innerProductSim::usage = 
-    "simplify the inner product.";
 
 
 (* ::Subsubsection:: *)
