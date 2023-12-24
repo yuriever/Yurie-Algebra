@@ -30,10 +30,10 @@ PacletObject[
         "Root" -> "Documentation",
         "Language" -> "English"
       },
-      {
+      (*{
         "AutoCompletionData",
         "Root" -> "AutoCompletionData"
-      },
+      },*)
       {
         "Asset",
         "Root" -> ".",
