@@ -25,6 +25,11 @@ PacletObject[
         "Root" -> "Utility",
         "Context" -> {"Yurie`Algebra`"}
       },
+	  {
+        "Kernel",
+        "Root" -> "Preset",
+        "Context" -> {"Yurie`Algebra`"}
+      },
       {
         "Documentation",
         "Root" -> "Documentation",
