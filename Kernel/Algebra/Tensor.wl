@@ -61,7 +61,7 @@ tensorRankEqualQ[op1_,op2_] :=
     Total[tensorRank/@op1,AllowedHeads->CircleTimes]==Total[tensorRank/@op2,AllowedHeads->CircleTimes];
 
 
-tensorRankSet[op_?generatorQ,rank_] :=
+tensorRankSet[op_,rank_] :=
     tensorRank[op] = rank;    
 
 

@@ -1,10 +1,17 @@
 (* ::Package:: *)
 
 (* ::Section:: *)
+(*Preload*)
+
+
+Needs["Yurie`Algebra`"];
+
+
+(* ::Section:: *)
 (*Begin*)
 
 
-BeginPackage["Yurie`Algebra`AC`"];
+BeginPackage["Yurie`Algebra`BosonFermion`"];
 
 
 Needs["Yurie`Algebra`"];
@@ -12,10 +19,6 @@ Needs["Yurie`Algebra`"];
 
 (* ::Section:: *)
 (*Public*)
-
-
-(* ::Subsection:: *)
-(*Algebras*)
 
 
 vac::usage = 
@@ -38,7 +41,7 @@ cr::usage =
 (*Private*)
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Begin*)
 
 
@@ -54,7 +57,6 @@ $algebraList =
 
 algebraUnset@$algebraList//Quiet;
 algebraDefine@$algebraList;
-algebraDefault[{"boson","boson-fermion-vacuum"}];
 
 
 (* ::Text:: *)
@@ -91,7 +93,7 @@ algebraDefault[{"boson","boson-fermion-vacuum"}];
 
 
 relation->{
-	q1_[i_,an]**q2_[j_,cr]:>q2[j,cr]**q1[i,an]/;q1=!=q2,
+	op1_[i_,an]**op2_[j_,cr]:>op2[j,cr]**op1[i,an]/;op1=!=op2,
 	commDefine[boson[i_,tag_],fermion[j_,tag_]]:>0
 }//algebraAdd["boson-fermion"];
 
@@ -107,13 +109,14 @@ relation->{
 		fermion[i_,an]**vac:>0,
 		SuperDagger@vac**boson[i_,cr]:>0,
 		SuperDagger@vac**fermion[i_,cr]:>0,
-		SuperDagger@q_?generatorQ[i_,cr]:>q[i,an],
-		SuperDagger@q_?generatorQ[i_,an]:>q[i,cr]
+		SuperDagger@(op_?generatorQ)[i_,cr]:>op[i,an],
+		SuperDagger@(op_?generatorQ)[i_,an]:>op[i,cr],
+		SuperDagger@vac**vac:>1
 	}
 |>//algebraAdd["boson-fermion-vacuum"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*End*)
 
 

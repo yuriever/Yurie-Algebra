@@ -1,0 +1,284 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9123,        276]
+NotebookOptionsPosition[      7477,        240]
+NotebookOutlinePosition[      7924,        258]
+CellTagsIndexPosition[      7881,        255]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"<<", "Yurie`Algebra`AC`"}]], "Code",
+ CellLabel->"In[4]:=",ExpressionUUID->"af5c5ebb-28b9-4a84-be99-73f113225dff"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "vac", "shdw", 
+   "\"Symbol \\!\\(\\*RowBox[{\\\"\\\\\\\"vac\\\\\\\"\\\"}]\\) appears in \
+multiple contexts \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{\\\"\\\\\\\"Yurie`Algebra`AC`\\\\\\\"\\\", \\\",\\\", \
+\\\"\\\\\\\"Yurie`Algebra`Ghost`\\\\\\\"\\\"}], \\\"}\\\"}]\\); definitions \
+in context \\!\\(\\*RowBox[{\\\"\\\\\\\"Yurie`Algebra`AC`\\\\\\\"\\\"}]\\) \
+may shadow or be shadowed by other definitions.\"", 2, 4, 1, 
+   24361568246853390565, "Local", "Yurie`Algebra`AC`vac"},
+  "MessageTemplate2"]], "Message", "MSG",
+ CellLabel->
+  "During evaluation of \
+In[4]:=",ExpressionUUID->"9aac7f21-f1f5-4966-9046-ced11aa5ae74"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"algebraDefault", "@", 
+   RowBox[{"{", 
+    RowBox[{
+    "\"\<boson\>\"", ",", "\"\<fermion\>\"", ",", "\"\<boson-fermion\>\"", 
+     ",", "\"\<boson-fermion-vacuum\>\"", ",", "\"\<conjugate\>\""}], "}"}]}],
+   ";"}]], "Code",
+ CellLabel->"In[12]:=",ExpressionUUID->"ebde2299-b826-4cfb-80da-7ac88ad2987e"],
+
+Cell["\<\
+an: annihilation
+cr: creation\
+\>", "Text",ExpressionUUID->"bea0398a-0186-4810-9530-12b3b7709192"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"expr", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"boson", "[", 
+        RowBox[{"1", ",", "an"}], "]"}], "+", 
+       RowBox[{"boson", "[", 
+        RowBox[{"1", ",", "cr"}], "]"}], "+", 
+       RowBox[{"boson", "[", 
+        RowBox[{"2", ",", "an"}], "]"}]}], ")"}], "**", 
+     RowBox[{"boson", "[", 
+      RowBox[{"1", ",", "cr"}], "]"}], "**", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"fermion", "[", 
+        RowBox[{"1", ",", "cr"}], "]"}], "+", 
+       RowBox[{
+        RowBox[{"boson", "[", 
+         RowBox[{"2", ",", "an"}], "]"}], "**", 
+        RowBox[{"fermion", "[", 
+         RowBox[{"1", ",", "an"}], "]"}]}]}], ")"}], "**", 
+     RowBox[{"boson", "[", 
+      RowBox[{"2", ",", "cr"}], "]"}]}]}], ";"}], "\n"}], "\n", 
+ RowBox[{"expr", "//", "algP"}], "\n", 
+ RowBox[{
+  RowBox[{"expr", "**", "vac"}], "//", "algSP"}]}], "Code",
+ CellLabel->"In[13]:=",ExpressionUUID->"991fdb81-92ad-428f-86e6-c549d5cc3b3b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    SubscriptBox["\<\"a\"\>", "1"], "+", 
+    SubscriptBox["\<\"a\"\>", "2"], "+", 
+    SubscriptBox[
+     SuperscriptBox["\<\"a\"\>", "\[Dagger]"], "1"]}], ")"}], "**", 
+  SubscriptBox[
+   SuperscriptBox["\<\"a\"\>", "\[Dagger]"], "1"], "**", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\<\"a\"\>", "2"], "**", 
+     SubscriptBox["\<\"b\"\>", "1"]}], "+", 
+    SubscriptBox[
+     SuperscriptBox["\<\"b\"\>", "\[Dagger]"], "1"]}], ")"}], "**", 
+  SubscriptBox[
+   SuperscriptBox["\<\"a\"\>", "\[Dagger]"], "2"]}]], "Output",
+ CellLabel->"Out[14]=",ExpressionUUID->"8081e382-f7b8-419a-b4dd-eb927b02dc5f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SubscriptBox[
+    SuperscriptBox["\<\"b\"\>", "\[Dagger]"], "1"], "**", 
+   SubscriptBox[
+    SuperscriptBox["\<\"a\"\>", "\[Dagger]"], "1"], "**", "vac"}], "+", 
+  RowBox[{
+   SubscriptBox[
+    SuperscriptBox["\<\"b\"\>", "\[Dagger]"], "1"], "**", 
+   SubscriptBox[
+    SuperscriptBox["\<\"a\"\>", "\[Dagger]"], "2"], "**", "vac"}], "+", 
+  RowBox[{
+   SubscriptBox[
+    SuperscriptBox["\<\"b\"\>", "\[Dagger]"], "1"], "**", 
+   SubscriptBox[
+    SuperscriptBox["\<\"a\"\>", "\[Dagger]"], "2"], "**", 
+   SubscriptBox[
+    SuperscriptBox["\<\"a\"\>", "\[Dagger]"], "1"], "**", 
+   SubscriptBox[
+    SuperscriptBox["\<\"a\"\>", "\[Dagger]"], "1"], "**", "vac"}]}]], "Output",\
+
+ CellLabel->"Out[15]=",ExpressionUUID->"e910bc2d-97d4-4d49-a285-1fa560398ed0"]
+}, Open  ]],
+
+Cell["Hamiltonian", "Text",ExpressionUUID->"a37c1e82-610e-4966-8bd2-4b0de72672b2"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"H", "[", "k_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"boson", "[", 
+       RowBox[{"k", ",", "cr"}], "]"}], "**", 
+      RowBox[{"boson", "[", 
+       RowBox[{"k", ",", "an"}], "]"}]}], 
+     RowBox[{"f", "[", "k", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"fermion", "[", 
+       RowBox[{"k", ",", "cr"}], "]"}], "**", 
+      RowBox[{"fermion", "[", 
+       RowBox[{"k", ",", "an"}], "]"}]}], 
+     RowBox[{"g", "[", "k", "]"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Hsum", "[", "expr_", "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", "k", "}"}], ",", 
+      RowBox[{"Sum", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"H", "[", "k", "]"}], "**", "expr"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", 
+          RowBox[{"-", "2"}], ",", "2"}], "}"}]}], "]"}]}], "]"}]}], ";"}], 
+  "\n"}], "\n", 
+ RowBox[{
+  RowBox[{"Hsum", "@", 
+   RowBox[{"(", 
+    RowBox[{"expr", "**", "vac"}], ")"}]}], "//", "algSP"}]}], "Code",
+ CellLabel->"In[16]:=",ExpressionUUID->"51814dc4-5af0-414f-bcee-9b5941cf417c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"f", "[", "1", "]"}], "+", 
+     RowBox[{"g", "[", "1", "]"}]}], ")"}], " ", 
+   RowBox[{
+    SubscriptBox[
+     SuperscriptBox["\<\"b\"\>", "\[Dagger]"], "1"], "**", 
+    SubscriptBox[
+     SuperscriptBox["\<\"a\"\>", "\[Dagger]"], "1"], "**", "vac"}]}], "+", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"f", "[", "2", "]"}], "+", 
+     RowBox[{"g", "[", "1", "]"}]}], ")"}], " ", 
+   RowBox[{
+    SubscriptBox[
+     SuperscriptBox["\<\"b\"\>", "\[Dagger]"], "1"], "**", 
+    SubscriptBox[
+     SuperscriptBox["\<\"a\"\>", "\[Dagger]"], "2"], "**", "vac"}]}], "+", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"2", " ", 
+      RowBox[{"f", "[", "1", "]"}]}], "+", 
+     RowBox[{"f", "[", "2", "]"}], "+", 
+     RowBox[{"g", "[", "1", "]"}]}], ")"}], " ", 
+   RowBox[{
+    SubscriptBox[
+     SuperscriptBox["\<\"b\"\>", "\[Dagger]"], "1"], "**", 
+    SubscriptBox[
+     SuperscriptBox["\<\"a\"\>", "\[Dagger]"], "2"], "**", 
+    SubscriptBox[
+     SuperscriptBox["\<\"a\"\>", "\[Dagger]"], "1"], "**", 
+    SubscriptBox[
+     SuperscriptBox["\<\"a\"\>", "\[Dagger]"], "1"], "**", 
+    "vac"}]}]}]], "Output",
+ CellLabel->"Out[18]=",ExpressionUUID->"67de29ea-a813-4a3c-8806-86e64ee57089"]
+}, Open  ]],
+
+Cell["inner product", "Text",ExpressionUUID->"6477490a-de67-402f-9b1b-bc8972be3337"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"innerProduct", "[", 
+    RowBox[{"expr", "**", "vac"}], "]"}], "//", "algS"}], "//", 
+  "Timing"}]], "Code",
+ CellLabel->"In[19]:=",ExpressionUUID->"92948fa8-7a7d-4ed0-a535-07e695b82498"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.082068`", ",", "4"}], "}"}]], "Output",
+ CellLabel->"Out[19]=",ExpressionUUID->"3dd5ca41-cde9-4fc7-a4c9-d2f66d291a1e"]
+}, Open  ]]
+},
+Editable->True,
+WindowSize->{1280, 679},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+TaggingRules-><|"TryRealOnly" -> False|>,
+FrontEndVersion->"13.3 for Mac OS X ARM (64-bit) (June 3, 2023)",
+StyleDefinitions->"Yurie.nb",
+ExpressionUUID->"86196f88-9502-46fd-a114-e07b836f10c4"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 138, 2, 67, "Code",ExpressionUUID->"af5c5ebb-28b9-4a84-be99-73f113225dff"],
+Cell[721, 26, 656, 13, 57, "Message",ExpressionUUID->"9aac7f21-f1f5-4966-9046-ced11aa5ae74"]
+}, Open  ]],
+Cell[1392, 42, 340, 8, 67, "Code",ExpressionUUID->"ebde2299-b826-4cfb-80da-7ac88ad2987e"],
+Cell[1735, 52, 108, 3, 89, "Text",ExpressionUUID->"bea0398a-0186-4810-9530-12b3b7709192"],
+Cell[CellGroupData[{
+Cell[1868, 59, 1006, 29, 140, "Code",ExpressionUUID->"991fdb81-92ad-428f-86e6-c549d5cc3b3b"],
+Cell[2877, 90, 672, 19, 45, "Output",ExpressionUUID->"8081e382-f7b8-419a-b4dd-eb927b02dc5f"],
+Cell[3552, 111, 794, 22, 42, "Output",ExpressionUUID->"e910bc2d-97d4-4d49-a285-1fa560398ed0"]
+}, Open  ]],
+Cell[4361, 136, 82, 0, 62, "Text",ExpressionUUID->"a37c1e82-610e-4966-8bd2-4b0de72672b2"],
+Cell[CellGroupData[{
+Cell[4468, 140, 1183, 38, 140, "Code",ExpressionUUID->"51814dc4-5af0-414f-bcee-9b5941cf417c"],
+Cell[5654, 180, 1286, 39, 42, "Output",ExpressionUUID->"67de29ea-a813-4a3c-8806-86e64ee57089"]
+}, Open  ]],
+Cell[6955, 222, 84, 0, 62, "Text",ExpressionUUID->"6477490a-de67-402f-9b1b-bc8972be3337"],
+Cell[CellGroupData[{
+Cell[7064, 226, 234, 6, 67, "Code",ExpressionUUID->"92948fa8-7a7d-4ed0-a535-07e695b82498"],
+Cell[7301, 234, 160, 3, 42, "Output",ExpressionUUID->"3dd5ca41-cde9-4fc7-a4c9-d2f66d291a1e"]
+}, Open  ]]
+}
+]
+*)
+
