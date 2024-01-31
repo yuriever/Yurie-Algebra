@@ -9,7 +9,6 @@ BeginPackage["Yurie`Algebra`Algebra`"];
 
 Needs["Yurie`Cluster`"];
 Needs["Yurie`Algebra`"];
-Needs["Yurie`Algebra`Common`"];
 Needs["Yurie`Algebra`Preset`"];
 
 
@@ -17,6 +16,8 @@ Needs["Yurie`Algebra`Preset`"];
 (*Public*)
 
 
+algebraCluster::usage = 
+    "cluster algebra.";
 operator::usage = 
     "planet operator.";
 relation::usage = 
@@ -167,6 +168,15 @@ algebraShowKernel[operatorList_,relationList_,printingList_] :=
         TableDepth->1,
         TableSpacing->{2,2},
         TableAlignments->{Left,Top}
+    ];
+
+
+hideContextInRelation::usage = 
+	"hide context in algebra relations.";
+
+hideContextInRelation/:MakeBoxes[hideContextInRelation[expr_],form_] := 
+    Block[ {Internal`$ContextMarks = False},
+        MakeBoxes[expr,form]
     ];
 
 

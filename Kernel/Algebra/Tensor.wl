@@ -8,7 +8,6 @@ BeginPackage["Yurie`Algebra`Tensor`"];
 
 
 Needs["Yurie`Algebra`"];
-Needs["Yurie`Algebra`Common`"];
 Needs["Yurie`Algebra`Simplify`"];
 
 
@@ -26,21 +25,8 @@ tensorRankSet::usage =
     "set the tensor-rank of generators.";
 tensorRankGet::usage =
     "get the tensor-rank of operators.";
-
-
-(* ::Section:: *)
-(*Private*)
-
-
-tensorRank::usage =
-    "tensor-rank of generators.";
 tensorRankEqualQ::usage = 
-    "check whether the ranks of two tensors are equal."
-
-dummyHead::usage = 
-    "head placeholder used by tensorThread.";
-dummySlot::usage = 
-    "slot placeholder used by tensorThread.";
+    "check whether the ranks of two tensors are equal.";
 
 
 (* ::Subsection:: *)
@@ -48,6 +34,14 @@ dummySlot::usage =
 
 
 Begin["`Private`"];
+
+
+tensorRank::usage =
+    "tensor-rank of generators.";
+dummyHead::usage = 
+    "head placeholder used by tensorThread.";
+dummySlot::usage = 
+    "slot placeholder used by tensorThread.";
 
 
 (* ::Subsection:: *)

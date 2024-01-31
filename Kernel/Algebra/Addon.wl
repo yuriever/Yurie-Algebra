@@ -8,8 +8,6 @@ BeginPackage["Yurie`Algebra`Addon`"];
 
 
 Needs["Yurie`Algebra`"];
-Needs["Yurie`Algebra`Common`"];
-Needs["Yurie`Algebra`Simplify`"];
 
 
 (* ::Section:: *)
@@ -100,7 +98,9 @@ Begin["`Private`"];
 (*Commutator*)
 
 
+(* ::Text:: *)
 (*n-commutator: [x,y,z,...]=[x,[y,[z,...]]]*)
+
 
 comm[x_,y_] :=
     x**y-y**x;
@@ -111,7 +111,9 @@ comm[x_,y__] :=
 commEven = comm;
 
 
+(* ::Text:: *)
 (*n-anti-commutator: {x,y,z,...}={x,{y,{z,...}}}*)
+
 
 commOdd[x_,y_] :=
     x**y+y**x;
@@ -169,11 +171,25 @@ commDefine/:(
     ];
 
 
+stripPatternToExpr::usage = 
+	"strip an algebra pattern into an expression.";
+
+stripPatternToExpr[pattern_] :=
+    pattern//.{
+        (
+            Verbatim[Pattern]|Verbatim[Optional]|
+                Verbatim[PatternTest]|Verbatim[Condition]
+        )[$$pattern_,_]:>$$pattern
+    };
+
+
 (* ::Subsection:: *)
 (*Adjoint*)
 
 
+(* ::Text:: *)
 (*adjoint[x,y,n]=[x,[x,[...,y]]]*)
+
 
 adjoint[op_,0][expr_] :=
     expr;

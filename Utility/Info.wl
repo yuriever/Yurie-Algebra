@@ -19,11 +19,6 @@ $thisPacletDir;
 $thisSampleDir;
 $thisTestDir;
 
-$thisLibraryName;
-$thisLibrary;
-$thisLibrarySourceDir;
-$thisLibraryDir;
-
 
 (* ::Section:: *)
 (*Private*)
@@ -51,19 +46,6 @@ $thisSampleDir =
 
 $thisTestDir = 
     $thisPaclet["AssetLocation","Test"];
-
-
-$thisLibraryName = 
-    "Library";
-
-$thisLibrarySourceDir = 
-    $thisPaclet["AssetLocation","LibrarySource"];
-
-$thisLibraryDir = 
-    FileNameJoin@{$thisPaclet["AssetLocation","Library"],$SystemID};
-
-$thisLibrary = 
-    FileNameJoin@{$thisLibraryDir,$thisLibraryName<>"."<>Internal`DynamicLibraryExtension[]}
 
 
 (* ::Subsection::Closed:: *)

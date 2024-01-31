@@ -8,8 +8,6 @@ BeginPackage["Yurie`Algebra`Preset`"];
 
 
 Needs["Yurie`Algebra`"];
-Needs["Yurie`Algebra`Common`"];
-Needs["Yurie`Algebra`Tensor`"];
 
 
 (* ::Section:: *)

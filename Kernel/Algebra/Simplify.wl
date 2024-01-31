@@ -8,7 +8,7 @@ BeginPackage["Yurie`Algebra`Simplify`"];
 
 
 Needs["Yurie`Algebra`"];
-Needs["Yurie`Algebra`Common`"];
+Needs["Yurie`Algebra`Cache`"];
 
 
 (* ::Section:: *)

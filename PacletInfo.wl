@@ -31,15 +31,6 @@ PacletObject[
         "Context" -> {"Yurie`Algebra`BosonFermion`","Yurie`Algebra`CFT1`","Yurie`Algebra`CFTd`","Yurie`Algebra`Ghost`","Yurie`Algebra`SL2`","Yurie`Algebra`YBE`"}
       },
       {
-        "Documentation",
-        "Root" -> "Documentation",
-        "Language" -> "English"
-      },
-      (*{
-        "AutoCompletionData",
-        "Root" -> "AutoCompletionData"
-      },*)
-      {
         "Asset",
         "Root" -> ".",
         "Assets" -> {
