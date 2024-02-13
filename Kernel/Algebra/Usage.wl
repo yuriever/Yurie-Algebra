@@ -1,4 +1,4 @@
-
+(* ::Package:: *)
 
 (*Addon.wl*)
 
@@ -98,11 +98,11 @@ algSameQ::usage =
 
 id::usage = 
 	"identity of tensor product.";
-tensorRankEqualQ::usage = 
-	"check whether the ranks of two tensors are equal.";
+tensorCompose::usage = 
+	"composite tensors over multiplication according to tensor-rank.";
 tensorRankSet::usage = 
 	"set the tensor-rank of generators.";
 tensorRankGet::usage = 
 	"get the tensor-rank of operators.";
-tensorCompose::usage = 
-	"composite tensors over multiplication according to tensor-rank.";
+tensorRankEqualQ::usage = 
+	"check whether the ranks of two tensors are equal.";

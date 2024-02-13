@@ -16,7 +16,7 @@ Needs["Yurie`Algebra`Cache`"];
 
 
 (* ::Subsubsection:: *)
-(*Kernel functions*)
+(*Kernel function*)
 
 
 algebraSimplify::usage = 
@@ -24,7 +24,7 @@ algebraSimplify::usage =
 algebraPrint::usage = 
     "format the expression by the default algebra.";
 
-    
+
 scalarQ::usage =
     "check whether the expression is C-number by the default algebra.";
 operatorQ::usage =
@@ -34,7 +34,7 @@ generatorQ::usage =
 
 
 (* ::Subsubsection:: *)
-(*Shortcuts*)
+(*Shortcut*)
 
 
 algS::usage = 
@@ -72,7 +72,7 @@ Begin["`Private`"];
 
 
 (* ::Subsection:: *)
-(*Kernel functions*)
+(*Kernel function*)
 
 
 algebraSimplify[expr_] :=
@@ -99,7 +99,7 @@ generatorQ[expr_] :=
 
 
 (* ::Subsection:: *)
-(*Shortcuts*)
+(*Shortcut*)
 
 
 algS :=

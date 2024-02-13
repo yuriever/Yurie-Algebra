@@ -38,7 +38,7 @@ v::usage =
 (*Private*)
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Begin*)
 
 
@@ -46,11 +46,11 @@ Begin["`Private`"];
 
 
 (* ::Subsection:: *)
-(*Algebras*)
+(*Algebra*)
 
 
 $algebraList = 
-    {"SL2","highest-weight","highest-weight-extension"};
+    {"SL2","Verma-module","Verma-module-extension"};
 
 algebraUnset@$algebraList//Quiet;
 algebraDefine@$algebraList;
@@ -89,11 +89,11 @@ algebraDefine@$algebraList;
 	printing->{
 		v[h_]:>Subscript[v,h]
 	}
-|>//algebraAdd["highest-weight"];
+|>//algebraAdd["Verma-module"];
 
 
 (* ::Text:: *)
-(*highest weight module*)
+(*highest weight module extension*)
 
 
 <|
@@ -108,10 +108,10 @@ algebraDefine@$algebraList;
 	printing->{
 		v[i_,h_]:>Subscript[v,i,h]
 	}
-|>//algebraAdd["highest-weight-extension"]
+|>//algebraAdd["Verma-module-extension"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*End*)
 
 

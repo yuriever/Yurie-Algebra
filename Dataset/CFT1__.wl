@@ -38,7 +38,7 @@ v::usage =
 (*Private*)
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Begin*)
 
 
@@ -46,33 +46,26 @@ Begin["`Private`"];
 
 
 (* ::Subsection:: *)
-(*Algebras*)
+(*Algebra*)
 
 
 $algebraList = 
-    {"SL2","highest-weight","highest-weight-extension"};
+    {"sl2","vacuum","singlet","multiplet","upperMultiplet","lowerMultiplet","staggered","staggered-at-X"};
 
 algebraUnset@$algebraList//Quiet;
 algebraDefine@$algebraList;
 
 
-(* ::Text:: *)
-(*X: annihilation *)
-(*Y: creation*)
-(*X>H>Y*)
+operator->{L}//algebraAdd[{"sl2"}];
+operator->{vac}//algebraAdd[{"vacuum"}];
+operator->{primary}//algebraAdd[{"singlet","multiplet","upperMultiplet","lowerMultiplet","staggered","staggered-at-X"}];
 
 
-<|
-	operator->{x,y,h},
-	relation->{
-		commDefine[h,x,Reverse]:>2x,
-		commDefine[h,y]:>-2y,
-		commDefine[x,y]:>h
-	},
-	printing->{
-		(op_?generatorQ)^n_.**(op_)^m_.:>op^(n+m)
-	}
-|>//algebraAdd["SL2"];
+printing->{
+    L[n_]:>Subsuperscript["L",n,1],
+    Subsuperscript[op_,n_,a_]**Subsuperscript[op_,n_,b_]:>Subsuperscript[op,n,a+b]
+}//algebraAdd[{"sl2"}];
+
 
 
 (* ::Text:: *)
@@ -93,7 +86,7 @@ algebraDefine@$algebraList;
 
 
 (* ::Text:: *)
-(*highest weight module*)
+(*highest weight module extension*)
 
 
 <|
@@ -111,7 +104,7 @@ algebraDefine@$algebraList;
 |>//algebraAdd["highest-weight-extension"]
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*End*)
 
 

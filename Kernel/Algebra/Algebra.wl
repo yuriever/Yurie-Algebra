@@ -9,7 +9,7 @@ BeginPackage["Yurie`Algebra`Algebra`"];
 
 Needs["Yurie`Cluster`"];
 Needs["Yurie`Algebra`"];
-Needs["Yurie`Algebra`Preset`"];
+Needs["Yurie`Algebra`Internal`"];
 
 
 (* ::Section:: *)
@@ -50,11 +50,12 @@ Begin["`Private`"];
 
 
 (* ::Subsection:: *)
-(*Constants*)
+(*Constant*)
 
 
-(* ::Subsubsection:: *)
-(*Argument patterns*)
+(*patternAlg = _String;
+patternAlgs = __String;
+patternAlgList = {__String};*)
 
 
 patternAlg = _String|_Symbol;
@@ -63,7 +64,7 @@ patternAlgList = {(_String|_Symbol)..};
 
 
 (* ::Subsection:: *)
-(*Functions*)
+(*Main*)
 
 
 (* ::Subsubsection:: *)
@@ -181,7 +182,7 @@ hideContextInRelation/:MakeBoxes[hideContextInRelation[expr_],form_] :=
 
 
 (* ::Subsection:: *)
-(*Default arguments*)
+(*Default argument*)
 
 
 algebraDefine[] :=

@@ -14,7 +14,8 @@ Needs["Yurie`Algebra`Info`"];
 (*Public*)
 
 
-getReport;
+testReport::usage = 
+    "get the report of unit test.";
 
 
 (* ::Section:: *)
@@ -29,10 +30,10 @@ Begin["`Private`"];
 
 
 (* ::Subsection:: *)
-(*Functions*)
+(*Main*)
 
 
-getReport[] :=
+testReport[] :=
     Module[ {report},
         report = 
             TestReport@FileNames["*.wlt",$thisTestDir];
@@ -54,6 +55,3 @@ End[];
 
 
 EndPackage[];
-
-
-getReport[];

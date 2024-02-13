@@ -37,7 +37,7 @@ Begin["`Private`"];
 
 
 (* ::Subsection:: *)
-(*Symbols*)
+(*Main*)
 
 
 $operatorCache = {};

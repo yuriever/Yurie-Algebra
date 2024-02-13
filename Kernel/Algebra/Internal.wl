@@ -4,7 +4,7 @@
 (*Begin*)
 
 
-BeginPackage["Yurie`Algebra`Preset`"];
+BeginPackage["Yurie`Algebra`Internal`"];
 
 
 Needs["Yurie`Algebra`"];
@@ -15,7 +15,7 @@ Needs["Yurie`Algebra`"];
 
 
 algebraInternal::usage = 
-    "preset algebras.";
+    "internal algebras.";
 
 
 (* ::Section:: *)
@@ -30,7 +30,7 @@ Begin["`Private`"];
 
 
 (* ::Subsection:: *)
-(*Functions*)
+(*Main*)
 
 
 algebraInternal[] = {
@@ -84,7 +84,7 @@ algebraInternal["tensorProduct"] = <|
         CircleTimes[z_,x_+y_]:>
             CircleTimes[z,x]+CircleTimes[z,y],
         x_CircleTimes**y_CircleTimes:>
-            tensorThread[x**y]/;tensorRankEqualQ[x,y],
+            tensorCompose[x**y]/;tensorRankEqualQ[x,y],
         id**x_:>x,
         x_**id:>x            
     },

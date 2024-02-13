@@ -11,12 +11,8 @@ BeginPackage["Yurie`Algebra`Info`"];
 (*Public*)
 
 
-(* ::Subsection:: *)
-(*Symbols*)
-
-
 $thisPacletDir;
-$thisSampleDir;
+$thisKernelDir;
 $thisTestDir;
 
 
@@ -32,7 +28,7 @@ Begin["`Private`"];
 
 
 (* ::Subsection:: *)
-(*Symbols*)
+(*Main*)
 
 
 $thisPaclet = 
@@ -41,8 +37,8 @@ $thisPaclet =
 $thisPacletDir = 
     $thisPaclet["Location"];
 
-$thisSampleDir = 
-    $thisPaclet["AssetLocation","Sample"];
+$thisKernelDir = 
+    FileNameJoin@{$thisPacletDir,"Kernel"};
 
 $thisTestDir = 
     $thisPaclet["AssetLocation","Test"];

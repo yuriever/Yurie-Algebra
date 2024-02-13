@@ -23,11 +23,7 @@ Needs["Yurie`CFT`Cartesian`"];
 (*Public*)
 
 
-(* ::Subsection:: *)
-(*Algebras*)
-
-
-conformalAlgebra::usage = 
+genCA::usage = 
     "list of generators.";
 
 genD::usage = 
@@ -50,7 +46,7 @@ vac::usage =
 (*Private*)
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Begin*)
 
 
@@ -58,14 +54,14 @@ Begin["`Private`"];
 
 
 (* ::Subsection:: *)
-(*Algebras*)
+(*Algebra*)
 
 
 (* ::Text:: *)
 (*Construct the association of generators.*)
 
 
-conformalAlgebra :=
+genCA :=
     Module[ {i,j,assoc},
         assoc = <|
             "D"->
@@ -91,7 +87,7 @@ conformalAlgebra :=
 
 
 (* ::Text:: *)
-(*Definitions*)
+(*Definition*)
 
 
 $algebraList = 
@@ -102,7 +98,7 @@ algebraDefine@$algebraList;
 
 
 (* ::Text:: *)
-(*Operators*)
+(*Operator*)
 
 
 operator->{genP,genM}//algebraAdd["IA"];
@@ -193,7 +189,7 @@ relation->{
 }//algebraAdd["conjugateE"];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*End*)
 
 

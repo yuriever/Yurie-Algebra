@@ -11,24 +11,34 @@ PacletObject[
     "Version" -> "1.1.0",
     "WolframVersion" -> "13+",
     "PrimaryContext" -> "Yurie`Algebra`",
-    "Dependencies" -> {
-    	"Yurie/Cluster" -> ">=1.0.0"
-    },
+    "Dependencies" -> {"Yurie/Cluster" -> ">=1.0.0"},
     "Extensions" -> {
       {
         "Kernel",
         "Root" -> "Kernel",
-        "Context" -> {"Yurie`Algebra`"}
+        "Context" -> {
+          "Yurie`Algebra`"
+        }
       },
       {
         "Kernel",
         "Root" -> "Utility",
-        "Context" -> {"Yurie`Algebra`Info`","Yurie`Algebra`Test`"}
+        "Context" -> {
+          "Yurie`Algebra`Info`",
+          "Yurie`Algebra`Test`"
+        }
       },
-	  {
+      {
         "Kernel",
-        "Root" -> "Preset",
-        "Context" -> {"Yurie`Algebra`BosonFermion`","Yurie`Algebra`CFT1`","Yurie`Algebra`CFTd`","Yurie`Algebra`Ghost`","Yurie`Algebra`SL2`","Yurie`Algebra`YBE`"}
+        "Root" -> "Dataset",
+        "Context" -> {
+          "Yurie`Algebra`BosonFermion`",
+          "Yurie`Algebra`CFT1`",
+          "Yurie`Algebra`CFTd`",
+          "Yurie`Algebra`BCGhost`",
+          "Yurie`Algebra`SL2`",
+          "Yurie`Algebra`YBE`"
+        }
       },
       {
         "Asset",
@@ -36,7 +46,7 @@ PacletObject[
         "Assets" -> {
           {"License", "LICENSE"},
           {"ReadMe", "README.md"},
-          {"Sample", "Sample"},
+          {"Notebook", "Notebook"},
           {"Test", "Test"}
         }
       }

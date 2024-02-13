@@ -49,11 +49,11 @@ Begin["`Private`"];
 
 
 (* ::Subsection:: *)
-(*Algebras*)
+(*Algebra*)
 
 
 $algebraList = 
-    {"boson","fermion","boson-fermion","boson-fermion-vacuum"};
+    {"boson","fermion","boson-fermion","vacuum","boson-vacuum","fermion-vacuum"};
 
 algebraUnset@$algebraList//Quiet;
 algebraDefine@$algebraList;
@@ -68,7 +68,9 @@ algebraDefine@$algebraList;
 	relation->{
 		commDefine[boson[i_,an],boson[j_,cr]]:>KroneckerDelta[i,j],
 		commDefine[boson[i_,an],boson[j_,an]]:>0/;i>j,
-		commDefine[boson[i_,cr],boson[j_,cr]]:>0/;i<j
+		commDefine[boson[i_,cr],boson[j_,cr]]:>0/;i<j,
+		SuperDagger@boson[i_,cr]:>boson[i,an],
+		SuperDagger@boson[i_,an]:>boson[i,cr]
 	},
 	printing->{
 		boson[i_,cr]:>Subscript[SuperDagger@"a",i],
@@ -83,7 +85,9 @@ algebraDefine@$algebraList;
 		commDefine[fermion[i_,an],fermion[j_,cr],1]:>KroneckerDelta[i,j],
 		commDefine[fermion[i_,an],fermion[j_,an],1]:>0/;i>j,
 		commDefine[fermion[i_,cr],fermion[j_,cr],1]:>0/;i<j,
-		fermion[i_,tag_]**fermion[i_,tag_]:>0
+		fermion[i_,tag_]**fermion[i_,tag_]:>0,
+		SuperDagger@fermion[i_,cr]:>fermion[i,an],
+		SuperDagger@fermion[i_,an]:>fermion[i,cr]
 	},
 	printing->{
 		fermion[i_,cr]:>Subscript[SuperDagger@"b",i],
@@ -93,7 +97,9 @@ algebraDefine@$algebraList;
 
 
 relation->{
-	op1_[i_,an]**op2_[j_,cr]:>op2[j,cr]**op1[i,an]/;op1=!=op2,
+	(*move annihilation operators to the right.*)
+	commDefine[op1_[i_,an],op2_[j_,cr]]:>0/;op1=!=op2,
+	(*move boson operators to the right if the tags are the same.*)
 	commDefine[boson[i_,tag_],fermion[j_,tag_]]:>0
 }//algebraAdd["boson-fermion"];
 
@@ -105,15 +111,21 @@ relation->{
 <|
 	operator->{vac},
 	relation->{
-		boson[i_,an]**vac:>0,
-		fermion[i_,an]**vac:>0,
-		SuperDagger@vac**boson[i_,cr]:>0,
-		SuperDagger@vac**fermion[i_,cr]:>0,
-		SuperDagger@(op_?generatorQ)[i_,cr]:>op[i,an],
-		SuperDagger@(op_?generatorQ)[i_,an]:>op[i,cr],
 		SuperDagger@vac**vac:>1
 	}
-|>//algebraAdd["boson-fermion-vacuum"];
+|>//algebraAdd["vacuum"];
+
+
+relation->{
+	boson[i_,an]**vac:>0,
+	SuperDagger@vac**boson[i_,cr]:>0
+}//algebraAdd["boson-vacuum"];
+
+
+relation->{
+	fermion[i_,an]**vac:>0,
+	SuperDagger@vac**fermion[i_,cr]:>0
+}//algebraAdd["fermion-vacuum"];
 
 
 (* ::Subsection:: *)

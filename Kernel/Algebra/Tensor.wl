@@ -18,15 +18,15 @@ Needs["Yurie`Algebra`Simplify`"];
 id::usage = 
     "identity of tensor product.";
 
-tensorThread::usage = 
-    "composite tensors over multiplication according to tensor-rank.";
-
+tensorRankEqualQ::usage = 
+    "check whether the ranks of two tensors are equal.";
 tensorRankSet::usage =
     "set the tensor-rank of generators.";
 tensorRankGet::usage =
     "get the tensor-rank of operators.";
-tensorRankEqualQ::usage = 
-    "check whether the ranks of two tensors are equal.";
+
+tensorCompose::usage = 
+    "composite tensors over multiplication according to tensor-rank.";
 
 
 (* ::Subsection:: *)
@@ -36,12 +36,16 @@ tensorRankEqualQ::usage =
 Begin["`Private`"];
 
 
+(* ::Subsection:: *)
+(*Message*)
+
+
 tensorRank::usage =
     "tensor-rank of generators.";
 dummyHead::usage = 
-    "head placeholder used by tensorThread.";
+    "head placeholder used by tensorCompose.";
 dummySlot::usage = 
-    "slot placeholder used by tensorThread.";
+    "slot placeholder used by tensorCompose.";
 
 
 (* ::Subsection:: *)
@@ -51,12 +55,24 @@ dummySlot::usage =
 tensorRank[_] = 1;
 
 
+(* ::Subsubsection:: *)
+(*tensorRankEqualQ*)
+
+
 tensorRankEqualQ[op1_,op2_] :=
     Total[tensorRank/@op1,AllowedHeads->CircleTimes]==Total[tensorRank/@op2,AllowedHeads->CircleTimes];
 
 
+(* ::Subsubsection:: *)
+(*tensorRankSet*)
+
+
 tensorRankSet[op_,rank_] :=
     tensorRank[op] = rank;    
+
+
+(* ::Subsubsection:: *)
+(*tensorRankGet*)
 
 
 tensorRankGet[_?scalarQ] =
@@ -71,14 +87,19 @@ tensorRankGet[op:_CircleTimes|_Times] :=
 tensorRankGet[op:_NonCommutativeMultiply|_Plus] :=
     tensorRankGet/@List@@op//Max;
 
-    
-tensorThread[op1_**op2_] :=
-    dummyHead[tensorThreadPadRight[List@@op1],tensorThreadPadRight[List@@op2]]//Thread//
+
+(* ::Subsubsection:: *)
+(*tensorCompose*)
+
+
+tensorCompose[op1_**op2_] :=
+    dummyHead[`tensorCompose`padRight[List@@op1],`tensorCompose`padRight[List@@op2]]//Thread//
     	Split[#,MemberQ[#2,dummySlot]&]&//Map[Thread[#,dummyHead]&]//
 			ReplaceAll[dummySlot->Sequence[]]//ReplaceAll[List[op_]:>op]//
 				ReplaceAll[{dummyHead->NonCommutativeMultiply,List->CircleTimes}];
 
-tensorThreadPadRight[opList_] :=
+
+`tensorCompose`padRight[opList_] :=
     Flatten@Riffle[opList,ConstantArray[dummySlot,#]&/@(tensorRank/@opList-1)];
 
 

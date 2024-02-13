@@ -23,7 +23,8 @@ comm::usage =
 commEven::usage = 
     "commutator.";
 commOdd::usage = 
-    "anti-commutator.";    
+    "anti-commutator.";
+
 commSim::usage = 
     "simplify the commutator.";
 commEvenSim::usage = 
