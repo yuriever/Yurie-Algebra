@@ -53,14 +53,14 @@ Begin["`Private`"];
 (*Constant*)
 
 
-(*patternAlg = _String;
+patternAlg = _String;
 patternAlgs = __String;
-patternAlgList = {__String};*)
+patternAlgList = {__String};
 
 
-patternAlg = _String|_Symbol;
+(*patternAlg = _String|_Symbol;
 patternAlgs = (_String|_Symbol)..;
-patternAlgList = {(_String|_Symbol)..};
+patternAlgList = {(_String|_Symbol)..};*)
 
 
 (* ::Subsection:: *)

@@ -49,10 +49,9 @@ Begin["`Private`"];
 (*Algebra*)
 
 
-$algebraList = 
-    {"SL2","Verma-module","Verma-module-extension"};
+$algebraList = {"SL2","Verma-module","Verma-module-extension"};
 
-algebraUnset@$algebraList//Quiet;
+Quiet@algebraUnset@$algebraList;
 algebraDefine@$algebraList;
 
 

@@ -19,6 +19,8 @@ Needs["Yurie`Algebra`Cache`"];
 (*Kernel function*)
 
 
+(*algebraReduce::usage = 
+	"reduce the expression by the default algebra.";*)
 algebraSimplify::usage = 
     "simplify the expression by the default algebra.";
 algebraPrint::usage = 
@@ -73,6 +75,10 @@ Begin["`Private`"];
 
 (* ::Subsection:: *)
 (*Kernel function*)
+
+
+algebraReduce[expr_] :=
+    ReplaceRepeated[expr,$relationCache];
 
 
 algebraSimplify[expr_] :=

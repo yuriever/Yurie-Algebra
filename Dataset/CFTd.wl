@@ -90,10 +90,9 @@ genCA :=
 (*Definition*)
 
 
-$algebraList = 
-    {"IA","CA","conjugateE","conjugateL","vacuum"};
+$algebraList = {"IA","CA","conjugateE","conjugateL","vacuum"};
 
-algebraUnset@$algebraList//Quiet;
+Quiet@algebraUnset@$algebraList;
 algebraDefine@$algebraList;
 
 
@@ -185,7 +184,7 @@ relation->{
 
 
 relation->{
-    SuperDagger@gen_?generatorQ:>-gen
+    SuperDagger@op_?generatorQ:>-op
 }//algebraAdd["conjugateE"];
 
 

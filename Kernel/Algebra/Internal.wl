@@ -36,7 +36,7 @@ Begin["`Private`"];
 algebraInternal[] = {
     "multiplication",
     "conjugate",
-    "tensorProduct",
+    "tensor-product",
     "comultiplication"
 };
 
@@ -72,7 +72,7 @@ CircleTimes//ClearAll;
 CircleTimes//Attributes = {Flat,OneIdentity};
 
 
-algebraInternal["tensorProduct"] = <|
+algebraInternal["tensor-product"] = <|
     operator->{id},
     relation->{
         CircleTimes[x_,k_?scalarQ*y_.]:>

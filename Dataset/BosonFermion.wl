@@ -52,10 +52,9 @@ Begin["`Private`"];
 (*Algebra*)
 
 
-$algebraList = 
-    {"boson","fermion","boson-fermion","vacuum","boson-vacuum","fermion-vacuum"};
+$algebraList = {"boson","fermion","boson-fermion","vacuum","boson-vacuum","fermion-vacuum"};
 
-algebraUnset@$algebraList//Quiet;
+Quiet@algebraUnset@$algebraList;
 algebraDefine@$algebraList;
 
 

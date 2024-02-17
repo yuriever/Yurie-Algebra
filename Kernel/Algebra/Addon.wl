@@ -20,16 +20,12 @@ Needs["Yurie`Algebra`"];
 
 comm::usage = 
     "commutator.";
-commEven::usage = 
-    "commutator.";
-commOdd::usage = 
+anticomm::usage = 
     "anti-commutator.";
 
 commSim::usage = 
     "simplify the commutator.";
-commEvenSim::usage = 
-    "simplify the commutator.";
-commOddSim::usage = 
+anticommSim::usage = 
     "simplify the anti-commutator.";
 
 commDefine::usage = 
@@ -80,6 +76,7 @@ scalarExtract::usage =
 
 checkLieBracket::usage = 
     "check the Jacobi identity of Lie algebras.";
+
 checkLieModule::usage = 
     "check the definition of Lie modules.";
 
@@ -109,28 +106,28 @@ comm[x_,y_] :=
 comm[x_,y__] :=
     x**comm[y]-comm[y]**x;
 
-commEven = comm;
+
+commSim[x__] :=
+    comm[x]//algebraSimplify;
 
 
 (* ::Text:: *)
 (*n-anti-commutator: {x,y,z,...}={x,{y,{z,...}}}*)
 
 
-commOdd[x_,y_] :=
+anticomm[x_,y_] :=
     x**y+y**x;
 
-commOdd[x_,y__] :=
-    x**commOdd[y]+commOdd[y]**x;
+anticomm[x_,y__] :=
+    x**anticomm[y]+anticomm[y]**x;
 
 
-commSim[x__] :=
-    comm[x]//algebraSimplify;
-    
-commEvenSim = commSim;
+anticommSim[x__] :=
+    anticomm[x]//algebraSimplify;
 
 
-commOddSim[x__] :=
-    commOdd[x]//algebraSimplify;
+(* ::Subsubsection:: *)
+(*commDefine*)
 
 
 commDefine/:(
@@ -144,11 +141,11 @@ commDefine/:(
     If[ order===Normal,
         Inactive[RuleDelayed][
             x**y,
-            (-1)^sign*stripPatternToExpr@y**stripPatternToExpr@x+result
+            (-1)^sign*stripPattern@y**stripPattern@x+result
         ]//Activate,
         Inactive[RuleDelayed][
             y**x,
-            (-1)^sign*stripPatternToExpr@x**stripPatternToExpr@y-(-1)^sign*result
+            (-1)^sign*stripPattern@x**stripPattern@y-(-1)^sign*result
         ]//Activate
     ];
 
@@ -163,19 +160,19 @@ commDefine/:(
     If[ order===Normal,
         Inactive[RuleDelayed][
             x**y,
-            Condition[(-1)^sign*stripPatternToExpr@y**stripPatternToExpr@x+result,condition]
+            Condition[(-1)^sign*stripPattern@y**stripPattern@x+result,condition]
         ]//Activate,
         Inactive[RuleDelayed][
             y**x,
-            Condition[(-1)^sign*stripPatternToExpr@x**stripPatternToExpr@y-(-1)^sign*result,condition]
+            Condition[(-1)^sign*stripPattern@x**stripPattern@y-(-1)^sign*result,condition]
         ]//Activate
     ];
 
 
-stripPatternToExpr::usage = 
-	"strip an algebra pattern into an expression.";
+stripPattern::usage = 
+    "strip an algebra pattern into an expression.";
 
-stripPatternToExpr[pattern_] :=
+stripPattern[pattern_] :=
     pattern//.{
         (
             Verbatim[Pattern]|Verbatim[Optional]|
@@ -189,19 +186,19 @@ stripPatternToExpr[pattern_] :=
 
 
 (* ::Text:: *)
-(*adjoint[x,y,n]=[x,[x,[...,y]]]*)
+(*adjoint[x,n][y]=[x,[x,[...,y]]]*)
 
 
 adjoint[op_,0][expr_] :=
     expr;
 
 adjoint[op_,order_:1][expr_] :=
-    comm@@Join[ConstantArray[op,order],{expr}];
+    comm[Sequence@@ConstantArray[op,order],expr];
 
 
-adjointExp[op_,max_,parameter_:1][expr_] :=
+adjointExp[op_,max_,t_:1][expr_] :=
     Module[ {order},
-        Sum[adjoint[op,order][expr]*parameter^order/order!,{order,0,max}]
+        Sum[adjoint[op,order][expr]*t^order/order!,{order,0,max}]
     ];
 
 
@@ -219,9 +216,9 @@ operatorPower[op_,order_:1] :=
     NonCommutativeMultiply@@ConstantArray[op,order];
 
 
-operatorExp[op_,max_,parameter_:1] :=
+operatorExp[op_,max_,t_:1] :=
     Module[ {order},
-        Sum[operatorPower[op,order] parameter^order/order!,{order,0,max}]
+        Sum[operatorPower[op,order] t^order/order!,{order,0,max}]
     ];
 
 
@@ -249,18 +246,18 @@ scalarExtract[exprs__] :=
 scalarSeparateKernel[0] :=
     0->0;
 
-scalarSeparateKernel[c_?scalarQ*q_?generatorQ] :=
-    c->q;
+scalarSeparateKernel[c_?scalarQ*op_?generatorQ] :=
+    c->op;
 
-scalarSeparateKernel[c_?scalarQ*q_NonCommutativeMultiply] :=
-    c->q;
+scalarSeparateKernel[c_?scalarQ*op_NonCommutativeMultiply] :=
+    c->op;
 
 scalarSeparateKernel[term1_+term2_] :=
     {scalarSeparateKernel@term1,scalarSeparateKernel@term2}//Flatten;
 
 scalarSeparateKernel[{exprs__}] :=
-    scalarSeparateKernel/@{exprs}//Flatten;
-
+    {exprs}//Map[scalarSeparateKernel]//Flatten;
+    
 
 (* ::Subsection:: *)
 (*Definition checking*)
@@ -268,15 +265,19 @@ scalarSeparateKernel[{exprs__}] :=
 
 checkLieBracket[x_,y_,z_] :=
     {x,y,z}->
-        algebraSimplify[
-            comm[x,y,z]+comm[y,z,x]+comm[z,x,y]
+        Simplify[
+            commSim[x,commSim[y,z]]+
+            commSim[y,commSim[z,x]]+
+            commSim[z,commSim[x,y]]
         ];
 
 
 checkLieModule[x_,y_,z_] :=
     {x,y,z}->
-        algebraSimplify[
-            comm[x,y]**z-(x**algebraSimplify[y**z]-y**algebraSimplify[x**z])
+        Simplify[
+            algebraSimplify[commSim[x,y]**z]-
+            algebraSimplify[x**algebraSimplify[y**z]]+
+            algebraSimplify[y**algebraSimplify[x**z]]
         ];
 
 

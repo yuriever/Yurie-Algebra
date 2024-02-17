@@ -46,10 +46,9 @@ Begin["`Private`"];
 (*Algebra*)
 
 
-$algebraList = 
-    {"bc","bc-vacuum"};
+$algebraList = {"bc","bc-vacuum"};
 
-algebraUnset@$algebraList//Quiet;
+Quiet@algebraUnset@$algebraList;
 algebraDefine@$algebraList;
 
 

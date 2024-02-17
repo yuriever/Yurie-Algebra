@@ -4,15 +4,11 @@
 
 comm::usage = 
 	"commutator.";
-commEven::usage = 
-	"commutator.";
-commOdd::usage = 
+anticomm::usage = 
 	"anti-commutator.";
 commSim::usage = 
 	"simplify the commutator.";
-commEvenSim::usage = 
-	"simplify the commutator.";
-commOddSim::usage = 
+anticommSim::usage = 
 	"simplify the anti-commutator.";
 commDefine::usage = 
 	"define commutation relations with condition, order-reversing or anti-commutator.";
