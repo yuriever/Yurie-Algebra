@@ -21,10 +21,10 @@ Needs["Yurie`Algebra`"];
 (*Public*)
 
 
-op::usage = 
+op::usage =
 	"operator.";
 
-state::usage = 
+state::usage =
 	"state.";
 
 

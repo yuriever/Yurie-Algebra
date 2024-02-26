@@ -14,7 +14,7 @@ Needs["Yurie`Algebra`"];
 (*Public*)
 
 
-algebraInternal::usage = 
+algebraInternal::usage =
     "internal algebras.";
 
 
@@ -46,7 +46,9 @@ algebraInternal[] = {
 
 
 NonCommutativeMultiply//Unprotect;
+
 NonCommutativeMultiply//ClearAll;
+
 NonCommutativeMultiply//Attributes = {Flat,OneIdentity};
 
 
@@ -68,7 +70,9 @@ algebraInternal["multiplication"] = <|
 
 
 CircleTimes//Unprotect;
+
 CircleTimes//ClearAll;
+
 CircleTimes//Attributes = {Flat,OneIdentity};
 
 
@@ -97,6 +101,7 @@ algebraInternal["tensor-product"] = <|
 
 
 SuperDagger//Unprotect;
+
 SuperDagger//ClearAll;
 
 

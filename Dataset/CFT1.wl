@@ -21,30 +21,30 @@ Needs["Yurie`Algebra`"];
 (*Public*)
 
 
-SL2Index::usage = 
+SL2Index::usage =
     "indices of global symmetry.";
 
-SL2Generator::usage = 
+SL2Generator::usage =
     "set of generators.";
 
-SL2Casimir::usage = 
+SL2Casimir::usage =
     "Casimir element.";
 
 
-L::usage = 
+L::usage =
     "L generator.";
-vac::usage = 
+vac::usage =
     "vacuum state.";
-primary::usage = 
+primary::usage =
     "primary state.";
-descendant::usage = 
+descendant::usage =
     "descendant state.";
 
 
-Lmonomial::usage = 
+Lmonomial::usage =
     "monomial of L.";
 
-Lpower::usage = 
+Lpower::usage =
     "power of single L generator.";
 
 
@@ -65,8 +65,9 @@ Begin["`Private`"];
 
 $algebraList = {"SL2","vacuum","singlet","multiplet","multiplet-upper","multiplet-lower"};
 
-Quiet@algebraUnset@$algebraList;
-algebraDefine@$algebraList;
+$algebraList//algebraUnset//Quiet;
+
+$algebraList//algebraDefine;
 
 
 (* ::Subsubsection:: *)
@@ -154,7 +155,7 @@ relation->{
 (*Function*)
 
 
-SL2Index = 
+SL2Index =
     {-1,0,1};
 
 SL2Generator =

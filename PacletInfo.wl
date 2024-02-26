@@ -8,10 +8,12 @@ PacletObject[
     "SourceControlURL" -> "https://github.com/yuriever/Yurie-Algebra",
     "License" -> "MIT",
     "PublisherID" -> "Yurie",
-    "Version" -> "1.3.0",
+    "Version" -> "1.4.0",
     "WolframVersion" -> "13+",
     "PrimaryContext" -> "Yurie`Algebra`",
-    "Dependencies" -> {"Yurie/Cluster" -> ">=1.0.0"},
+    "Dependencies" -> {
+      "Yurie/Cluster" -> ">=1.2.0"
+    },
     "Extensions" -> {
       {
         "Kernel",
@@ -24,8 +26,7 @@ PacletObject[
         "Kernel",
         "Root" -> "Utility",
         "Context" -> {
-          "Yurie`Algebra`Info`",
-          "Yurie`Algebra`Test`"
+          "Yurie`Algebra`Info`"
         }
       },
       {
@@ -46,8 +47,8 @@ PacletObject[
         "Assets" -> {
           {"License", "LICENSE"},
           {"ReadMe", "README.md"},
-          {"Notebook", "Notebook"},
-          {"Test", "Test"}
+          {"Test", "Test"},
+          {"TestSource", "TestSource"}
         }
       }
     }

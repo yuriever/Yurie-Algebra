@@ -2,103 +2,143 @@
 
 (*Addon.wl*)
 
-comm::usage = 
+comm::usage =
 	"commutator.";
-anticomm::usage = 
+
+anticomm::usage =
 	"anti-commutator.";
-commSim::usage = 
+
+commSim::usage =
 	"simplify the commutator.";
-anticommSim::usage = 
+
+anticommSim::usage =
 	"simplify the anti-commutator.";
-commDefine::usage = 
+
+commDefine::usage =
 	"define commutation relations with condition, order-reversing or anti-commutator.";
-adjoint::usage = 
+
+adjoint::usage =
 	"the adjoint action of Lie algebra, ad^order_op expr.";
-adjointExp::usage = 
+
+adjointExp::usage =
 	"the adjoint action of Lie group upto the max order, Exp[para op] expr Exp[-para op].";
-operatorPower::usage = 
+
+operatorPower::usage =
 	"power of operators, op^order.";
-operatorExp::usage = 
+
+operatorExp::usage =
 	"exponential of operators upto the max order, Exp[para op].";
-innerProduct::usage = 
+
+innerProduct::usage =
 	"inner product of two vectors, A \[CircleTimes] A -> k.";
-scalarSeparate::usage = 
+
+scalarSeparate::usage =
 	"separate scalars and operators.";
-scalarExtract::usage = 
+
+scalarExtract::usage =
 	"extract scalars.";
-checkLieBracket::usage = 
+
+checkLieBracket::usage =
 	"check the Jacobi identity of Lie algebras.";
-checkLieModule::usage = 
+
+checkLieModule::usage =
 	"check the definition of Lie modules.";
 
 
 (*Algebra.wl*)
 
-algebraCluster::usage = 
+algebraCluster::usage =
 	"cluster algebra.";
-operator::usage = 
+
+operator::usage =
 	"planet operator.";
-relation::usage = 
+
+relation::usage =
 	"planet relation.";
-printing::usage = 
+
+printing::usage =
 	"planet printing.";
-algebraDefine::usage = 
+
+algebraDefine::usage =
 	"define algebras.";
-algebraDefineQ::usage = 
+
+algebraDefineQ::usage =
 	"check whether an algebra is defined.";
-algebraDefault::usage = 
+
+algebraDefault::usage =
 	"set the default algebras.";
-algebraReset::usage = 
+
+algebraReset::usage =
 	"reset the algebras.";
-algebraUnset::usage = 
+
+algebraUnset::usage =
 	"unset the algebras.";
-algebraAdd::usage = 
+
+algebraAdd::usage =
 	"add elements to the algebras.";
-algebraShow::usage = 
+
+algebraShow::usage =
 	"show the algebra.";
 
 
 (*Simplify.wl*)
 
-algebraSimplify::usage = 
+algebraSimplify::usage =
 	"simplify the expression by the default algebra.";
-algebraPrint::usage = 
+
+algebraPrint::usage =
 	"format the expression by the default algebra.";
-scalarQ::usage = 
+
+scalarQ::usage =
 	"check whether the expression is C-number by the default algebra.";
-operatorQ::usage = 
+
+operatorQ::usage =
 	"check whether the expression is Q-number by the default algebra.";
-generatorQ::usage = 
+
+generatorQ::usage =
 	"check whether the symbol is a generator the default algebra.";
-algS::usage = 
+
+algS::usage =
 	"algebraSimplify.";
-algFS::usage = 
+
+algFS::usage =
 	"algebraSimplify + FullSimplify.";
-algP::usage = 
+
+algP::usage =
 	"algebraPrint.";
-algSP::usage = 
+
+algSP::usage =
 	"algebraSimplify + algebraPrint.";
-algFSP::usage = 
+
+algFSP::usage =
 	"algebraSimplify + FullSimplify + algebraPrint.";
-algSE::usage = 
+
+algSE::usage =
 	"return an equation with the input at right side and the simplified one at left side.";
-algFSE::usage = 
+
+algFSE::usage =
 	"return an equation with the input at right side and the fully simplified one at left side.";
-algEqualQ::usage = 
+
+algEqualQ::usage =
 	"x==y for Q-numbers.";
-algSameQ::usage = 
+
+algSameQ::usage =
 	"x===y for Q-numbers.";
 
 
 (*Tensor.wl*)
 
-id::usage = 
+id::usage =
 	"identity of tensor product.";
-tensorRankEqualQ::usage = 
+
+tensorRankEqualQ::usage =
 	"check whether the ranks of two tensors are equal.";
-tensorRankSet::usage = 
+
+tensorRankSet::usage =
 	"set the tensor-rank of generators.";
-tensorRankGet::usage = 
+
+tensorRankGet::usage =
 	"get the tensor-rank of operators.";
-tensorCompose::usage = 
+
+tensorCompose::usage =
 	"composite tensors over multiplication according to tensor-rank.";

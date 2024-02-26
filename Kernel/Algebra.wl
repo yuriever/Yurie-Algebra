@@ -22,10 +22,15 @@ Get["Yurie`Algebra`Usage`"];
 
 
 Get["Yurie`Algebra`Cache`"];
+
 Get["Yurie`Algebra`Algebra`"];
+
 Get["Yurie`Algebra`Internal`"];
+
 Get["Yurie`Algebra`Simplify`"];
+
 Get["Yurie`Algebra`Addon`"];
+
 Get["Yurie`Algebra`Tensor`"];
 
 

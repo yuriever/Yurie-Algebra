@@ -21,19 +21,19 @@ Needs["Yurie`Algebra`"];
 (*Public*)
 
 
-vac::usage = 
+vac::usage =
     "state: vacuum.";
 
-boson::usage = 
+boson::usage =
 	"operator: boson.";
 
-fermion::usage = 
+fermion::usage =
 	"operator: fermion.";
 
-an::usage = 
+an::usage =
 	"tag: annihilation.";
 
-cr::usage = 
+cr::usage =
 	"tag: creation.";
 
 
@@ -54,8 +54,9 @@ Begin["`Private`"];
 
 $algebraList = {"boson","fermion","boson-fermion","vacuum","boson-vacuum","fermion-vacuum"};
 
-Quiet@algebraUnset@$algebraList;
-algebraDefine@$algebraList;
+$algebraList//algebraUnset//Quiet;
+
+$algebraList//algebraDefine;
 
 
 (* ::Text:: *)

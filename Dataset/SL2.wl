@@ -21,16 +21,16 @@ Needs["Yurie`Algebra`"];
 (*Public*)
 
 
-h::usage = 
+h::usage =
     "operator: h.";
 
-x::usage = 
+x::usage =
 	"operator: x.";
 
-y::usage = 
+y::usage =
 	"operator: y.";
 
-v::usage = 
+v::usage =
 	"state.";
 
 
@@ -51,8 +51,9 @@ Begin["`Private`"];
 
 $algebraList = {"SL2","Verma-module","Verma-module-extension"};
 
-Quiet@algebraUnset@$algebraList;
-algebraDefine@$algebraList;
+$algebraList//algebraUnset//Quiet;
+
+$algebraList//algebraDefine;
 
 
 (* ::Text:: *)

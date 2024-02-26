@@ -8,7 +8,9 @@ BeginPackage["Yurie`Algebra`Algebra`"];
 
 
 Needs["Yurie`Cluster`"];
+
 Needs["Yurie`Algebra`"];
+
 Needs["Yurie`Algebra`Internal`"];
 
 
@@ -16,29 +18,38 @@ Needs["Yurie`Algebra`Internal`"];
 (*Public*)
 
 
-algebraCluster::usage = 
+algebraCluster::usage =
     "cluster algebra.";
-operator::usage = 
+
+operator::usage =
     "planet operator.";
-relation::usage = 
+
+relation::usage =
     "planet relation.";
-printing::usage = 
+
+printing::usage =
     "planet printing.";
 
 
-algebraDefine::usage = 
+algebraDefine::usage =
     "define algebras.";
-algebraDefineQ::usage = 
+
+algebraDefineQ::usage =
     "check whether an algebra is defined.";
-algebraDefault::usage = 
+
+algebraDefault::usage =
     "set the default algebras.";
-algebraReset::usage = 
+
+algebraReset::usage =
     "reset the algebras.";
-algebraUnset::usage = 
+
+algebraUnset::usage =
     "unset the algebras.";
-algebraAdd::usage = 
+
+algebraAdd::usage =
     "add elements to the algebras.";
-algebraShow::usage = 
+
+algebraShow::usage =
     "show the algebra.";
 
 
@@ -54,13 +65,10 @@ Begin["`Private`"];
 
 
 patternAlg = _String;
+
 patternAlgs = __String;
+
 patternAlgList = {__String};
-
-
-(*patternAlg = _String|_Symbol;
-patternAlgs = (_String|_Symbol)..;
-patternAlgList = {(_String|_Symbol)..};*)
 
 
 (* ::Subsection:: *)
@@ -172,8 +180,8 @@ algebraShowKernel[operatorList_,relationList_,printingList_] :=
     ];
 
 
-hideContextInRelation::usage = 
-	"hide context in algebra relations.";
+hideContextInRelation::usage =
+    "hide context in algebra relations.";
 
 hideContextInRelation/:MakeBoxes[hideContextInRelation[expr_],form_] := 
     Block[ {Internal`$ContextMarks = False},

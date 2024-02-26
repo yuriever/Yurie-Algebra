@@ -15,13 +15,16 @@ ClearAll["`*"];
 (*Public*)
 
 
-$operatorCache::usage = 
+$operatorCache::usage =
     "operator cache.";
-$operatorPatternCache::usage = 
+
+$operatorPatternCache::usage =
     "operator pattern cache.";
-$relationCache::usage = 
+
+$relationCache::usage =
     "relation cache.";
-$printingCache::usage = 
+
+$printingCache::usage =
     "printing cache.";
 
 

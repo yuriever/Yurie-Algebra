@@ -21,10 +21,10 @@ Needs["Yurie`Algebra`"];
 (*Public*)
 
 
-R::usage = 
+R::usage =
     "operator: R.";
 
-x::usage = 
+x::usage =
 	"state.";
 
 
@@ -32,7 +32,7 @@ x::usage =
 (*Private*)
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Begin*)
 
 
@@ -45,8 +45,9 @@ Begin["`Private`"];
 
 $algebraList = {"YBE"};
 
-Quiet@algebraUnset@$algebraList;
-algebraDefine@$algebraList;
+$algebraList//algebraUnset//Quiet;
+
+$algebraList//algebraDefine;
 
 
 <|
@@ -66,7 +67,7 @@ algebraDefine@$algebraList;
 tensorRankSet[R[___],3];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*End*)
 
 

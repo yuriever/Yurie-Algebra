@@ -18,17 +18,19 @@ Needs["Yurie`Algebra`"];
 (*Commutator*)
 
 
-comm::usage = 
+comm::usage =
     "commutator.";
-anticomm::usage = 
+
+anticomm::usage =
     "anti-commutator.";
 
-commSim::usage = 
+commSim::usage =
     "simplify the commutator.";
-anticommSim::usage = 
+
+anticommSim::usage =
     "simplify the anti-commutator.";
 
-commDefine::usage = 
+commDefine::usage =
     "define commutation relations with condition, order-reversing or anti-commutator.";
 
 
@@ -36,9 +38,10 @@ commDefine::usage =
 (*Adjoint*)
 
 
-adjoint::usage = 
+adjoint::usage =
     "the adjoint action of Lie algebra, ad^order_op expr."
-adjointExp::usage = 
+
+adjointExp::usage =
     "the adjoint action of Lie group upto the max order, Exp[para op] expr Exp[-para op].";
 
 
@@ -46,9 +49,10 @@ adjointExp::usage =
 (*Power and exp*)
 
 
-operatorPower::usage = 
+operatorPower::usage =
     "power of operators, op^order.";
-operatorExp::usage = 
+
+operatorExp::usage =
     "exponential of operators upto the max order, Exp[para op].";
 
 
@@ -66,6 +70,7 @@ innerProduct::usage =
 
 scalarSeparate::usage =
     "separate scalars and operators.";
+
 scalarExtract::usage =
     "extract scalars.";
 
@@ -74,10 +79,10 @@ scalarExtract::usage =
 (*Definition checking*)
 
 
-checkLieBracket::usage = 
+checkLieBracket::usage =
     "check the Jacobi identity of Lie algebras.";
 
-checkLieModule::usage = 
+checkLieModule::usage =
     "check the definition of Lie modules.";
 
 
@@ -169,7 +174,7 @@ commDefine/:(
     ];
 
 
-stripPattern::usage = 
+stripPattern::usage =
     "strip an algebra pattern into an expression.";
 
 stripPattern[pattern_] :=
@@ -206,7 +211,7 @@ adjointExp[op_,max_,t_:1][expr_] :=
 (*Power and exp*)
 
 
-operatorPower[_,0] = 
+operatorPower[_,0] =
     1;
 
 operatorPower[op_,1] :=
@@ -239,6 +244,7 @@ innerProduct[x_] :=
 
 scalarSeparate[exprs__] :=
     scalarSeparateKernel[exprs];
+
 scalarExtract[exprs__] :=
     scalarSeparateKernel[exprs]/.HoldPattern[x_->y_]:>x//DeleteDuplicates;
 
@@ -257,7 +263,7 @@ scalarSeparateKernel[term1_+term2_] :=
 
 scalarSeparateKernel[{exprs__}] :=
     {exprs}//Map[scalarSeparateKernel]//Flatten;
-    
+
 
 (* ::Subsection:: *)
 (*Definition checking*)

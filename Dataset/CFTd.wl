@@ -15,7 +15,9 @@ BeginPackage["Yurie`Algebra`CFTd`"];
 
 
 Needs["Yurie`Algebra`"];
+
 Needs["Yurie`CFT`Common`"];
+
 Needs["Yurie`CFT`Cartesian`"];
 
 
@@ -23,22 +25,22 @@ Needs["Yurie`CFT`Cartesian`"];
 (*Public*)
 
 
-genCA::usage = 
+genCA::usage =
     "list of generators.";
 
-genD::usage = 
+genD::usage =
     "operator: dilatation.";
 
-genM::usage = 
+genM::usage =
     "operator: rotation.";
 
-genP::usage = 
+genP::usage =
     "operator: translation.";
 
-genK::usage = 
+genK::usage =
     "operator: SCT.";
 
-vac::usage = 
+vac::usage =
     "state: vacuum.";
 
 
@@ -92,8 +94,9 @@ genCA :=
 
 $algebraList = {"IA","CA","conjugateE","conjugateL","vacuum"};
 
-Quiet@algebraUnset@$algebraList;
-algebraDefine@$algebraList;
+$algebraList//algebraUnset//Quiet;
+
+$algebraList//algebraDefine;
 
 
 (* ::Text:: *)

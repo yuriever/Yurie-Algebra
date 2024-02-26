@@ -21,13 +21,13 @@ Needs["Yurie`Algebra`"];
 (*Public*)
 
 
-vac::usage = 
+vac::usage =
     "state: vacuum.";
 
-ghostB::usage = 
+ghostB::usage =
     "operator: b.";
 
-ghostC::usage = 
+ghostC::usage =
     "operator: c.";
 
 
@@ -48,8 +48,9 @@ Begin["`Private`"];
 
 $algebraList = {"bc","bc-vacuum"};
 
-Quiet@algebraUnset@$algebraList;
-algebraDefine@$algebraList;
+$algebraList//algebraUnset//Quiet;
+
+$algebraList//algebraDefine;
 
 
 (* ::Text:: *)
