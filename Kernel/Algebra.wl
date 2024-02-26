@@ -17,10 +17,6 @@ Needs["Yurie`Cluster`"];
 Get["Yurie`Algebra`Usage`"];
 
 
-(* ::Subsection:: *)
-(*Subpackage*)
-
-
 Get["Yurie`Algebra`Cache`"];
 
 Get["Yurie`Algebra`Algebra`"];
