@@ -33,10 +33,13 @@ SL2Casimir::usage =
 
 L::usage =
     "L generator.";
+
 vac::usage =
     "vacuum state.";
+
 primary::usage =
     "primary state.";
+
 descendant::usage =
     "descendant state.";
 
