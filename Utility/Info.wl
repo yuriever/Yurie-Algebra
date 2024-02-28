@@ -11,13 +11,17 @@ BeginPackage["Yurie`Algebra`Info`"];
 (*Public*)
 
 
-$thisPacletDir;
+$thisPacletDir::usage =
+    "directory of paclet.";
 
-$thisKernelDir;
+$thisKernelDir::usage =
+    "directory of kernel.";
 
-$thisTestDir;
+$thisTestDir::usage =
+    "directory of unit test.";
 
-$thisTestSourceDir;
+$thisTestSourceDir::usage =
+    "directory of source notebook for unit test.";
 
 
 (* ::Section:: *)
