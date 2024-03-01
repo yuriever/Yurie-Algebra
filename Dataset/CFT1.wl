@@ -66,7 +66,7 @@ Begin["`Private`"];
 (*Algebra*)
 
 
-$algebraList = {"SL2","vacuum","singlet","multiplet","multiplet-upper","multiplet-lower"};
+$algebraList = {"SL2","SL2-conjugate","vacuum","singlet","singlet-conjugate","multiplet","multiplet-upper","multiplet-lower","multiplet-conjuate"};
 
 $algebraList//algebraUnset//Quiet;
 
@@ -80,8 +80,7 @@ $algebraList//algebraDefine;
 <|
 	operator->{L},
 	relation->{
-	    L[n_]**L[m_]:>L[m]**L[n]+(n-m)L[n+m]/;n>m,
-	    SuperDagger[L[n_]]:>L[-n]
+	    L[n_]**L[m_]:>L[m]**L[n]+(n-m)L[n+m]/;n>m
 	},
 	printing->{
 	    L[n_]:>Subsuperscript["L",n,1],
@@ -113,10 +112,7 @@ $algebraList//algebraDefine;
 	    (*annihilation rule*)
 	    L[n_]**primary[delta_]:>0/;n>=1,
 	    primary[delta_]**L[n_]:>0/;n<=-1,
-	    L[0]**primary[delta_]:>delta primary[delta],
-	    (*inner product*)
-	    primary[delta_]**primary[delta_]:>1,
-	    SuperDagger[primary[delta_]]:>primary[delta]
+	    L[0]**primary[delta_]:>delta primary[delta]
 	}
 |>//algebraAdd["singlet"];
 
@@ -133,10 +129,7 @@ $algebraList//algebraDefine;
 	    primary[rank_,a_,delta_]:>0/;a>rank,
 	    (*annihilation rule*)
 	    L[n_]**primary[rank_,a_,delta_]:>0/;n>=1,
-	    primary[rank_,a_,delta_]**L[n_]:>0/;n<=-1,
-	    (*inner product*)
-	    primary[rank_,a_,delta_]**primary[rank_,b_,delta_]:>KroneckerDelta[a+b,rank+1],
-	    SuperDagger[primary[rank_,a_,delta_]]:>primary[rank,a,delta]
+	    primary[rank_,a_,delta_]**L[n_]:>0/;n<=-1
 	}
 |>//algebraAdd[{"multiplet","multiplet-upper","multiplet-lower"}];
 
@@ -152,6 +145,27 @@ relation->{
 relation->{
     L[0]**primary[rank_,a_,delta_]:>delta primary[rank,a,delta]+primary[rank,a-1,delta]
 }//algebraAdd["multiplet-lower"];
+
+
+(* ::Text:: *)
+(*conjugate*)
+
+
+relation->{
+    SuperDagger[L[n_]]:>L[-n]
+}//algebraAdd["SL2-conjugate"];
+
+
+relation->{
+    primary[delta_]**primary[delta_]:>1,
+    SuperDagger[primary[delta_]]:>primary[delta]
+}//algebraAdd["singlet-conjugate"];
+
+
+relation->{
+    primary[rank_,a_,delta_]**primary[rank_,b_,delta_]:>KroneckerDelta[a+b,rank+1],
+    SuperDagger[primary[rank_,a_,delta_]]:>primary[rank,a,delta]
+}//algebraAdd["multiplet-conjugate"];
 
 
 (* ::Subsubsection:: *)
