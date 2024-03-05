@@ -66,7 +66,7 @@ Begin["`Private`"];
 (*Algebra*)
 
 
-$algebraList = {"SL2","SL2-conjugate","vacuum","singlet","singlet-conjugate","multiplet","multiplet-upper","multiplet-lower","multiplet-conjuate"};
+$algebraList = {"SL2","SL2-conjugate","vacuum","singlet","singlet-conjugate","multiplet","multiplet-upper","multiplet-lower","multiplet-conjugate"};
 
 $algebraList//algebraUnset//Quiet;
 
@@ -122,7 +122,7 @@ $algebraList//algebraDefine;
 
 
 <|
-	operator->{primary},	
+	operator->{primary},
 	relation->{
 	    (*boundary condition*)
 	    primary[rank_,a_,delta_]:>0/;a<=0,
@@ -196,10 +196,10 @@ Lpower[k_,n_Integer] :=
 
 
 descendant[delta_,n_Integer] :=
-    Lpower[-1,n]**primary[delta];
+    operatorPower[L[-1],n]**primary[delta];
 
 descendant[rank_,a_,delta_,n_Integer] :=
-    Lpower[-1,n]**primary[rank,a,delta];
+    operatorPower[L[-1],n]**primary[rank,a,delta];
 
 
 (* ::Subsection:: *)
