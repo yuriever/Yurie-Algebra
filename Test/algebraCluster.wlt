@@ -8,7 +8,7 @@ VerificationTest[
 	,
 	Null
 	,
-	TestID->"init-algebraCluster.nb"
+	TestID->"0-algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -16,7 +16,7 @@ VerificationTest[
 	,
 	Null
 	,
-	TestID->1
+	TestID->"1-algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -26,7 +26,7 @@ VerificationTest[
 	,
 	{Yurie`Cluster`cluster::starundef}
 	,
-	TestID->2
+	TestID->"2-algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -36,7 +36,7 @@ VerificationTest[
 	,
 	{Yurie`Cluster`cluster::starundef}
 	,
-	TestID->3
+	TestID->"3-algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -46,7 +46,7 @@ VerificationTest[
 	,
 	{Yurie`Cluster`cluster::starundef}
 	,
-	TestID->4
+	TestID->"4-algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -55,7 +55,7 @@ VerificationTest[
 	,
 	{"comultiplication", "conjugate", "multiplication", "tensor-product", "alg1", "alg2"}
 	,
-	TestID->5
+	TestID->"5-algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -66,7 +66,7 @@ VerificationTest[
 	,
 	{x, y, z}
 	,
-	TestID->6
+	TestID->"6-algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -75,7 +75,7 @@ VerificationTest[
 	,
 	{y, z}
 	,
-	TestID->7
+	TestID->"7-algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -86,7 +86,7 @@ VerificationTest[
 	,
 	{Yurie`Cluster`cluster::rmdefault}
 	,
-	TestID->8
+	TestID->"8-algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -97,7 +97,7 @@ VerificationTest[
 	,
 	{Yurie`Cluster`cluster::rmdefault}
 	,
-	TestID->9
+	TestID->"9-algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -105,7 +105,7 @@ VerificationTest[
 	,
 	{"comultiplication", "conjugate", "multiplication", "tensor-product"}
 	,
-	TestID->10
+	TestID->"10-algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -113,7 +113,7 @@ VerificationTest[
 	,
 	{}
 	,
-	TestID->11
+	TestID->"11-algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -122,5 +122,5 @@ VerificationTest[
 	,
 	"Global`"
 	,
-	TestID->"cleanup-algebraCluster.nb"
+	TestID->"∞-algebraCluster.nb"
 ]

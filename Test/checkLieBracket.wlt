@@ -8,7 +8,7 @@ VerificationTest[
 	,
 	Null
 	,
-	TestID->"init-checkLieBracket.nb"
+	TestID->"0-checkLieBracket.nb"
 ]
 
 VerificationTest[
@@ -16,7 +16,7 @@ VerificationTest[
 	,
 	Null
 	,
-	TestID->1
+	TestID->"1-checkLieBracket.nb"
 ]
 
 VerificationTest[
@@ -25,7 +25,7 @@ VerificationTest[
 	,
 	Null
 	,
-	TestID->2
+	TestID->"2-checkLieBracket.nb"
 ]
 
 VerificationTest[
@@ -34,7 +34,7 @@ VerificationTest[
 	,
 	Null
 	,
-	TestID->3
+	TestID->"3-checkLieBracket.nb"
 ]
 
 VerificationTest[
@@ -42,7 +42,7 @@ VerificationTest[
 	,
 	{x, y, z} -> x**yz - xy**z
 	,
-	TestID->4
+	TestID->"4-checkLieBracket.nb"
 ]
 
 VerificationTest[
@@ -50,7 +50,7 @@ VerificationTest[
 	,
 	{x, y, z} -> -x**yz + xy**z
 	,
-	TestID->5
+	TestID->"5-checkLieBracket.nb"
 ]
 
 VerificationTest[
@@ -59,5 +59,5 @@ VerificationTest[
 	,
 	"Global`"
 	,
-	TestID->"cleanup-checkLieBracket.nb"
+	TestID->"∞-checkLieBracket.nb"
 ]

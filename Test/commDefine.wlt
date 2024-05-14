@@ -8,7 +8,7 @@ VerificationTest[
 	,
 	Null
 	,
-	TestID->"init-commDefine.nb"
+	TestID->"0-commDefine.nb"
 ]
 
 VerificationTest[
@@ -16,7 +16,7 @@ VerificationTest[
 	,
 	Null
 	,
-	TestID->1
+	TestID->"1-commDefine.nb"
 ]
 
 VerificationTest[
@@ -24,7 +24,7 @@ VerificationTest[
 	,
 	(x_Symbol)**(y_)?IntegerQ :> z + y**x /; x > y
 	,
-	TestID->2
+	TestID->"2-commDefine.nb"
 ]
 
 VerificationTest[
@@ -32,7 +32,7 @@ VerificationTest[
 	,
 	(x_)**(y_) :> z + y**x
 	,
-	TestID->3
+	TestID->"3-commDefine.nb"
 ]
 
 VerificationTest[
@@ -40,7 +40,7 @@ VerificationTest[
 	,
 	(x_)**(y_) :> z - y**x
 	,
-	TestID->4
+	TestID->"4-commDefine.nb"
 ]
 
 VerificationTest[
@@ -48,7 +48,7 @@ VerificationTest[
 	,
 	(y_)**(x_) :> -z + x**y
 	,
-	TestID->5
+	TestID->"5-commDefine.nb"
 ]
 
 VerificationTest[
@@ -56,7 +56,7 @@ VerificationTest[
 	,
 	(y_)**(x_) :> z - x**y
 	,
-	TestID->6
+	TestID->"6-commDefine.nb"
 ]
 
 VerificationTest[
@@ -65,5 +65,5 @@ VerificationTest[
 	,
 	"Global`"
 	,
-	TestID->"cleanup-commDefine.nb"
+	TestID->"∞-commDefine.nb"
 ]

@@ -8,7 +8,7 @@ VerificationTest[
 	,
 	Null
 	,
-	TestID->"init-tensor-product.nb"
+	TestID->"0-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -16,7 +16,7 @@ VerificationTest[
 	,
 	Null
 	,
-	TestID->1
+	TestID->"1-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -25,7 +25,7 @@ VerificationTest[
 	,
 	Null
 	,
-	TestID->2
+	TestID->"2-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -33,7 +33,7 @@ VerificationTest[
 	,
 	Null
 	,
-	TestID->3
+	TestID->"3-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -41,7 +41,7 @@ VerificationTest[
 	,
 	3
 	,
-	TestID->4
+	TestID->"4-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -49,7 +49,7 @@ VerificationTest[
 	,
 	(id ⊗ R[1, 2, u, v])**(x[1] ⊗ x[2] ⊗ x[3] ⊗ x[4])
 	,
-	TestID->5
+	TestID->"5-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -57,7 +57,7 @@ VerificationTest[
 	,
 	(id ⊗ R[1, 2, u, v])**(x[1] ⊗ x[2] ⊗ x[3] ⊗ x[4])**(id ⊗ R[1, 2, u, v])**(x[1] ⊗ x[2] ⊗ x[3] ⊗ x[4])
 	,
-	TestID->6
+	TestID->"6-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -65,7 +65,7 @@ VerificationTest[
 	,
 	4
 	,
-	TestID->7
+	TestID->"7-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -73,7 +73,7 @@ VerificationTest[
 	,
 	4
 	,
-	TestID->8
+	TestID->"8-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -81,7 +81,7 @@ VerificationTest[
 	,
 	(1/(I + u - v)^2)*((u - v)^2*x[1]**x[1] ⊗ x[2]**x[2] ⊗ x[3]**x[3] ⊗ x[4]**x[4] + I*((u - v)*x[1]**x[1] ⊗ x[2]**x[3] ⊗ x[3]**x[2] ⊗ x[4]**x[4] + (u - v)*x[1]**x[1] ⊗ x[3]**x[2] ⊗ x[2]**x[3] ⊗ x[4]**x[4] + I*x[1]**x[1] ⊗ x[3]**x[3] ⊗ x[2]**x[2] ⊗ x[4]**x[4]))
 	,
-	TestID->9
+	TestID->"9-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -90,5 +90,5 @@ VerificationTest[
 	,
 	"Global`"
 	,
-	TestID->"cleanup-tensor-product.nb"
+	TestID->"∞-tensor-product.nb"
 ]
