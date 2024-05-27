@@ -91,7 +91,7 @@ algebraDefine[alg:patternAlg] :=
 
 
 algebraDefineQ[alg:patternAlg] :=
-    MemberQ[clusterPropGet[algebraCluster,"starList"],alg];
+    MemberQ[clusterPropGet[algebraCluster,"StarList"],alg];
 
 algebraDefineQ[_] = False;
 
@@ -152,14 +152,14 @@ algebraAdd[alg:patternAlg][assoc_] :=
 
 algebraShow[alg:patternAlg]/;algebraDefineQ[alg] :=
     Module[ {algData},
-        algData = clusterPropGet[algebraCluster,"starData"][alg];
+        algData = clusterPropGet[algebraCluster,"StarData"][alg];
         algebraShowKernel[algData[operator],algData[relation],algData[printing]]
     ];
 
 algebraShow[] :=
     Module[ {algData},
-        algData = clusterPropGet[algebraCluster,"starDefaultData"];
-        Print["Default algebras: ",Row[clusterPropGet[algebraCluster,"starDefaultList"],", "],"."];
+        algData = clusterPropGet[algebraCluster,"StarDefaultData"];
+        Print["Default algebras: ",Row[clusterPropGet[algebraCluster,"StarDefaultList"],", "],"."];
         algebraShowKernel[algData[operator],algData[relation],algData[printing]]
     ];
 
@@ -194,11 +194,11 @@ hideContextInRelation/:MakeBoxes[hideContextInRelation[expr_],form_] :=
 
 
 algebraDefine[] :=
-    clusterPropGet[algebraCluster,"starList"];
+    clusterPropGet[algebraCluster,"StarList"];
 
 
 algebraDefault[] :=
-    clusterPropGet[algebraCluster,"starDefaultList"];
+    clusterPropGet[algebraCluster,"StarDefaultList"];
 
 
 (*reset/unset the default except internal algebras.*)
@@ -220,23 +220,23 @@ algebraUnset[All] :=
 
 
 operator[] :=
-    clusterPropGet[algebraCluster,"starDefaultData"][operator];
+    clusterPropGet[algebraCluster,"StarDefaultData"][operator];
 
 relation[] :=
-    clusterPropGet[algebraCluster,"starDefaultData"][relation];
+    clusterPropGet[algebraCluster,"StarDefaultData"][relation];
 
 printing[] :=
-    clusterPropGet[algebraCluster,"starDefaultData"][printing];
+    clusterPropGet[algebraCluster,"StarDefaultData"][printing];
 
 
 operator[alg:patternAlg] :=
-    clusterPropGet[algebraCluster,"starData"][alg,operator];
+    clusterPropGet[algebraCluster,"StarData"][alg,operator];
 
 relation[alg:patternAlg] :=
-    clusterPropGet[algebraCluster,"starData"][alg,relation];
+    clusterPropGet[algebraCluster,"StarData"][alg,relation];
 
 printing[alg:patternAlg] :=
-    clusterPropGet[algebraCluster,"starData"][alg,printing];
+    clusterPropGet[algebraCluster,"StarData"][alg,printing];
 
 
 (* ::Subsection:: *)

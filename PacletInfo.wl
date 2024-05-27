@@ -8,11 +8,11 @@ PacletObject[
     "SourceControlURL" -> "https://github.com/yuriever/Yurie-Algebra",
     "License" -> "MIT",
     "PublisherID" -> "Yurie",
-    "Version" -> "1.4.0",
+    "Version" -> "2.0.0",
     "WolframVersion" -> "13+",
     "PrimaryContext" -> "Yurie`Algebra`",
     "Dependencies" -> {
-      "Yurie/Cluster" -> ">=1.2.0"
+      "Yurie/Cluster" -> ">=2.0.0"
     },
     "Extensions" -> {
       {

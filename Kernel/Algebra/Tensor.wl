@@ -73,7 +73,7 @@ tensorRankEqualQ[op1_,op2_] :=
 
 
 tensorRankSet[op_,rank_] :=
-    tensorRank[op] = rank;    
+    tensorRank[op] = rank;
 
 
 (* ::Subsubsection:: *)
@@ -100,8 +100,7 @@ tensorRankGet[op:_NonCommutativeMultiply|_Plus] :=
 tensorCompose[op1_**op2_] :=
     dummyHead[tensorPadRight[List@@op1],tensorPadRight[List@@op2]]//Thread//
     	Split[#,MemberQ[#2,dummySlot]&]&//Map[Thread[#,dummyHead]&]//
-			ReplaceAll[dummySlot->Sequence[]]//ReplaceAll[List[op_]:>op]//
-				ReplaceAll[{dummyHead->NonCommutativeMultiply,List->CircleTimes}];
+			ReplaceAll[dummySlot->Sequence[]]//ReplaceAll[List[op_]:>op]//ReplaceAll[{dummyHead->NonCommutativeMultiply,List->CircleTimes}];
 
 
 tensorPadRight[opList_] :=

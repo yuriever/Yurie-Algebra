@@ -58,7 +58,7 @@ Begin["`Private`"];
 
 
 (* ::Text:: *)
-(*Construct the association of generators.*)
+(*association of generators*)
 
 
 genCA :=
@@ -86,10 +86,6 @@ genCA :=
     ];
 
 
-(* ::Text:: *)
-(*Definition*)
-
-
 $algebraList = {"IA","CA","conjugateE","conjugateL","vacuum"};
 
 $algebraList//algebraUnset//Quiet;
@@ -97,7 +93,7 @@ $algebraList//algebraUnset//Quiet;
 $algebraList//algebraDefine;
 
 
-(* ::Text:: *)
+(* ::Subsubsection:: *)
 (*Operator*)
 
 
@@ -110,8 +106,12 @@ operator->{genP,genM,genD,genK}//algebraAdd["CA"];
 operator->{vac}//algebraAdd["vacuum"];
 
 
+(* ::Subsubsection:: *)
+(*Relation*)
+
+
 (* ::Text:: *)
-(*Isometry algebra and conformal algebra*)
+(*isometry algebra and conformal algebra*)
 
 
 (* ::Text:: *)
@@ -169,7 +169,7 @@ printing->{
 
 
 (* ::Text:: *)
-(*Vacuum*)
+(*vacuum*)
 
 
 relation->{
@@ -181,7 +181,7 @@ relation->{
 
 
 (* ::Text:: *)
-(*Conjugation*)
+(*conjugation*)
 
 
 relation->{

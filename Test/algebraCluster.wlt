@@ -51,9 +51,9 @@ VerificationTest[
 
 VerificationTest[
 	algebraDefine[{"alg1", "alg2"}]; 
-	algebraCluster["starList"]
+	algebraCluster["StarList"]
 	,
-	{"comultiplication", "conjugate", "multiplication", "tensor-product", "alg1", "alg2"}
+	{"Comultiplication", "Conjugate", "Multiplication", "TensorProduct", "alg1", "alg2"}
 	,
 	TestID->"5-algebraCluster.nb"
 ]
@@ -62,7 +62,7 @@ VerificationTest[
 	algebraAdd["alg1"][{operator -> {x}}]; 
 	algebraAdd[{"alg1", "alg2"}][Association[operator -> {y, z}, printing -> {y -> 1}]]; 
 	algebraDefault[{"alg1", "alg2"}]; 
-	algebraCluster["starDefaultData"][operator]
+	algebraCluster["StarDefaultData"][operator]
 	,
 	{x, y, z}
 	,
@@ -71,7 +71,7 @@ VerificationTest[
 
 VerificationTest[
 	algebraReset["alg1"]; 
-	algebraCluster["starDefaultData"][operator]
+	algebraCluster["StarDefaultData"][operator]
 	,
 	{y, z}
 	,
@@ -80,7 +80,7 @@ VerificationTest[
 
 VerificationTest[
 	algebraUnset["alg1"]; 
-	algebraCluster["starDefaultData"][operator]
+	algebraCluster["StarDefaultData"][operator]
 	,
 	{y, z}
 	,
@@ -91,7 +91,7 @@ VerificationTest[
 
 VerificationTest[
 	algebraUnset["alg2"]; 
-	algebraCluster["starDefaultData"][operator]
+	algebraCluster["StarDefaultData"][operator]
 	,
 	{}
 	,
@@ -103,7 +103,7 @@ VerificationTest[
 VerificationTest[
 	algebraDefine[]
 	,
-	{"comultiplication", "conjugate", "multiplication", "tensor-product"}
+	{"Comultiplication", "Conjugate", "Multiplication", "TensorProduct"}
 	,
 	TestID->"10-algebraCluster.nb"
 ]

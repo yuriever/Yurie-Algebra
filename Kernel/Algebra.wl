@@ -49,7 +49,7 @@ clusterInit[
     {"algebraCluster","Yurie`Algebra`"},
     {operator,relation,printing},
     {{},{},{}},
-    Values@algebraInternal["multiplication"],
+    Values@algebraInternal["Multiplication"],
     {DeleteDuplicates@*Join,DeleteDuplicates@*Join,DeleteDuplicates@*Join}
 ];
 
@@ -60,10 +60,10 @@ clusterInit[
 
 starPostIntercept[algebraCluster,"starUpdateDefault",defaultStar_] :=
     (
-        $operatorCache = clusterPropGet[algebraCluster,"starDefaultData"][operator];
+        $operatorCache = clusterPropGet[algebraCluster,"StarDefaultData"][operator];
         $operatorPatternCache = Alternatives@@$operatorCache;
-        $relationCache = clusterPropGet[algebraCluster,"starDefaultData"][relation];
-        $printingCache = clusterPropGet[algebraCluster,"starDefaultData"][printing];
+        $relationCache = clusterPropGet[algebraCluster,"StarDefaultData"][relation];
+        $printingCache = clusterPropGet[algebraCluster,"StarDefaultData"][printing];
     );
 
 

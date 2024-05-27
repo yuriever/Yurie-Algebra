@@ -21,7 +21,7 @@ VerificationTest[
 
 VerificationTest[
 	algebraDefine["YBE"]; 
-	algebraDefault[{"YBE", "tensor-product"}]
+	algebraDefault[{"YBE", "TensorProduct"}]
 	,
 	Null
 	,

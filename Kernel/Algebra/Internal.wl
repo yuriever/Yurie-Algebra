@@ -34,10 +34,10 @@ Begin["`Private`"];
 
 
 algebraInternal[] = {
-    "multiplication",
-    "conjugate",
-    "tensor-product",
-    "comultiplication"
+    "Multiplication",
+    "Conjugate",
+    "TensorProduct",
+    "Comultiplication"
 };
 
 
@@ -52,7 +52,7 @@ NonCommutativeMultiply//ClearAll;
 NonCommutativeMultiply//Attributes = {Flat,OneIdentity};
 
 
-algebraInternal["multiplication"] = <|
+algebraInternal["Multiplication"] = <|
     operator->{},
     relation->{
         x_**y_/;scalarQ[x]||scalarQ[y]:>x*y,
@@ -76,7 +76,7 @@ CircleTimes//ClearAll;
 CircleTimes//Attributes = {Flat,OneIdentity};
 
 
-algebraInternal["tensor-product"] = <|
+algebraInternal["TensorProduct"] = <|
     operator->{id},
     relation->{
         CircleTimes[x_,k_?scalarQ*y_.]:>
@@ -90,7 +90,7 @@ algebraInternal["tensor-product"] = <|
         x_CircleTimes**y_CircleTimes:>
             tensorCompose[x**y]/;tensorRankEqualQ[x,y],
         id**x_:>x,
-        x_**id:>x            
+        x_**id:>x
     },
     printing->{}
 |>;
@@ -105,7 +105,7 @@ SuperDagger//Unprotect;
 SuperDagger//ClearAll;
 
 
-algebraInternal["conjugate"] = <|
+algebraInternal["Conjugate"] = <|
     operator->{},
     relation->{
         SuperDagger[1]:>1,
@@ -124,7 +124,7 @@ algebraInternal["conjugate"] = <|
 (*Comultiplication*)
 
 
-algebraInternal["comultiplication"] = <|
+algebraInternal["Comultiplication"] = <|
     operator->{},
     relation->{},
     printing->{}

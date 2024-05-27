@@ -90,7 +90,7 @@ $algebraList//algebraDefine;
 
 
 (* ::Subsubsection:: *)
-(*vacuum*)
+(*Vacuum*)
 
 
 <|
@@ -103,7 +103,7 @@ $algebraList//algebraDefine;
 
 
 (* ::Subsubsection:: *)
-(*singlet*)
+(*Singlet*)
 
 
 <|
@@ -118,7 +118,7 @@ $algebraList//algebraDefine;
 
 
 (* ::Subsubsection:: *)
-(*multiplet*)
+(*Multiplet*)
 
 
 <|
@@ -147,8 +147,8 @@ relation->{
 }//algebraAdd["multiplet-lower"];
 
 
-(* ::Text:: *)
-(*conjugate*)
+(* ::Subsubsection:: *)
+(*Conjugation*)
 
 
 relation->{

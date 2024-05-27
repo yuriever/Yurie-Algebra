@@ -174,9 +174,6 @@ commDefine/:(
     ];
 
 
-stripPattern::usage =
-    "strip an algebra pattern into an expression.";
-
 stripPattern[pattern_] :=
     pattern//.{
         (

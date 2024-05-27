@@ -13,14 +13,14 @@ WindowFrame->Normal*)
 Notebook[{
 Cell[BoxData[
  RowBox[{"<<", "Yurie`Algebra`CFT1`"}]], "Code",
- CellLabel->"In[3]:=",ExpressionUUID->"b71d718c-96bd-4c41-b4d1-2f247e30c08f"],
+ CellLabel->"In[1]:=",ExpressionUUID->"b71d718c-96bd-4c41-b4d1-2f247e30c08f"],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{
    RowBox[{"{", "\"\<SL2\>\"", "}"}], "//", "algebraDefault"}], ";"}]], "Code",\
 
- CellLabel->"In[4]:=",ExpressionUUID->"73ff985d-28a8-4e77-b850-be81b64bb766"],
+ CellLabel->"In[2]:=",ExpressionUUID->"73ff985d-28a8-4e77-b850-be81b64bb766"],
 
 Cell[CellGroupData[{
 
@@ -30,12 +30,12 @@ Cell[BoxData[
    RowBox[{"commSim", "[", 
     RowBox[{"#", ",", "SL2Casimir"}], "]"}], "&"}], "/@", 
   "SL2Generator"}]], "Code",
- CellLabel->"In[5]:=",ExpressionUUID->"951aa746-1b18-49d4-9f32-7822c16dfaaa"],
+ CellLabel->"In[3]:=",ExpressionUUID->"951aa746-1b18-49d4-9f32-7822c16dfaaa"],
 
 Cell[BoxData[
  RowBox[{"{", 
   RowBox[{"0", ",", "0", ",", "0"}], "}"}]], "Output",
- CellLabel->"Out[5]=",ExpressionUUID->"9e53172f-d5bf-4a8f-8d13-c35604a29bac"]
+ CellLabel->"Out[3]=",ExpressionUUID->"fa712029-4078-40d9-84d7-5d3972b879fc"]
 }, Open  ]],
 
 Cell[BoxData[
@@ -43,10 +43,10 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"{", 
     RowBox[{
-    "\"\<SL2\>\"", ",", "\"\<singlet\>\"", ",", "\"\<conjugate\>\"", ",", 
+    "\"\<SL2\>\"", ",", "\"\<singlet\>\"", ",", "\"\<Conjugate\>\"", ",", 
      "\"\<SL2-conjugate\>\"", ",", "\"\<singlet-conjugate\>\""}], "}"}], "//",
     "algebraDefault"}], ";"}]], "Code",
- CellLabel->"In[7]:=",ExpressionUUID->"66a906f1-a881-4817-9a52-5c82958aa1f9"],
+ CellLabel->"In[5]:=",ExpressionUUID->"66a906f1-a881-4817-9a52-5c82958aa1f9"],
 
 Cell[CellGroupData[{
 
@@ -68,7 +68,7 @@ Cell[BoxData[
       RowBox[{"j", ",", 
        RowBox[{"Range", "[", "4", "]"}]}], "}"}]}], "]"}], "//", "algFS"}], "//",
    "MatrixForm"}]], "Code",
- CellLabel->"In[8]:=",ExpressionUUID->"6de1e6e0-ce4b-4448-a78e-580b2acf18f7"],
+ CellLabel->"In[6]:=",ExpressionUUID->"6de1e6e0-ce4b-4448-a78e-580b2acf18f7"],
 
 Cell[BoxData[
  TagBox[
@@ -109,13 +109,13 @@ Cell[BoxData[
   Function[BoxForm`e$, 
    MatrixForm[BoxForm`e$]]]], "Output",
  CellLabel->
-  "Out[8]//MatrixForm=",ExpressionUUID->"63430ab8-485a-4332-ab77-\
-810426bb9a24"]
+  "Out[6]//MatrixForm=",ExpressionUUID->"3c96a734-b77f-4274-90f4-\
+a75e5bc3e36d"]
 }, Open  ]]
 },
 Editable->True,
 WindowSize->{1280, 1387},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
 TaggingRules-><|"TryRealOnly" -> False|>,
 FrontEndVersion->"14.0 for Mac OS X ARM (64-bit) (December 12, 2023)",
 StyleDefinitions->"Yurie.nb",
@@ -136,12 +136,12 @@ Cell[400, 13, 140, 2, 67, "Code",ExpressionUUID->"b71d718c-96bd-4c41-b4d1-2f247e
 Cell[543, 17, 194, 5, 67, "Code",ExpressionUUID->"73ff985d-28a8-4e77-b850-be81b64bb766"],
 Cell[CellGroupData[{
 Cell[762, 26, 228, 6, 67, "Code",ExpressionUUID->"951aa746-1b18-49d4-9f32-7822c16dfaaa"],
-Cell[993, 34, 161, 3, 42, "Output",ExpressionUUID->"9e53172f-d5bf-4a8f-8d13-c35604a29bac"]
+Cell[993, 34, 161, 3, 42, "Output",ExpressionUUID->"fa712029-4078-40d9-84d7-5d3972b879fc"]
 }, Open  ]],
 Cell[1169, 40, 336, 8, 67, "Code",ExpressionUUID->"66a906f1-a881-4817-9a52-5c82958aa1f9"],
 Cell[CellGroupData[{
 Cell[1530, 52, 654, 18, 67, "Code",ExpressionUUID->"6de1e6e0-ce4b-4448-a78e-580b2acf18f7"],
-Cell[2187, 72, 1423, 40, 125, "Output",ExpressionUUID->"63430ab8-485a-4332-ab77-810426bb9a24"]
+Cell[2187, 72, 1423, 40, 125, "Output",ExpressionUUID->"3c96a734-b77f-4274-90f4-a75e5bc3e36d"]
 }, Open  ]]
 }
 ]
