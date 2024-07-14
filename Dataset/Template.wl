@@ -22,10 +22,10 @@ Needs["Yurie`Algebra`"];
 
 
 op::usage =
-	"operator.";
+    "operator.";
 
 state::usage =
-	"state.";
+    "state.";
 
 
 (* ::Section:: *)

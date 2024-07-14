@@ -23,9 +23,6 @@ Needs["Yurie`CFT`Cartesian`"];
 (*Public*)
 
 
-genCA::usage =
-    "list of generators.";
-
 genD::usage =
     "operator: dilatation.";
 
@@ -38,8 +35,12 @@ genP::usage =
 genK::usage =
     "operator: SCT.";
 
-vac::usage =
+vacuum::usage =
     "state: vacuum.";
+
+
+CFTd::usage =
+    "generator list of the conformal algebra.";
 
 
 (* ::Section:: *)
@@ -58,10 +59,110 @@ Begin["`Private`"];
 
 
 (* ::Text:: *)
-(*association of generators*)
+(*P < M < D < K*)
+(*M[i, j] < M[k, l] if k > i or k = i && l > j*)
 
 
-genCA :=
+(* ::Text:: *)
+(*[D, P] = P*)
+(*[D, K] = -K*)
+(*[K, P] = 2 g D - 2 M*)
+(*[M12, P3] = P1 g23 - P2 g13*)
+
+
+$algebraList = {
+    "isometry-algebra",
+    "conformal-algebra",
+    "vacuum",
+    "conjugateE",
+    "conjugateL"
+};
+
+$algebraList//algebraUnset//Quiet;
+
+$algebraList//algebraDefine;
+
+
+(* ::Subsubsection:: *)
+(*Isometry and conformal algebras*)
+
+
+operator->{genP,genM}//algebraAdd["isometry-algebra"];
+
+operator->{genP,genM,genD,genK}//algebraAdd["conformal-algebra"];
+
+
+relation->{
+    genM[i_,i_]:>0,
+    genM[i_,j_]:>-genM[j,i]/;coordOrder[j>i],
+    commDefine[genP[i_],genP[j_]]:>0/;coordOrder[j>i],
+    (*[M,P]*)
+    commDefine[genM[i_,j_],genP[k_]]:>
+        genP[i]metric[j,k]-genP[j]metric[i,k],
+    (*[M,M]*)
+    commDefine[genM[i_,j_],genM[k_,l_]]:>
+        genM[i,l]metric[j,k]+genM[j,k]metric[i,l]-genM[j,l]metric[i,k]-genM[i,k]metric[j,l]/;
+            coordOrder[k>i||(k==i&&l>j)]
+}//algebraAdd[{"isometry-algebra","conformal-algebra"}];
+
+
+relation->{
+    commDefine[genK[i_],genK[j_]]:>0/;coordOrder[j>i],
+    (*[M,K]*)
+    commDefine[genM[i_,j_],genK[k_],Reverse]:>
+        genK[i]metric[j,k]-genK[j]metric[i,k],
+    (*[D,P]=P, [D,K]=-K, [D,M]=0*)
+    commDefine[genD[],genP[i_]]:>genP[i],
+    commDefine[genD[],genK[i_],Reverse]:>-genK[i],
+    commDefine[genD[],genM[i_,j_]]:>0,
+    (*[K,P]*)
+    commDefine[genK[i_],genP[j_]]:>2genD[]metric[i,j]-2genM[i,j]
+}//algebraAdd["conformal-algebra"];
+
+
+printing->{
+    genP[i_]:>Subscript["P",i],
+    genM[i_,j_]:>Subscript["M",i,j]
+}//algebraAdd["isometry-algebra"];
+
+
+printing->{
+    genD[]:>"D",
+    genP[i_]:>Subscript["P",i],
+    genK[i_]:>Subscript["K",i],
+    genM[i_,j_]:>Subscript["M",i,j]
+}//algebraAdd["conformal-algebra"];
+
+
+(* ::Subsubsection:: *)
+(*Vacuum*)
+
+
+operator->{vacuum}//algebraAdd["vacuum"];
+
+
+relation->{
+    genD[]**vacuum:>0,
+    genP[_]**vacuum:>0,
+    genK[_]**vacuum:>0,
+    genM[_,_]**vacuum:>0
+}//algebraAdd["vacuum"];
+
+
+(* ::Subsubsection:: *)
+(*Conjugation*)
+
+
+relation->{
+    SuperDagger@op_?generatorQ:>-op
+}//algebraAdd["conjugateE"];
+
+
+(* ::Subsection:: *)
+(*Constant*)
+
+
+CFTd :=
     Module[ {i,j,assoc},
         assoc = <|
             "D"->
@@ -84,109 +185,6 @@ genCA :=
             "P2"->Sum[metricInv[i,j]*genP[i]**genP[j],{i,coord},{j,coord}]
         |>
     ];
-
-
-$algebraList = {"IA","CA","conjugateE","conjugateL","vacuum"};
-
-$algebraList//algebraUnset//Quiet;
-
-$algebraList//algebraDefine;
-
-
-(* ::Subsubsection:: *)
-(*Operator*)
-
-
-operator->{genP,genM}//algebraAdd["IA"];
-
-
-operator->{genP,genM,genD,genK}//algebraAdd["CA"];
-
-
-operator->{vac}//algebraAdd["vacuum"];
-
-
-(* ::Subsubsection:: *)
-(*Relation*)
-
-
-(* ::Text:: *)
-(*isometry algebra and conformal algebra*)
-
-
-(* ::Text:: *)
-(*P < M < D < K*)
-(*M[i, j] < M[k, l] if k > i or k = i && l > j*)
-
-
-(* ::Text:: *)
-(*[D, P] = P*)
-(*[D, K] = -K*)
-(*[K, P] = 2 g D - 2 M*)
-(*[M12, P3] = P1 g23 - P2 g13*)
-
-
-relation->{
-    genM[i_,i_]:>0,
-    genM[i_,j_]:>-genM[j,i]/;coordOrder[j>i],
-    commDefine[genP[i_],genP[j_]]:>0/;coordOrder[j>i],
-    (*[M,P]*)
-    commDefine[genM[i_,j_],genP[k_]]:>
-        genP[i]metric[j,k]-genP[j]metric[i,k],
-    (*[M,M]*)
-    commDefine[genM[i_,j_],genM[k_,l_]]:>
-        genM[i,l]metric[j,k]+genM[j,k]metric[i,l]-genM[j,l]metric[i,k]-genM[i,k]metric[j,l]/;
-            coordOrder[k>i||(k==i&&l>j)]
-}//algebraAdd[{"IA","CA"}];
-
-
-relation->{
-    commDefine[genK[i_],genK[j_]]:>0/;coordOrder[j>i],
-    (*[M,K]*)
-    commDefine[genM[i_,j_],genK[k_],Reverse]:>
-        genK[i]metric[j,k]-genK[j]metric[i,k],
-    (*[D,P]=P, [D,K]=-K, [D,M]=0*)
-    commDefine[genD[],genP[i_]]:>genP[i],
-    commDefine[genD[],genK[i_],Reverse]:>-genK[i],
-    commDefine[genD[],genM[i_,j_]]:>0,
-    (*[K,P]*)
-    commDefine[genK[i_],genP[j_]]:>2genD[]metric[i,j]-2genM[i,j]
-}//algebraAdd["CA"];
-
-
-printing->{
-    genP[i_]:>Subscript["P",i],
-    genM[i_,j_]:>Subscript["M",i,j]
-}//algebraAdd["IA"];
-
-
-printing->{
-    genD[]:>"D",
-    genP[i_]:>Subscript["P",i],
-    genK[i_]:>Subscript["K",i],
-    genM[i_,j_]:>Subscript["M",i,j]
-}//algebraAdd["CA"];
-
-
-(* ::Text:: *)
-(*vacuum*)
-
-
-relation->{
-    genD[]**vac:>0,
-    genP[_]**vac:>0,
-    genK[_]**vac:>0,
-    genM[_,_]**vac:>0
-}//algebraAdd["vacuum"];
-
-
-(* ::Text:: *)
-(*conjugation*)
-
-
-relation->{
-    SuperDagger@op_?generatorQ:>-op
-}//algebraAdd["conjugateE"];
 
 
 (* ::Subsection:: *)

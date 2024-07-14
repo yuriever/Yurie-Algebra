@@ -21,14 +21,14 @@ Needs["Yurie`Algebra`"];
 (*Public*)
 
 
-vac::usage =
-    "state: vacuum.";
-
 ghostB::usage =
     "operator: b.";
 
 ghostC::usage =
     "operator: c.";
+
+vacuum::usage =
+    "state: vacuum.";
 
 
 (* ::Section:: *)
@@ -58,8 +58,8 @@ $algebraList//algebraDefine;
 (*\[CapitalDelta][c]==1-h*)
 
 
-(* ::Text:: *)
-(*bc-ghost algebra*)
+(* ::Subsubsection:: *)
+(*Ghost algebra*)
 
 
 <|
@@ -72,7 +72,7 @@ $algebraList//algebraDefine;
         ghostB[h_,n_]**ghostB[h_,n_]:>0,
         ghostC[h_,n_]**ghostC[h_,n_]:>0,
         SuperDagger@ghostB[h_,n_]:>ghostB[h,-n],
-	    SuperDagger@ghostC[h_,n_]:>ghostC[h,-n]
+        SuperDagger@ghostC[h_,n_]:>ghostC[h,-n]
     },
     printing->{
         ghostB[h_,n_]:>Subscript["b",n],
@@ -80,14 +80,19 @@ $algebraList//algebraDefine;
     }
 |>//algebraAdd["bc"];
 
+
+(* ::Subsubsection:: *)
+(*Vacuum*)
+
+
 <|
-    operator->{vac},
+    operator->{vacuum},
     relation->{
-        ghostB[h_,n_]**vac:>0/;n>=1-h,
-        ghostC[h_,n_]**vac:>0/;n>=h,
-        vac**ghostB[h_,n_]:>0/;n<=h-1,
-        vac**ghostC[h_,n_]:>0/;n<=-h,
-        SuperDagger@vac:>vac
+        ghostB[h_,n_]**vacuum:>0/;n>=1-h,
+        ghostC[h_,n_]**vacuum:>0/;n>=h,
+        vacuum**ghostB[h_,n_]:>0/;n<=h-1,
+        vacuum**ghostC[h_,n_]:>0/;n<=-h,
+        SuperDagger@vacuum:>vacuum
     }
 |>//algebraAdd["bc-vacuum"];
 

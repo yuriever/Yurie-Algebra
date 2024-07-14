@@ -25,13 +25,13 @@ h::usage =
     "operator: h.";
 
 x::usage =
-	"operator: x.";
+    "operator: x.";
 
 y::usage =
-	"operator: y.";
+    "operator: y.";
 
 v::usage =
-	"state.";
+    "state.";
 
 
 (* ::Section:: *)
@@ -49,6 +49,12 @@ Begin["`Private`"];
 (*Algebra*)
 
 
+(* ::Text:: *)
+(*X: annihilation *)
+(*Y: creation*)
+(*X>H>Y*)
+
+
 $algebraList = {"SL2","Verma-module","Verma-module-extension"};
 
 $algebraList//algebraUnset//Quiet;
@@ -56,58 +62,53 @@ $algebraList//algebraUnset//Quiet;
 $algebraList//algebraDefine;
 
 
-(* ::Text:: *)
-(*X: annihilation *)
-(*Y: creation*)
-(*X>H>Y*)
+(* ::Subsubsection:: *)
+(*SL2*)
 
 
 <|
-	operator->{x,y,h},
-	relation->{
-		commDefine[h,x,Reverse]:>2x,
-		commDefine[h,y]:>-2y,
-		commDefine[x,y]:>h
-	},
-	printing->{
-		(op_?generatorQ)^n_.**(op_)^m_.:>op^(n+m)
-	}
+    operator->{x,y,h},
+    relation->{
+        commDefine[h,x,Reverse]:>2x,
+        commDefine[h,y]:>-2y,
+        commDefine[x,y]:>h
+    }
 |>//algebraAdd["SL2"];
 
 
-(* ::Text:: *)
-(*highest weight module*)
+(* ::Subsubsection:: *)
+(*Verma module*)
 
 
 <|
-	operator->{v},
-	relation->{
-		h**v[h_]:>h v[h],
-		x**v[h_]:>0,
-		v[h_,n_]:>operatorPower[y,n]**v[h]
-	},
-	printing->{
-		v[h_]:>Subscript[v,h]
-	}
+    operator->{v},
+    relation->{
+        h**v[h_]:>h v[h],
+        x**v[h_]:>0,
+        v[h_,n_]:>operatorPower[y,n]**v[h]
+    },
+    printing->{
+        v[h_]:>Subscript[v,h]
+    }
 |>//algebraAdd["Verma-module"];
 
 
-(* ::Text:: *)
-(*highest weight module extension*)
+(* ::Subsubsection:: *)
+(*Verma module extension*)
 
 
 <|
-	operator->{v},
-	relation->{
-		h**v[1,h_]:>h v[1,h],
-		x**v[1,h_]:>0,
-		h**v[2,h_]:>(-h-2)v[2,h],
-		x**v[2,h_]:>Global`a operatorPower[y,h]**v[1,h],
-		v[i_,h_,n_]:>operatorPower[y,n]**v[i,h]
-	},
-	printing->{
-		v[i_,h_]:>Subscript[v,i,h]
-	}
+    operator->{v},
+    relation->{
+        h**v[1,h_]:>h v[1,h],
+        x**v[1,h_]:>0,
+        h**v[2,h_]:>(-h-2)v[2,h],
+        x**v[2,h_]:>Global`a operatorPower[y,h]**v[1,h],
+        v[i_,h_,n_]:>operatorPower[y,n]**v[i,h]
+    },
+    printing->{
+        v[i_,h_]:>Subscript[v,i,h]
+    }
 |>//algebraAdd["Verma-module-extension"];
 
 

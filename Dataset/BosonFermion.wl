@@ -21,20 +21,20 @@ Needs["Yurie`Algebra`"];
 (*Public*)
 
 
-vac::usage =
-    "state: vacuum.";
-
 boson::usage =
-	"operator: boson.";
+    "operator: boson.";
 
 fermion::usage =
-	"operator: fermion.";
+    "operator: fermion.";
+
+vacuum::usage =
+    "state: vacuum.";
 
 an::usage =
-	"tag: annihilation.";
+    "tag: annihilation.";
 
 cr::usage =
-	"tag: creation.";
+    "tag: creation.";
 
 
 (* ::Section:: *)
@@ -52,79 +52,82 @@ Begin["`Private`"];
 (*Algebra*)
 
 
-$algebraList = {"boson","fermion","boson-fermion","vacuum","boson-vacuum","fermion-vacuum"};
+$algebraList = {
+    "boson","fermion","boson-fermion",
+    "vacuum","boson-vacuum","fermion-vacuum"
+};
 
 $algebraList//algebraUnset//Quiet;
 
 $algebraList//algebraDefine;
 
 
-(* ::Text:: *)
-(*boson and fermion*)
+(* ::Subsubsection:: *)
+(*Boson and fermion*)
 
 
 <|
-	operator->{boson},
-	relation->{
-		commDefine[boson[i_,an],boson[j_,cr]]:>KroneckerDelta[i,j],
-		commDefine[boson[i_,an],boson[j_,an]]:>0/;i>j,
-		commDefine[boson[i_,cr],boson[j_,cr]]:>0/;i<j,
-		SuperDagger@boson[i_,cr]:>boson[i,an],
-		SuperDagger@boson[i_,an]:>boson[i,cr]
-	},
-	printing->{
-		boson[i_,cr]:>Subscript[SuperDagger@"a",i],
-		boson[i_,an]:>Subscript["a",i]
-	}
+    operator->{boson},
+    relation->{
+        commDefine[boson[i_,an],boson[j_,cr]]:>KroneckerDelta[i,j],
+        commDefine[boson[i_,an],boson[j_,an]]:>0/;i>j,
+        commDefine[boson[i_,cr],boson[j_,cr]]:>0/;i<j,
+        SuperDagger@boson[i_,cr]:>boson[i,an],
+        SuperDagger@boson[i_,an]:>boson[i,cr]
+    },
+    printing->{
+        boson[i_,cr]:>Subscript[SuperDagger@"a",i],
+        boson[i_,an]:>Subscript["a",i]
+    }
 |>//algebraAdd["boson"];
 
 
 <|
-	operator->{fermion},
-	relation->{
-		commDefine[fermion[i_,an],fermion[j_,cr],1]:>KroneckerDelta[i,j],
-		commDefine[fermion[i_,an],fermion[j_,an],1]:>0/;i>j,
-		commDefine[fermion[i_,cr],fermion[j_,cr],1]:>0/;i<j,
-		fermion[i_,tag_]**fermion[i_,tag_]:>0,
-		SuperDagger@fermion[i_,cr]:>fermion[i,an],
-		SuperDagger@fermion[i_,an]:>fermion[i,cr]
-	},
-	printing->{
-		fermion[i_,cr]:>Subscript[SuperDagger@"b",i],
-		fermion[i_,an]:>Subscript["b",i]
-	}
+    operator->{fermion},
+    relation->{
+        commDefine[fermion[i_,an],fermion[j_,cr],1]:>KroneckerDelta[i,j],
+        commDefine[fermion[i_,an],fermion[j_,an],1]:>0/;i>j,
+        commDefine[fermion[i_,cr],fermion[j_,cr],1]:>0/;i<j,
+        fermion[i_,tag_]**fermion[i_,tag_]:>0,
+        SuperDagger@fermion[i_,cr]:>fermion[i,an],
+        SuperDagger@fermion[i_,an]:>fermion[i,cr]
+    },
+    printing->{
+        fermion[i_,cr]:>Subscript[SuperDagger@"b",i],
+        fermion[i_,an]:>Subscript["b",i]
+    }
 |>//algebraAdd["fermion"];
 
 
 relation->{
-	(*move annihilation operators to the right.*)
-	commDefine[op1_[i_,an],op2_[j_,cr]]:>0/;op1=!=op2,
-	(*move boson operators to the right if the tags are the same.*)
-	commDefine[boson[i_,tag_],fermion[j_,tag_]]:>0
+    (*move annihilation operators to the right.*)
+    commDefine[op1_[i_,an],op2_[j_,cr]]:>0/;op1=!=op2,
+    (*move boson operators to the right if the tags are the same.*)
+    commDefine[boson[i_,tag_],fermion[j_,tag_]]:>0
 }//algebraAdd["boson-fermion"];
 
 
-(* ::Text:: *)
-(*vacuum*)
+(* ::Subsubsection:: *)
+(*Vacuum*)
 
 
 <|
-	operator->{vac},
-	relation->{
-		SuperDagger@vac**vac:>1
-	}
+    operator->{vacuum},
+    relation->{
+        SuperDagger@vacuum**vacuum:>1
+    }
 |>//algebraAdd["vacuum"];
 
 
 relation->{
-	boson[i_,an]**vac:>0,
-	SuperDagger@vac**boson[i_,cr]:>0
+    boson[i_,an]**vacuum:>0,
+    SuperDagger@vacuum**boson[i_,cr]:>0
 }//algebraAdd["boson-vacuum"];
 
 
 relation->{
-	fermion[i_,an]**vac:>0,
-	SuperDagger@vac**fermion[i_,cr]:>0
+    fermion[i_,an]**vacuum:>0,
+    SuperDagger@vacuum**fermion[i_,cr]:>0
 }//algebraAdd["fermion-vacuum"];
 
 
