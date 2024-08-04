@@ -207,26 +207,26 @@ relation->{
 
 
 relation->{
-    SuperDagger[L[n_]]:>L[-n],
-    SuperDagger[M[n_]]:>M[-n]
+    conjugate[L[n_]]:>L[-n],
+    conjugate[M[n_]]:>M[-n]
 }//algebraAdd["conformal-algebra-conjugate"];
 
 
 relation->{
     vacuum**vacuum->1,
-    SuperDagger[vacuum]->vacuum
+    conjugate[vacuum]->vacuum
 }//algebraAdd["vacuum-conjugate"];
 
 
 relation->{
     primary[delta_,xi_]**primary[delta_,xi_]:>1,
-    SuperDagger[primary[delta_,xi_]]:>primary[delta,xi]
+    conjugate[primary[delta_,xi_]]:>primary[delta,xi]
 }//algebraAdd["singlet-conjugate"];
 
 
 relation->{
     primary[rank_,a_,delta_,xi_]**primary[rank_,b_,delta_,xi_]:>KroneckerDelta[a+b,rank+1],
-    SuperDagger[primary[rank_,a_,delta_,xi_]]:>primary[rank,a,delta,xi]
+    conjugate[primary[rank_,a_,delta_,xi_]]:>primary[rank,a,delta,xi]
 }//algebraAdd["multiplet-conjugate"];
 
 

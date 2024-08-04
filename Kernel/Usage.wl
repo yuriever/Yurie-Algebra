@@ -1,49 +1,4 @@
-
-
-(*Addon.wl*)
-
-comm::usage =
-	"commutator.";
-
-anticomm::usage =
-	"anti-commutator.";
-
-commSim::usage =
-	"simplify the commutator.";
-
-anticommSim::usage =
-	"simplify the anti-commutator.";
-
-commDefine::usage =
-	"define commutation relations with condition, order-reversing or anti-commutator.";
-
-adjoint::usage =
-	"the adjoint action of Lie algebra, ad^order_op expr.";
-
-adjointExp::usage =
-	"the adjoint action of Lie group upto the max order, Exp[para op] expr Exp[-para op].";
-
-operatorPower::usage =
-	"power of operators, op^order.";
-
-operatorExp::usage =
-	"exponential of operators upto the max order, Exp[para op].";
-
-innerProduct::usage =
-	"inner product of two vectors, A \[CircleTimes] A -> k.";
-
-scalarSeparate::usage =
-	"separate scalars and operators.";
-
-scalarExtract::usage =
-	"extract scalars.";
-
-checkLieBracket::usage =
-	"check the Jacobi identity of Lie algebras.";
-
-checkLieModule::usage =
-	"check the definition of Lie modules.";
-
+(* ::Package:: *)
 
 (*Algebra.wl*)
 
@@ -79,6 +34,24 @@ algebraAdd::usage =
 
 algebraShow::usage =
 	"show the algebra.";
+
+
+(*Check.wl*)
+
+checkLieBracket::usage =
+	"check the Jacobi identity of Lie algebras.";
+
+checkLieModule::usage =
+	"check the definition of Lie modules.";
+
+
+(*Conjugate.wl*)
+
+conjugate::usage =
+	"conjugate of the operator.";
+
+innerProduct::usage =
+	"inner product of two operators.";
 
 
 (*Simplify.wl*)
@@ -131,6 +104,12 @@ algSameQ::usage =
 id::usage =
 	"identity of tensor product.";
 
+comultiply::usage =
+	"comultiplication of coalgebra.";
+
+counit::usage =
+	"counit of coalgebra.";
+
 tensorRankEqualQ::usage =
 	"check whether the ranks of two tensors are equal.";
 
@@ -142,3 +121,39 @@ tensorRankGet::usage =
 
 tensorCompose::usage =
 	"composite tensors over multiplication according to tensor-rank.";
+
+
+(*Utility.wl*)
+
+comm::usage =
+	"commutator.";
+
+anticomm::usage =
+	"anti-commutator.";
+
+commSim::usage =
+	"simplify the commutator.";
+
+anticommSim::usage =
+	"simplify the anti-commutator.";
+
+commDefine::usage =
+	"define commutation relations with condition, order-reversing or anti-commutator.";
+
+adjoint::usage =
+	"the adjoint action of Lie algebra, ad^order_op expr.";
+
+adjointExp::usage =
+	"the adjoint action of Lie group upto the max order, Exp[para op] expr Exp[-para op].";
+
+operatorPower::usage =
+	"power of the operator, op^order.";
+
+operatorExp::usage =
+	"exponential of the operator upto the max order, Exp[para op].";
+
+scalarSeparate::usage =
+	"separate scalars and operators.";
+
+scalarExtract::usage =
+	"extract scalars.";

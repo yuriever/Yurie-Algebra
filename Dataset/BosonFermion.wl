@@ -72,11 +72,11 @@ $algebraList//algebraDefine;
         commDefine[boson[i_,an],boson[j_,cr]]:>KroneckerDelta[i,j],
         commDefine[boson[i_,an],boson[j_,an]]:>0/;i>j,
         commDefine[boson[i_,cr],boson[j_,cr]]:>0/;i<j,
-        SuperDagger@boson[i_,cr]:>boson[i,an],
-        SuperDagger@boson[i_,an]:>boson[i,cr]
+        conjugate@boson[i_,cr]:>boson[i,an],
+        conjugate@boson[i_,an]:>boson[i,cr]
     },
     printing->{
-        boson[i_,cr]:>Subscript[SuperDagger@"a",i],
+        boson[i_,cr]:>Subscript[conjugate@"a",i],
         boson[i_,an]:>Subscript["a",i]
     }
 |>//algebraAdd["boson"];
@@ -89,11 +89,11 @@ $algebraList//algebraDefine;
         commDefine[fermion[i_,an],fermion[j_,an],1]:>0/;i>j,
         commDefine[fermion[i_,cr],fermion[j_,cr],1]:>0/;i<j,
         fermion[i_,tag_]**fermion[i_,tag_]:>0,
-        SuperDagger@fermion[i_,cr]:>fermion[i,an],
-        SuperDagger@fermion[i_,an]:>fermion[i,cr]
+        conjugate@fermion[i_,cr]:>fermion[i,an],
+        conjugate@fermion[i_,an]:>fermion[i,cr]
     },
     printing->{
-        fermion[i_,cr]:>Subscript[SuperDagger@"b",i],
+        fermion[i_,cr]:>Subscript[conjugate@"b",i],
         fermion[i_,an]:>Subscript["b",i]
     }
 |>//algebraAdd["fermion"];
@@ -114,20 +114,20 @@ relation->{
 <|
     operator->{vacuum},
     relation->{
-        SuperDagger@vacuum**vacuum:>1
+        conjugate@vacuum**vacuum:>1
     }
 |>//algebraAdd["vacuum"];
 
 
 relation->{
     boson[i_,an]**vacuum:>0,
-    SuperDagger@vacuum**boson[i_,cr]:>0
+    conjugate@vacuum**boson[i_,cr]:>0
 }//algebraAdd["boson-vacuum"];
 
 
 relation->{
     fermion[i_,an]**vacuum:>0,
-    SuperDagger@vacuum**fermion[i_,cr]:>0
+    conjugate@vacuum**fermion[i_,cr]:>0
 }//algebraAdd["fermion-vacuum"];
 
 

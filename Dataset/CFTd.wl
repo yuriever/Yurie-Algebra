@@ -154,7 +154,7 @@ relation->{
 
 
 relation->{
-    SuperDagger@op_?generatorQ:>-op
+    conjugate@op_?generatorQ:>-op
 }//algebraAdd["conjugateE"];
 
 

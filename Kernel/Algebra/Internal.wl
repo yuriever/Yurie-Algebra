@@ -100,23 +100,20 @@ algebraInternal["TensorProduct"] = <|
 (*Conjugate*)
 
 
-SuperDagger//Unprotect;
-
-SuperDagger//ClearAll;
-
-
 algebraInternal["Conjugate"] = <|
     operator->{},
     relation->{
-        SuperDagger[1]:>1,
-        SuperDagger[k_?scalarQ*x_.]:>
-            Conjugate[k] SuperDagger[x],
-        SuperDagger[x_+y_]:>
-            SuperDagger[x]+SuperDagger[y],
-        SuperDagger[x_**y_]:>
-            SuperDagger[y]**SuperDagger[x]
+        conjugate[1]:>1,
+        conjugate[k_?scalarQ*x_.]:>
+            Conjugate[k] conjugate[x],
+        conjugate[x_+y_]:>
+            conjugate[x]+conjugate[y],
+        conjugate[x_**y_]:>
+            conjugate[y]**conjugate[x]
     },
-    printing->{}
+    printing->{
+        conjugate->SuperDagger
+    }
 |>;
 
 
@@ -127,7 +124,10 @@ algebraInternal["Conjugate"] = <|
 algebraInternal["Comultiplication"] = <|
     operator->{},
     relation->{},
-    printing->{}
+    printing->{
+        comultiply->"\[CapitalDelta]",
+        counit->"\[Epsilon]"
+    }
 |>;
 
 

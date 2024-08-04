@@ -14,7 +14,15 @@ ClearAll["`*`*"];
 Needs["Yurie`Cluster`"];
 
 
+(* ::Subsection:: *)
+(*Usage*)
+
+
 Get["Yurie`Algebra`Usage`"];
+
+
+(* ::Subsection:: *)
+(*Core*)
 
 
 Get["Yurie`Algebra`Cache`"];
@@ -25,9 +33,19 @@ Get["Yurie`Algebra`Internal`"];
 
 Get["Yurie`Algebra`Simplify`"];
 
-Get["Yurie`Algebra`Addon`"];
+
+(* ::Subsection:: *)
+(*Extension*)
+
+
+Get["Yurie`Algebra`Conjugate`"];
 
 Get["Yurie`Algebra`Tensor`"];
+
+
+Get["Yurie`Algebra`Utility`"];
+
+Get["Yurie`Algebra`Check`"];
 
 
 (* ::Section:: *)

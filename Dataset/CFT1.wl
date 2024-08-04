@@ -178,25 +178,25 @@ relation->{
 
 
 relation->{
-    SuperDagger[L[n_]]:>L[-n]
+    conjugate[L[n_]]:>L[-n]
 }//algebraAdd[{"conformal-algebra-conjugate","Virasoro-conjugate"}];
 
 
 relation->{
     vacuum**vacuum->1,
-    SuperDagger[vacuum]->vacuum
+    conjugate[vacuum]->vacuum
 }//algebraAdd["vacuum-conjugate"];
 
 
 relation->{
     primary[h_]**primary[h_]:>1,
-    SuperDagger[primary[h_]]:>primary[h]
+    conjugate[primary[h_]]:>primary[h]
 }//algebraAdd["singlet-conjugate"];
 
 
 relation->{
     primary[rank_,a_,h_]**primary[rank_,b_,h_]:>KroneckerDelta[a+b,rank+1],
-    SuperDagger[primary[rank_,a_,h_]]:>primary[rank,a,h]
+    conjugate[primary[rank_,a_,h_]]:>primary[rank,a,h]
 }//algebraAdd["multiplet-conjugate"];
 
 

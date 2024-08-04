@@ -4,7 +4,7 @@
 (*Begin*)
 
 
-BeginPackage["Yurie`Algebra`Addon`"];
+BeginPackage["Yurie`Algebra`Utility`"];
 
 
 Needs["Yurie`Algebra`"];
@@ -50,18 +50,10 @@ adjointExp::usage =
 
 
 operatorPower::usage =
-    "power of operators, op^order.";
+    "power of the operator, op^order.";
 
 operatorExp::usage =
-    "exponential of operators upto the max order, Exp[para op].";
-
-
-(* ::Subsubsection:: *)
-(*Inner product*)
-
-
-innerProduct::usage =
-    "inner product of two vectors, A \[CircleTimes] A -> k.";
+    "exponential of the operator upto the max order, Exp[para op].";
 
 
 (* ::Subsubsection:: *)
@@ -73,17 +65,6 @@ scalarSeparate::usage =
 
 scalarExtract::usage =
     "extract scalars.";
-
-
-(* ::Subsubsection:: *)
-(*Definition checking*)
-
-
-checkLieBracket::usage =
-    "check the Jacobi identity of Lie algebras.";
-
-checkLieModule::usage =
-    "check the definition of Lie modules.";
 
 
 (* ::Section:: *)
@@ -225,17 +206,6 @@ operatorExp[op_,max_,t_:1] :=
 
 
 (* ::Subsection:: *)
-(*Inner product*)
-
-
-innerProduct[x_,y_] :=
-    SuperDagger[x]**y;
-
-innerProduct[x_] :=
-    SuperDagger[x]**x;
-
-
-(* ::Subsection:: *)
 (*Scalar extraction*)
 
 
@@ -260,28 +230,6 @@ scalarSeparateKernel[term1_+term2_] :=
 
 scalarSeparateKernel[{exprs__}] :=
     {exprs}//Map[scalarSeparateKernel]//Flatten;
-
-
-(* ::Subsection:: *)
-(*Definition checking*)
-
-
-checkLieBracket[x_,y_,z_] :=
-    {x,y,z}->
-        Simplify[
-            commSim[x,commSim[y,z]]+
-            commSim[y,commSim[z,x]]+
-            commSim[z,commSim[x,y]]
-        ];
-
-
-checkLieModule[x_,y_,z_] :=
-    {x,y,z}->
-        Simplify[
-            algebraSimplify[commSim[x,y]**z]-
-            algebraSimplify[x**algebraSimplify[y**z]]+
-            algebraSimplify[y**algebraSimplify[x**z]]
-        ];
 
 
 (* ::Subsection:: *)

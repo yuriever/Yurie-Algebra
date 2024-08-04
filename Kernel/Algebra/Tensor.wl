@@ -9,8 +9,6 @@ BeginPackage["Yurie`Algebra`Tensor`"];
 
 Needs["Yurie`Algebra`"];
 
-Needs["Yurie`Algebra`Simplify`"];
-
 
 (* ::Section:: *)
 (*Public*)
@@ -18,6 +16,16 @@ Needs["Yurie`Algebra`Simplify`"];
 
 id::usage =
     "identity of tensor product.";
+
+comultiply::usage =
+    "comultiplication of coalgebra.";
+
+counit::usage =
+    "counit of coalgebra.";
+
+antipode::usage =
+    "antipode of Hopf algebra.";
+
 
 tensorRankEqualQ::usage =
     "check whether the ranks of two tensors are equal.";
