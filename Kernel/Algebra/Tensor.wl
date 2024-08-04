@@ -87,10 +87,10 @@ tensorRankGet[op_?generatorQ] :=
     tensorRank[op];
 
 tensorRankGet[op:_CircleTimes|_Times] :=
-    tensorRankGet/@List@@op//Total;
+    op//Apply[List]//Map[tensorRankGet]//Total;
 
 tensorRankGet[op:_NonCommutativeMultiply|_Plus] :=
-    tensorRankGet/@List@@op//Max;
+    op//Apply[List]//Map[tensorRankGet]//Max;
 
 
 (* ::Subsubsection:: *)
@@ -104,7 +104,10 @@ tensorCompose[op1_**op2_] :=
 
 
 tensorPadRight[opList_] :=
-    Flatten@Riffle[opList,ConstantArray[dummySlot,#]&/@(tensorRank/@opList-1)];
+    Flatten@Riffle[
+        opList,
+        ConstantArray[dummySlot,#]&/@(tensorRank/@opList-1)
+    ];
 
 
 (* ::Subsection:: *)

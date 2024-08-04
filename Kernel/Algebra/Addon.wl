@@ -243,7 +243,7 @@ scalarSeparate[exprs__] :=
     scalarSeparateKernel[exprs];
 
 scalarExtract[exprs__] :=
-    scalarSeparateKernel[exprs]/.HoldPattern[x_->y_]:>x//DeleteDuplicates;
+    scalarSeparateKernel[exprs]//ReplaceAll[HoldPattern[x_->y_]:>x]//DeleteDuplicates;
 
 
 scalarSeparateKernel[0] :=

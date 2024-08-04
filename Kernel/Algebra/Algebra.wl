@@ -82,8 +82,8 @@ patternAlgList = {__String};
 algebraDefine[algList:patternAlgList] :=
     starDefine[algebraCluster,algList];
 
-algebraDefine[alg:patternAlg] :=
-    algebraDefine[{alg}];
+algebraDefine[algs:patternAlgs] :=
+    starDefine[algebraCluster,{algs}];
 
 
 (* ::Subsubsection:: *)
@@ -93,7 +93,8 @@ algebraDefine[alg:patternAlg] :=
 algebraDefineQ[alg:patternAlg] :=
     MemberQ[clusterPropGet[algebraCluster,"StarList"],alg];
 
-algebraDefineQ[_] = False;
+algebraDefineQ[_] =
+    False;
 
 
 (* ::Subsubsection:: *)
@@ -103,8 +104,8 @@ algebraDefineQ[_] = False;
 algebraDefault[algList:patternAlgList] :=
     starDefault[algebraCluster,algList];
 
-algebraDefault[alg:patternAlg] :=
-    algebraDefault[{alg}];
+algebraDefault[algs:patternAlgs] :=
+    starDefault[algebraCluster,{algs}];
 
 
 (* ::Subsubsection:: *)
@@ -114,8 +115,8 @@ algebraDefault[alg:patternAlg] :=
 algebraReset[algList:patternAlgList] :=
     starReset[algebraCluster,algList];
 
-algebraReset[alg:patternAlg] :=
-    algebraReset[{alg}];
+algebraReset[algs:patternAlgs] :=
+    starReset[algebraCluster,{algs}];
 
 
 (* ::Subsubsection:: *)
@@ -125,25 +126,19 @@ algebraReset[alg:patternAlg] :=
 algebraUnset[algList:patternAlgList] :=
     starUnset[algebraCluster,algList];
 
-algebraUnset[alg:patternAlg] :=
-    algebraUnset[{alg}];
+algebraUnset[algs:patternAlgs] :=
+    starUnset[algebraCluster,{algs}];
 
 
 (* ::Subsubsection:: *)
 (*algebraAdd*)
 
 
-algebraAdd[algList:patternAlgList,assoc_] :=
+algebraAdd[algList:patternAlgList][assoc_] :=
     starMerge[algebraCluster,algList,assoc];
 
-algebraAdd[alg:patternAlg,assoc_] :=
-    algebraAdd[{alg},assoc];
-
-algebraAdd[algList:patternAlgList][assoc_] :=
-    algebraAdd[algList,assoc];
-
-algebraAdd[alg:patternAlg][assoc_] :=
-    algebraAdd[{alg},assoc];
+algebraAdd[algs:patternAlgs][assoc_] :=
+    starMerge[algebraCluster,{algs},assoc];
 
 
 (* ::Subsubsection:: *)

@@ -74,7 +74,7 @@ starPostIntercept[algebraCluster,"starUpdateDefault",defaultStar_] :=
 Module[ {alg},
     algebraDefine@algebraInternal[];
     Table[
-        algebraAdd[{alg},algebraInternal[alg]],
+        algebraAdd[{alg}]@algebraInternal[alg],
         {alg,algebraInternal[]}
     ];
 ];
