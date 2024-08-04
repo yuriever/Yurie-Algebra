@@ -36,4 +36,4 @@ PacletUninstall["Yurie/Algebra"];
 
 ### Documentation
 
-test
+<https://yuriever.github.io/symbolic/package/Algebra/>
