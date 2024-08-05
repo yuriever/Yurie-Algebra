@@ -53,7 +53,7 @@ VerificationTest[
 	algebraDefine[{"alg1", "alg2"}]; 
 	algebraCluster["StarList"]
 	,
-	{"Comultiplication", "Conjugate", "Multiplication", "TensorProduct", "alg1", "alg2"}
+	{"Algebra", "Bialgebra", "Coalgebra", "Conjugate", "Tensor", "alg1", "alg2"}
 	,
 	TestID->"5-algebraCluster.nb"
 ]
@@ -103,7 +103,7 @@ VerificationTest[
 VerificationTest[
 	algebraDefine[]
 	,
-	{"Comultiplication", "Conjugate", "Multiplication", "TensorProduct"}
+	{"Algebra", "Bialgebra", "Coalgebra", "Conjugate", "Tensor"}
 	,
 	TestID->"10-algebraCluster.nb"
 ]
