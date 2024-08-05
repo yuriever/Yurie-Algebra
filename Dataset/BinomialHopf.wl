@@ -11,7 +11,7 @@ Needs["Yurie`Algebra`"];
 (*Begin*)
 
 
-BeginPackage["Yurie`Algebra`YBE`"];
+BeginPackage["Yurie`Algebra`BinomialHopf`"];
 
 
 Needs["Yurie`Algebra`"];
@@ -21,11 +21,8 @@ Needs["Yurie`Algebra`"];
 (*Public*)
 
 
-R::usage =
-    "operator: R.";
-
 x::usage =
-	"state.";
+    "operator.";
 
 
 (* ::Section:: *)
@@ -43,28 +40,32 @@ Begin["`Private`"];
 (*Algebra*)
 
 
-$algebraList = {"YBE"};
+$algebraList = {"BinomialHopf"};
 
 $algebraList//algebraUnset//Quiet;
 
 $algebraList//algebraDefine;
 
 
+(* ::Subsubsection:: *)
+(*BinomialHopf*)
+
+
 <|
-	operator->{R,x},
-	relation->{
-		R[i_,j_,u_,v_]**tensor[x_,y_,z_]:>
-			(u-v)/(u-v+I) tensor[x,y,z]+
-			I/(u-v+I) Permute[tensor[x,y,z],Cycles@{{i,j}}]
-	},
-	printing->{
-		(op_?generatorQ)[i_]:>Subscript[op,i],
-		R[i_,j_,u_,v_]:>Subscript[R,i,j]
-	}
-|>//algebraAdd["YBE"];
-
-
-tensorRankSet[R[___],3];
+    operator->{x},
+    relation->{
+		x[n_]**x[m_]:>x[n+m],
+		comultiply[x[n_]]:>
+			Module[ {i},
+				Sum[Binomial[n,i] tensor[x[i],x[n-i]],{i,0,n}]
+			],
+		counit[x[n_]]:>KroneckerDelta[n,0],
+		antipode[x[n_]]:>(-1)^n x[n]
+    },
+    printing->{
+	    x[n_]:>Power[x,n]
+    }
+|>//algebraAdd["BinomialHopf"];
 
 
 (* ::Subsection:: *)

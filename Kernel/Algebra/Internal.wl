@@ -34,25 +34,31 @@ Begin["`Private`"];
 
 
 algebraInternal[] = {
-    "Multiplication",
+    "Algebra",
     "Conjugate",
-    "TensorProduct",
-    "Comultiplication"
+    "Tensor",
+    "Coalgebra",
+    "Bialgebra"
 };
-
-
-(* ::Subsubsection:: *)
-(*Multiplication*)
 
 
 NonCommutativeMultiply//Unprotect;
 
 NonCommutativeMultiply//ClearAll;
 
-NonCommutativeMultiply//Attributes = {Flat,OneIdentity};
+NonCommutativeMultiply//Attributes =
+    {Flat,OneIdentity};
 
 
-algebraInternal["Multiplication"] = <|
+tensor//Attributes =
+    {Flat,OneIdentity};
+
+
+(* ::Subsubsection:: *)
+(*Multiplication*)
+
+
+algebraInternal["Algebra"] = <|
     operator->{},
     relation->{
         x_**y_/;scalarQ[x]||scalarQ[y]:>x*y,
@@ -69,30 +75,23 @@ algebraInternal["Multiplication"] = <|
 (*Tensor product*)
 
 
-CircleTimes//Unprotect;
-
-CircleTimes//ClearAll;
-
-CircleTimes//Attributes = {Flat,OneIdentity};
-
-
-algebraInternal["TensorProduct"] = <|
-    operator->{id},
+algebraInternal["Tensor"] = <|
+    operator->{},
     relation->{
-        CircleTimes[x_,k_?scalarQ*y_.]:>
-            k CircleTimes[x,y],
-        CircleTimes[k_?scalarQ*x_.,y_]:>
-            k CircleTimes[x,y],
-        CircleTimes[x_+y_,z_]:>
-            CircleTimes[x,z]+CircleTimes[y,z], 
-        CircleTimes[z_,x_+y_]:>
-            CircleTimes[z,x]+CircleTimes[z,y],
-        x_CircleTimes**y_CircleTimes:>
-            tensorCompose[x**y]/;tensorRankEqualQ[x,y],
-        id**x_:>x,
-        x_**id:>x
+        tensor[x_,k_?scalarQ*y_.]:>
+            k tensor[x,y],
+        tensor[k_?scalarQ*x_.,y_]:>
+            k tensor[x,y],
+        tensor[x_+y_,z_]:>
+            tensor[x,z]+tensor[y,z], 
+        tensor[z_,x_+y_]:>
+            tensor[z,x]+tensor[z,y],
+        x_tensor**y_tensor:>
+            tensorCompose[x**y]/;tensorRankEqualQ[x,y]
     },
-    printing->{}
+    printing->{
+        tensor->CircleTimes
+    }
 |>;
 
 
@@ -118,16 +117,45 @@ algebraInternal["Conjugate"] = <|
 
 
 (* ::Subsubsection:: *)
-(*Comultiplication*)
+(*Coalgebra*)
 
 
-algebraInternal["Comultiplication"] = <|
+algebraInternal["Coalgebra"] = <|
     operator->{},
-    relation->{},
+    relation->{
+        comultiply[k_?scalarQ*x_.]:>
+            k comultiply[x],
+        comultiply[x_+y_]:>
+            comultiply[x]+comultiply[y],
+        counit[k_?scalarQ*x_.]:>
+            k counit[x],
+        counit[x_+y_]:>
+            counit[x]+counit[y]
+    },
     printing->{
         comultiply->"\[CapitalDelta]",
         counit->"\[Epsilon]"
     }
+|>;
+
+
+(* ::Subsubsection:: *)
+(*Bialgebra*)
+
+
+algebraInternal["Bialgebra"] = <|
+    operator->{},
+    relation->{
+        comultiply[x_**y_]:>
+            comultiply[x]**comultiply[y],
+        comultiply[1]:>
+            tensor[1,1],
+        counit[x_**y_]:>
+            counit[x]*counit[y],
+        counit[1]:>
+            1
+    },
+    printing->{}
 |>;
 
 

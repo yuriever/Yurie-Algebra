@@ -67,7 +67,7 @@ clusterInit[
     {"algebraCluster","Yurie`Algebra`"},
     {operator,relation,printing},
     {{},{},{}},
-    Values@algebraInternal["Multiplication"],
+    Values@algebraInternal["Algebra"],
     {DeleteDuplicates@*Join,DeleteDuplicates@*Join,DeleteDuplicates@*Join}
 ];
 

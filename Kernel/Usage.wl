@@ -1,4 +1,4 @@
-(* ::Package:: *)
+
 
 (*Algebra.wl*)
 
@@ -39,10 +39,16 @@ algebraShow::usage =
 (*Check.wl*)
 
 checkLieBracket::usage =
-	"check the Jacobi identity of Lie algebras.";
+	"check the Jacobi identity of Lie algebra.";
 
 checkLieModule::usage =
-	"check the definition of Lie modules.";
+	"check the action on Lie module.";
+
+checkAssociativity::usage =
+	"check the associativity of multiplication.";
+
+checkCoassociativity::usage =
+	"check the coassociativity of comultiplication.";
 
 
 (*Conjugate.wl*)
@@ -63,10 +69,10 @@ algebraPrint::usage =
 	"format the expression by the default algebra.";
 
 scalarQ::usage =
-	"check whether the expression is C-number by the default algebra.";
+	"check whether the expression is a scalar by the default algebra.";
 
 operatorQ::usage =
-	"check whether the expression is Q-number by the default algebra.";
+	"check whether the expression is an operator by the default algebra.";
 
 generatorQ::usage =
 	"check whether the symbol is a generator the default algebra.";
@@ -101,14 +107,17 @@ algSameQ::usage =
 
 (*Tensor.wl*)
 
-id::usage =
-	"identity of tensor product.";
+tensor::usage =
+	"tensor product.";
 
 comultiply::usage =
 	"comultiplication of coalgebra.";
 
 counit::usage =
 	"counit of coalgebra.";
+
+antipode::usage =
+	"antipode of Hopf algebra.";
 
 tensorRankEqualQ::usage =
 	"check whether the ranks of two tensors are equal.";

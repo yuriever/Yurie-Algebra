@@ -15,10 +15,16 @@ Needs["Yurie`Algebra`"];
 
 
 checkLieBracket::usage =
-    "check the Jacobi identity of Lie algebras.";
+    "check the Jacobi identity of Lie algebra.";
 
 checkLieModule::usage =
-    "check the definition of Lie modules.";
+    "check the action on Lie module.";
+
+checkAssociativity::usage =
+    "check the associativity of multiplication.";
+
+checkCoassociativity::usage =
+    "check the coassociativity of comultiplication.";
 
 
 (* ::Section:: *)

@@ -39,7 +39,8 @@ PacletObject[
           "Yurie`Algebra`CFT1`",
           "Yurie`Algebra`CFTd`",
           "Yurie`Algebra`SL2`",
-          "Yurie`Algebra`YBE`"
+          "Yurie`Algebra`YBE`",
+          "Yurie`Algebra`BinomialHopf"
         }
       },
       {

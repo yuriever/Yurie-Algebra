@@ -31,13 +31,13 @@ algebraPrint::usage =
 
 
 scalarQ::usage =
-    "check whether the expression is C-number by the default algebra.";
+    "check whether the expression is a scalar by the default algebra.";
 
 operatorQ::usage =
-    "check whether the expression is Q-number by the default algebra.";
+    "check whether the expression is an operator by the default algebra.";
 
 generatorQ::usage =
-    "check whether the symbol is a generator the default algebra.";    
+    "check whether the symbol is a generator the default algebra.";
 
 
 (* ::Subsection:: *)

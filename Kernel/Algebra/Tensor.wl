@@ -14,8 +14,8 @@ Needs["Yurie`Algebra`"];
 (*Public*)
 
 
-id::usage =
-    "identity of tensor product.";
+tensor::usage =
+    "tensor product.";
 
 comultiply::usage =
     "comultiplication of coalgebra.";
@@ -72,8 +72,17 @@ tensorRank[_] = 1;
 (*tensorRankEqualQ*)
 
 
-tensorRankEqualQ[op1_,op2_] :=
-    Total[tensorRank/@op1,AllowedHeads->CircleTimes]==Total[tensorRank/@op2,AllowedHeads->CircleTimes];
+tensorRankEqualQ[op1_?generatorQ,op2_?generatorQ] :=
+    tensorRank[op1]==tensorRank[op2];
+
+tensorRankEqualQ[op1_?generatorQ,op2_tensor] :=
+    tensorRank[op1]==Total[tensorRank/@op2,AllowedHeads->tensor];
+
+tensorRankEqualQ[op1_tensor,op2_?generatorQ] :=
+    Total[tensorRank/@op1,AllowedHeads->tensor]==tensorRank[op2];
+
+tensorRankEqualQ[op1_tensor,op2_tensor] :=
+    Total[tensorRank/@op1,AllowedHeads->tensor]==Total[tensorRank/@op2,AllowedHeads->tensor];
 
 
 (* ::Subsubsection:: *)
@@ -88,17 +97,24 @@ tensorRankSet[op_,rank_] :=
 (*tensorRankGet*)
 
 
-tensorRankGet[_?scalarQ] =
-    0;
+tensorRankGet[k_?scalarQ2] :=
+    1;
 
 tensorRankGet[op_?generatorQ] :=
     tensorRank[op];
 
-tensorRankGet[op:_CircleTimes|_Times] :=
-    op//Apply[List]//Map[tensorRankGet]//Total;
+tensorRankGet[k_?scalarQ2*op_?generatorQ] :=
+    tensorRank[op];
 
-tensorRankGet[op:_NonCommutativeMultiply|_Plus] :=
-    op//Apply[List]//Map[tensorRankGet]//Max;
+tensorRankGet[op_tensor] :=
+    Total[tensorRankGet/@op,AllowedHeads->tensor];
+
+tensorRankGet[k_?scalarQ2*op_tensor] :=
+    tensorRankGet[op];
+
+
+scalarQ2[expr_] :=
+    FreeQ[expr,tensor|comultiply]&&scalarQ[expr];
 
 
 (* ::Subsubsection:: *)
@@ -108,7 +124,7 @@ tensorRankGet[op:_NonCommutativeMultiply|_Plus] :=
 tensorCompose[op1_**op2_] :=
     dummyHead[tensorPadRight[List@@op1],tensorPadRight[List@@op2]]//Thread//
     	Split[#,MemberQ[#2,dummySlot]&]&//Map[Thread[#,dummyHead]&]//
-			ReplaceAll[dummySlot->Sequence[]]//ReplaceAll[List[op_]:>op]//ReplaceAll[{dummyHead->NonCommutativeMultiply,List->CircleTimes}];
+			ReplaceAll[dummySlot->Sequence[]]//ReplaceAll[List[op_]:>op]//ReplaceAll[{dummyHead->NonCommutativeMultiply,List->tensor}];
 
 
 tensorPadRight[opList_] :=
