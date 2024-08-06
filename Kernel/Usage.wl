@@ -107,6 +107,9 @@ algSameQ::usage =
 
 (*Tensor.wl*)
 
+id::usage =
+	"identity of tensor product, image of 1 under unit.";
+
 tensor::usage =
 	"tensor product.";
 

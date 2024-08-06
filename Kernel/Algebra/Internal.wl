@@ -76,7 +76,7 @@ algebraInternal["Algebra"] = <|
 
 
 algebraInternal["Tensor"] = <|
-    operator->{},
+    operator->{id},
     relation->{
         tensor[x_,k_?scalarQ*y_.]:>
             k tensor[x,y],
@@ -87,10 +87,13 @@ algebraInternal["Tensor"] = <|
         tensor[z_,x_+y_]:>
             tensor[z,x]+tensor[z,y],
         x_tensor**y_tensor:>
-            tensorCompose[x**y]/;tensorRankEqualQ[x,y]
+            tensorCompose[x**y]/;tensorRankEqualQ[x,y],
+        id**x_:>x,
+        x_**id:>x
     },
     printing->{
-        tensor->CircleTimes
+        tensor->CircleTimes,
+        id->1
     }
 |>;
 
@@ -148,11 +151,11 @@ algebraInternal["Bialgebra"] = <|
     relation->{
         comultiply[x_**y_]:>
             comultiply[x]**comultiply[y],
-        comultiply[1]:>
-            tensor[1,1],
+        comultiply[id]:>
+            tensor[id,id],
         counit[x_**y_]:>
             counit[x]*counit[y],
-        counit[1]:>
+        counit[id]:>
             1
     },
     printing->{}

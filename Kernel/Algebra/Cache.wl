@@ -15,16 +15,16 @@ ClearAll["`*"];
 (*Public*)
 
 
-$operatorCache::usage =
+$operator::usage =
     "operator cache.";
 
-$operatorPatternCache::usage =
+$operatorPattern::usage =
     "operator pattern cache.";
 
-$relationCache::usage =
+$relation::usage =
     "relation cache.";
 
-$printingCache::usage =
+$printing::usage =
     "printing cache.";
 
 
@@ -43,13 +43,13 @@ Begin["`Private`"];
 (*Main*)
 
 
-$operatorCache = {};
+$operator = {};
 
-$operatorPatternCache = _;
+$operatorPattern = _;
 
-$relationCache = {};
+$relation = {};
 
-$printingCache = {};
+$printing = {};
 
 
 (* ::Subsection:: *)

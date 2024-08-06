@@ -21,11 +21,18 @@ VerificationTest[
 
 VerificationTest[
 	algebraDefine["test"]; 
-	(algebraDefault["test"]; )
 	,
 	Null
 	,
 	TestID->"2-checkLieBracket.nb"
+]
+
+VerificationTest[
+	algebraDefault["test"]; 
+	,
+	Null
+	,
+	TestID->"3-checkLieBracket.nb"
 ]
 
 VerificationTest[
@@ -34,7 +41,7 @@ VerificationTest[
 	,
 	Null
 	,
-	TestID->"3-checkLieBracket.nb"
+	TestID->"4-checkLieBracket.nb"
 ]
 
 VerificationTest[
@@ -42,7 +49,7 @@ VerificationTest[
 	,
 	{x, y, z} -> x**yz - xy**z
 	,
-	TestID->"4-checkLieBracket.nb"
+	TestID->"5-checkLieBracket.nb"
 ]
 
 VerificationTest[
@@ -50,7 +57,7 @@ VerificationTest[
 	,
 	{x, y, z} -> -x**yz + xy**z
 	,
-	TestID->"5-checkLieBracket.nb"
+	TestID->"6-checkLieBracket.nb"
 ]
 
 VerificationTest[

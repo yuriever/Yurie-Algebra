@@ -78,10 +78,10 @@ clusterInit[
 
 starPostIntercept[algebraCluster,"starUpdateDefault",defaultStar_] :=
     (
-        $operatorCache = clusterPropGet[algebraCluster,"StarDefaultData"][operator];
-        $operatorPatternCache = Alternatives@@$operatorCache;
-        $relationCache = clusterPropGet[algebraCluster,"StarDefaultData"][relation];
-        $printingCache = clusterPropGet[algebraCluster,"StarDefaultData"][printing];
+        $operator = clusterPropGet[algebraCluster,"StarDefaultData"][operator];
+        $operatorPattern = Alternatives@@$operator;
+        $relation = clusterPropGet[algebraCluster,"StarDefaultData"][relation];
+        $printing = clusterPropGet[algebraCluster,"StarDefaultData"][printing];
     );
 
 

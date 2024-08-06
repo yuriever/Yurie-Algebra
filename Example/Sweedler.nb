@@ -1,0 +1,313 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10232,        305]
+NotebookOptionsPosition[      8874,        273]
+NotebookOutlinePosition[      9351,        292]
+CellTagsIndexPosition[      9308,        289]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"<<", "Yurie`Algebra`Sweedler`"}]], "Code",
+ CellLabel->"In[15]:=",ExpressionUUID->"34e7784e-2081-4b47-8adb-b87024737adb"],
+
+Cell[BoxData[
+ RowBox[{"algebraDefault", "@", 
+  RowBox[{"{", 
+   RowBox[{
+   "\"\<Sweedler\>\"", ",", "\"\<Tensor\>\"", ",", "\"\<Coalgebra\>\"", ",", 
+    "\"\<Bialgebra\>\""}], "}"}]}]], "Code",
+ CellLabel->"In[20]:=",ExpressionUUID->"1cbfa551-d7b4-4944-a462-c7bba5ef1610"],
+
+Cell[BoxData[
+ RowBox[{"algebraDefault", "@", 
+  RowBox[{"{", 
+   RowBox[{"\"\<Sweedler\>\"", ",", "\"\<Tensor\>\""}], "}"}]}]], "Code",
+ CellLabel->"In[17]:=",ExpressionUUID->"a4c8d3ff-8e99-4022-9b7a-619a827aa3d7"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"algebraShow", "[", "]"}]], "Code",
+ CellLabel->"In[18]:=",ExpressionUUID->"f15dbbd4-b8be-494e-8c56-50e0c660db4a"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Default algebras: \"\>", "\[InvisibleSpace]", 
+   TemplateBox[{", ", "\", \"", "\"Sweedler\"", "\"Tensor\""},
+    "RowWithSeparators"], "\[InvisibleSpace]", "\<\".\"\>"}],
+  SequenceForm["Default algebras: ", 
+   Row[{"Sweedler", "Tensor"}, ", "], "."],
+  Editable->False]], "Print",
+ CellLabel->
+  "During evaluation of \
+In[18]:=",ExpressionUUID->"8beaf54d-91dd-490a-9906-2c4348171da6"],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {"\<\"Operators:\"\>"},
+     {
+      TemplateBox[{
+        TemplateBox[{4}, "Spacer1"], "g", "x", "id"},
+       "RowWithSeparator"]},
+     {"\<\"Relations:\"\>"},
+     {
+      TagBox[
+       TagBox[GridBox[{
+          {
+           RowBox[{
+            RowBox[{
+             RowBox[{"x_", "**", "y_"}], "/;", 
+             RowBox[{
+              RowBox[{"scalarQ", "[", "x", "]"}], "||", 
+              RowBox[{"scalarQ", "[", "y", "]"}]}]}], "\[RuleDelayed]", 
+            RowBox[{"x", " ", "y"}]}]},
+          {
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"x_", " ", 
+               RowBox[{"k_", "?", "scalarQ"}]}], ")"}], "**", "y_"}], 
+            "\[RuleDelayed]", 
+            RowBox[{"k", " ", 
+             RowBox[{"x", "**", "y"}]}]}]},
+          {
+           RowBox[{
+            RowBox[{"x_", "**", 
+             RowBox[{"(", 
+              RowBox[{"y_", " ", 
+               RowBox[{"k_", "?", "scalarQ"}]}], ")"}]}], "\[RuleDelayed]", 
+            RowBox[{"k", " ", 
+             RowBox[{"x", "**", "y"}]}]}]},
+          {
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"x_", "+", "y_"}], ")"}], "**", "z_"}], 
+            "\[RuleDelayed]", 
+            RowBox[{
+             RowBox[{"x", "**", "z"}], "+", 
+             RowBox[{"y", "**", "z"}]}]}]},
+          {
+           RowBox[{
+            RowBox[{"z_", "**", 
+             RowBox[{"(", 
+              RowBox[{"x_", "+", "y_"}], ")"}]}], "\[RuleDelayed]", 
+            RowBox[{
+             RowBox[{"z", "**", "x"}], "+", 
+             RowBox[{"z", "**", "y"}]}]}]},
+          {
+           RowBox[{
+            RowBox[{"x", "**", "g"}], "\[RuleDelayed]", 
+            RowBox[{"-", 
+             RowBox[{"g", "**", "x"}]}]}]},
+          {
+           RowBox[{
+            RowBox[{"x", "**", "x"}], "\[RuleDelayed]", "0"}]},
+          {
+           RowBox[{
+            RowBox[{"g", "**", "g"}], "\[RuleDelayed]", "id"}]},
+          {
+           RowBox[{
+            RowBox[{"comultiply", "[", "g", "]"}], "\[RuleDelayed]", 
+            RowBox[{"tensor", "[", 
+             RowBox[{"g", ",", "g"}], "]"}]}]},
+          {
+           RowBox[{
+            RowBox[{"comultiply", "[", "x", "]"}], "\[RuleDelayed]", 
+            RowBox[{
+             RowBox[{"tensor", "[", 
+              RowBox[{"g", ",", "x"}], "]"}], "+", 
+             RowBox[{"tensor", "[", 
+              RowBox[{"x", ",", "id"}], "]"}]}]}]},
+          {
+           RowBox[{
+            RowBox[{"tensor", "[", 
+             RowBox[{"x_", ",", 
+              RowBox[{"y_.", " ", 
+               RowBox[{"k_", "?", "scalarQ"}]}]}], "]"}], "\[RuleDelayed]", 
+            RowBox[{"k", " ", 
+             RowBox[{"tensor", "[", 
+              RowBox[{"x", ",", "y"}], "]"}]}]}]},
+          {
+           RowBox[{
+            RowBox[{"tensor", "[", 
+             RowBox[{
+              RowBox[{"x_.", " ", 
+               RowBox[{"k_", "?", "scalarQ"}]}], ",", "y_"}], "]"}], 
+            "\[RuleDelayed]", 
+            RowBox[{"k", " ", 
+             RowBox[{"tensor", "[", 
+              RowBox[{"x", ",", "y"}], "]"}]}]}]},
+          {
+           RowBox[{
+            RowBox[{"tensor", "[", 
+             RowBox[{
+              RowBox[{"x_", "+", "y_"}], ",", "z_"}], "]"}], "\[RuleDelayed]", 
+            RowBox[{
+             RowBox[{"tensor", "[", 
+              RowBox[{"x", ",", "z"}], "]"}], "+", 
+             RowBox[{"tensor", "[", 
+              RowBox[{"y", ",", "z"}], "]"}]}]}]},
+          {
+           RowBox[{
+            RowBox[{"tensor", "[", 
+             RowBox[{"z_", ",", 
+              RowBox[{"x_", "+", "y_"}]}], "]"}], "\[RuleDelayed]", 
+            RowBox[{
+             RowBox[{"tensor", "[", 
+              RowBox[{"z", ",", "x"}], "]"}], "+", 
+             RowBox[{"tensor", "[", 
+              RowBox[{"z", ",", "y"}], "]"}]}]}]},
+          {
+           RowBox[{
+            RowBox[{"x_tensor", "**", "y_tensor"}], "\[RuleDelayed]", 
+            RowBox[{
+             RowBox[{"tensorCompose", "[", 
+              RowBox[{"x", "**", "y"}], "]"}], "/;", 
+             RowBox[{"tensorRankEqualQ", "[", 
+              RowBox[{"x", ",", "y"}], "]"}]}]}]},
+          {
+           RowBox[{
+            RowBox[{"id", "**", "x_"}], "\[RuleDelayed]", "x"}]},
+          {
+           RowBox[{
+            RowBox[{"x_", "**", "id"}], "\[RuleDelayed]", "x"}]}
+         },
+         GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.27999999999999997`], {
+              Offset[0.5599999999999999]}, 
+             Offset[0.27999999999999997`]}, "Rows" -> {
+             Offset[0.2], {
+              Offset[0.4]}, 
+             Offset[0.2]}}],
+        Column],
+       Function[BoxForm`e$, 
+        TableForm[BoxForm`e$]]]},
+     {"\<\"Printings:\"\>"},
+     {
+      TagBox[
+       TagBox[GridBox[{
+          {
+           RowBox[{"tensor", "\[Rule]", "CircleTimes"}]},
+          {
+           RowBox[{"id", "\[Rule]", "1"}]}
+         },
+         GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.27999999999999997`], {
+              Offset[0.5599999999999999]}, 
+             Offset[0.27999999999999997`]}, "Rows" -> {
+             Offset[0.2], {
+              Offset[0.4]}, 
+             Offset[0.2]}}],
+        Column],
+       Function[BoxForm`e$, 
+        TableForm[BoxForm`e$]]]}
+    },
+    GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.5599999999999999]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.8]}, 
+        Offset[0.2]}}],
+   Column],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, TableDepth -> 1, TableSpacing -> {2, 2}, 
+    TableAlignments -> {Left, Top}]]]], "Output",
+ CellLabel->
+  "Out[18]//TableForm=",ExpressionUUID->"dc037298-1b14-416f-8fe5-\
+0d4ecf9a2449"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"comultiply", "[", 
+   RowBox[{"g", "**", "x", "**", "g"}], "]"}], "//", "algS"}]], "Code",
+ CellLabel->"In[21]:=",ExpressionUUID->"23c6f20e-e163-4548-8502-76bb3e2cbd65"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", 
+   RowBox[{"tensor", "[", 
+    RowBox[{"g", ",", "x"}], "]"}]}], "-", 
+  RowBox[{"tensor", "[", 
+   RowBox[{"x", ",", "id"}], "]"}]}]], "Output",
+ CellLabel->"Out[21]=",ExpressionUUID->"80c552ce-5e5c-4e40-82f0-f71522c42996"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"tensor", "[", 
+   RowBox[{
+    RowBox[{"-", 
+     RowBox[{"g", "**", "g"}]}], ",", "id"}], "]"}], "//", "algS"}]], "Code",
+ CellLabel->"In[22]:=",ExpressionUUID->"034896a3-fbb8-4713-b7dc-6e3ce289b5b3"],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  RowBox[{"tensor", "[", 
+   RowBox[{"id", ",", "id"}], "]"}]}]], "Output",
+ CellLabel->"Out[22]=",ExpressionUUID->"257ea4db-91ce-4248-b765-09832c11f400"]
+}, Open  ]]
+},
+Editable->True,
+WindowSize->{840, 1022},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+TaggingRules-><|"TryRealOnly" -> False|>,
+Magnification:>1. Inherited,
+FrontEndVersion->"14.1 for Mac OS X ARM (64-bit) (July 16, 2024)",
+StyleDefinitions->"Yurie.nb",
+ExpressionUUID->"97e398eb-33c5-478d-9aa6-41d2bf09b525"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 145, 2, 66, "Code",ExpressionUUID->"34e7784e-2081-4b47-8adb-b87024737adb"],
+Cell[706, 24, 276, 6, 66, "Code",ExpressionUUID->"1cbfa551-d7b4-4944-a462-c7bba5ef1610"],
+Cell[985, 32, 215, 4, 66, "Code",ExpressionUUID->"a4c8d3ff-8e99-4022-9b7a-619a827aa3d7"],
+Cell[CellGroupData[{
+Cell[1225, 40, 137, 2, 66, "Code",ExpressionUUID->"f15dbbd4-b8be-494e-8c56-50e0c660db4a"],
+Cell[1365, 44, 437, 10, 28, "Print",ExpressionUUID->"8beaf54d-91dd-490a-9906-2c4348171da6"],
+Cell[1805, 56, 6086, 179, 561, "Output",ExpressionUUID->"dc037298-1b14-416f-8fe5-0d4ecf9a2449"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7928, 240, 204, 4, 66, "Code",ExpressionUUID->"23c6f20e-e163-4548-8502-76bb3e2cbd65"],
+Cell[8135, 246, 264, 7, 41, "Output",ExpressionUUID->"80c552ce-5e5c-4e40-82f0-f71522c42996"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8436, 258, 236, 6, 66, "Code",ExpressionUUID->"034896a3-fbb8-4713-b7dc-6e3ce289b5b3"],
+Cell[8675, 266, 183, 4, 41, "Output",ExpressionUUID->"257ea4db-91ce-4248-b765-09832c11f400"]
+}, Open  ]]
+}
+]
+*)
+

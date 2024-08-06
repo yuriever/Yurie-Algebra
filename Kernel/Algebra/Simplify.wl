@@ -91,30 +91,30 @@ Begin["`Private`"];
 
 
 algebraReduce[expr_] :=
-    ReplaceRepeated[expr,$relationCache];
+    ReplaceRepeated[expr,$relation];
 
 
 algebraSimplify[expr_] :=
-    ReplaceRepeated[expr,$relationCache]//Simplify;
+    ReplaceRepeated[expr,$relation]//Simplify;
 
 
 algebraPrint[expr_] :=
-    ReplaceRepeated[expr,$printingCache];
+    ReplaceRepeated[expr,$printing];
 
 
 scalarQ[expr_] :=
-    FreeQ[expr,$operatorPatternCache];
+    FreeQ[expr,$operatorPattern];
 
 
 operatorQ[expr__] :=
-    Not@FreeQ[expr,$operatorPatternCache];
+    Not@FreeQ[expr,$operatorPattern];
 
 
 generatorQ[expr_Symbol] :=
-    MemberQ[$operatorCache,expr];
+    MatchQ[expr,$operatorPattern];
 
 generatorQ[expr_] :=
-    MemberQ[$operatorCache,Head@expr];
+    MatchQ[Head@expr,$operatorPattern];
 
 
 (* ::Subsection:: *)

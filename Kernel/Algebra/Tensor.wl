@@ -14,6 +14,9 @@ Needs["Yurie`Algebra`"];
 (*Public*)
 
 
+id::usage =
+    "identity of tensor product.";
+
 tensor::usage =
     "tensor product.";
 
@@ -97,24 +100,20 @@ tensorRankSet[op_,rank_] :=
 (*tensorRankGet*)
 
 
-tensorRankGet[k_?scalarQ2] :=
-    1;
+tensorRankGet[k_?scalarQ] :=
+    0;
 
 tensorRankGet[op_?generatorQ] :=
     tensorRank[op];
 
-tensorRankGet[k_?scalarQ2*op_?generatorQ] :=
+tensorRankGet[k_?scalarQ*op_?generatorQ] :=
     tensorRank[op];
 
 tensorRankGet[op_tensor] :=
     Total[tensorRankGet/@op,AllowedHeads->tensor];
 
-tensorRankGet[k_?scalarQ2*op_tensor] :=
+tensorRankGet[k_?scalarQ*op_tensor] :=
     tensorRankGet[op];
-
-
-scalarQ2[expr_] :=
-    FreeQ[expr,tensor|comultiply]&&scalarQ[expr];
 
 
 (* ::Subsubsection:: *)
