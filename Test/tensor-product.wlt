@@ -52,7 +52,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	tensorRankEqualQ[tensor[1, x], tensor[x, x]]
+	tensorRankEqualQ[tensor[id, x], tensor[x, x]]
 	,
 	True
 	,
@@ -60,15 +60,15 @@ VerificationTest[
 ]
 
 VerificationTest[
-	(Map[#1 -> tensorRankGet[#1] & ])[{1, tensor[1], tensor[1, 1], x, 2*x, tensor[2*x], tensor[1, x], 2*tensor[1, x], R[], tensor[R[]], 2*R[], tensor[2*R[]], 2*tensor[2*R[], 2*x]}]
+	(Map[#1 -> tensorRankGet[#1] & ])[{1, id, tensor[id], tensor[id, id], x, 2*x, tensor[2*x], tensor[id, x], 2*tensor[id, 2*x], R[], 2*R[], tensor[R[]], tensor[2*R[]], 2*tensor[2*R[], 2*x]}]
 	,
-	{1 -> 1, tensor[1] -> 1, tensor[1, 1] -> 2, x -> 1, 2*x -> 1, tensor[2*x] -> 1, tensor[1, x] -> 2, 2*tensor[1, x] -> 2, R[] -> 3, tensor[R[]] -> 3, 2*R[] -> 3, tensor[2*R[]] -> 3, 2*tensor[2*R[], 2*x] -> 4}
+	{1 -> 0, id -> 1, tensor[id] -> 1, tensor[id, id] -> 2, x -> 1, 2*x -> 1, tensor[2*x] -> 1, tensor[id, x] -> 2, 2*tensor[id, 2*x] -> 2, R[] -> 3, 2*R[] -> 3, tensor[R[]] -> 3, tensor[2*R[]] -> 3, 2*tensor[2*R[], 2*x] -> 4}
 	,
 	TestID->"7-tensor-product.nb"
 ]
 
 VerificationTest[
-	algS[tensorCompose[tensor[1, x]**tensor[x, 1]]]
+	algS[tensorCompose[tensor[id, x]**tensor[x, id]]]
 	,
 	tensor[x, x]
 	,
@@ -76,9 +76,9 @@ VerificationTest[
 ]
 
 VerificationTest[
-	expr = tensor[1, R[1, 2, u, v]]**tensor[x[1], x[2], x[3], x[4]]
+	expr = tensor[id, R[1, 2, u, v]]**tensor[x[1], x[2], x[3], x[4]]
 	,
-	tensor[1, R[1, 2, u, v]]**tensor[x[1], x[2], x[3], x[4]]
+	tensor[id, R[1, 2, u, v]]**tensor[x[1], x[2], x[3], x[4]]
 	,
 	TestID->"9-tensor-product.nb"
 ]
@@ -86,7 +86,7 @@ VerificationTest[
 VerificationTest[
 	longexpr = operatorPower[expr, 2]
 	,
-	tensor[1, R[1, 2, u, v]]**tensor[x[1], x[2], x[3], x[4]]**tensor[1, R[1, 2, u, v]]**tensor[x[1], x[2], x[3], x[4]]
+	tensor[id, R[1, 2, u, v]]**tensor[x[1], x[2], x[3], x[4]]**tensor[id, R[1, 2, u, v]]**tensor[x[1], x[2], x[3], x[4]]
 	,
 	TestID->"10-tensor-product.nb"
 ]
