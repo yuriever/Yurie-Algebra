@@ -53,7 +53,7 @@ VerificationTest[
 	algebraDefine[{"alg1", "alg2"}]; 
 	algebraCluster["StarList"]
 	,
-	{"Algebra", "Bialgebra", "Coalgebra", "Conjugate", "Tensor", "alg1", "alg2"}
+	{"Algebra", "Antipode", "Bialgebra", "Coalgebra", "Conjugate", "Tensor", "alg1", "alg2"}
 	,
 	TestID->"5-algebraCluster.nb"
 ]
@@ -64,7 +64,7 @@ VerificationTest[
 	algebraDefault[{"alg1", "alg2"}]; 
 	algebraCluster["StarDefaultData"][operator]
 	,
-	{x, y, z}
+	{id, x, y, z}
 	,
 	TestID->"6-algebraCluster.nb"
 ]
@@ -73,7 +73,7 @@ VerificationTest[
 	algebraReset["alg1"]; 
 	algebraCluster["StarDefaultData"][operator]
 	,
-	{y, z}
+	{id, y, z}
 	,
 	TestID->"7-algebraCluster.nb"
 ]
@@ -82,7 +82,7 @@ VerificationTest[
 	algebraUnset["alg1"]; 
 	algebraCluster["StarDefaultData"][operator]
 	,
-	{y, z}
+	{id, y, z}
 	,
 	{Yurie`Cluster`cluster::rmdefault}
 	,
@@ -93,7 +93,7 @@ VerificationTest[
 	algebraUnset["alg2"]; 
 	algebraCluster["StarDefaultData"][operator]
 	,
-	{}
+	{id}
 	,
 	{Yurie`Cluster`cluster::rmdefault}
 	,
@@ -103,7 +103,7 @@ VerificationTest[
 VerificationTest[
 	algebraDefine[]
 	,
-	{"Algebra", "Bialgebra", "Coalgebra", "Conjugate", "Tensor"}
+	{"Algebra", "Antipode", "Bialgebra", "Coalgebra", "Conjugate", "Tensor"}
 	,
 	TestID->"10-algebraCluster.nb"
 ]

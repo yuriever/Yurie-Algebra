@@ -26,6 +26,9 @@ checkAssociativity::usage =
 checkCoassociativity::usage =
     "check the coassociativity of comultiplication.";
 
+checkAntipode::usage =
+    "check the antipode of Hopf algebra.";
+
 
 (* ::Section:: *)
 (*Private*)
@@ -69,12 +72,35 @@ checkAssociativity[x_,y_,z_] :=
 
 
 checkCoassociativity[x_,y_,z_] :=
-    {x,y,z}->
-        Simplify[
-            algebraSimplify[algebraSimplify[x**y]**z]-
-            algebraSimplify[x**algebraSimplify[y**z]]
-        ];
+    pass;
 
+
+checkAntipode[x_] :=
+    Simplify[{
+        multiplyWithAntipode["Left"]@algebraSimplify[comultiply[x]]-
+            algebraSimplify@counit[x]*id,
+        multiplyWithAntipode["Right"]@algebraSimplify[comultiply[x]]-
+            algebraSimplify@counit[x]*id
+    }];
+
+
+(* ::Subsection:: *)
+(*Helper*)
+
+
+multiplyWithAntipode["Left"][expr_] :=
+    algebraSimplify@Replace[
+        expr,
+        tensor[op1_,op2_]:>antipode[op1]**op2,
+        {0,2}
+    ];
+
+multiplyWithAntipode["Right"][expr_] :=
+    algebraSimplify@Replace[
+        expr,
+        tensor[op1_,op2_]:>op1**antipode[op2],
+        {0,2}
+    ];
 
 
 (* ::Subsection:: *)

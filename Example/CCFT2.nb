@@ -3,17 +3,17 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[         0,          0]
-NotebookDataLength[      4230,        129]
-NotebookOptionsPosition[      3270,        100]
-NotebookOutlinePosition[      3722,        118]
-CellTagsIndexPosition[      3679,        115]
+NotebookDataLength[      4238,        130]
+NotebookOptionsPosition[      3282,        101]
+NotebookOutlinePosition[      3730,        119]
+CellTagsIndexPosition[      3687,        116]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[
  RowBox[{"<<", "Yurie`Algebra`CCFT2`"}]], "Code",
- CellLabel->"In[19]:=",ExpressionUUID->"b71d718c-96bd-4c41-b4d1-2f247e30c08f"],
+ CellLabel->"In[42]:=",ExpressionUUID->"b71d718c-96bd-4c41-b4d1-2f247e30c08f"],
 
 Cell["Gramian of Verma module", "Text",ExpressionUUID->"316652b7-a240-4a57-b661-e5f0dde93a89"],
 
@@ -26,11 +26,14 @@ Cell[BoxData[
      "\"\<Conjugate\>\"", ",", "\"\<conformal-algebra-conjugate\>\"", ",", 
      "\"\<singlet-conjugate\>\""}], "}"}], "//", "algebraDefault"}], 
   ";"}]], "Code",
- CellLabel->"In[20]:=",ExpressionUUID->"66a906f1-a881-4817-9a52-5c82958aa1f9"],
+ CellLabel->"In[43]:=",ExpressionUUID->"66a906f1-a881-4817-9a52-5c82958aa1f9"],
 
 Cell[CellGroupData[{
 
-Cell[BoxData[
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"l", "=", "2"}], ";"}], "\n"}], "\n", 
  RowBox[{
   RowBox[{
    RowBox[{
@@ -52,11 +55,9 @@ Cell[BoxData[
        RowBox[{"j", ",", 
         RowBox[{"Range", "[", 
          RowBox[{"0", ",", "l"}], "]"}]}], "}"}]}], "\n", "]"}], "//", 
-    RowBox[{"block", "[", 
-     RowBox[{"{", 
-      RowBox[{"l", "=", "2"}], "}"}], "]"}]}], "//", "algS"}], "//", 
-  "MatrixForm"}]], "Code",
- CellLabel->"In[21]:=",ExpressionUUID->"49f6ee74-da36-4783-a54c-ea508b1c3d05"],
+    "algS"}], "//", "MatrixForm"}], "\n"}], "\n", 
+ RowBox[{"l", "=."}]}], "Code",
+ CellLabel->"In[44]:=",ExpressionUUID->"49f6ee74-da36-4783-a54c-ea508b1c3d05"],
 
 Cell[BoxData[
  TagBox[
@@ -94,15 +95,15 @@ Cell[BoxData[
   Function[BoxForm`e$, 
    MatrixForm[BoxForm`e$]]]], "Output",
  CellLabel->
-  "Out[21]//MatrixForm=",ExpressionUUID->"0b602589-3b71-4a57-9477-\
-86344b99d20e"]
+  "Out[45]//MatrixForm=",ExpressionUUID->"25df5e03-6e6b-46e1-9af1-\
+fcc2e7d52ec8"]
 }, Open  ]]
 },
 Editable->True,
 WindowSize->{1280, 680},
 WindowMargins->{{Automatic, 0}, {0, Automatic}},
 TaggingRules-><|"TryRealOnly" -> False|>,
-FrontEndVersion->"14.0 for Mac OS X ARM (64-bit) (December 12, 2023)",
+FrontEndVersion->"14.1 for Mac OS X ARM (64-bit) (July 16, 2024)",
 StyleDefinitions->"Yurie.nb",
 ExpressionUUID->"ca44b1df-d32f-41a9-8c9e-99a3ba599e6b"
 ]
@@ -117,12 +118,12 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[400, 13, 142, 2, 67, "Code",ExpressionUUID->"b71d718c-96bd-4c41-b4d1-2f247e30c08f"],
-Cell[545, 17, 94, 0, 62, "Text",ExpressionUUID->"316652b7-a240-4a57-b661-e5f0dde93a89"],
-Cell[642, 19, 370, 9, 67, "Code",ExpressionUUID->"66a906f1-a881-4817-9a52-5c82958aa1f9"],
+Cell[400, 13, 142, 2, 66, "Code",ExpressionUUID->"b71d718c-96bd-4c41-b4d1-2f247e30c08f"],
+Cell[545, 17, 94, 0, 60, "Text",ExpressionUUID->"316652b7-a240-4a57-b661-e5f0dde93a89"],
+Cell[642, 19, 370, 9, 66, "Code",ExpressionUUID->"66a906f1-a881-4817-9a52-5c82958aa1f9"],
 Cell[CellGroupData[{
-Cell[1037, 32, 980, 26, 140, "Code",ExpressionUUID->"49f6ee74-da36-4783-a54c-ea508b1c3d05"],
-Cell[2020, 60, 1234, 37, 109, "Output",ExpressionUUID->"0b602589-3b71-4a57-9477-86344b99d20e"]
+Cell[1037, 32, 992, 27, 231, "Code",ExpressionUUID->"49f6ee74-da36-4783-a54c-ea508b1c3d05"],
+Cell[2032, 61, 1234, 37, 103, "Output",ExpressionUUID->"25df5e03-6e6b-46e1-9af1-fcc2e7d52ec8"]
 }, Open  ]]
 }
 ]

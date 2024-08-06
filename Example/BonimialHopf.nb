@@ -3,49 +3,23 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[         0,          0]
-NotebookDataLength[      2160,         71]
-NotebookOptionsPosition[      1291,         43]
-NotebookOutlinePosition[      1744,         61]
-CellTagsIndexPosition[      1701,         58]
+NotebookDataLength[      1109,         40]
+NotebookOptionsPosition[       553,         17]
+NotebookOutlinePosition[      1002,         35]
+CellTagsIndexPosition[       959,         32]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
-
-Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{"<<", "Yurie`Algebra`BinomialHopf`"}]], "Code",
- CellLabel->"In[93]:=",ExpressionUUID->"b71d718c-96bd-4c41-b4d1-2f247e30c08f"],
-
-Cell[BoxData[
- TemplateBox[{
-  "Get", "noopen", 
-   "\"Cannot open \
-\\!\\(\\*RowBox[{\\\"\\\\\\\"Yurie`Algebra`BinomialHopf`\\\\\\\"\\\"}]\\).\"",
-    2, 93, 8, 34230019769847174474, "Local"},
-  "MessageTemplate"]], "Message", "MSG",
- CellLabel->
-  "During evaluation of \
-In[93]:=",ExpressionUUID->"9cef8d32-9ba0-46ff-b2e7-840d4149c175"],
-
-Cell[BoxData["$Failed"], "Output",
- CellLabel->"Out[93]=",ExpressionUUID->"f53a7b68-00b8-4b16-9e50-1b495eff887d"]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"algebraDefault", "@", 
-   RowBox[{"{", 
-    RowBox[{"\"\<SL2\>\"", ",", "\"\<Verma-module\>\""}], "}"}]}], 
-  ";"}]], "Code",
- CellLabel->
-  "In[202]:=",ExpressionUUID->"eaa2284b-56ae-4c31-b269-65106e9753ad"]
+ CellLabel->"In[21]:=",ExpressionUUID->"b71d718c-96bd-4c41-b4d1-2f247e30c08f"]
 },
 Editable->True,
 WindowSize->{1280, 1387},
 WindowMargins->{{Automatic, 0}, {Automatic, 0}},
 TaggingRules-><|"TryRealOnly" -> False|>,
-FrontEndVersion->"14.0 for Mac OS X ARM (64-bit) (December 12, 2023)",
+FrontEndVersion->"14.1 for Mac OS X ARM (64-bit) (July 16, 2024)",
 StyleDefinitions->"Yurie.nb",
 ExpressionUUID->"ca44b1df-d32f-41a9-8c9e-99a3ba599e6b"
 ]
@@ -60,12 +34,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[CellGroupData[{
-Cell[422, 15, 149, 2, 67, "Code",ExpressionUUID->"b71d718c-96bd-4c41-b4d1-2f247e30c08f"],
-Cell[574, 19, 339, 9, 35, "Message",ExpressionUUID->"9cef8d32-9ba0-46ff-b2e7-840d4149c175"],
-Cell[916, 30, 113, 1, 42, "Output",ExpressionUUID->"f53a7b68-00b8-4b16-9e50-1b495eff887d"]
-}, Open  ]],
-Cell[1044, 34, 243, 7, 67, "Code",ExpressionUUID->"eaa2284b-56ae-4c31-b269-65106e9753ad"]
+Cell[400, 13, 149, 2, 66, "Code",ExpressionUUID->"b71d718c-96bd-4c41-b4d1-2f247e30c08f"]
 }
 ]
 *)

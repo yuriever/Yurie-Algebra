@@ -36,8 +36,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraReset["test"]; 
-	(algebraAdd["test"][Association[operator -> {x, y, z, xy, yz, xz}, relation -> {x**y -> xy, y**z -> yz, x**z -> xz}]]; )
+	algebraAdd["test"][Association[operator -> {x, y, z, xy, yz, xz}, relation -> {x**y -> xy, y**z -> yz, x**z -> xz}]]; 
 	,
 	Null
 	,
@@ -58,6 +57,32 @@ VerificationTest[
 	{x, y, z} -> -x**yz + xy**z
 	,
 	TestID->"6-checkLieBracket.nb"
+]
+
+VerificationTest[
+	algebraUnset["test"]
+	,
+	Null
+	,
+	{Yurie`Cluster`cluster::rmdefault}
+	,
+	TestID->"7-checkLieBracket.nb"
+]
+
+VerificationTest[
+	algebraDefine[]
+	,
+	{"Algebra", "Antipode", "Bialgebra", "Coalgebra", "Conjugate", "Tensor"}
+	,
+	TestID->"8-checkLieBracket.nb"
+]
+
+VerificationTest[
+	algebraDefault[]
+	,
+	{}
+	,
+	TestID->"9-checkLieBracket.nb"
 ]
 
 VerificationTest[

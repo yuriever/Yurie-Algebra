@@ -14,9 +14,6 @@ Needs["Yurie`Algebra`"];
 (*Public*)
 
 
-id::usage =
-    "identity of tensor product.";
-
 tensor::usage =
     "tensor product.";
 

@@ -53,11 +53,15 @@ $algebraList//algebraDefine;
 <|
     operator->{g,x},
     relation->{
-        commDefine[g,x,Reverse,1]:>0,
+        commDefine[g,x,Reverse,1]->0,
         x**x:>0,
         g**g:>id,
         comultiply[g]:>tensor[g,g],
-        comultiply[x]:>tensor[g,x]+tensor[x,id]
+        comultiply[x]:>tensor[g,x]+tensor[x,id],
+        counit[g]:>1,
+        counit[x]:>0,
+        antipode[g]:>g,
+        antipode[x]:>-g**x
     },
     printing->{}
 |>//algebraAdd["Sweedler"];

@@ -118,9 +118,9 @@ $algebraList//algebraDefine;
 <|
     operator->{L,M},
     relation->{
-        L[n_]**L[m_]:>L[m]**L[n]+(n-m)L[n+m]+$centralChargeL KroneckerDelta[n+m,0](n^3-n)/12/;n>m,
-        L[n_]**M[m_]:>M[m]**L[n]+(n-m)M[n+m]+$centralChargeM KroneckerDelta[n+m,0](n^3-n)/12/;n>m,
-        M[n_]**L[m_]:>L[m]**M[n]+(n-m)M[n+m]+$centralChargeM KroneckerDelta[n+m,0](n^3-n)/12/;n>=m,
+        L[n_]**L[m_]:>L[m]**L[n]+(n-m)L[n+m]+$centralChargeL*KroneckerDelta[n+m,0]*(n^3-n)/12*id/;n>m,
+        L[n_]**M[m_]:>M[m]**L[n]+(n-m)M[n+m]+$centralChargeM*KroneckerDelta[n+m,0]*(n^3-n)/12*id/;n>m,
+        M[n_]**L[m_]:>L[m]**M[n]+(n-m)M[n+m]+$centralChargeM*KroneckerDelta[n+m,0]*(n^3-n)/12*id/;n>=m,
         M[n_]**M[m_]:>M[m]**M[n]/;n>m
     },
     printing->{
@@ -161,10 +161,10 @@ $algebraList//algebraDefine;
         (*annihilation rule*)
         L[n_]**primary[delta_,xi_]:>0/;n>=1,
         primary[delta_,xi_]**L[n_]:>0/;n<=-1,
-        L[0]**primary[delta_,xi_]:>delta primary[delta,xi],
+        L[0]**primary[delta_,xi_]:>delta*primary[delta,xi],
         M[n_]**primary[delta_,xi_]:>0/;n>=1,
         primary[delta_,xi_]**M[n_]:>0/;n<=-1,
-        M[0]**primary[delta_,xi_]:>xi primary[delta,xi]
+        M[0]**primary[delta_,xi_]:>xi*primary[delta,xi]
     }
 |>//algebraAdd["singlet"];
 
@@ -182,7 +182,7 @@ $algebraList//algebraDefine;
         (*annihilation rule*)
         L[n_]**primary[rank_,a_,delta_,xi_]:>0/;n>=1,
         primary[rank_,a_,delta_,xi_]**L[n_]:>0/;n<=-1,
-        L[0]**primary[rank_,a_,delta_,xi_]:>delta primary[rank,a,delta,xi],
+        L[0]**primary[rank_,a_,delta_,xi_]:>delta*primary[rank,a,delta,xi],
         M[n_]**primary[rank_,a_,delta_,xi_]:>0/;n>=1,
         primary[rank_,a_,delta_,xi_]**M[n_]:>0/;n<=-1
     }
@@ -194,11 +194,11 @@ $algebraList//algebraDefine;
 
 
 relation->{
-    M[0]**primary[rank_,a_,delta_,xi_]:>xi primary[rank,a,delta,xi]+primary[rank,a+1,delta,xi]
+    M[0]**primary[rank_,a_,delta_,xi_]:>xi*primary[rank,a,delta,xi]+primary[rank,a+1,delta,xi]
 }//algebraAdd[{"multiplet","multiplet-upper"}];
 
 relation->{
-    M[0]**primary[rank_,a_,delta_,xi_]:>xi primary[rank,a,delta,xi]+primary[rank,a-1,delta,xi]
+    M[0]**primary[rank_,a_,delta_,xi_]:>xi*primary[rank,a,delta,xi]+primary[rank,a-1,delta,xi]
 }//algebraAdd["multiplet-lower"];
 
 

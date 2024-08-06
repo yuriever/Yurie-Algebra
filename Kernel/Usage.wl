@@ -14,6 +14,9 @@ relation::usage =
 printing::usage =
 	"planet printing.";
 
+id::usage =
+	"identity operator.";
+
 algebraDefine::usage =
 	"define algebras.";
 
@@ -49,6 +52,9 @@ checkAssociativity::usage =
 
 checkCoassociativity::usage =
 	"check the coassociativity of comultiplication.";
+
+checkAntipode::usage =
+	"check the antipode.";
 
 
 (*Conjugate.wl*)
@@ -107,9 +113,6 @@ algSameQ::usage =
 
 (*Tensor.wl*)
 
-id::usage =
-	"identity of tensor product, image of 1 under unit.";
-
 tensor::usage =
 	"tensor product.";
 
@@ -164,8 +167,5 @@ operatorPower::usage =
 operatorExp::usage =
 	"exponential of the operator upto the max order, Exp[para op].";
 
-scalarSeparate::usage =
-	"separate scalars and operators.";
-
-scalarExtract::usage =
-	"extract scalars.";
+operatorSeparate::usage =
+	"separate scalars and operators in a linear combination.";

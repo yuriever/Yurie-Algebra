@@ -100,6 +100,40 @@ VerificationTest[
 ]
 
 VerificationTest[
+	operatorSeparate[algS[longexpr]]
+	,
+	{tensor[x[1]**x[1], x[2]**x[2], x[3]**x[3], x[4]**x[4]] -> (u - v)^2/(I + u - v)^2, tensor[x[1]**x[1], x[2]**x[3], x[3]**x[2], x[4]**x[4]] -> (I*u - I*v)/(I + u - v)^2, tensor[x[1]**x[1], x[3]**x[2], x[2]**x[3], x[4]**x[4]] -> (I*u - I*v)/(I + u - v)^2, tensor[x[1]**x[1], x[3]**x[3], x[2]**x[2], x[4]**x[4]] -> -(1/(I + u - v)^2)}
+	,
+	TestID->"12-tensor-product.nb"
+]
+
+VerificationTest[
+	algebraUnset["YBE"]
+	,
+	Null
+	,
+	{Yurie`Cluster`cluster::rmdefault}
+	,
+	TestID->"13-tensor-product.nb"
+]
+
+VerificationTest[
+	algebraDefine[]
+	,
+	{"Algebra", "Antipode", "Bialgebra", "Coalgebra", "Conjugate", "Tensor"}
+	,
+	TestID->"14-tensor-product.nb"
+]
+
+VerificationTest[
+	algebraDefault[]
+	,
+	{"Tensor"}
+	,
+	TestID->"15-tensor-product.nb"
+]
+
+VerificationTest[
 	ClearAll["`*"];
 	End[]
 	,

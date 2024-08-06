@@ -57,10 +57,10 @@ $algebraList//algebraDefine;
 		x[n_]**x[m_]:>x[n+m],
 		comultiply[x[n_]]:>
 			Module[ {i},
-				Sum[Binomial[n,i] tensor[x[i],x[n-i]],{i,0,n}]
+				Sum[Binomial[n,i]*tensor[x[i],x[n-i]],{i,0,n}]
 			],
 		counit[x[n_]]:>KroneckerDelta[n,0],
-		antipode[x[n_]]:>(-1)^n x[n]
+		antipode[x[n_]]:>(-1)^n*x[n]
     },
     printing->{
 	    x[n_]:>Power[x,n]

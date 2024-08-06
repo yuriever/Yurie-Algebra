@@ -38,7 +38,8 @@ algebraInternal[] = {
     "Conjugate",
     "Tensor",
     "Coalgebra",
-    "Bialgebra"
+    "Bialgebra",
+    "Antipode"
 };
 
 
@@ -59,15 +60,26 @@ tensor//Attributes =
 
 
 algebraInternal["Algebra"] = <|
-    operator->{},
+    operator->{id},
     relation->{
-        x_**y_/;scalarQ[x]||scalarQ[y]:>x*y,
+        (*linearity*)
         (k_?scalarQ*x_)**y_:>k*x**y,
         x_**(k_?scalarQ*y_):>k*x**y,
         (x_+y_)**z_:>x**z+y**z,
-        z_**(x_+y_):>z**x+z**y
+        z_**(x_+y_):>z**x+z**y,
+        (*zero*)
+        0**_->0,
+        _**0->0,
+        (*NonCommutativeMultiply[___,0,___]->0,*)
+        (*identity*)
+        id**x_:>x,
+        x_**id:>x
+        (*this is the old rule handling scalars without id.*)
+        (*x_**y_/;scalarQ[x]||scalarQ[y]:>x*y,*)
     },
-    printing->{}
+    printing->{
+    	id->1
+    }
 |>;
 
 
@@ -76,24 +88,21 @@ algebraInternal["Algebra"] = <|
 
 
 algebraInternal["Tensor"] = <|
-    operator->{id},
+    operator->{},
     relation->{
         tensor[x_,k_?scalarQ*y_.]:>
-            k tensor[x,y],
+            k*tensor[x,y],
         tensor[k_?scalarQ*x_.,y_]:>
-            k tensor[x,y],
+            k*tensor[x,y],
         tensor[x_+y_,z_]:>
             tensor[x,z]+tensor[y,z], 
         tensor[z_,x_+y_]:>
             tensor[z,x]+tensor[z,y],
         x_tensor**y_tensor:>
-            tensorCompose[x**y]/;tensorRankEqualQ[x,y],
-        id**x_:>x,
-        x_**id:>x
+            tensorCompose[x**y]/;tensorRankEqualQ[x,y]
     },
     printing->{
-        tensor->CircleTimes,
-        id->1
+        tensor->CircleTimes
     }
 |>;
 
@@ -105,13 +114,13 @@ algebraInternal["Tensor"] = <|
 algebraInternal["Conjugate"] = <|
     operator->{},
     relation->{
-        conjugate[1]:>1,
         conjugate[k_?scalarQ*x_.]:>
-            Conjugate[k] conjugate[x],
+            Conjugate[k]*conjugate[x],
         conjugate[x_+y_]:>
             conjugate[x]+conjugate[y],
         conjugate[x_**y_]:>
-            conjugate[y]**conjugate[x]
+            conjugate[y]**conjugate[x],
+        conjugate[id]:>id
     },
     printing->{
         conjugate->SuperDagger
@@ -127,11 +136,11 @@ algebraInternal["Coalgebra"] = <|
     operator->{},
     relation->{
         comultiply[k_?scalarQ*x_.]:>
-            k comultiply[x],
+            k*comultiply[x],
         comultiply[x_+y_]:>
             comultiply[x]+comultiply[y],
         counit[k_?scalarQ*x_.]:>
-            k counit[x],
+            k*counit[x],
         counit[x_+y_]:>
             counit[x]+counit[y]
     },
@@ -159,6 +168,28 @@ algebraInternal["Bialgebra"] = <|
             1
     },
     printing->{}
+|>;
+
+
+(* ::Subsubsection:: *)
+(*Antipode*)
+
+
+algebraInternal["Antipode"] = <|
+    operator->{},
+    relation->{
+        antipode[k_?scalarQ*x_.]:>
+            k*antipode[x],
+        antipode[x_+y_]:>
+            antipode[x]+antipode[y],
+        antipode[x_**y_]:>
+            antipode[y]**antipode[x],
+        antipode[id]:>
+            id
+    },
+    printing->{
+    	antipode->"S"
+    }
 |>;
 
 

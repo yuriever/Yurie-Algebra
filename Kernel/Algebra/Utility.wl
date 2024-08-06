@@ -14,7 +14,7 @@ Needs["Yurie`Algebra`"];
 (*Public*)
 
 
-(* ::Subsubsection:: *)
+(* ::Subsection:: *)
 (*Commutator*)
 
 
@@ -34,7 +34,7 @@ commDefine::usage =
     "define commutation relations with condition, order-reversing or anti-commutator.";
 
 
-(* ::Subsubsection:: *)
+(* ::Subsection:: *)
 (*Adjoint*)
 
 
@@ -45,7 +45,7 @@ adjointExp::usage =
     "the adjoint action of Lie group upto the max order, Exp[para op] expr Exp[-para op].";
 
 
-(* ::Subsubsection:: *)
+(* ::Subsection:: *)
 (*Power and exp*)
 
 
@@ -56,15 +56,12 @@ operatorExp::usage =
     "exponential of the operator upto the max order, Exp[para op].";
 
 
-(* ::Subsubsection:: *)
-(*Scalar extraction*)
+(* ::Subsection:: *)
+(*Operator separation*)
 
 
-scalarSeparate::usage =
-    "separate scalars and operators.";
-
-scalarExtract::usage =
-    "extract scalars.";
+operatorSeparate::usage =
+    "separate scalars and operators in a linear combination.";
 
 
 (* ::Section:: *)
@@ -116,43 +113,46 @@ anticommSim[x__] :=
 (*commDefine*)
 
 
-commDefine/:(
+commDefine/:rule_[
     commDefine[x_,y_,
         OrderlessPatternSequence[
             sign:(0|1):0,
             order:(Normal|Reverse):Normal
         ]
-    ]:>result_
-) :=
+    ],
+    result_
+] :=
     If[ order===Normal,
-        Inactive[RuleDelayed][
+        Inactive[rule][
             x**y,
             (-1)^sign*stripPattern@y**stripPattern@x+result
-        ]//Activate,
-        Inactive[RuleDelayed][
+        ],
+        (*Else*)
+        Inactive[rule][
             y**x,
             (-1)^sign*stripPattern@x**stripPattern@y-(-1)^sign*result
-        ]//Activate
-    ];
+        ]
+    ]//Activate;
 
-commDefine/:(
+commDefine/:rule_[
     commDefine[x_,y_,
         OrderlessPatternSequence[
             sign:(0|1):0,
             order:(Normal|Reverse):Normal
         ]
-    ]:>Verbatim[Condition][result_,condition_]
-) :=
+    ],
+    Verbatim[Condition][result_,condition_]
+]:=
     If[ order===Normal,
-        Inactive[RuleDelayed][
+        Inactive[rule][
             x**y,
             Condition[(-1)^sign*stripPattern@y**stripPattern@x+result,condition]
-        ]//Activate,
-        Inactive[RuleDelayed][
+        ],
+        Inactive[rule][
             y**x,
             Condition[(-1)^sign*stripPattern@x**stripPattern@y-(-1)^sign*result,condition]
-        ]//Activate
-    ];
+        ]
+    ]//Activate;
 
 
 stripPattern[pattern_] :=
@@ -190,7 +190,7 @@ adjointExp[op_,max_,t_:1][expr_] :=
 
 
 operatorPower[_,0] =
-    1;
+    id;
 
 operatorPower[op_,1] :=
     op;
@@ -201,35 +201,89 @@ operatorPower[op_,order_:1] :=
 
 operatorExp[op_,max_,t_:1] :=
     Module[ {order},
-        Sum[operatorPower[op,order] t^order/order!,{order,0,max}]
+        Sum[operatorPower[op,order]*t^order/order!,{order,0,max}]
     ];
 
 
 (* ::Subsection:: *)
-(*Scalar extraction*)
+(*Operator separation*)
 
 
-scalarSeparate[exprs__] :=
-    scalarSeparateKernel[exprs];
-
-scalarExtract[exprs__] :=
-    scalarSeparateKernel[exprs]//ReplaceAll[HoldPattern[x_->y_]:>x]//DeleteDuplicates;
+(* ::Subsubsection:: *)
+(*Message*)
 
 
-scalarSeparateKernel[0] :=
-    0->0;
+operatorSeparate::extractionFailed =
+    "The extracted operators together with their coefficients cannot recover the original expression.";
 
-scalarSeparateKernel[c_?scalarQ*op_?generatorQ] :=
-    c->op;
+operatorSeparate::notOperator =
+    "The expression is not an operator.";
 
-scalarSeparateKernel[c_?scalarQ*op_NonCommutativeMultiply] :=
-    c->op;
 
-scalarSeparateKernel[term1_+term2_] :=
-    {scalarSeparateKernel@term1,scalarSeparateKernel@term2}//Flatten;
+(* ::Subsubsection:: *)
+(*Option*)
 
-scalarSeparateKernel[{exprs__}] :=
-    {exprs}//Map[scalarSeparateKernel]//Flatten;
+
+operatorSeparate//Options = {
+    "Scalar"->True,
+    "Operator"->True
+};
+
+
+(* ::Subsubsection:: *)
+(*Main*)
+
+
+operatorSeparate[expr_,opts:OptionsPattern[]] :=
+    Module[ {result},
+        result = expr//operatorSeparateKernel;
+        Switch[{OptionValue["Scalar"],OptionValue["Operator"]},
+            {True,True},
+                result[[1]]->result[[2]]//Thread,
+            {True,False},
+                result//Last,
+            {False,True},
+                result//First
+        ]
+    ]//Catch;
+
+operatorSeparate[exprList_List,opts:OptionsPattern[]]:=
+	exprList//Flatten//DeleteCases[0]//Map[operatorSeparate[#,opts]&]//Flatten;
+
+
+(* ::Subsubsection:: *)
+(*Helper*)
+
+
+operatorSeparateKernel[expr_] :=
+    Module[ {opList,coList},
+        opList = operatorList[expr];
+        coList = Map[Coefficient[expr,#]&,opList];
+        If[ Simplify[opList . coList-expr]=!=0,
+            Message[operatorSeparate::extractionFailed];
+            expr//Throw
+        ];
+        {opList,coList}
+    ];
+
+
+operatorList[expr:_Plus|_Times] :=
+    DeleteDuplicates@Cases[
+        expr//Expand,
+        c_.*Shortest[op_]/;scalarQ[c]&&operatorQ[op]:>op
+    ];
+
+operatorList[expr:_NonCommutativeMultiply|_tensor] :=
+    {expr};
+
+operatorList[expr_?generatorQ] :=
+    {expr};
+
+operatorList[expr_?scalarQ] :=
+    (
+        Message[operatorSeparate::notOperator];
+        expr//Throw
+    );
 
 
 (* ::Subsection:: *)

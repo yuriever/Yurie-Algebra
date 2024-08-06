@@ -30,6 +30,9 @@ relation::usage =
 printing::usage =
     "planet printing.";
 
+id::usage =
+    "identity operator.";
+
 
 algebraDefine::usage =
     "define algebras.";

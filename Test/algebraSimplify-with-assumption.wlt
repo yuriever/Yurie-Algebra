@@ -36,8 +36,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraReset["test"]; 
-	(algebraAdd["test"][Association[operator -> {L}, relation -> {commDefine[L[n_], L[m_]] :> f[n - m]*L[n + m] /; Simplify[n > m]}]]; )
+	algebraAdd["test"][Association[operator -> {L}, relation -> {commDefine[L[n_], L[m_]] :> f[n - m]*L[n + m] /; Simplify[n > m]}]]; 
 	,
 	Null
 	,
@@ -53,19 +52,45 @@ VerificationTest[
 ]
 
 VerificationTest[
-	Simplify[(ReplaceAll[f -> Function[x, x]])[scalarExtract[res]]]
+	Simplify[(ReplaceAll[f -> Function[x, x]])[operatorSeparate[res]]]
 	,
-	0
+	{L[k + m + n] -> 0}
 	,
 	TestID->"6-algebraSimplify-with-assumption.nb"
 ]
 
 VerificationTest[
-	Simplify[(ReplaceAll[f -> Function[x, x^2]])[scalarExtract[res]]]
+	Simplify[(ReplaceAll[f -> Function[x, x^2]])[operatorSeparate[res]]]
 	,
-	2*(k - n)*(-m + n)*(k^2 - 2*k*m + m^2 - n^2)
+	{L[k + m + n] -> 2*(k - n)*(-m + n)*(k^2 - 2*k*m + m^2 - n^2)}
 	,
 	TestID->"7-algebraSimplify-with-assumption.nb"
+]
+
+VerificationTest[
+	algebraUnset["test"]
+	,
+	Null
+	,
+	{Yurie`Cluster`cluster::rmdefault}
+	,
+	TestID->"8-algebraSimplify-with-assumption.nb"
+]
+
+VerificationTest[
+	algebraDefine[]
+	,
+	{"Algebra", "Antipode", "Bialgebra", "Coalgebra", "Conjugate", "Tensor"}
+	,
+	TestID->"9-algebraSimplify-with-assumption.nb"
+]
+
+VerificationTest[
+	algebraDefault[]
+	,
+	{}
+	,
+	TestID->"10-algebraSimplify-with-assumption.nb"
 ]
 
 VerificationTest[

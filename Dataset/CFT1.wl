@@ -102,7 +102,7 @@ $algebraList//algebraDefine;
 <|
     operator->{L},
     relation->{
-        L[n_]**L[m_]:>L[m]**L[n]+(n-m)L[n+m]+$centralCharge KroneckerDelta[n+m,0](n^3-n)/12/;n>m
+        L[n_]**L[m_]:>L[m]**L[n]+(n-m)L[n+m]+$centralCharge*KroneckerDelta[n+m,0]*(n^3-n)/12*id/;n>m
     },
     printing->{
         L[n_]:>Subscript["L",n],
@@ -138,7 +138,7 @@ $algebraList//algebraDefine;
         (*annihilation rule*)
         L[n_]**primary[h_]:>0/;n>=1,
         primary[h_]**L[n_]:>0/;n<=-1,
-        L[0]**primary[h_]:>h primary[h]
+        L[0]**primary[h_]:>h*primary[h]
     }
 |>//algebraAdd["singlet"];
 
@@ -165,11 +165,11 @@ $algebraList//algebraDefine;
 
 
 relation->{
-    L[0]**primary[rank_,a_,h_]:>h primary[rank,a,h]+primary[rank,a+1,h]
+    L[0]**primary[rank_,a_,h_]:>h*primary[rank,a,h]+primary[rank,a+1,h]
 }//algebraAdd[{"multiplet","multiplet-upper"}];
 
 relation->{
-    L[0]**primary[rank_,a_,h_]:>h primary[rank,a,h]+primary[rank,a-1,h]
+    L[0]**primary[rank_,a_,h_]:>h*primary[rank,a,h]+primary[rank,a-1,h]
 }//algebraAdd["multiplet-lower"];
 
 

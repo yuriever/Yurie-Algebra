@@ -45,6 +45,10 @@ PacletObject[
         }
       },
       {
+        "AutoCompletionData",
+        "Root" -> "AutoCompletionData"
+      },
+      {
         "Asset",
         "Root" -> ".",
         "Assets" -> {
