@@ -2,8 +2,8 @@
 
 (*Algebra.wl*)
 
-algebraCluster::usage =
-	"cluster algebra.";
+id::usage =
+	"identity operator.";
 
 operator::usage =
 	"planet operator.";
@@ -13,9 +13,6 @@ relation::usage =
 
 printing::usage =
 	"planet printing.";
-
-id::usage =
-	"identity operator.";
 
 algebraDefine::usage =
 	"define algebras.";
@@ -54,7 +51,7 @@ checkCoassociativity::usage =
 	"check the coassociativity of comultiplication.";
 
 checkAntipode::usage =
-	"check the antipode.";
+	"check the antipode of Hopf algebra.";
 
 
 (*Conjugate.wl*)

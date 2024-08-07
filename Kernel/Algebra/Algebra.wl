@@ -11,6 +11,8 @@ Needs["Yurie`Cluster`"];
 
 Needs["Yurie`Algebra`"];
 
+Needs["Yurie`Algebra`Cache`"];
+
 Needs["Yurie`Algebra`Internal`"];
 
 
@@ -18,8 +20,9 @@ Needs["Yurie`Algebra`Internal`"];
 (*Public*)
 
 
-algebraCluster::usage =
-    "cluster algebra.";
+id::usage =
+    "identity operator.";
+
 
 operator::usage =
     "planet operator.";
@@ -29,9 +32,6 @@ relation::usage =
 
 printing::usage =
     "planet printing.";
-
-id::usage =
-    "identity operator.";
 
 
 algebraDefine::usage =
@@ -96,7 +96,7 @@ algebraDefine[algs:patternAlgs] :=
 algebraDefineQ[alg:patternAlg] :=
     MemberQ[clusterPropGet[algebraCluster,"StarList"],alg];
 
-algebraDefineQ[_] =
+algebraDefineQ[_] :=
     False;
 
 

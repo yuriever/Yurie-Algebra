@@ -78,7 +78,7 @@ algebraInternal["Algebra"] = <|
         (*x_**y_/;scalarQ[x]||scalarQ[y]:>x*y,*)
     },
     printing->{
-    	id->1
+        id->1
     }
 |>;
 
@@ -188,7 +188,7 @@ algebraInternal["Antipode"] = <|
             id
     },
     printing->{
-    	antipode->"S"
+        antipode->"S"
     }
 |>;
 

@@ -15,6 +15,9 @@ ClearAll["`*"];
 (*Public*)
 
 
+algebraCluster::usage =
+    "cluster algebra.";
+
 $operator::usage =
     "operator cache.";
 
@@ -26,6 +29,10 @@ $relation::usage =
 
 $printing::usage =
     "printing cache.";
+
+
+$tensorRank::usage =
+    "tensor-rank of generators.";
 
 
 (* ::Section:: *)
@@ -50,6 +57,9 @@ $operatorPattern = _;
 $relation = {};
 
 $printing = {};
+
+
+$tensorRank[_] = 1;
 
 
 (* ::Subsection:: *)

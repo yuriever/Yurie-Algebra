@@ -9,6 +9,8 @@ BeginPackage["Yurie`Algebra`Tensor`"];
 
 Needs["Yurie`Algebra`"];
 
+Needs["Yurie`Algebra`Cache`"];
+
 
 (* ::Section:: *)
 (*Public*)
@@ -51,9 +53,6 @@ Begin["`Private`"];
 (*Message*)
 
 
-tensorRank::usage =
-    "tensor-rank of generators.";
-
 dummyHead::usage =
     "head placeholder used by tensorCompose.";
 
@@ -65,24 +64,21 @@ dummySlot::usage =
 (*Tensor product*)
 
 
-tensorRank[_] = 1;
-
-
 (* ::Subsubsection:: *)
 (*tensorRankEqualQ*)
 
 
 tensorRankEqualQ[op1_?generatorQ,op2_?generatorQ] :=
-    tensorRank[op1]==tensorRank[op2];
+    $tensorRank[op1]==$tensorRank[op2];
 
 tensorRankEqualQ[op1_?generatorQ,op2_tensor] :=
-    tensorRank[op1]==Total[tensorRank/@op2,AllowedHeads->tensor];
+    $tensorRank[op1]==Total[$tensorRank/@op2,AllowedHeads->tensor];
 
 tensorRankEqualQ[op1_tensor,op2_?generatorQ] :=
-    Total[tensorRank/@op1,AllowedHeads->tensor]==tensorRank[op2];
+    Total[$tensorRank/@op1,AllowedHeads->tensor]==$tensorRank[op2];
 
 tensorRankEqualQ[op1_tensor,op2_tensor] :=
-    Total[tensorRank/@op1,AllowedHeads->tensor]==Total[tensorRank/@op2,AllowedHeads->tensor];
+    Total[$tensorRank/@op1,AllowedHeads->tensor]==Total[$tensorRank/@op2,AllowedHeads->tensor];
 
 
 (* ::Subsubsection:: *)
@@ -90,7 +86,9 @@ tensorRankEqualQ[op1_tensor,op2_tensor] :=
 
 
 tensorRankSet[op_,rank_] :=
-    tensorRank[op] = rank;
+    (
+    	$tensorRank[op] = rank;
+    );
 
 
 (* ::Subsubsection:: *)
@@ -101,10 +99,10 @@ tensorRankGet[k_?scalarQ] :=
     0;
 
 tensorRankGet[op_?generatorQ] :=
-    tensorRank[op];
+    $tensorRank[op];
 
 tensorRankGet[k_?scalarQ*op_?generatorQ] :=
-    tensorRank[op];
+    $tensorRank[op];
 
 tensorRankGet[op_tensor] :=
     Total[tensorRankGet/@op,AllowedHeads->tensor];
@@ -126,7 +124,7 @@ tensorCompose[op1_**op2_] :=
 tensorPadRight[opList_] :=
     Flatten@Riffle[
         opList,
-        ConstantArray[dummySlot,#]&/@(tensorRank/@opList-1)
+        ConstantArray[dummySlot,#]&/@($tensorRank/@opList-1)
     ];
 
 

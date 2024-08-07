@@ -20,7 +20,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraDefine["YBE"]
+	algebraDefine["test"]
 	,
 	Null
 	,
@@ -28,7 +28,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraDefault["YBE", "Tensor"]
+	algebraAdd["test"][Association[operator -> {R, x}, relation -> {R[i_, j_, u_, v_]**tensor[x_, y_, z_] :> (I*Permute[tensor[x, y, z], Cycles[{{i, j}}]])/(I + u - v) + ((u - v)*tensor[x, y, z])/(I + u - v)}, printing -> {(op_)?generatorQ[i_] :> Subscript[op, i], R[i_, j_, u_, v_] :> Subscript[R, i, j]}]]
 	,
 	Null
 	,
@@ -36,7 +36,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraAdd["YBE"][Association[operator -> {R, x}, relation -> {R[i_, j_, u_, v_]**tensor[x_, y_, z_] :> (I*Permute[tensor[x, y, z], Cycles[{{i, j}}]])/(I + u - v) + ((u - v)*tensor[x, y, z])/(I + u - v)}, printing -> {(op_)?generatorQ[i_] :> Subscript[op, i], R[i_, j_, u_, v_] :> Subscript[R, i, j]}]]
+	tensorRankSet[R[___], 3]
 	,
 	Null
 	,
@@ -44,9 +44,9 @@ VerificationTest[
 ]
 
 VerificationTest[
-	tensorRankSet[R[___], 3]
+	algebraDefault["test", "Tensor"]
 	,
-	3
+	Null
 	,
 	TestID->"5-tensor-product.nb"
 ]
@@ -108,7 +108,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraUnset["YBE"]
+	algebraUnset["test"]
 	,
 	Null
 	,

@@ -189,7 +189,7 @@ adjointExp[op_,max_,t_:1][expr_] :=
 (*Power and exp*)
 
 
-operatorPower[_,0] =
+operatorPower[_,0] :=
     id;
 
 operatorPower[op_,1] :=
@@ -247,8 +247,8 @@ operatorSeparate[expr_,opts:OptionsPattern[]] :=
         ]
     ]//Catch;
 
-operatorSeparate[exprList_List,opts:OptionsPattern[]]:=
-	exprList//Flatten//DeleteCases[0]//Map[operatorSeparate[#,opts]&]//Flatten;
+operatorSeparate[exprList_List,opts:OptionsPattern[]] :=
+    exprList//Flatten//DeleteCases[0]//Map[operatorSeparate[#,opts]&]//Flatten;
 
 
 (* ::Subsubsection:: *)

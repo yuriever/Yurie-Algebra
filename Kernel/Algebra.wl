@@ -7,8 +7,8 @@
 BeginPackage["Yurie`Algebra`"];
 
 
-ClearAll["`*"];
-ClearAll["`*`*"];
+(*ClearAll["`*"];
+ClearAll["`*`*"];*)
 
 
 Needs["Yurie`Cluster`"];
@@ -27,9 +27,9 @@ Get["Yurie`Algebra`Usage`"];
 
 Get["Yurie`Algebra`Cache`"];
 
-Get["Yurie`Algebra`Algebra`"];
-
 Get["Yurie`Algebra`Internal`"];
+
+Get["Yurie`Algebra`Algebra`"];
 
 Get["Yurie`Algebra`Simplify`"];
 
@@ -64,7 +64,7 @@ Begin["`Private`"];
 
 
 clusterInit[
-    {"algebraCluster","Yurie`Algebra`"},
+    {"algebraCluster","Yurie`Algebra`Cache`"},
     {operator,relation,printing},
     {{},{},{}},
     Values@algebraInternal["Algebra"],

@@ -63,7 +63,7 @@ $algebraList//algebraDefine
 |>//algebraAdd["YBE"]
 
 
-tensorRankSet[R[___],3];
+tensorRankSet[R[___],3]
 
 
 (* ::Subsection:: *)

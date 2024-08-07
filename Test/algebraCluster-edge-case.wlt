@@ -21,7 +21,7 @@ VerificationTest[
 
 VerificationTest[
 	algebraDefine[{}]; 
-	algebraCluster["StarList"]
+	algebraDefine[]
 	,
 	{"Algebra", "Antipode", "Bialgebra", "Coalgebra", "Conjugate", "Tensor"}
 	,
@@ -31,7 +31,7 @@ VerificationTest[
 VerificationTest[
 	algebraAdd[{}][{operator -> {x}}]; 
 	algebraDefault[{}]; 
-	algebraCluster["StarDefaultData"][operator]
+	operator[]
 	,
 	{id}
 	,
@@ -40,7 +40,7 @@ VerificationTest[
 
 VerificationTest[
 	algebraReset[{}]; 
-	algebraCluster["StarDefaultData"][operator]
+	operator[]
 	,
 	{id}
 	,
@@ -49,7 +49,7 @@ VerificationTest[
 
 VerificationTest[
 	algebraUnset[{}]; 
-	algebraCluster["StarDefaultData"][operator]
+	operator[]
 	,
 	{id}
 	,
