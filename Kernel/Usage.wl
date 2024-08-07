@@ -166,3 +166,24 @@ operatorExp::usage =
 
 operatorSeparate::usage =
 	"separate scalars and operators in a linear combination.";
+
+
+(*Variable.wl*)
+
+algebraCluster::usage =
+	"cluster algebra.";
+
+$operator::usage =
+	"operator cache.";
+
+$operatorPattern::usage =
+	"operator pattern cache.";
+
+$relation::usage =
+	"relation cache.";
+
+$printing::usage =
+	"printing cache.";
+
+$tensorRank::usage =
+	"tensor-rank of generators.";

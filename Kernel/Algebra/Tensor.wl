@@ -9,7 +9,7 @@ BeginPackage["Yurie`Algebra`Tensor`"];
 
 Needs["Yurie`Algebra`"];
 
-Needs["Yurie`Algebra`Cache`"];
+Needs["Yurie`Algebra`Variable`"];
 
 
 (* ::Section:: *)

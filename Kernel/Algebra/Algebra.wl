@@ -11,7 +11,7 @@ Needs["Yurie`Cluster`"];
 
 Needs["Yurie`Algebra`"];
 
-Needs["Yurie`Algebra`Cache`"];
+Needs["Yurie`Algebra`Variable`"];
 
 Needs["Yurie`Algebra`Internal`"];
 
