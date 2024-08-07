@@ -55,7 +55,8 @@ PacletObject[
           {"License", "LICENSE"},
           {"ReadMe", "README.md"},
           {"Test", "Test"},
-          {"TestSource", "TestSource"}
+          {"TestSource", "TestSource"},
+          {"Example", "Example"}
         }
       }
     }

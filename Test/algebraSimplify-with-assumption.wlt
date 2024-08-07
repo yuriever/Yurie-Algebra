@@ -20,7 +20,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraDefine["test"]; 
+	algebraDefine["test"]
 	,
 	Null
 	,
@@ -28,7 +28,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraDefault["test"]; 
+	algebraDefault["test"]
 	,
 	Null
 	,
@@ -36,7 +36,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraAdd["test"][Association[operator -> {L}, relation -> {commDefine[L[n_], L[m_]] :> f[n - m]*L[n + m] /; Simplify[n > m]}]]; 
+	algebraAdd["test"][Association[operator -> {L}, relation -> {commDefine[L[n_], L[m_]] :> f[n - m]*L[n + m] /; Simplify[n > m]}]]
 	,
 	Null
 	,
@@ -86,6 +86,7 @@ VerificationTest[
 ]
 
 VerificationTest[
+	algebraDefault[{}]; 
 	algebraDefault[]
 	,
 	{}

@@ -45,9 +45,9 @@ Begin["`Private`"];
 
 $algebraList = {"YBE"};
 
-$algebraList//algebraUnset//Quiet;
+$algebraList//algebraUnset//Quiet
 
-$algebraList//algebraDefine;
+$algebraList//algebraDefine
 
 
 <|
@@ -60,7 +60,7 @@ $algebraList//algebraDefine;
 		(op_?generatorQ)[i_]:>Subscript[op,i],
 		R[i_,j_,u_,v_]:>Subscript[R,i,j]
 	}
-|>//algebraAdd["YBE"];
+|>//algebraAdd["YBE"]
 
 
 tensorRankSet[R[___],3];

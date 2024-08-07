@@ -45,9 +45,9 @@ Begin["`Private`"];
 
 $algebraList = {"Sweedler"};
 
-$algebraList//algebraUnset//Quiet;
+$algebraList//algebraUnset//Quiet
 
-$algebraList//algebraDefine;
+$algebraList//algebraDefine
 
 
 <|
@@ -64,7 +64,7 @@ $algebraList//algebraDefine;
         antipode[x]:>-g**x
     },
     printing->{}
-|>//algebraAdd["Sweedler"];
+|>//algebraAdd["Sweedler"]
 
 
 (* ::Subsection:: *)

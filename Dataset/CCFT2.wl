@@ -83,9 +83,9 @@ $algebraList = {
     "multiplet","multiplet-upper","multiplet-lower","multiplet-conjugate"
 };
 
-$algebraList//algebraUnset//Quiet;
+$algebraList//algebraUnset//Quiet
 
-$algebraList//algebraDefine;
+$algebraList//algebraDefine
 
 
 (* ::Subsubsection:: *)
@@ -108,7 +108,7 @@ $algebraList//algebraDefine;
         Subsuperscript[op_,n_,power_]**Subscript[op_,n_]:>Subsuperscript[op,n,power+1],
         Subsuperscript[op_,n_,power1_]**Subsuperscript[op_,n_,power2_]:>Subsuperscript[op,n,power1+power2]
     }
-|>//algebraAdd["conformal-algebra"];
+|>//algebraAdd["conformal-algebra"]
 
 
 (* ::Subsubsection:: *)
@@ -133,7 +133,7 @@ $algebraList//algebraDefine;
         $centralChargeL->Subscript["c","L"],
         $centralChargeM->Subscript["c","M"]
     }
-|>//algebraAdd["BMS"];
+|>//algebraAdd["BMS"]
 
 
 (* ::Subsubsection:: *)
@@ -148,7 +148,7 @@ $algebraList//algebraDefine;
         vacuum**L[_]:>0,
         vacuum**M[_]:>0
     }
-|>//algebraAdd["vacuum"];
+|>//algebraAdd["vacuum"]
 
 
 (* ::Subsubsection:: *)
@@ -166,7 +166,7 @@ $algebraList//algebraDefine;
         primary[delta_,xi_]**M[n_]:>0/;n<=-1,
         M[0]**primary[delta_,xi_]:>xi*primary[delta,xi]
     }
-|>//algebraAdd["singlet"];
+|>//algebraAdd["singlet"]
 
 
 (* ::Subsubsection:: *)
@@ -186,7 +186,7 @@ $algebraList//algebraDefine;
         M[n_]**primary[rank_,a_,delta_,xi_]:>0/;n>=1,
         primary[rank_,a_,delta_,xi_]**M[n_]:>0/;n<=-1
     }
-|>//algebraAdd[{"multiplet","multiplet-upper","multiplet-lower"}];
+|>//algebraAdd["multiplet","multiplet-upper","multiplet-lower"]
 
 
 (* ::Text:: *)
@@ -195,11 +195,11 @@ $algebraList//algebraDefine;
 
 relation->{
     M[0]**primary[rank_,a_,delta_,xi_]:>xi*primary[rank,a,delta,xi]+primary[rank,a+1,delta,xi]
-}//algebraAdd[{"multiplet","multiplet-upper"}];
+}//algebraAdd["multiplet","multiplet-upper"]
 
 relation->{
     M[0]**primary[rank_,a_,delta_,xi_]:>xi*primary[rank,a,delta,xi]+primary[rank,a-1,delta,xi]
-}//algebraAdd["multiplet-lower"];
+}//algebraAdd["multiplet-lower"]
 
 
 (* ::Subsubsection:: *)
@@ -209,25 +209,25 @@ relation->{
 relation->{
     conjugate[L[n_]]:>L[-n],
     conjugate[M[n_]]:>M[-n]
-}//algebraAdd["conformal-algebra-conjugate"];
+}//algebraAdd["conformal-algebra-conjugate"]
 
 
 relation->{
     vacuum**vacuum->1,
     conjugate[vacuum]->vacuum
-}//algebraAdd["vacuum-conjugate"];
+}//algebraAdd["vacuum-conjugate"]
 
 
 relation->{
     primary[delta_,xi_]**primary[delta_,xi_]:>1,
     conjugate[primary[delta_,xi_]]:>primary[delta,xi]
-}//algebraAdd["singlet-conjugate"];
+}//algebraAdd["singlet-conjugate"]
 
 
 relation->{
     primary[rank_,a_,delta_,xi_]**primary[rank_,b_,delta_,xi_]:>KroneckerDelta[a+b,rank+1],
     conjugate[primary[rank_,a_,delta_,xi_]]:>primary[rank,a,delta,xi]
-}//algebraAdd["multiplet-conjugate"];
+}//algebraAdd["multiplet-conjugate"]
 
 
 (* ::Subsection:: *)

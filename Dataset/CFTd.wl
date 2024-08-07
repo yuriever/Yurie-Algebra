@@ -78,18 +78,18 @@ $algebraList = {
     "conjugateL"
 };
 
-$algebraList//algebraUnset//Quiet;
+$algebraList//algebraUnset//Quiet
 
-$algebraList//algebraDefine;
+$algebraList//algebraDefine
 
 
 (* ::Subsubsection:: *)
 (*Isometry and conformal algebras*)
 
 
-operator->{genP,genM}//algebraAdd["isometry-algebra"];
+operator->{genP,genM}//algebraAdd["isometry-algebra"]
 
-operator->{genP,genM,genD,genK}//algebraAdd["conformal-algebra"];
+operator->{genP,genM,genD,genK}//algebraAdd["conformal-algebra"]
 
 
 relation->{
@@ -103,7 +103,7 @@ relation->{
     commDefine[genM[i_,j_],genM[k_,l_]]:>
         genM[i,l]*metric[j,k]+genM[j,k]*metric[i,l]-genM[j,l]*metric[i,k]-genM[i,k]*metric[j,l]/;
             coordOrder[k>i||(k==i&&l>j)]
-}//algebraAdd[{"isometry-algebra","conformal-algebra"}];
+}//algebraAdd["isometry-algebra","conformal-algebra"]
 
 
 relation->{
@@ -117,13 +117,13 @@ relation->{
     commDefine[genD[],genM[i_,j_]]:>0,
     (*[K,P]*)
     commDefine[genK[i_],genP[j_]]:>2genD[]*metric[i,j]-2*genM[i,j]
-}//algebraAdd["conformal-algebra"];
+}//algebraAdd["conformal-algebra"]
 
 
 printing->{
     genP[i_]:>Subscript["P",i],
     genM[i_,j_]:>Subscript["M",i,j]
-}//algebraAdd["isometry-algebra"];
+}//algebraAdd["isometry-algebra"]
 
 
 printing->{
@@ -131,14 +131,14 @@ printing->{
     genP[i_]:>Subscript["P",i],
     genK[i_]:>Subscript["K",i],
     genM[i_,j_]:>Subscript["M",i,j]
-}//algebraAdd["conformal-algebra"];
+}//algebraAdd["conformal-algebra"]
 
 
 (* ::Subsubsection:: *)
 (*Vacuum*)
 
 
-operator->{vacuum}//algebraAdd["vacuum"];
+operator->{vacuum}//algebraAdd["vacuum"]
 
 
 relation->{
@@ -146,7 +146,7 @@ relation->{
     genP[_]**vacuum:>0,
     genK[_]**vacuum:>0,
     genM[_,_]**vacuum:>0
-}//algebraAdd["vacuum"];
+}//algebraAdd["vacuum"]
 
 
 (* ::Subsubsection:: *)
@@ -155,7 +155,7 @@ relation->{
 
 relation->{
     conjugate[op_?generatorQ]:>-op
-}//algebraAdd["conjugateE"];
+}//algebraAdd["conjugateE"]
 
 
 (* ::Subsection:: *)

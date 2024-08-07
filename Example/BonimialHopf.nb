@@ -3,21 +3,78 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[         0,          0]
-NotebookDataLength[      1109,         40]
-NotebookOptionsPosition[       553,         17]
-NotebookOutlinePosition[      1002,         35]
-CellTagsIndexPosition[       959,         32]
+NotebookDataLength[      3618,        112]
+NotebookOptionsPosition[      2134,         74]
+NotebookOutlinePosition[      2582,         92]
+CellTagsIndexPosition[      2539,         89]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[
+ RowBox[{"Off", "[", 
+  RowBox[{"General", "::", "shdw"}], "]"}]], "Code",
+ CellLabel->
+  "In[328]:=",ExpressionUUID->"ed9200de-4d0f-4fad-a441-1bc16830704a"],
+
+Cell[BoxData[
  RowBox[{"<<", "Yurie`Algebra`BinomialHopf`"}]], "Code",
- CellLabel->"In[21]:=",ExpressionUUID->"b71d718c-96bd-4c41-b4d1-2f247e30c08f"]
+ CellLabel->
+  "In[329]:=",ExpressionUUID->"b71d718c-96bd-4c41-b4d1-2f247e30c08f"],
+
+Cell["Test", "Subsection",ExpressionUUID->"483ae79a-5ec9-4608-91bd-30adef542083"],
+
+Cell[CellGroupData[{
+
+Cell["Cleanup", "Subsection",ExpressionUUID->"b01ee08e-f0ce-43dd-be14-f03622d6ee56"],
+
+Cell[BoxData[
+ RowBox[{"algebraUnset", "[", "]"}]], "Code",
+ CellLabel->
+  "In[330]:=",ExpressionUUID->"040b4be6-2a7d-4e0a-93ff-6b7a9be13792"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"algebraDefine", "[", "]"}]], "Code",
+ CellLabel->
+  "In[331]:=",ExpressionUUID->"58f4bb16-c8fd-45ff-b423-849c32a96f5d"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Algebra\"\>", ",", "\<\"Antipode\"\>", 
+   ",", "\<\"Bialgebra\"\>", ",", "\<\"Coalgebra\"\>", 
+   ",", "\<\"Conjugate\"\>", ",", "\<\"Tensor\"\>"}], "}"}]], "Output",
+ CellLabel->
+  "Out[331]=",ExpressionUUID->"9ca65d70-4bf8-4924-897e-34d25288892c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"algebraDefault", "[", 
+   RowBox[{"{", "}"}], "]"}], "\n"}], "\n", 
+ RowBox[{"algebraDefault", "[", "]"}]}], "Code",
+ CellLabel->
+  "In[332]:=",ExpressionUUID->"1c602f7a-34b4-4905-b9d6-1eece1b5c12d"],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellLabel->
+  "Out[333]=",ExpressionUUID->"5373dac0-fff2-4c07-9a66-d3e5ff15dfd0"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"On", "[", 
+  RowBox[{"General", "::", "shdw"}], "]"}]], "Code",
+ CellLabel->
+  "In[334]:=",ExpressionUUID->"71d11fa4-e6d4-47bf-8fe5-b35ca93f6154"]
+}, Open  ]]
 },
 Editable->True,
-WindowSize->{1280, 1387},
-WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+WindowSize->{840, 1022},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 TaggingRules-><|"TryRealOnly" -> False|>,
 FrontEndVersion->"14.1 for Mac OS X ARM (64-bit) (July 16, 2024)",
 StyleDefinitions->"Yurie.nb",
@@ -34,7 +91,22 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[400, 13, 149, 2, 66, "Code",ExpressionUUID->"b71d718c-96bd-4c41-b4d1-2f247e30c08f"]
+Cell[400, 13, 171, 4, 66, "Code",ExpressionUUID->"ed9200de-4d0f-4fad-a441-1bc16830704a"],
+Cell[574, 19, 153, 3, 66, "Code",ExpressionUUID->"b71d718c-96bd-4c41-b4d1-2f247e30c08f"],
+Cell[730, 24, 81, 0, 66, "Subsection",ExpressionUUID->"483ae79a-5ec9-4608-91bd-30adef542083"],
+Cell[CellGroupData[{
+Cell[836, 28, 84, 0, 45, "Subsection",ExpressionUUID->"b01ee08e-f0ce-43dd-be14-f03622d6ee56"],
+Cell[923, 30, 142, 3, 66, "Code",ExpressionUUID->"040b4be6-2a7d-4e0a-93ff-6b7a9be13792"],
+Cell[CellGroupData[{
+Cell[1090, 37, 143, 3, 66, "Code",ExpressionUUID->"58f4bb16-c8fd-45ff-b423-849c32a96f5d"],
+Cell[1236, 42, 294, 6, 41, "Output",ExpressionUUID->"9ca65d70-4bf8-4924-897e-34d25288892c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1567, 53, 235, 6, 113, "Code",ExpressionUUID->"1c602f7a-34b4-4905-b9d6-1eece1b5c12d"],
+Cell[1805, 61, 128, 3, 41, "Output",ExpressionUUID->"5373dac0-fff2-4c07-9a66-d3e5ff15dfd0"]
+}, Open  ]],
+Cell[1948, 67, 170, 4, 66, "Code",ExpressionUUID->"71d11fa4-e6d4-47bf-8fe5-b35ca93f6154"]
+}, Open  ]]
 }
 ]
 *)

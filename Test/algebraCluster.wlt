@@ -20,7 +20,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraAdd["alg"][operator -> {x, y}]; 
+	algebraAdd["alg"][operator -> {x, y}]
 	,
 	Null
 	,
@@ -30,7 +30,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraReset["alg"]; 
+	algebraReset["alg"]
 	,
 	Null
 	,
@@ -40,7 +40,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraUnset["alg"]; 
+	algebraUnset["alg"]
 	,
 	Null
 	,
@@ -50,7 +50,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraDefine[{"alg1", "alg2"}]; 
+	algebraDefine["alg1", "alg2"]; 
 	algebraCluster["StarList"]
 	,
 	{"Algebra", "Antipode", "Bialgebra", "Coalgebra", "Conjugate", "Tensor", "alg1", "alg2"}
@@ -101,19 +101,28 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraDefine[]
+	algebraUnset[]
 	,
-	{"Algebra", "Antipode", "Bialgebra", "Coalgebra", "Conjugate", "Tensor"}
+	Null
 	,
 	TestID->"10-algebraCluster.nb"
 ]
 
 VerificationTest[
+	algebraDefine[]
+	,
+	{"Algebra", "Antipode", "Bialgebra", "Coalgebra", "Conjugate", "Tensor"}
+	,
+	TestID->"11-algebraCluster.nb"
+]
+
+VerificationTest[
+	algebraDefault[{}]; 
 	algebraDefault[]
 	,
 	{}
 	,
-	TestID->"11-algebraCluster.nb"
+	TestID->"12-algebraCluster.nb"
 ]
 
 VerificationTest[

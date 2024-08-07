@@ -42,9 +42,9 @@ Begin["`Private`"];
 
 $algebraList = {"BinomialHopf"};
 
-$algebraList//algebraUnset//Quiet;
+$algebraList//algebraUnset//Quiet
 
-$algebraList//algebraDefine;
+$algebraList//algebraDefine
 
 
 (* ::Subsubsection:: *)
@@ -65,7 +65,7 @@ $algebraList//algebraDefine;
     printing->{
 	    x[n_]:>Power[x,n]
     }
-|>//algebraAdd["BinomialHopf"];
+|>//algebraAdd["BinomialHopf"]
 
 
 (* ::Subsection:: *)

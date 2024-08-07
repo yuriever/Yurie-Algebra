@@ -20,7 +20,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraDefine["test"]; 
+	algebraDefine["test"]
 	,
 	Null
 	,
@@ -28,7 +28,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraDefault["test"]; 
+	algebraDefault["test"]
 	,
 	Null
 	,
@@ -36,7 +36,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraAdd["test"][Association[operator -> {x, y, z, xy, yz, xz}, relation -> {x**y -> xy, y**z -> yz, x**z -> xz}]]; 
+	algebraAdd["test"][Association[operator -> {x, y, z, xy, yz, xz}, relation -> {x**y -> xy, y**z -> yz, x**z -> xz}]]
 	,
 	Null
 	,
@@ -78,6 +78,7 @@ VerificationTest[
 ]
 
 VerificationTest[
+	algebraDefault[{}]; 
 	algebraDefault[]
 	,
 	{}

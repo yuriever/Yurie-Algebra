@@ -20,7 +20,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraDefine["test"]; 
+	algebraDefine["test"]
 	,
 	Null
 	,
@@ -28,7 +28,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraDefault["test", "Tensor"]; 
+	algebraDefault["test", "Tensor"]
 	,
 	Null
 	,
@@ -37,7 +37,7 @@ VerificationTest[
 
 VerificationTest[
 	algebraReset["test"]; 
-	(algebraAdd["test"][Association[operator -> {x, y, z}]]; )
+	algebraAdd["test"][Association[operator -> {x, y, z}]]
 	,
 	Null
 	,
@@ -145,9 +145,10 @@ VerificationTest[
 ]
 
 VerificationTest[
+	algebraDefault[{}]; 
 	algebraDefault[]
 	,
-	{"Tensor"}
+	{}
 	,
 	TestID->"17-operatorSeparate.nb"
 ]

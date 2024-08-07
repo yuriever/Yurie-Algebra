@@ -17,11 +17,17 @@ $thisPacletDir::usage =
 $thisKernelDir::usage =
     "directory of kernel.";
 
+$thisDatasetDir::usage =
+    "directory of dataset.";
+
 $thisTestDir::usage =
     "directory of unit test.";
 
 $thisTestSourceDir::usage =
     "directory of source notebook for unit test.";
+
+$thisExampleDir::usage =
+    "directory of example notebook.";
 
 $thisCompletionDir::usage =
     "directory of auto completion data.";
@@ -51,11 +57,17 @@ $thisPacletDir =
 $thisKernelDir =
     FileNameJoin@{$thisPacletDir,"Kernel"};
 
+$thisDatasetDir =
+    FileNameJoin@{$thisPacletDir,"Dataset"};
+
 $thisTestDir =
     $thisPaclet["AssetLocation","Test"];
 
 $thisTestSourceDir =
     $thisPaclet["AssetLocation","TestSource"];
+
+$thisExampleDir =
+    $thisPaclet["AssetLocation","Example"];
 
 $thisCompletionDir =
     FileNameJoin@{$thisPaclet["Location"],"AutoCompletionData"};

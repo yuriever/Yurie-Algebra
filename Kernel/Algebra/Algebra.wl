@@ -69,9 +69,9 @@ Begin["`Private`"];
 
 patternAlg = _String;
 
-patternAlgs = __String;
+patternAlgs = ___String;
 
-patternAlgList = {__String};
+patternAlgList = {___String};
 
 
 (* ::Subsection:: *)
@@ -199,21 +199,12 @@ algebraDefault[] :=
     clusterPropGet[algebraCluster,"StarDefaultList"];
 
 
-(*reset/unset the default except internal algebras.*)
-
-algebraReset[] :=
-    algebraReset@Complement[algebraDefault[],algebraInternal[]];
-
-algebraUnset[] :=
-    algebraUnset@Complement[algebraDefault[],algebraInternal[]];
-
-
 (*reset/unset the defined except internal algebras.*)
 
-algebraReset[All] :=
+algebraReset[] :=
     algebraReset@Complement[algebraDefine[],algebraInternal[]];
 
-algebraUnset[All] :=
+algebraUnset[] :=
     algebraUnset@Complement[algebraDefine[],algebraInternal[]];
 
 
