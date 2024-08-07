@@ -27,25 +27,25 @@ Get["Yurie`Algebra`Usage`"];
 
 Get["Yurie`Algebra`Cache`"];
 
-Needs["Yurie`Algebra`Internal`"];
+Get["Yurie`Algebra`Internal`"];
 
-Needs["Yurie`Algebra`Algebra`"];
+Get["Yurie`Algebra`Algebra`"];
 
-Needs["Yurie`Algebra`Simplify`"];
+Get["Yurie`Algebra`Simplify`"];
 
 
 (* ::Subsection:: *)
 (*Extension*)
 
 
-Needs["Yurie`Algebra`Conjugate`"];
+Get["Yurie`Algebra`Conjugate`"];
 
-Needs["Yurie`Algebra`Tensor`"];
+Get["Yurie`Algebra`Tensor`"];
 
 
-Needs["Yurie`Algebra`Utility`"];
+Get["Yurie`Algebra`Utility`"];
 
-Needs["Yurie`Algebra`Check`"];
+Get["Yurie`Algebra`Check`"];
 
 
 (* ::Section:: *)
