@@ -25,7 +25,7 @@ Get["Yurie`Algebra`Usage`"];
 (*Core*)
 
 
-Get["Yurie`Algebra`Cache`"];
+Get["Yurie`Algebra`Global`"];
 
 Needs["Yurie`Algebra`Internal`"];
 
@@ -64,7 +64,7 @@ Begin["`Private`"];
 
 
 clusterInit[
-    {"algebraCluster","Yurie`Algebra`Cache`"},
+    {"algebraCluster","Yurie`Algebra`Global`"},
     {operator,relation,printing},
     {{},{},{}},
     Values@algebraInternal["Algebra"],
@@ -73,7 +73,7 @@ clusterInit[
 
 
 (* ::Subsubsection:: *)
-(*Cache*)
+(*Global*)
 
 
 starPostIntercept[algebraCluster,"starUpdateDefault",defaultStar_] :=
