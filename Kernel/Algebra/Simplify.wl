@@ -9,7 +9,7 @@ BeginPackage["Yurie`Algebra`Simplify`"];
 
 Needs["Yurie`Algebra`"];
 
-Needs["Yurie`Algebra`Global`"];
+Needs["Yurie`Algebra`Cache`"];
 
 
 (* ::Section:: *)

@@ -4,7 +4,7 @@
 (*Begin*)
 
 
-BeginPackage["Yurie`Algebra`Global`"];
+BeginPackage["Yurie`Algebra`Cache`"];
 
 
 (*clear the state-dependent definitions.*)
