@@ -25,7 +25,7 @@ R::usage =
     "operator: R.";
 
 x::usage =
-	"state.";
+    "state.";
 
 
 (* ::Section:: *)
@@ -51,15 +51,15 @@ $algebraList//algebraDefine
 
 
 <|
-	operator->{R,x},
-	relation->{
-		R[i_,j_,u_,v_]**tensor[x_,y_,z_]:>
-			(u-v)/(u-v+I)*tensor[x,y,z]+I/(u-v+I)*Permute[tensor[x,y,z],Cycles@{{i,j}}]
-	},
-	printing->{
-		(op_?generatorQ)[i_]:>Subscript[op,i],
-		R[i_,j_,u_,v_]:>Subscript[R,i,j]
-	}
+    operator->{R,x},
+    relation->{
+        R[i_,j_,u_,v_]**tensor[x_,y_,z_]:>
+            (u-v)/(u-v+I)*tensor[x,y,z]+I/(u-v+I)*Permute[tensor[x,y,z],Cycles@{{i,j}}]
+    },
+    printing->{
+        (op_?generatorQ)[i_]:>Subscript[op,i],
+        R[i_,j_,u_,v_]:>Subscript[R,i,j]
+    }
 |>//algebraAdd["YBE"]
 
 

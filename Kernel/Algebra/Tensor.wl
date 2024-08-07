@@ -87,7 +87,7 @@ tensorRankEqualQ[op1_tensor,op2_tensor] :=
 
 tensorRankSet[op_,rank_] :=
     (
-    	$tensorRank[op] = rank;
+        $tensorRank[op] = rank;
     );
 
 
