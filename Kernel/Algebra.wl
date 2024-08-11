@@ -7,10 +7,6 @@
 BeginPackage["Yurie`Algebra`"];
 
 
-(*ClearAll["`*"];
-ClearAll["`*`*"];*)
-
-
 Needs["Yurie`Cluster`"];
 
 
