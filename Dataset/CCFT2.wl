@@ -248,7 +248,8 @@ CCFT2 = <|
 (*Function*)
 
 
-Lmonomial[] = 1;
+Lmonomial[] :=
+    1;
 
 Lmonomial[n_] :=
     L[n];
@@ -257,7 +258,8 @@ Lmonomial[n_,m__] :=
     Lmonomial[n]**Lmonomial[m];
 
 
-Mmonomial[] = 1;
+Mmonomial[] :=
+    1;
 
 Mmonomial[n_] :=
     L[n];

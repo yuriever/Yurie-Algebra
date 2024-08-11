@@ -215,7 +215,8 @@ CFT1 = <|
 (*Function*)
 
 
-Lmonomial[] = 1;
+Lmonomial[] :=
+    1;
 
 Lmonomial[n_] :=
     L[n];

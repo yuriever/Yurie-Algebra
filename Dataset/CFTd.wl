@@ -16,7 +16,7 @@ BeginPackage["Yurie`Algebra`CFTd`"];
 
 Needs["Yurie`Algebra`"];
 
-Needs["Yurie`CFT`Cartesian`"];
+Needs["Yurie`Cartesian`"];
 
 
 (* ::Section:: *)
