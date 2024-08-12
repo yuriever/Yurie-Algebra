@@ -7,10 +7,6 @@
 BeginPackage["Yurie`Algebra`Variable`"];
 
 
-(*clear the state-dependent definitions.*)
-ClearAll["`*"];
-
-
 (* ::Section:: *)
 (*Public*)
 
@@ -49,18 +45,6 @@ Begin["`Private`"];
 
 (* ::Subsection:: *)
 (*Main*)
-
-
-$operator = {};
-
-$operatorPattern = _;
-
-$relation = {};
-
-$printing = {};
-
-
-$tensorRank[_] = 1;
 
 
 (* ::Subsection:: *)
