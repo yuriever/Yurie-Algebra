@@ -2,9 +2,7 @@
 
 A Mathematica paclet for implementing and managing finitely presented associative algebras.
 
-## How to use
-
-### Install
+## Install
 
 Install from this repository:
 
@@ -12,28 +10,38 @@ Install from this repository:
 
 2. install the paclet:
 
-    ``` 
-    PacletInstall@File["the/path/of/paclet"];
+    ``` wl
+    PacletInstall@File["the/path/of/paclet"]
     ```
 
-Load the package(s):
+Install manually:
 
-``` 
-Needs["Yurie`Algebra`"];
+1. download this repository;
+
+2. move it to the paclet directory:
+
+    ``` wl
+    $UserBasePacletsDirectory
+    ```
+
+## Load
+
+``` wl
+Needs["Yurie`Algebra`"]
 ```
 
-### Upgrade
+## Upgrade
 
-```
-PacletInstall["Yurie/Algebra"];
-```
-
-### Uninstall
-
-```
-PacletUninstall["Yurie/Algebra"];
+``` wl
+PacletInstall["Yurie/Algebra"]
 ```
 
-### Documentation
+## Uninstall
+
+``` wl
+PacletUninstall["Yurie/Algebra"]
+```
+
+## Documentation
 
 <https://yuriever.github.io/symbolic/package/Algebra/>
