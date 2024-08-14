@@ -54,7 +54,7 @@ VerificationTest[
 VerificationTest[
 	Simplify[(ReplaceAll[f -> Function[x, x]])[operatorSeparate[res]]]
 	,
-	{L[k + m + n] -> 0}
+	{0}
 	,
 	TestID->"6-algebraSimplify-with-assumption.nb"
 ]
@@ -62,7 +62,7 @@ VerificationTest[
 VerificationTest[
 	Simplify[(ReplaceAll[f -> Function[x, x^2]])[operatorSeparate[res]]]
 	,
-	{L[k + m + n] -> 2*(k - n)*(-m + n)*(k^2 - 2*k*m + m^2 - n^2)}
+	{2*(k - n)*(-m + n)*(k^2 - 2*k*m + m^2 - n^2)}
 	,
 	TestID->"7-algebraSimplify-with-assumption.nb"
 ]

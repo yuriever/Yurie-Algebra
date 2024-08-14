@@ -44,11 +44,11 @@ checkLieBracket::usage =
 checkLieModule::usage =
 	"check the action on Lie module.";
 
-checkAssociativity::usage =
-	"check the associativity of multiplication.";
-
 checkCoassociativity::usage =
 	"check the coassociativity of comultiplication.";
+
+checkCounitality::usage =
+	"check the counitality of counit.";
 
 checkAntipode::usage =
 	"check the antipode of Hopf algebra.";
@@ -156,13 +156,13 @@ adjoint::usage =
 	"the adjoint action of Lie algebra.";
 
 adjointExp::usage =
-	"the adjoint action of Lie group trancated at the max order.";
+	"the adjoint action of formal Lie group trancated at the certain order.";
 
 operatorPower::usage =
 	"power of the operator.";
 
 operatorExp::usage =
-	"exponential of the operator trancated at the max order.";
+	"exponential of the operator trancated at the certain order.";
 
 operatorSeparate::usage =
 	"separate scalars and operators in a linear combination.";

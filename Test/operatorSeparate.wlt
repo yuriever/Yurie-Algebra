@@ -45,13 +45,21 @@ VerificationTest[
 ]
 
 VerificationTest[
+	SetOptions[operatorSeparate, "Operator" -> True]
+	,
+	{"Scalar" -> True, "Operator" -> True}
+	,
+	TestID->"5-operatorSeparate.nb"
+]
+
+VerificationTest[
 	operatorSeparate[1]
 	,
 	1
 	,
 	{Yurie`Algebra`operatorSeparate::notOperator}
 	,
-	TestID->"5-operatorSeparate.nb"
+	TestID->"6-operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -59,7 +67,7 @@ VerificationTest[
 	,
 	{x -> 1}
 	,
-	TestID->"6-operatorSeparate.nb"
+	TestID->"7-operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -67,7 +75,7 @@ VerificationTest[
 	,
 	{x -> 2}
 	,
-	TestID->"7-operatorSeparate.nb"
+	TestID->"8-operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -75,7 +83,7 @@ VerificationTest[
 	,
 	{x**y -> 1}
 	,
-	TestID->"8-operatorSeparate.nb"
+	TestID->"9-operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -83,7 +91,7 @@ VerificationTest[
 	,
 	{x**y -> 2}
 	,
-	TestID->"9-operatorSeparate.nb"
+	TestID->"10-operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -91,7 +99,7 @@ VerificationTest[
 	,
 	{tensor[x, y] -> 1}
 	,
-	TestID->"10-operatorSeparate.nb"
+	TestID->"11-operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -99,7 +107,7 @@ VerificationTest[
 	,
 	{tensor[x, y] -> 2}
 	,
-	TestID->"11-operatorSeparate.nb"
+	TestID->"12-operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -107,7 +115,7 @@ VerificationTest[
 	,
 	{x -> a[0], x**y -> a[1]}
 	,
-	TestID->"12-operatorSeparate.nb"
+	TestID->"13-operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -115,7 +123,7 @@ VerificationTest[
 	,
 	{a[0], a[1]}
 	,
-	TestID->"13-operatorSeparate.nb"
+	TestID->"14-operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -123,7 +131,15 @@ VerificationTest[
 	,
 	{x, x**y}
 	,
-	TestID->"14-operatorSeparate.nb"
+	TestID->"15-operatorSeparate.nb"
+]
+
+VerificationTest[
+	SetOptions[operatorSeparate, "Operator" -> False]
+	,
+	{"Scalar" -> True, "Operator" -> False}
+	,
+	TestID->"16-operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -133,7 +149,7 @@ VerificationTest[
 	,
 	{Yurie`Cluster`cluster::rmdefault}
 	,
-	TestID->"15-operatorSeparate.nb"
+	TestID->"17-operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -141,7 +157,7 @@ VerificationTest[
 	,
 	{"Algebra", "Antipode", "Bialgebra", "Coalgebra", "Conjugate", "Tensor"}
 	,
-	TestID->"16-operatorSeparate.nb"
+	TestID->"18-operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -150,7 +166,7 @@ VerificationTest[
 	,
 	{}
 	,
-	TestID->"17-operatorSeparate.nb"
+	TestID->"19-operatorSeparate.nb"
 ]
 
 VerificationTest[

@@ -226,7 +226,7 @@ operatorSeparate::notOperator =
 
 operatorSeparate//Options = {
     "Scalar"->True,
-    "Operator"->True
+    "Operator"->False
 };
 
 
