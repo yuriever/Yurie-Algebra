@@ -71,16 +71,19 @@ checkAssociativity[x_,y_,z_] :=
         ];
 
 
-checkCoassociativity[x_,y_,z_] :=
-    pass;
+checkCoassociativity[x_] :=
+    {x}->Simplify[
+        comultiplyInTensor["Left"]@algebraSimplify@comultiply[x]-
+        comultiplyInTensor["Right"]@algebraSimplify@comultiply[x]
+    ];
 
 
 checkAntipode[x_] :=
-    Simplify[{
-        multiplyWithAntipode["Left"]@algebraSimplify[comultiply[x]]-
-            algebraSimplify@counit[x]*id,
-        multiplyWithAntipode["Right"]@algebraSimplify[comultiply[x]]-
-            algebraSimplify@counit[x]*id
+    {x}->Simplify[{
+        multiplyTensorWithAntipode["Left"]@algebraSimplify@comultiply[x]-
+            algebraSimplify[counit[x]*id],
+        multiplyTensorWithAntipode["Right"]@algebraSimplify@comultiply[x]-
+            algebraSimplify[counit[x]*id]
     }];
 
 
@@ -88,18 +91,47 @@ checkAntipode[x_] :=
 (*Helper*)
 
 
-multiplyWithAntipode["Left"][expr_] :=
-    algebraSimplify@Replace[
-        expr,
-        tensor[op1_,op2_]:>antipode[op1]**op2,
-        {0,2}
+multiplyTensor[x_+y_] :=
+    multiplyTensor[x]+multiplyTensor[y];
+
+multiplyTensor[k_?scalarQ*x_.] :=
+    k*multiplyTensor[x];
+
+multiplyTensor[tensor[x_,y_]] :=
+    algebraSimplify[x**y];
+
+
+comultiplyInTensor[side_][x_+y_] :=
+    comultiplyInTensor[side][x]+comultiplyInTensor[side][y];
+
+comultiplyInTensor[side_][k_?scalarQ*x_.] :=
+    k*comultiplyInTensor[side][x];
+
+comultiplyInTensor["Left"][tensor[x_,y_]] :=
+    algebraSimplify[
+        tensor[algebraSimplify@comultiply[x],y]
     ];
 
-multiplyWithAntipode["Right"][expr_] :=
-    algebraSimplify@Replace[
-        expr,
-        tensor[op1_,op2_]:>op1**antipode[op2],
-        {0,2}
+comultiplyInTensor["Right"][tensor[x_,y_]] :=
+    algebraSimplify[
+        tensor[x,algebraSimplify@comultiply[y]]
+    ];
+
+
+multiplyTensorWithAntipode[side_][x_+y_] :=
+    multiplyTensorWithAntipode[side][x]+multiplyTensorWithAntipode[side][y];
+
+multiplyTensorWithAntipode[side_][k_?scalarQ*x_.] :=
+    k*multiplyTensorWithAntipode[side][x];
+
+multiplyTensorWithAntipode["Left"][tensor[x_,y_]] :=
+    algebraSimplify[
+        algebraSimplify@antipode[x]**y
+    ];
+
+multiplyTensorWithAntipode["Right"][tensor[x_,y_]] :=
+    algebraSimplify[
+        x**algebraSimplify@antipode[y]
     ];
 
 

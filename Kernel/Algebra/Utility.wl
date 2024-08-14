@@ -39,10 +39,10 @@ commDefine::usage =
 
 
 adjoint::usage =
-    "the adjoint action of Lie algebra, ad^order_op expr."
+    "the adjoint action of Lie algebra.";
 
 adjointExp::usage =
-    "the adjoint action of Lie group upto the max order, Exp[para op] expr Exp[-para op].";
+    "the adjoint action of formal Lie group trancated at the certain order.";
 
 
 (* ::Subsection:: *)
@@ -50,10 +50,10 @@ adjointExp::usage =
 
 
 operatorPower::usage =
-    "power of the operator, op^order.";
+    "power of the operator.";
 
 operatorExp::usage =
-    "exponential of the operator upto the max order, Exp[para op].";
+    "exponential of the operator trancated at the certain order.";
 
 
 (* ::Subsection:: *)
@@ -156,12 +156,12 @@ commDefine/:rule_[
 
 
 stripPattern[pattern_] :=
-    pattern//.{
+    pattern//ReplaceRepeated[{
         (
             Verbatim[Pattern]|Verbatim[Optional]|
                 Verbatim[PatternTest]|Verbatim[Condition]
-        )[$$pattern_,_]:>$$pattern
-    };
+        )[pattern1_,_]:>pattern1
+    }];
 
 
 (* ::Subsection:: *)

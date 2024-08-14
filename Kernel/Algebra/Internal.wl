@@ -90,6 +90,7 @@ algebraInternal["Algebra"] = <|
 algebraInternal["Tensor"] = <|
     operator->{},
     relation->{
+        (*linearity*)
         tensor[x_,k_?scalarQ*y_.]:>
             k*tensor[x,y],
         tensor[k_?scalarQ*x_.,y_]:>
@@ -98,6 +99,7 @@ algebraInternal["Tensor"] = <|
             tensor[x,z]+tensor[y,z], 
         tensor[z_,x_+y_]:>
             tensor[z,x]+tensor[z,y],
+        (*composition*)
         x_tensor**y_tensor:>
             tensorCompose[x**y]/;tensorRankEqualQ[x,y]
     },
@@ -114,12 +116,15 @@ algebraInternal["Tensor"] = <|
 algebraInternal["Conjugate"] = <|
     operator->{},
     relation->{
+        (*linearity*)
         conjugate[k_?scalarQ*x_.]:>
             Conjugate[k]*conjugate[x],
         conjugate[x_+y_]:>
             conjugate[x]+conjugate[y],
+        (*anti-morphism*)
         conjugate[x_**y_]:>
             conjugate[y]**conjugate[x],
+        (*identity*)
         conjugate[id]:>id
     },
     printing->{
@@ -135,10 +140,12 @@ algebraInternal["Conjugate"] = <|
 algebraInternal["Coalgebra"] = <|
     operator->{},
     relation->{
+        (*linearity*)
         comultiply[k_?scalarQ*x_.]:>
             k*comultiply[x],
         comultiply[x_+y_]:>
             comultiply[x]+comultiply[y],
+        (*linearity*)
         counit[k_?scalarQ*x_.]:>
             k*counit[x],
         counit[x_+y_]:>
@@ -158,6 +165,7 @@ algebraInternal["Coalgebra"] = <|
 algebraInternal["Bialgebra"] = <|
     operator->{},
     relation->{
+        (*compatibility between coalgebra and algebra structures*)
         comultiply[x_**y_]:>
             comultiply[x]**comultiply[y],
         comultiply[id]:>
@@ -178,12 +186,15 @@ algebraInternal["Bialgebra"] = <|
 algebraInternal["Antipode"] = <|
     operator->{},
     relation->{
+        (*linearity*)
         antipode[k_?scalarQ*x_.]:>
             k*antipode[x],
         antipode[x_+y_]:>
             antipode[x]+antipode[y],
+        (*anti-morphism*)
         antipode[x_**y_]:>
             antipode[y]**antipode[x],
+        (*identity*)
         antipode[id]:>
             id
     },

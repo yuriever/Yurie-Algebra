@@ -153,16 +153,16 @@ commDefine::usage =
 	"define commutation relations with condition, order-reversing or anti-commutator.";
 
 adjoint::usage =
-	"the adjoint action of Lie algebra, ad^order_op expr.";
+	"the adjoint action of Lie algebra.";
 
 adjointExp::usage =
-	"the adjoint action of Lie group upto the max order, Exp[para op] expr Exp[-para op].";
+	"the adjoint action of Lie group trancated at the max order.";
 
 operatorPower::usage =
-	"power of the operator, op^order.";
+	"power of the operator.";
 
 operatorExp::usage =
-	"exponential of the operator upto the max order, Exp[para op].";
+	"exponential of the operator trancated at the max order.";
 
 operatorSeparate::usage =
 	"separate scalars and operators in a linear combination.";
