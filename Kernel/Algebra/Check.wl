@@ -20,14 +20,11 @@ checkLieBracket::usage =
 checkLieModule::usage =
     "check the action on Lie module.";
 
-(*checkAssociativity::usage =
-    "check the associativity of multiplication.";*)
-
 checkCoassociativity::usage =
     "check the coassociativity of comultiplication.";
 
 checkCounitality::usage =
-	"check the counitality of counit.";
+    "check the counitality of counit.";
 
 checkAntipode::usage =
     "check the antipode of Hopf algebra.";
@@ -66,28 +63,20 @@ checkLieModule[x_,y_,z_] :=
         ];
 
 
-checkAssociativity[x_,y_,z_] :=
-    {x,y,z}->
-        Simplify[
-            algebraSimplify[algebraSimplify[x**y]**z]-
-            algebraSimplify[x**algebraSimplify[y**z]]
-        ];
-
-
-checkCounitality[x_]:=
-	{x}->Simplify[{
-        multiplyTensorWithCounit["Left"]@algebraSimplify@comultiply[x]-
-            x,
-        multiplyTensorWithCounit["Right"]@algebraSimplify@comultiply[x]-
-            x
-    }];
-
-
 checkCoassociativity[x_] :=
     {x}->Simplify[
         comultiplyInTensor["Left"]@algebraSimplify@comultiply[x]-
         comultiplyInTensor["Right"]@algebraSimplify@comultiply[x]
     ];
+
+
+checkCounitality[x_] :=
+    {x}->Simplify[{
+        multiplyTensorWithCounit["Left"]@algebraSimplify@comultiply[x]-
+            x,
+        multiplyTensorWithCounit["Right"]@algebraSimplify@comultiply[x]-
+            x
+    }];
 
 
 checkAntipode[x_] :=
