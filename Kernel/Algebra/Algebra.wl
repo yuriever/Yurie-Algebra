@@ -52,6 +52,9 @@ algebraUnset::usage =
 algebraAdd::usage =
     "add elements to the algebras.";
 
+algebraMinus::usage =
+    "delete elements from the algebras.";
+
 algebraShow::usage =
     "show the algebra.";
 
@@ -64,91 +67,94 @@ Begin["`Private`"];
 
 
 (* ::Subsection:: *)
-(*Constant*)
-
-
-patternAlg = _String;
-
-patternAlgs = ___String;
-
-patternAlgList = {___String};
-
-
-(* ::Subsection:: *)
-(*Main*)
-
-
-(* ::Subsubsection:: *)
 (*algebraDefine*)
 
 
-algebraDefine[algList:patternAlgList] :=
-    starDefine[algebraCluster,algList];
-
-algebraDefine[algs:patternAlgs] :=
+algebraDefine[algs___String|{algs___String}] :=
     starDefine[algebraCluster,{algs}];
 
 
-(* ::Subsubsection:: *)
+(* ::Subsection:: *)
 (*algebraDefineQ*)
 
 
-algebraDefineQ[alg:patternAlg] :=
+algebraDefineQ[alg_String] :=
     MemberQ[clusterPropGet[algebraCluster,"StarList"],alg];
 
 algebraDefineQ[_] :=
     False;
 
 
-(* ::Subsubsection:: *)
+(* ::Subsection:: *)
 (*algebraDefault*)
 
 
-algebraDefault[algList:patternAlgList] :=
-    starDefault[algebraCluster,algList];
-
-algebraDefault[algs:patternAlgs] :=
+algebraDefault[algs___String|{algs___String}] :=
     starDefault[algebraCluster,{algs}];
 
 
-(* ::Subsubsection:: *)
+(* ::Subsection:: *)
 (*algebraReset*)
 
 
-algebraReset[algList:patternAlgList] :=
-    starReset[algebraCluster,algList];
-
-algebraReset[algs:patternAlgs] :=
+algebraReset[algs___String|{algs___String}] :=
     starReset[algebraCluster,{algs}];
 
 
-(* ::Subsubsection:: *)
+(* ::Subsection:: *)
 (*algebraUnset*)
 
 
-algebraUnset[algList:patternAlgList] :=
-    starUnset[algebraCluster,algList];
-
-algebraUnset[algs:patternAlgs] :=
+algebraUnset[algs___String|{algs___String}] :=
     starUnset[algebraCluster,{algs}];
 
 
-(* ::Subsubsection:: *)
+(* ::Subsection:: *)
 (*algebraAdd*)
 
 
-algebraAdd[algList:patternAlgList][assoc_] :=
-    starMerge[algebraCluster,algList,assoc];
-
-algebraAdd[algs:patternAlgs][assoc_] :=
+algebraAdd[algs___String|{algs___String}][assoc_] :=
     starMerge[algebraCluster,{algs},assoc];
 
 
+(* ::Subsection:: *)
+(*algebraMinus*)
+
+
 (* ::Subsubsection:: *)
+(*Main*)
+
+
+algebraMinus[algs___String|{algs___String}][assoc_] :=
+    starChange[algebraCluster,{algs},{assoc},{operator->complementList,relation->complementRuleList,printing->complementRuleList}];
+
+
+(* ::Subsubsection:: *)
+(*Helper*)
+
+
+complementList[list1_List,list2_List] :=
+    DeleteCases[list1,Alternatives@@list2];
+
+complementList[list_List] :=
+    list;
+
+
+complementRuleList[list1_List,rulelist_List] :=
+    DeleteCases[list1,Alternatives@@Verbatim/@rulelist];
+
+complementRuleList[list_List] :=
+    list
+
+(* ::Subsection:: *)
 (*algebraShow*)
 
 
-algebraShow[alg:patternAlg]/;algebraDefineQ[alg] :=
+(* ::Subsubsection:: *)
+(*Main*)
+
+
+algebraShow[alg_String]/;algebraDefineQ[alg] :=
     Module[ {algData},
         algData = clusterPropGet[algebraCluster,"StarData"][alg];
         algebraShowKernel[algData[operator],algData[relation],algData[printing]]
@@ -160,6 +166,10 @@ algebraShow[] :=
         Print["Default algebras: ",Row[clusterPropGet[algebraCluster,"StarDefaultList"],", "],"."];
         algebraShowKernel[algData[operator],algData[relation],algData[printing]]
     ];
+
+
+(* ::Subsubsection:: *)
+(*Helper*)
 
 
 algebraShowKernel[operatorList_,relationList_,printingList_] :=
@@ -218,13 +228,13 @@ printing[] :=
     clusterPropGet[algebraCluster,"StarDefaultData"][printing];
 
 
-operator[alg:patternAlg] :=
+operator[alg_String] :=
     clusterPropGet[algebraCluster,"StarData"][alg,operator];
 
-relation[alg:patternAlg] :=
+relation[alg_String] :=
     clusterPropGet[algebraCluster,"StarData"][alg,relation];
 
-printing[alg:patternAlg] :=
+printing[alg_String] :=
     clusterPropGet[algebraCluster,"StarData"][alg,printing];
 
 

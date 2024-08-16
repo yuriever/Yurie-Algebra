@@ -64,7 +64,7 @@ VerificationTest[
 VerificationTest[
 	algebraDefine[]
 	,
-	{"Algebra", "Antipode", "Bialgebra", "Coalgebra", "Conjugate", "Tensor"}
+	{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
 	,
 	TestID->"7-CCFT2.nb"
 ]

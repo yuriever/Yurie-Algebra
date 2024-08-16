@@ -23,7 +23,7 @@ VerificationTest[
 	algebraDefine[{}]; 
 	algebraDefine[]
 	,
-	{"Algebra", "Antipode", "Bialgebra", "Coalgebra", "Conjugate", "Tensor"}
+	{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
 	,
 	TestID->"2-algebraCluster-edge-case.nb"
 ]
@@ -67,7 +67,7 @@ VerificationTest[
 VerificationTest[
 	algebraDefine[]
 	,
-	{"Algebra", "Antipode", "Bialgebra", "Coalgebra", "Conjugate", "Tensor"}
+	{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
 	,
 	TestID->"7-algebraCluster-edge-case.nb"
 ]

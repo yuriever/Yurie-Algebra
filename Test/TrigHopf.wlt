@@ -1,6 +1,6 @@
 
 
-(*Sweedler.nb*)
+(*TrigHopf.nb*)
 
 VerificationTest[
 	Begin["Global`"];
@@ -8,7 +8,7 @@ VerificationTest[
 	,
 	Null
 	,
-	TestID->"0-Sweedler.nb"
+	TestID->"0-TrigHopf.nb"
 ]
 
 VerificationTest[
@@ -16,47 +16,47 @@ VerificationTest[
 	,
 	Null
 	,
-	TestID->"1-Sweedler.nb"
+	TestID->"1-TrigHopf.nb"
 ]
 
 VerificationTest[
-	Get["Yurie`Algebra`Sweedler`"]
+	Get["Yurie`Algebra`TrigHopf`"]
 	,
 	Null
 	,
-	TestID->"2-Sweedler.nb"
+	TestID->"2-TrigHopf.nb"
 ]
 
 VerificationTest[
-	algebraDefault[{"Sweedler", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}]
+	algebraDefault[{"TrigHopf", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}]
 	,
 	Null
 	,
-	TestID->"3-Sweedler.nb"
+	TestID->"3-TrigHopf.nb"
 ]
 
 VerificationTest[
 	(Map[checkCoassociativity])[operator[]]
 	,
-	{{id} -> 0, {g} -> 0, {x} -> 0}
+	{{id} -> 0, {c} -> 0, {s} -> 0}
 	,
-	TestID->"4-Sweedler.nb"
+	TestID->"4-TrigHopf.nb"
 ]
 
 VerificationTest[
 	(Map[checkCounitality])[operator[]]
 	,
-	{{id} -> {0, 0}, {g} -> {0, 0}, {x} -> {0, 0}}
+	{{id} -> {0, 0}, {c} -> {0, 0}, {s} -> {0, 0}}
 	,
-	TestID->"5-Sweedler.nb"
+	TestID->"5-TrigHopf.nb"
 ]
 
 VerificationTest[
 	(Map[checkAntipode])[operator[]]
 	,
-	{{id} -> {0, 0}, {g} -> {0, 0}, {x} -> {0, 0}}
+	{{id} -> {0, 0}, {c} -> {0, 0}, {s} -> {0, 0}}
 	,
-	TestID->"6-Sweedler.nb"
+	TestID->"6-TrigHopf.nb"
 ]
 
 VerificationTest[
@@ -66,7 +66,7 @@ VerificationTest[
 	,
 	{Yurie`Cluster`cluster::rmdefault}
 	,
-	TestID->"7-Sweedler.nb"
+	TestID->"7-TrigHopf.nb"
 ]
 
 VerificationTest[
@@ -74,7 +74,7 @@ VerificationTest[
 	,
 	{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
 	,
-	TestID->"8-Sweedler.nb"
+	TestID->"8-TrigHopf.nb"
 ]
 
 VerificationTest[
@@ -83,7 +83,7 @@ VerificationTest[
 	,
 	{}
 	,
-	TestID->"9-Sweedler.nb"
+	TestID->"9-TrigHopf.nb"
 ]
 
 VerificationTest[
@@ -91,7 +91,7 @@ VerificationTest[
 	,
 	Null
 	,
-	TestID->"10-Sweedler.nb"
+	TestID->"10-TrigHopf.nb"
 ]
 
 VerificationTest[
@@ -100,5 +100,5 @@ VerificationTest[
 	,
 	"Global`"
 	,
-	TestID->"∞-Sweedler.nb"
+	TestID->"∞-TrigHopf.nb"
 ]

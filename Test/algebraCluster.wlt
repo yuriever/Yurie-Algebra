@@ -53,40 +53,74 @@ VerificationTest[
 	algebraDefine["alg1", "alg2"]; 
 	algebraDefine[]
 	,
-	{"Algebra", "Antipode", "Bialgebra", "Coalgebra", "Conjugate", "Tensor", "alg1", "alg2"}
+	{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode", "alg1", "alg2"}
 	,
 	TestID->"5-algebraCluster.nb"
 ]
 
 VerificationTest[
-	algebraAdd["alg1"][{operator -> {x}}]; 
-	algebraAdd[{"alg1", "alg2"}][Association[operator -> {y, z}, printing -> {y -> 1}]]; 
 	algebraDefault[{"alg1", "alg2"}]; 
-	operator[]
+	algebraDefault[]
 	,
-	{id, x, y, z}
+	{"alg1", "alg2"}
 	,
 	TestID->"6-algebraCluster.nb"
+]
+
+VerificationTest[
+	algebraAdd["alg1"][{operator -> {w, z}}]; 
+	algebraAdd["alg1", "alg2"][Association[operator -> {y, x}, relation -> {w -> 1, z -> 1, y -> 1 /; x}]]; 
+	operator[]
+	,
+	{id, w, z, y, x}
+	,
+	TestID->"7-algebraCluster.nb"
+]
+
+VerificationTest[
+	algebraMinus["alg1", "alg2"][{operator -> {z}}]; 
+	operator[]
+	,
+	{id, w, y, x}
+	,
+	TestID->"8-algebraCluster.nb"
+]
+
+VerificationTest[
+	relation["alg1"]
+	,
+	{w -> 1, z -> 1, y -> 1 /; x}
+	,
+	TestID->"9-algebraCluster.nb"
+]
+
+VerificationTest[
+	algebraMinus["alg1", "alg2"][relation -> {y -> 1 /; x}]; 
+	relation["alg1"]
+	,
+	{w -> 1, z -> 1}
+	,
+	TestID->"10-algebraCluster.nb"
 ]
 
 VerificationTest[
 	algebraReset["alg1"]; 
 	operator[]
 	,
-	{id, y, z}
+	{id, y, x}
 	,
-	TestID->"7-algebraCluster.nb"
+	TestID->"11-algebraCluster.nb"
 ]
 
 VerificationTest[
 	algebraUnset["alg1"]; 
 	operator[]
 	,
-	{id, y, z}
+	{id, y, x}
 	,
 	{Yurie`Cluster`cluster::rmdefault}
 	,
-	TestID->"8-algebraCluster.nb"
+	TestID->"12-algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -97,7 +131,7 @@ VerificationTest[
 	,
 	{Yurie`Cluster`cluster::rmdefault}
 	,
-	TestID->"9-algebraCluster.nb"
+	TestID->"13-algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -105,15 +139,15 @@ VerificationTest[
 	,
 	Null
 	,
-	TestID->"10-algebraCluster.nb"
+	TestID->"14-algebraCluster.nb"
 ]
 
 VerificationTest[
 	algebraDefine[]
 	,
-	{"Algebra", "Antipode", "Bialgebra", "Coalgebra", "Conjugate", "Tensor"}
+	{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
 	,
-	TestID->"11-algebraCluster.nb"
+	TestID->"15-algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -122,7 +156,7 @@ VerificationTest[
 	,
 	{}
 	,
-	TestID->"12-algebraCluster.nb"
+	TestID->"16-algebraCluster.nb"
 ]
 
 VerificationTest[

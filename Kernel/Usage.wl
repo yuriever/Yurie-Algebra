@@ -32,6 +32,9 @@ algebraUnset::usage =
 algebraAdd::usage =
 	"add elements to the algebras.";
 
+algebraMinus::usage =
+	"delete elements from the algebras.";
+
 algebraShow::usage =
 	"show the algebra.";
 

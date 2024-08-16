@@ -36,11 +36,20 @@ VerificationTest[
 ]
 
 VerificationTest[
+	algebraMinus["BinomialHopf"][relation -> {antipode[x[Yurie`Algebra`BinomialHopf`Private`n_]] :> (-1)^Yurie`Algebra`BinomialHopf`Private`n*x[Yurie`Algebra`BinomialHopf`Private`n]}]; 
+	algebraAdd["BinomialHopf"][relation -> {antipode[x[n_]] :> Symbol["a"][n]*x[n]}]
+	,
+	Null
+	,
+	TestID->"4-BonimialHopf.nb"
+]
+
+VerificationTest[
 	eqs = operatorSeparate[Extract[{All, 2, 1}][(Map[checkAntipode[x[#1]] & ])[Range[5]]]]
 	,
 	{1 + a[1], 1 + 2*a[1] + a[2], 1 + 3*a[1] + 3*a[2] + a[3], 1 + 4*a[1] + 6*a[2] + 4*a[3] + a[4], 1 + 5*a[1] + 10*a[2] + 10*a[3] + 5*a[4] + a[5]}
 	,
-	TestID->"4-BonimialHopf.nb"
+	TestID->"5-BonimialHopf.nb"
 ]
 
 VerificationTest[
@@ -48,7 +57,7 @@ VerificationTest[
 	,
 	{{a[1] -> -1, a[2] -> 1, a[3] -> -1, a[4] -> 1, a[5] -> -1}}
 	,
-	TestID->"5-BonimialHopf.nb"
+	TestID->"6-BonimialHopf.nb"
 ]
 
 VerificationTest[
@@ -58,15 +67,15 @@ VerificationTest[
 	,
 	{Yurie`Cluster`cluster::rmdefault}
 	,
-	TestID->"6-BonimialHopf.nb"
+	TestID->"7-BonimialHopf.nb"
 ]
 
 VerificationTest[
 	algebraDefine[]
 	,
-	{"Algebra", "Antipode", "Bialgebra", "Coalgebra", "Conjugate", "Tensor"}
+	{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
 	,
-	TestID->"7-BonimialHopf.nb"
+	TestID->"8-BonimialHopf.nb"
 ]
 
 VerificationTest[
@@ -75,7 +84,7 @@ VerificationTest[
 	,
 	{}
 	,
-	TestID->"8-BonimialHopf.nb"
+	TestID->"9-BonimialHopf.nb"
 ]
 
 VerificationTest[
@@ -83,7 +92,7 @@ VerificationTest[
 	,
 	Null
 	,
-	TestID->"9-BonimialHopf.nb"
+	TestID->"10-BonimialHopf.nb"
 ]
 
 VerificationTest[

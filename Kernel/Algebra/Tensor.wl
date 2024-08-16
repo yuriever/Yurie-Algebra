@@ -50,21 +50,6 @@ Begin["`Private`"];
 
 
 (* ::Subsection:: *)
-(*Message*)
-
-
-dummyHead::usage =
-    "head placeholder used by tensorCompose.";
-
-dummySlot::usage =
-    "slot placeholder used by tensorCompose.";
-
-
-(* ::Subsection:: *)
-(*Tensor product*)
-
-
-(* ::Subsubsection:: *)
 (*tensorRankEqualQ*)
 
 
@@ -81,7 +66,7 @@ tensorRankEqualQ[op1_tensor,op2_tensor] :=
     Total[$tensorRank/@op1,AllowedHeads->tensor]==Total[$tensorRank/@op2,AllowedHeads->tensor];
 
 
-(* ::Subsubsection:: *)
+(* ::Subsection:: *)
 (*tensorRankSet*)
 
 
@@ -91,7 +76,7 @@ tensorRankSet[op_,rank_] :=
     );
 
 
-(* ::Subsubsection:: *)
+(* ::Subsection:: *)
 (*tensorRankGet*)
 
 
@@ -111,14 +96,29 @@ tensorRankGet[k_?scalarQ*op_tensor] :=
     tensorRankGet[op];
 
 
-(* ::Subsubsection:: *)
+(* ::Subsection:: *)
 (*tensorCompose*)
+
+
+(* ::Subsubsection:: *)
+(*Main*)
 
 
 tensorCompose[op1_**op2_] :=
     dummyHead[tensorPadRight[List@@op1],tensorPadRight[List@@op2]]//Thread//
     	Split[#,MemberQ[#2,dummySlot]&]&//Map[Thread[#,dummyHead]&]//
 			ReplaceAll[dummySlot->Sequence[]]//ReplaceAll[List[op_]:>op]//ReplaceAll[{dummyHead->NonCommutativeMultiply,List->tensor}];
+
+
+(* ::Subsubsection:: *)
+(*Helper*)
+
+
+dummyHead::usage =
+    "head placeholder used by tensorCompose.";
+
+dummySlot::usage =
+    "slot placeholder used by tensorCompose.";
 
 
 tensorPadRight[opList_] :=
@@ -129,6 +129,22 @@ tensorPadRight[opList_] :=
 
 
 (* ::Subsection:: *)
+(*tensorSwap*)
+
+
+tensorSwap[i_,j_][x_+y_] :=
+    tensorSwap[side][x]+tensorSwap[side][y];
+
+tensorSwap[i_,j_][k_?scalarQ*x_.] :=
+    k*tensorSwap[side][x];
+
+tensorSwap[i_,j_][tensor[x_,y_]] :=
+    algebraSimplify[
+        tensor[algebraSimplify@comultiply[x],y]
+    ];
+
+
+(* ::Subsection::Closed:: *)
 (*End*)
 
 

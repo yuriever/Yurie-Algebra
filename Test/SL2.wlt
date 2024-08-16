@@ -128,7 +128,7 @@ VerificationTest[
 VerificationTest[
 	algebraDefine[]
 	,
-	{"Algebra", "Antipode", "Bialgebra", "Coalgebra", "Conjugate", "Tensor"}
+	{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
 	,
 	TestID->"15-SL2.nb"
 ]

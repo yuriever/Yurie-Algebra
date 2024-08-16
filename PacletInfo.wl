@@ -41,7 +41,8 @@ PacletObject[
           "Yurie`Algebra`SL2`",
           "Yurie`Algebra`YBE`",
           "Yurie`Algebra`BinomialHopf",
-          "Yurie`Algebra`Sweedler"
+          "Yurie`Algebra`Sweedler",
+          "Yurie`Algebra`TrigHopf`"
         }
       },
       {

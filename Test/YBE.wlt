@@ -36,10 +36,9 @@ VerificationTest[
 ]
 
 VerificationTest[
-	expr = tensor[id, R[1, 2, u, v]]**tensor[x[1], x[2], x[3], x[4]]; 
-	algP[algSE[expr]]
+	algP[algSE[R[1, 2, u, v]**tensor[x[1], x[2], x[3]]]]
 	,
-	(1 ⊗ Subscript[R, 1, 2])**(Subscript[x, 1] ⊗ Subscript[x, 2] ⊗ Subscript[x, 3] ⊗ Subscript[x, 4]) == ((u - v)*Subscript[x, 1] ⊗ Subscript[x, 2] ⊗ Subscript[x, 3] ⊗ Subscript[x, 4] + I*Subscript[x, 1] ⊗ Subscript[x, 3] ⊗ Subscript[x, 2] ⊗ Subscript[x, 4])/(I + u - v)
+	Subscript[R, 1, 2]**(Subscript[x, 1] ⊗ Subscript[x, 2] ⊗ Subscript[x, 3]) == ((u - v)*Subscript[x, 1] ⊗ Subscript[x, 2] ⊗ Subscript[x, 3] + I*Subscript[x, 2] ⊗ Subscript[x, 1] ⊗ Subscript[x, 3])/(I + u - v)
 	,
 	TestID->"4-YBE.nb"
 ]
@@ -82,7 +81,7 @@ VerificationTest[
 VerificationTest[
 	algebraDefine[]
 	,
-	{"Algebra", "Antipode", "Bialgebra", "Coalgebra", "Conjugate", "Tensor"}
+	{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
 	,
 	TestID->"9-YBE.nb"
 ]

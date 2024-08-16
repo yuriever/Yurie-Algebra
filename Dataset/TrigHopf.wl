@@ -11,7 +11,7 @@ Needs["Yurie`Algebra`"];
 (*Begin*)
 
 
-BeginPackage["Yurie`Algebra`BinomialHopf`"];
+BeginPackage["Yurie`Algebra`TrigHopf`"];
 
 
 Needs["Yurie`Algebra`"];
@@ -21,8 +21,11 @@ Needs["Yurie`Algebra`"];
 (*Public*)
 
 
-x::usage =
-    "operator.";
+c::usage =
+    "operator: c.";
+
+s::usage =
+    "operator: s.";
 
 
 (* ::Section:: *)
@@ -40,31 +43,27 @@ Begin["`Private`"];
 (*Algebra*)
 
 
-$algebraList = {"BinomialHopf"};
+$algebraList = {"TrigHopf"};
 
 $algebraList//algebraUnset//Quiet
 
 $algebraList//algebraDefine
 
 
-(* ::Subsubsection:: *)
-(*BinomialHopf*)
-
-
 <|
-    operator->{x},
+    operator->{c,s},
     relation->{
-        x[0]->id,
-		x[n_]**x[m_]:>x[n+m],
-		comultiply[x[n_]]:>
-			Sum[Binomial[n,i]*tensor[x[i],x[n-i]],{i,0,n}],
-		counit[x[n_]]:>KroneckerDelta[n,0],
-		antipode[x[n_]]:>(-1)^n*x[n]
+	    s**s->id-c**c,
+	    c**s->s**c,
+		comultiply[c]->tensor[c,c]-tensor[s,s],
+		comultiply[s]->tensor[c,s]+tensor[s,c],
+		counit[c]->1,
+		counit[s]->0,
+		antipode[c]->c,
+		antipode[s]->-s
     },
-    printing->{
-	    x[n_]:>Power[x,n]
-    }
-|>//algebraAdd["BinomialHopf"]
+    printing->{}
+|>//algebraAdd["TrigHopf"]
 
 
 (* ::Subsection:: *)
