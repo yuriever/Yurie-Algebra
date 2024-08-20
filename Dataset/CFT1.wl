@@ -81,11 +81,11 @@ $algebraList//algebraDefine
 
 
 <|
-    operator->{L},
-    relation->{
+    "Generator"->{L},
+    "Relation"->{
         L[n_]**L[m_]:>L[m]**L[n]+(n-m)L[n+m]/;n>m
     },
-    printing->{
+    "Printing"->{
         L[n_]:>Subscript["L",n],
         Subscript[op_,n_]**Subscript[op_,n_]:>Subsuperscript[op,n,2],
         Subscript[op_,n_]**Subsuperscript[op_,n_,power_]:>Subsuperscript[op,n,power+1],
@@ -100,11 +100,11 @@ $algebraList//algebraDefine
 
 
 <|
-    operator->{L},
-    relation->{
+    "Generator"->{L},
+    "Relation"->{
         L[n_]**L[m_]:>L[m]**L[n]+(n-m)L[n+m]+$centralCharge*KroneckerDelta[n+m,0]*(n^3-n)/12*id/;n>m
     },
-    printing->{
+    "Printing"->{
         L[n_]:>Subscript["L",n],
         Subscript[op_,n_]**Subscript[op_,n_]:>Subsuperscript[op,n,2],
         Subscript[op_,n_]**Subsuperscript[op_,n_,power_]:>Subsuperscript[op,n,power+1],
@@ -120,8 +120,8 @@ $algebraList//algebraDefine
 
 
 <|
-    operator->{vacuum},
-    relation->{
+    "Generator"->{vacuum},
+    "Relation"->{
         L[_]**vacuum:>0,
         vacuum**L[_]:>0
     }
@@ -133,8 +133,8 @@ $algebraList//algebraDefine
 
 
 <|
-    operator->{primary},
-    relation->{
+    "Generator"->{primary},
+    "Relation"->{
         (*annihilation rule*)
         L[n_]**primary[h_]:>0/;n>=1,
         primary[h_]**L[n_]:>0/;n<=-1,
@@ -148,8 +148,8 @@ $algebraList//algebraDefine
 
 
 <|
-    operator->{primary},
-    relation->{
+    "Generator"->{primary},
+    "Relation"->{
         (*boundary condition*)
         primary[rank_,a_,h_]:>0/;a<=0,
         primary[rank_,a_,h_]:>0/;a>rank,
@@ -164,11 +164,11 @@ $algebraList//algebraDefine
 (*action of L[0]*)
 
 
-relation->{
+"Relation"->{
     L[0]**primary[rank_,a_,h_]:>h*primary[rank,a,h]+primary[rank,a+1,h]
 }//algebraAdd["multiplet","multiplet-upper"]
 
-relation->{
+"Relation"->{
     L[0]**primary[rank_,a_,h_]:>h*primary[rank,a,h]+primary[rank,a-1,h]
 }//algebraAdd["multiplet-lower"]
 
@@ -177,24 +177,24 @@ relation->{
 (*Conjugation*)
 
 
-relation->{
+"Relation"->{
     conjugate[L[n_]]:>L[-n]
 }//algebraAdd["conformal-algebra-conjugate","Virasoro-conjugate"]
 
 
-relation->{
+"Relation"->{
     vacuum**vacuum->1,
     conjugate[vacuum]->vacuum
 }//algebraAdd["vacuum-conjugate"]
 
 
-relation->{
+"Relation"->{
     primary[h_]**primary[h_]:>1,
     conjugate[primary[h_]]:>primary[h]
 }//algebraAdd["singlet-conjugate"]
 
 
-relation->{
+"Relation"->{
     primary[rank_,a_,h_]**primary[rank_,b_,h_]:>KroneckerDelta[a+b,rank+1],
     conjugate[primary[rank_,a_,h_]]:>primary[rank,a,h]
 }//algebraAdd["multiplet-conjugate"]

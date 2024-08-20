@@ -52,17 +52,19 @@ $algebraList//algebraDefine
 
 
 <|
-    operator->{x},
-    relation->{
-        x[0]->id,
-		x[n_]**x[m_]:>x[n+m],
-		comultiply[x[n_]]:>
-			Sum[Binomial[n,i]*tensor[x[i],x[n-i]],{i,0,n}],
-		counit[x[n_]]:>KroneckerDelta[n,0],
-		antipode[x[n_]]:>(-1)^n*x[n]
+    "Generator"->{
+        x[_]
     },
-    printing->{
-	    x[n_]:>Power[x,n]
+    "Relation"->{
+        x[0]->id,
+        x[n_]**x[m_]:>x[n+m],
+        comultiply[x[n_]]:>
+            Sum[Binomial[n,i]*tensor[x[i],x[n-i]],{i,0,n}],
+        counit[x[n_]]:>KroneckerDelta[n,0],
+        antipode[x[n_]]:>(-1)^n*x[n]
+    },
+    "Printing"->{
+        x[n_]:>Power[x,n]
     }
 |>//algebraAdd["BinomialHopf"]
 

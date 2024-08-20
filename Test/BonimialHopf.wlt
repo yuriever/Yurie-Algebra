@@ -36,8 +36,8 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraMinus["BinomialHopf"][relation -> {antipode[x[Yurie`Algebra`BinomialHopf`Private`n_]] :> (-1)^Yurie`Algebra`BinomialHopf`Private`n*x[Yurie`Algebra`BinomialHopf`Private`n]}]; 
-	algebraAdd["BinomialHopf"][relation -> {antipode[x[n_]] :> Symbol["a"][n]*x[n]}]
+	algebraMinus["BinomialHopf"]["Relation" -> {antipode[x[Yurie`Algebra`BinomialHopf`Private`n_]] :> (-1)^Yurie`Algebra`BinomialHopf`Private`n*x[Yurie`Algebra`BinomialHopf`Private`n]}]; 
+	algebraAdd["BinomialHopf"]["Relation" -> {antipode[x[n_]] :> Symbol["a"][n]*x[n]}]
 	,
 	Null
 	,

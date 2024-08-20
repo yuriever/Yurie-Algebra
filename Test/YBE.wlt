@@ -36,11 +36,19 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algP[algSE[R[1, 2, u, v]**tensor[x[1], x[2], x[3]]]]
+	expr = R[1, 2, u, v]**tensor[x[1], x[2], x[3]]
+	,
+	R[1, 2, u, v]**tensor[x[1], x[2], x[3]]
+	,
+	TestID->"4-YBE.nb"
+]
+
+VerificationTest[
+	algP[expr == algS[expr]]
 	,
 	Subscript[R, 1, 2]**(Subscript[x, 1] ⊗ Subscript[x, 2] ⊗ Subscript[x, 3]) == ((u - v)*Subscript[x, 1] ⊗ Subscript[x, 2] ⊗ Subscript[x, 3] + I*Subscript[x, 2] ⊗ Subscript[x, 1] ⊗ Subscript[x, 3])/(I + u - v)
 	,
-	TestID->"4-YBE.nb"
+	TestID->"5-YBE.nb"
 ]
 
 VerificationTest[
@@ -49,15 +57,15 @@ VerificationTest[
 	,
 	Null
 	,
-	TestID->"5-YBE.nb"
+	TestID->"6-YBE.nb"
 ]
 
 VerificationTest[
-	algP[algSE[LHS]]
+	algSP[LHS]
 	,
-	Subscript[R, 1, 2]**Subscript[R, 1, 3]**Subscript[R, 2, 3]**(Subscript[x, 1] ⊗ Subscript[x, 2] ⊗ Subscript[x, 3]) == ((u - v)*(u - w)*(v - w)*Subscript[x, 1] ⊗ Subscript[x, 2] ⊗ Subscript[x, 3] + I*((u - v)*(u - w)*Subscript[x, 1] ⊗ Subscript[x, 3] ⊗ Subscript[x, 2] + (u - w)*(v - w)*Subscript[x, 2] ⊗ Subscript[x, 1] ⊗ Subscript[x, 3] + I*u*Subscript[x, 2] ⊗ Subscript[x, 3] ⊗ Subscript[x, 1] - I*w*Subscript[x, 2] ⊗ Subscript[x, 3] ⊗ Subscript[x, 1] + I*u*Subscript[x, 3] ⊗ Subscript[x, 1] ⊗ Subscript[x, 2] - I*w*Subscript[x, 3] ⊗ Subscript[x, 1] ⊗ Subscript[x, 2] - Subscript[x, 3] ⊗ Subscript[x, 2] ⊗ Subscript[x, 1] + u*v*Subscript[x, 3] ⊗ Subscript[x, 2] ⊗ Subscript[x, 1] - v^2*Subscript[x, 3] ⊗ Subscript[x, 2] ⊗ Subscript[x, 1] - u*w*Subscript[x, 3] ⊗ Subscript[x, 2] ⊗ Subscript[x, 1] + v*w*Subscript[x, 3] ⊗ Subscript[x, 2] ⊗ Subscript[x, 1]))/((I + u - v)*(I + u - w)*(I + v - w))
+	((u - v)*(u - w)*(v - w)*Subscript[x, 1] ⊗ Subscript[x, 2] ⊗ Subscript[x, 3] + I*((u - v)*(u - w)*Subscript[x, 1] ⊗ Subscript[x, 3] ⊗ Subscript[x, 2] + (u - w)*(v - w)*Subscript[x, 2] ⊗ Subscript[x, 1] ⊗ Subscript[x, 3] + I*u*Subscript[x, 2] ⊗ Subscript[x, 3] ⊗ Subscript[x, 1] - I*w*Subscript[x, 2] ⊗ Subscript[x, 3] ⊗ Subscript[x, 1] + I*u*Subscript[x, 3] ⊗ Subscript[x, 1] ⊗ Subscript[x, 2] - I*w*Subscript[x, 3] ⊗ Subscript[x, 1] ⊗ Subscript[x, 2] - Subscript[x, 3] ⊗ Subscript[x, 2] ⊗ Subscript[x, 1] + u*v*Subscript[x, 3] ⊗ Subscript[x, 2] ⊗ Subscript[x, 1] - v^2*Subscript[x, 3] ⊗ Subscript[x, 2] ⊗ Subscript[x, 1] - u*w*Subscript[x, 3] ⊗ Subscript[x, 2] ⊗ Subscript[x, 1] + v*w*Subscript[x, 3] ⊗ Subscript[x, 2] ⊗ Subscript[x, 1]))/((I + u - v)*(I + u - w)*(I + v - w))
 	,
-	TestID->"6-YBE.nb"
+	TestID->"7-YBE.nb"
 ]
 
 VerificationTest[
@@ -65,7 +73,7 @@ VerificationTest[
 	,
 	True
 	,
-	TestID->"7-YBE.nb"
+	TestID->"8-YBE.nb"
 ]
 
 VerificationTest[
@@ -75,7 +83,7 @@ VerificationTest[
 	,
 	{Yurie`Cluster`cluster::rmdefault}
 	,
-	TestID->"8-YBE.nb"
+	TestID->"9-YBE.nb"
 ]
 
 VerificationTest[
@@ -83,7 +91,7 @@ VerificationTest[
 	,
 	{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
 	,
-	TestID->"9-YBE.nb"
+	TestID->"10-YBE.nb"
 ]
 
 VerificationTest[
@@ -92,7 +100,7 @@ VerificationTest[
 	,
 	{}
 	,
-	TestID->"10-YBE.nb"
+	TestID->"11-YBE.nb"
 ]
 
 VerificationTest[
@@ -100,7 +108,7 @@ VerificationTest[
 	,
 	Null
 	,
-	TestID->"11-YBE.nb"
+	TestID->"12-YBE.nb"
 ]
 
 VerificationTest[

@@ -11,25 +11,34 @@ BeginPackage["Yurie`Algebra`Variable`"];
 (*Public*)
 
 
-algebraCluster::usage =
+$algebraCluster::usage =
     "cluster algebra.";
 
+$algebraData::usage =
+    "cache: algebra data.";
 
-$operator::usage =
-    "operator cache.";
 
-$operatorPattern::usage =
-    "operator pattern cache.";
+$algebraP::usage =
+    "cache: defined algebra pattern.";
+
+
+$generator::usage =
+    "cache: generator.";
+
+$generatorP::usage =
+    "cache: generator pattern.";
 
 $relation::usage =
-    "relation cache.";
+    "cache: relation.";
 
 $printing::usage =
-    "printing cache.";
+    "cache: printing.";
 
+$tensorank::usage =
+    "cache: tensor rank.";
 
-$tensorRank::usage =
-    "tensor-rank of generators.";
+$parity::usage =
+    "cache: parity.";
 
 
 (* ::Section:: *)

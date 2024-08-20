@@ -36,7 +36,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraAdd["test"][Association[operator -> {L}, relation -> {commDefine[L[n_], L[m_]] :> f[n - m]*L[n + m] /; Simplify[n > m]}]]
+	algebraAdd["test"][Association["Generator" -> {L}, "Relation" -> {commDefine[L[n_], L[m_]] :> f[n - m]*L[n + m] /; Simplify[n > m]}]]
 	,
 	Null
 	,

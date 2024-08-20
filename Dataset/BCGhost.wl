@@ -63,8 +63,8 @@ $algebraList//algebraDefine
 
 
 <|
-    operator->{ghostB,ghostC},
-    relation->{
+    "Generator"->{ghostB,ghostC},
+    "Relation"->{
         commDefine[ghostB[h_,n_],ghostC[h_,m_],1]:>KroneckerDelta[n+m,0]*id/;n>=1-h,
         commDefine[ghostB[h_,n_],ghostC[h_,m_],1,Reverse]:>KroneckerDelta[n+m,0]*id/;n<1-h,
         commDefine[ghostB[h_,n_],ghostB[h_,m_],1]:>0/;n>m,
@@ -74,7 +74,7 @@ $algebraList//algebraDefine
         conjugate[ghostB[h_,n_]]:>ghostB[h,-n],
         conjugate[ghostC[h_,n_]]:>ghostC[h,-n]
     },
-    printing->{
+    "Printing"->{
         ghostB[h_,n_]:>Subscript["b",n],
         ghostC[h_,n_]:>Subscript["c",n]
     }
@@ -86,8 +86,8 @@ $algebraList//algebraDefine
 
 
 <|
-    operator->{vacuum},
-    relation->{
+    "Generator"->{vacuum},
+    "Relation"->{
         ghostB[h_,n_]**vacuum:>0/;n>=1-h,
         ghostC[h_,n_]**vacuum:>0/;n>=h,
         vacuum**ghostB[h_,n_]:>0/;n<=h-1,

@@ -19,7 +19,7 @@ conjugate::usage =
 
 
 innerProduct::usage =
-    "inner product of two operators.";
+    "inner product of the two operators.";
 
 
 (* ::Section:: *)

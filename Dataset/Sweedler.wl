@@ -51,8 +51,8 @@ $algebraList//algebraDefine
 
 
 <|
-    operator->{g,x},
-    relation->{
+    "Generator"->{g,x},
+    "Relation"->{
         commDefine[g,x,Reverse,1]->0,
         x**x:>0,
         g**g:>id,
@@ -62,8 +62,7 @@ $algebraList//algebraDefine
         counit[x]:>0,
         antipode[g]:>g,
         antipode[x]:>-g**x
-    },
-    printing->{}
+    }
 |>//algebraAdd["Sweedler"]
 
 

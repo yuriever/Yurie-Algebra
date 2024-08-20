@@ -36,7 +36,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	(Map[checkCoassociativity])[operator[]]
+	(Map[checkCoassociativity])[generator[]]
 	,
 	{{id} -> 0, {g} -> 0, {x} -> 0}
 	,
@@ -44,7 +44,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	(Map[checkCounitality])[operator[]]
+	(Map[checkCounitality])[generator[]]
 	,
 	{{id} -> {0, 0}, {g} -> {0, 0}, {x} -> {0, 0}}
 	,
@@ -52,7 +52,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	(Map[checkAntipode])[operator[]]
+	(Map[checkAntipode])[generator[]]
 	,
 	{{id} -> {0, 0}, {g} -> {0, 0}, {x} -> {0, 0}}
 	,

@@ -29,9 +29,9 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraAdd[{}][{operator -> {x}}]; 
+	algebraAdd[{}][{"Generator" -> {x}}]; 
 	algebraDefault[{}]; 
-	operator[]
+	generator[]
 	,
 	{id}
 	,
@@ -40,7 +40,7 @@ VerificationTest[
 
 VerificationTest[
 	algebraReset[{}]; 
-	operator[]
+	generator[]
 	,
 	{id}
 	,
@@ -49,7 +49,7 @@ VerificationTest[
 
 VerificationTest[
 	algebraUnset[{}]; 
-	operator[]
+	generator[]
 	,
 	{id}
 	,

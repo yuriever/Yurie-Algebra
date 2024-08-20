@@ -87,12 +87,12 @@ $algebraList//algebraDefine
 (*Isometry and conformal algebras*)
 
 
-operator->{genP,genM}//algebraAdd["isometry-algebra"]
+"Generator"->{genP,genM}//algebraAdd["isometry-algebra"]
 
-operator->{genP,genM,genD,genK}//algebraAdd["conformal-algebra"]
+"Generator"->{genP,genM,genD,genK}//algebraAdd["conformal-algebra"]
 
 
-relation->{
+"Relation"->{
     genM[i_,i_]:>0,
     genM[i_,j_]:>-genM[j,i]/;coordOrder[j>i],
     commDefine[genP[i_],genP[j_]]:>0/;coordOrder[j>i],
@@ -106,7 +106,7 @@ relation->{
 }//algebraAdd["isometry-algebra","conformal-algebra"]
 
 
-relation->{
+"Relation"->{
     commDefine[genK[i_],genK[j_]]:>0/;coordOrder[j>i],
     (*[M,K]*)
     commDefine[genM[i_,j_],genK[k_],Reverse]:>
@@ -120,13 +120,13 @@ relation->{
 }//algebraAdd["conformal-algebra"]
 
 
-printing->{
+"Printing"->{
     genP[i_]:>Subscript["P",i],
     genM[i_,j_]:>Subscript["M",i,j]
 }//algebraAdd["isometry-algebra"]
 
 
-printing->{
+"Printing"->{
     genD[]:>"D",
     genP[i_]:>Subscript["P",i],
     genK[i_]:>Subscript["K",i],
@@ -138,10 +138,10 @@ printing->{
 (*Vacuum*)
 
 
-operator->{vacuum}//algebraAdd["vacuum"]
+"Generator"->{vacuum}//algebraAdd["vacuum"]
 
 
-relation->{
+"Relation"->{
     genD[]**vacuum:>0,
     genP[_]**vacuum:>0,
     genK[_]**vacuum:>0,
@@ -153,7 +153,7 @@ relation->{
 (*Conjugation*)
 
 
-relation->{
+"Relation"->{
     conjugate[op_?generatorQ]:>-op
 }//algebraAdd["conjugateE"]
 

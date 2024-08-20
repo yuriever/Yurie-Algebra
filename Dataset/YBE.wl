@@ -24,6 +24,9 @@ Needs["Yurie`Algebra`"];
 R::usage =
     "operator: R.";
 
+S::usage =
+    "operator: S.";
+
 x::usage =
     "state.";
 
@@ -51,19 +54,26 @@ $algebraList//algebraDefine
 
 
 <|
-    operator->{R,x},
-    relation->{
+    "Generator"->{
+        x[_],
+        S[],
+        R[___]
+    },
+    "Relation"->{
+        S[]**tensor[x_,y_]:>tensor[y,x],
         R[i_,j_,u_,v_]**tensor[x_,y_,z_]:>
             (u-v)/(u-v+I)*tensor[x,y,z]+I/(u-v+I)*Permute[tensor[x,y,z],Cycles@{{i,j}}]
     },
-    printing->{
-        (op_?generatorQ)[i_]:>Subscript[op,i],
+    "Printing"->{
+        x[i_]:>Subscript[x,i],
+        S[]->S,
         R[i_,j_,u_,v_]:>Subscript[R,i,j]
+    },
+    "Rank"->{
+        S[]->2,
+        R[___]->3
     }
 |>//algebraAdd["YBE"]
-
-
-tensorRankSet[R[___],3]
 
 
 (* ::Subsection:: *)

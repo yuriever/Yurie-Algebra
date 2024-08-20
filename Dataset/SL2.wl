@@ -67,8 +67,8 @@ $algebraList//algebraDefine
 
 
 <|
-    operator->{x,y,h},
-    relation->{
+    "Generator"->{x,y,h},
+    "Relation"->{
         commDefine[h,x,Reverse]->2x,
         commDefine[h,y]->-2y,
         commDefine[x,y]->h
@@ -81,13 +81,13 @@ $algebraList//algebraDefine
 
 
 <|
-    operator->{v},
-    relation->{
+    "Generator"->{v},
+    "Relation"->{
         h**v[h_]:>h*v[h],
         x**v[h_]:>0,
         v[h_,n_]:>operatorPower[y,n]**v[h]
     },
-    printing->{
+    "Printing"->{
         v[h_]:>Subscript[v,h]
     }
 |>//algebraAdd["Verma-module"]
@@ -98,15 +98,15 @@ $algebraList//algebraDefine
 
 
 <|
-    operator->{v},
-    relation->{
+    "Generator"->{v},
+    "Relation"->{
         h**v[1,h_]:>h*v[1,h],
         x**v[1,h_]:>0,
         h**v[2,h_]:>(-h-2)*v[2,h],
         x**v[2,h_]:>ToExpression["a"]*operatorPower[y,h]**v[1,h],
         v[i_,h_,n_]:>operatorPower[y,n]**v[i,h]
     },
-    printing->{
+    "Printing"->{
         v[i_,h_]:>Subscript[v,i,h]
     }
 |>//algebraAdd["Verma-module-extension"]

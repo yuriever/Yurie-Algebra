@@ -20,25 +20,11 @@ Needs["Yurie`Algebra`Internal`"];
 (*Public*)
 
 
-id::usage =
-    "identity operator.";
-
-
-operator::usage =
-    "planet operator.";
-
-relation::usage =
-    "planet relation.";
-
-printing::usage =
-    "planet printing.";
-
-
 algebraDefine::usage =
-    "define algebras.";
+    "define the algebras.";
 
-algebraDefineQ::usage =
-    "check whether an algebra is defined.";
+(*algebraDefineQ::usage =
+    "check whether the algebra is defined.";*)
 
 algebraDefault::usage =
     "set the default algebras.";
@@ -71,7 +57,7 @@ Begin["`Private`"];
 
 
 algebraDefine[algs___String|{algs___String}] :=
-    starDefine[algebraCluster,{algs}];
+    starDefine[$algebraCluster,{algs}];
 
 
 (* ::Subsection:: *)
@@ -79,7 +65,7 @@ algebraDefine[algs___String|{algs___String}] :=
 
 
 algebraDefineQ[alg_String] :=
-    MemberQ[clusterPropGet[algebraCluster,"StarList"],alg];
+    MemberQ[clusterPropGet[$algebraCluster,"StarList"],alg];
 
 algebraDefineQ[_] :=
     False;
@@ -90,7 +76,7 @@ algebraDefineQ[_] :=
 
 
 algebraDefault[algs___String|{algs___String}] :=
-    starDefault[algebraCluster,{algs}];
+    starDefault[$algebraCluster,{algs}];
 
 
 (* ::Subsection:: *)
@@ -98,7 +84,7 @@ algebraDefault[algs___String|{algs___String}] :=
 
 
 algebraReset[algs___String|{algs___String}] :=
-    starReset[algebraCluster,{algs}];
+    starReset[$algebraCluster,{algs}];
 
 
 (* ::Subsection:: *)
@@ -106,7 +92,7 @@ algebraReset[algs___String|{algs___String}] :=
 
 
 algebraUnset[algs___String|{algs___String}] :=
-    starUnset[algebraCluster,{algs}];
+    starUnset[$algebraCluster,{algs}];
 
 
 (* ::Subsection:: *)
@@ -114,7 +100,7 @@ algebraUnset[algs___String|{algs___String}] :=
 
 
 algebraAdd[algs___String|{algs___String}][assoc_] :=
-    starMerge[algebraCluster,{algs},assoc];
+    starMerge[$algebraCluster,{algs},assoc];
 
 
 (* ::Subsection:: *)
@@ -126,7 +112,12 @@ algebraAdd[algs___String|{algs___String}][assoc_] :=
 
 
 algebraMinus[algs___String|{algs___String}][assoc_] :=
-    starChange[algebraCluster,{algs},{assoc},{operator->complementList,relation->complementRuleList,printing->complementRuleList}];
+    starChange[$algebraCluster,{algs},{assoc},{
+        "Generator"->complementList,
+        "Relation"->complementRuleList,
+        "Printing"->complementRuleList,
+        "Rank"->complementRuleList
+    }];
 
 
 (* ::Subsubsection:: *)
@@ -144,7 +135,8 @@ complementRuleList[list1_List,rulelist_List] :=
     DeleteCases[list1,Alternatives@@Verbatim/@rulelist];
 
 complementRuleList[list_List] :=
-    list
+    list;
+
 
 (* ::Subsection:: *)
 (*algebraShow*)
@@ -154,37 +146,58 @@ complementRuleList[list_List] :=
 (*Main*)
 
 
-algebraShow[alg_String]/;algebraDefineQ[alg] :=
-    Module[ {algData},
-        algData = clusterPropGet[algebraCluster,"StarData"][alg];
-        algebraShowKernel[algData[operator],algData[relation],algData[printing]]
-    ];
+algebraShow[alg_String?algebraDefineQ] :=
+    clusterPropGet[$algebraCluster,"StarData"][alg]//algebraShowKernel;
 
 algebraShow[] :=
-    Module[ {algData},
-        algData = clusterPropGet[algebraCluster,"StarDefaultData"];
-        Print["Default algebras: ",Row[clusterPropGet[algebraCluster,"StarDefaultList"],", "],"."];
-        algebraShowKernel[algData[operator],algData[relation],algData[printing]]
-    ];
+    (
+        clusterPropGet[$algebraCluster,"StarDefaultList"]//algebraShowUnit["Default"]//Print;
+        clusterPropGet[$algebraCluster,"StarDefaultData"]//algebraShowKernel
+    );
 
 
 (* ::Subsubsection:: *)
 (*Helper*)
 
 
-algebraShowKernel[operatorList_,relationList_,printingList_] :=
+algebraShowKernel[algData_] :=
     TableForm[
         {
-            "Operators:",
-            operatorList//Row[#,Spacer[4]]&,
-            "Relations:",
-            relationList//Map[hideContextInRelation,#,{1}]&//TableForm,
-            "Printings:",
-            printingList//Map[hideContextInRelation,#,{1}]&//TableForm
+            algData["Generator"]//algebraShowUnit["Generator"],
+            algData["Relation"]//algebraShowUnit["Relation"],
+            algData["Printing"]//algebraShowUnit["Printing"],
+            algData["Rank"]//algebraShowUnit["Rank"],
+            algData["Parity"]//algebraShowUnit["Parity"]
         },
-        TableDepth->1,
-        TableSpacing->{2,2},
+        TableSpacing->{4,2},
         TableAlignments->{Left,Top}
+    ];
+
+
+algebraShowUnit["Default"][data_] :=
+    StringRiffle[
+        data,
+        {"Default: ",", ","."}
+    ];
+
+algebraShowUnit["Generator"][data_] :=
+    {
+        "Generator",
+        Row[data,Spacer[4]]
+    }//hideEmptyPlanet[data];
+
+algebraShowUnit[planet:"Relation"|"Printing"|"Rank"|"Parity"][data_] :=
+    {
+        planet,
+        data//Map[hideContextInRelation,#,{1}]&//TableForm
+    }//hideEmptyPlanet[data];
+
+
+hideEmptyPlanet[data_][unit_] :=
+    If[ data=!={},
+        unit,
+        (*Else*)
+        Nothing
     ];
 
 
@@ -202,11 +215,11 @@ hideContextInRelation/:MakeBoxes[hideContextInRelation[expr_],form_] :=
 
 
 algebraDefine[] :=
-    clusterPropGet[algebraCluster,"StarList"];
+    clusterPropGet[$algebraCluster,"StarList"];
 
 
 algebraDefault[] :=
-    clusterPropGet[algebraCluster,"StarDefaultList"];
+    clusterPropGet[$algebraCluster,"StarDefaultList"];
 
 
 (*reset/unset the defined except internal algebras.*)
@@ -216,26 +229,6 @@ algebraReset[] :=
 
 algebraUnset[] :=
     algebraUnset@Complement[algebraDefine[],algebraInternal[]];
-
-
-operator[] :=
-    clusterPropGet[algebraCluster,"StarDefaultData"][operator];
-
-relation[] :=
-    clusterPropGet[algebraCluster,"StarDefaultData"][relation];
-
-printing[] :=
-    clusterPropGet[algebraCluster,"StarDefaultData"][printing];
-
-
-operator[alg_String] :=
-    clusterPropGet[algebraCluster,"StarData"][alg,operator];
-
-relation[alg_String] :=
-    clusterPropGet[algebraCluster,"StarData"][alg,relation];
-
-printing[alg_String] :=
-    clusterPropGet[algebraCluster,"StarData"][alg,printing];
 
 
 (* ::Subsection:: *)

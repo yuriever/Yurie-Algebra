@@ -20,7 +20,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraAdd["alg"][operator -> {x, y}]
+	algebraAdd["alg"]["Generator" -> {x, y}]
 	,
 	Null
 	,
@@ -68,9 +68,9 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraAdd["alg1"][{operator -> {w, z}}]; 
-	algebraAdd["alg1", "alg2"][Association[operator -> {y, x}, relation -> {w -> 1, z -> 1, y -> 1 /; x}]]; 
-	operator[]
+	algebraAdd["alg1"]["Generator" -> {w, z}]; 
+	algebraAdd["alg1", "alg2"]["Generator" -> {y, x}]; 
+	generator[]
 	,
 	{id, w, z, y, x}
 	,
@@ -78,8 +78,8 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraMinus["alg1", "alg2"][{operator -> {z}}]; 
-	operator[]
+	algebraMinus["alg1", "alg2"]["Generator" -> {z}]; 
+	generator[]
 	,
 	{id, w, y, x}
 	,
@@ -87,6 +87,7 @@ VerificationTest[
 ]
 
 VerificationTest[
+	algebraAdd["alg1", "alg2"]["Relation" -> {w -> 1, z -> 1, y -> 1 /; x}]; 
 	relation["alg1"]
 	,
 	{w -> 1, z -> 1, y -> 1 /; x}
@@ -95,7 +96,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraMinus["alg1", "alg2"][relation -> {y -> 1 /; x}]; 
+	algebraMinus["alg1", "alg2"]["Relation" -> {y -> 1 /; x}]; 
 	relation["alg1"]
 	,
 	{w -> 1, z -> 1}
@@ -104,34 +105,61 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraReset["alg1"]; 
-	operator[]
+	algebraAdd["alg1", "alg2"]["Printing" -> {x -> 1}]; 
+	printing[]
 	,
-	{id, y, x}
+	{id -> 1, x -> 1}
 	,
 	TestID->"11-algebraCluster.nb"
 ]
 
 VerificationTest[
-	algebraUnset["alg1"]; 
-	operator[]
+	algebraAdd["alg1", "alg2"]["Rank" -> {x -> 2}]; 
+	tensorank[x]
 	,
-	{id, y, x}
-	,
-	{Yurie`Cluster`cluster::rmdefault}
+	2
 	,
 	TestID->"12-algebraCluster.nb"
 ]
 
 VerificationTest[
-	algebraUnset["alg2"]; 
-	operator[]
+	algebraAdd["alg1", "alg2"]["Parity" -> {x -> 0}]; 
+	parity[x]
 	,
-	{id}
+	Null
+	,
+	TestID->"13-algebraCluster.nb"
+]
+
+VerificationTest[
+	algebraReset["alg1"]; 
+	generator[]
+	,
+	{id, y, x}
+	,
+	TestID->"14-algebraCluster.nb"
+]
+
+VerificationTest[
+	algebraUnset["alg1"]; 
+	generator[]
+	,
+	Quiet[{id, y, x}]
 	,
 	{Yurie`Cluster`cluster::rmdefault}
 	,
-	TestID->"13-algebraCluster.nb"
+	TestID->"15-algebraCluster.nb"
+]
+
+VerificationTest[
+	algebraUnset["alg2"]; 
+	generator[]
+	,
+	Quiet[{id}]
+	,
+	{Yurie`Cluster`cluster::rmdefault}
+	,
+	TestID->"16-algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -139,7 +167,7 @@ VerificationTest[
 	,
 	Null
 	,
-	TestID->"14-algebraCluster.nb"
+	TestID->"17-algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -147,7 +175,7 @@ VerificationTest[
 	,
 	{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
 	,
-	TestID->"15-algebraCluster.nb"
+	TestID->"18-algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -156,7 +184,7 @@ VerificationTest[
 	,
 	{}
 	,
-	TestID->"16-algebraCluster.nb"
+	TestID->"19-algebraCluster.nb"
 ]
 
 VerificationTest[

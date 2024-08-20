@@ -95,7 +95,7 @@ checkAntipode[x_] :=
 multiplyTensor[x_+y_] :=
     multiplyTensor[x]+multiplyTensor[y];
 
-multiplyTensor[k_?scalarQ*x_.] :=
+multiplyTensor[k_?scalarQ*x_tensor] :=
     k*multiplyTensor[x];
 
 multiplyTensor[tensor[x_,y_]] :=
@@ -105,7 +105,7 @@ multiplyTensor[tensor[x_,y_]] :=
 comultiplyInTensor[side_][x_+y_] :=
     comultiplyInTensor[side][x]+comultiplyInTensor[side][y];
 
-comultiplyInTensor[side_][k_?scalarQ*x_.] :=
+comultiplyInTensor[side_][k_?scalarQ*x_tensor] :=
     k*comultiplyInTensor[side][x];
 
 comultiplyInTensor["Left"][tensor[x_,y_]] :=
@@ -122,7 +122,7 @@ comultiplyInTensor["Right"][tensor[x_,y_]] :=
 multiplyTensorWithCounit[side_][x_+y_] :=
     multiplyTensorWithCounit[side][x]+multiplyTensorWithCounit[side][y];
 
-multiplyTensorWithCounit[side_][k_?scalarQ*x_.] :=
+multiplyTensorWithCounit[side_][k_?scalarQ*x_tensor] :=
     k*multiplyTensorWithCounit[side][x];
 
 multiplyTensorWithCounit["Left"][tensor[x_,y_]] :=
@@ -139,7 +139,7 @@ multiplyTensorWithCounit["Right"][tensor[x_,y_]] :=
 multiplyTensorWithAntipode[side_][x_+y_] :=
     multiplyTensorWithAntipode[side][x]+multiplyTensorWithAntipode[side][y];
 
-multiplyTensorWithAntipode[side_][k_?scalarQ*x_.] :=
+multiplyTensorWithAntipode[side_][k_?scalarQ*x_tensor] :=
     k*multiplyTensorWithAntipode[side][x];
 
 multiplyTensorWithAntipode["Left"][tensor[x_,y_]] :=

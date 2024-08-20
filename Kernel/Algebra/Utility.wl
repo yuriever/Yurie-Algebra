@@ -31,7 +31,7 @@ anticommSim::usage =
     "simplify the anti-commutator.";
 
 commDefine::usage =
-    "define commutation relations with condition, order-reversing or anti-commutator.";
+    "define the (anti-)commutator with the given order and condition.";
 
 
 (* ::Subsection:: *)
@@ -42,7 +42,7 @@ adjoint::usage =
     "the adjoint action of Lie algebra.";
 
 adjointExp::usage =
-    "the adjoint action of formal Lie group trancated at the certain order.";
+    "the adjoint action of formal Lie group truncated at the given order.";
 
 
 (* ::Subsection:: *)
@@ -53,7 +53,7 @@ operatorPower::usage =
     "power of the operator.";
 
 operatorExp::usage =
-    "exponential of the operator trancated at the certain order.";
+    "exponential of the operator truncated at the given order.";
 
 
 (* ::Subsection:: *)
@@ -61,7 +61,7 @@ operatorExp::usage =
 
 
 operatorSeparate::usage =
-    "separate scalars and operators in a linear combination.";
+    "separate scalars and operators in the given linear expression.";
 
 
 (* ::Section:: *)

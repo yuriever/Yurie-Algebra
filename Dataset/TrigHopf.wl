@@ -51,8 +51,8 @@ $algebraList//algebraDefine
 
 
 <|
-    operator->{c,s},
-    relation->{
+    "Generator"->{c,s},
+    "Relation"->{
 	    s**s->id-c**c,
 	    c**s->s**c,
 		comultiply[c]->tensor[c,c]-tensor[s,s],
@@ -61,8 +61,7 @@ $algebraList//algebraDefine
 		counit[s]->0,
 		antipode[c]->c,
 		antipode[s]->-s
-    },
-    printing->{}
+    }
 |>//algebraAdd["TrigHopf"]
 
 

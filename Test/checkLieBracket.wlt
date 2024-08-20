@@ -36,7 +36,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraAdd["test"][Association[operator -> {x, y, z, xy, yz, xz}, relation -> {x**y -> xy, y**z -> yz, x**z -> xz}]]
+	algebraAdd["test"][Association["Generator" -> {x, y, z, xy, yz, xz}, "Relation" -> {x**y -> xy, y**z -> yz, x**z -> xz}]]
 	,
 	Null
 	,

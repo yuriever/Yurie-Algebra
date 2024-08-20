@@ -9,6 +9,8 @@ BeginPackage["Yurie`Algebra`Internal`"];
 
 Needs["Yurie`Algebra`"];
 
+Needs["Yurie`Algebra`Tensor`"];
+
 
 (* ::Section:: *)
 (*Public*)
@@ -60,8 +62,8 @@ tensor//Attributes =
 
 
 algebraInternal["Algebra"] = <|
-    operator->{id},
-    relation->{
+    "Generator"->{id},
+    "Relation"->{
         (*linearity*)
         (k_?scalarQ*x_)**y_:>k*x**y,
         x_**(k_?scalarQ*y_):>k*x**y,
@@ -74,38 +76,12 @@ algebraInternal["Algebra"] = <|
         (*identity*)
         id**x_:>x,
         x_**id:>x
-        (*this is the old rule handling scalars without id.*)
-        (*x_**y_/;scalarQ[x]||scalarQ[y]:>x*y,*)
     },
-    printing->{
+    "Printing"->{
         id->1
-    }
-|>;
-
-
-(* ::Subsubsection:: *)
-(*Tensor product*)
-
-
-algebraInternal["Tensor"] = <|
-    operator->{},
-    relation->{
-        (*linearity*)
-        tensor[x_,k_?scalarQ*y_.]:>
-            k*tensor[x,y],
-        tensor[k_?scalarQ*x_.,y_]:>
-            k*tensor[x,y],
-        tensor[x_+y_,z_]:>
-            tensor[x,z]+tensor[y,z], 
-        tensor[z_,x_+y_]:>
-            tensor[z,x]+tensor[z,y],
-        (*composition*)
-        x_tensor**y_tensor:>
-            tensorCompose[x**y]/;tensorRankEqualQ[x,y]
     },
-    printing->{
-        tensor->CircleTimes
-    }
+    "Rank"->{},
+    "Parity"->{}
 |>;
 
 
@@ -114,8 +90,7 @@ algebraInternal["Tensor"] = <|
 
 
 algebraInternal["Conjugate"] = <|
-    operator->{},
-    relation->{
+    "Relation"->{
         (*linearity*)
         conjugate[k_?scalarQ*x_.]:>
             Conjugate[k]*conjugate[x],
@@ -127,8 +102,32 @@ algebraInternal["Conjugate"] = <|
         (*identity*)
         conjugate[id]:>id
     },
-    printing->{
+    "Printing"->{
         conjugate->SuperDagger
+    }
+|>;
+
+
+(* ::Subsubsection:: *)
+(*Tensor product*)
+
+
+algebraInternal["Tensor"] = <|
+    "Relation"->{
+        (*linearity*)
+        tensor[x_,k_?scalarQ*y_.]:>
+            k*tensor[x,y],
+        tensor[k_?scalarQ*x_.,y_]:>
+            k*tensor[x,y],
+        tensor[x_+y_,z_]:>
+            tensor[x,z]+tensor[y,z], 
+        tensor[z_,x_+y_]:>
+            tensor[z,x]+tensor[z,y],
+        (*composition*)
+        $composition
+    },
+    "Printing"->{
+        tensor->CircleTimes
     }
 |>;
 
@@ -138,8 +137,7 @@ algebraInternal["Conjugate"] = <|
 
 
 algebraInternal["Coalgebra"] = <|
-    operator->{},
-    relation->{
+    "Relation"->{
         (*linearity*)
         comultiply[k_?scalarQ*x_.]:>
             k*comultiply[x],
@@ -151,7 +149,7 @@ algebraInternal["Coalgebra"] = <|
         counit[x_+y_]:>
             counit[x]+counit[y]
     },
-    printing->{
+    "Printing"->{
         comultiply->"\[CapitalDelta]",
         counit->"\[Epsilon]"
     }
@@ -163,8 +161,7 @@ algebraInternal["Coalgebra"] = <|
 
 
 algebraInternal["Bialgebra"] = <|
-    operator->{},
-    relation->{
+    "Relation"->{
         (*compatibility between coalgebra and algebra structures*)
         comultiply[x_**y_]:>
             comultiply[x]**comultiply[y],
@@ -174,8 +171,7 @@ algebraInternal["Bialgebra"] = <|
             counit[x]*counit[y],
         counit[id]:>
             1
-    },
-    printing->{}
+    }
 |>;
 
 
@@ -184,8 +180,7 @@ algebraInternal["Bialgebra"] = <|
 
 
 algebraInternal["Antipode"] = <|
-    operator->{},
-    relation->{
+    "Relation"->{
         (*linearity*)
         antipode[k_?scalarQ*x_.]:>
             k*antipode[x],
@@ -198,7 +193,7 @@ algebraInternal["Antipode"] = <|
         antipode[id]:>
             id
     },
-    printing->{
+    "Printing"->{
         antipode->"S"
     }
 |>;

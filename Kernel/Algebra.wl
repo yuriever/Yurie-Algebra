@@ -20,7 +20,7 @@ Get["Yurie`Algebra`Usage`"];
 
 Get["Yurie`Algebra`Algebra`"];
 
-Get["Yurie`Algebra`Simplify`"];
+Get["Yurie`Algebra`Core`"];
 
 
 (* ::Subsection:: *)

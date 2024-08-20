@@ -93,14 +93,14 @@ $algebraList//algebraDefine
 
 
 <|
-    operator->{L,M},
-    relation->{
+    "Generator"->{L,M},
+    "Relation"->{
         L[n_]**L[m_]:>L[m]**L[n]+(n-m)L[n+m]/;n>m,
         L[n_]**M[m_]:>M[m]**L[n]+(n-m)M[n+m]/;n>m,
         M[n_]**L[m_]:>L[m]**M[n]+(n-m)M[n+m]/;n>=m,
         M[n_]**M[m_]:>M[m]**M[n]/;n>m
     },
-    printing->{
+    "Printing"->{
         L[n_]:>Subscript["L",n],
         M[n_]:>Subscript["M",n],
         Subscript[op_,n_]**Subscript[op_,n_]:>Subsuperscript[op,n,2],
@@ -116,14 +116,14 @@ $algebraList//algebraDefine
 
 
 <|
-    operator->{L,M},
-    relation->{
+    "Generator"->{L,M},
+    "Relation"->{
         L[n_]**L[m_]:>L[m]**L[n]+(n-m)L[n+m]+$centralChargeL*KroneckerDelta[n+m,0]*(n^3-n)/12*id/;n>m,
         L[n_]**M[m_]:>M[m]**L[n]+(n-m)M[n+m]+$centralChargeM*KroneckerDelta[n+m,0]*(n^3-n)/12*id/;n>m,
         M[n_]**L[m_]:>L[m]**M[n]+(n-m)M[n+m]+$centralChargeM*KroneckerDelta[n+m,0]*(n^3-n)/12*id/;n>=m,
         M[n_]**M[m_]:>M[m]**M[n]/;n>m
     },
-    printing->{
+    "Printing"->{
         L[n_]:>Subscript["L",n],
         M[n_]:>Subscript["M",n],
         Subscript[op_,n_]**Subscript[op_,n_]:>Subsuperscript[op,n,2],
@@ -141,8 +141,8 @@ $algebraList//algebraDefine
 
 
 <|
-    operator->{vacuum},
-    relation->{
+    "Generator"->{vacuum},
+    "Relation"->{
         L[_]**vacuum:>0,
         M[_]**vacuum:>0,
         vacuum**L[_]:>0,
@@ -156,8 +156,8 @@ $algebraList//algebraDefine
 
 
 <|
-    operator->{primary},
-    relation->{
+    "Generator"->{primary},
+    "Relation"->{
         (*annihilation rule*)
         L[n_]**primary[delta_,xi_]:>0/;n>=1,
         primary[delta_,xi_]**L[n_]:>0/;n<=-1,
@@ -174,8 +174,8 @@ $algebraList//algebraDefine
 
 
 <|
-    operator->{primary},
-    relation->{
+    "Generator"->{primary},
+    "Relation"->{
         (*boundary conditions*)
         primary[rank_,a_,delta_,xi_]:>0/;a<=0,
         primary[rank_,a_,delta_,xi_]:>0/;a>rank,
@@ -193,11 +193,11 @@ $algebraList//algebraDefine
 (*action of M[0]*)
 
 
-relation->{
+"Relation"->{
     M[0]**primary[rank_,a_,delta_,xi_]:>xi*primary[rank,a,delta,xi]+primary[rank,a+1,delta,xi]
 }//algebraAdd["multiplet","multiplet-upper"]
 
-relation->{
+"Relation"->{
     M[0]**primary[rank_,a_,delta_,xi_]:>xi*primary[rank,a,delta,xi]+primary[rank,a-1,delta,xi]
 }//algebraAdd["multiplet-lower"]
 
@@ -206,25 +206,25 @@ relation->{
 (*Conjugation*)
 
 
-relation->{
+"Relation"->{
     conjugate[L[n_]]:>L[-n],
     conjugate[M[n_]]:>M[-n]
 }//algebraAdd["conformal-algebra-conjugate"]
 
 
-relation->{
+"Relation"->{
     vacuum**vacuum->1,
     conjugate[vacuum]->vacuum
 }//algebraAdd["vacuum-conjugate"]
 
 
-relation->{
+"Relation"->{
     primary[delta_,xi_]**primary[delta_,xi_]:>1,
     conjugate[primary[delta_,xi_]]:>primary[delta,xi]
 }//algebraAdd["singlet-conjugate"]
 
 
-relation->{
+"Relation"->{
     primary[rank_,a_,delta_,xi_]**primary[rank_,b_,delta_,xi_]:>KroneckerDelta[a+b,rank+1],
     conjugate[primary[rank_,a_,delta_,xi_]]:>primary[rank,a,delta,xi]
 }//algebraAdd["multiplet-conjugate"]

@@ -36,7 +36,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	algebraAdd["test"][Association[operator -> {g, x}, relation -> {commDefine[g, x, Reverse, 1] -> 0, x**x :> 0, g**g :> id, comultiply[g] :> tensor[g, g], comultiply[x] :> tensor[g, x] + c[1]*tensor[x, id], counit[g] :> d[1], counit[x] :> d[2], antipode[g] :> a[1]*g + a[2]*x + a[3]*g**x + a[4]*id, antipode[x] :> b[1]*g + b[2]*x + b[3]*g**x + b[4]*id}, printing -> {}]]; 
+	algebraAdd["test"][Association["Generator" -> {g, x}, "Relation" -> {commDefine[g, x, Reverse, 1] -> 0, x**x :> 0, g**g :> id, comultiply[g] :> tensor[g, g], comultiply[x] :> tensor[g, x] + c[1]*tensor[x, id], counit[g] :> d[1], counit[x] :> d[2], antipode[g] :> a[1]*g + a[2]*x + a[3]*g**x + a[4]*id, antipode[x] :> b[1]*g + b[2]*x + b[3]*g**x + b[4]*id}, "Printing" -> {}, "Rank" -> {g -> 1, x -> 1}]]; 
 	,
 	Null
 	,

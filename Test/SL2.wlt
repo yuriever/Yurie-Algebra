@@ -84,7 +84,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	Table[checkLieModule[gen1, gen2, v[2, Δ0, 2]], {gen1, operator["SL2"]}, {gen2, operator["SL2"]}]
+	Table[checkLieModule[gen1, gen2, v[2, Δ0, 2]], {gen1, generator["SL2"]}, {gen2, generator["SL2"]}]
 	,
 	{{{x, x, v[2, 4, 2]} -> 0, {x, y, v[2, 4, 2]} -> 0, {x, h, v[2, 4, 2]} -> 0}, {{y, x, v[2, 4, 2]} -> 0, {y, y, v[2, 4, 2]} -> 0, {y, h, v[2, 4, 2]} -> 0}, {{h, x, v[2, 4, 2]} -> 0, {h, y, v[2, 4, 2]} -> 0, {h, h, v[2, 4, 2]} -> 0}}
 	,

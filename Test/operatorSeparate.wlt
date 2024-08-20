@@ -37,7 +37,7 @@ VerificationTest[
 
 VerificationTest[
 	algebraReset["test"]; 
-	algebraAdd["test"][Association[operator -> {x, y, z}]]
+	algebraAdd["test"][Association["Generator" -> {x, y, z}]]
 	,
 	Null
 	,
@@ -55,7 +55,7 @@ VerificationTest[
 VerificationTest[
 	operatorSeparate[1]
 	,
-	1
+	Quiet[1]
 	,
 	{Yurie`Algebra`operatorSeparate::notOperator}
 	,
