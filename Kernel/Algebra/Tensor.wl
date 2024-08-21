@@ -86,7 +86,7 @@ slot::usage =
 
 
 compose[opList1_,opList2_] :=
-    head[addSlot[opList1],addSlot[opList2]]//Thread//
+    head[addSlot@opList1,addSlot@opList2]//Thread//
     	Split[#,MemberQ[#2,slot]&]&//
 	    	Map[Thread[#,head]&]//
 				ReplaceAll[slot->Nothing]//
@@ -97,7 +97,7 @@ compose[opList1_,opList2_] :=
 addSlot[opList_] :=
     Flatten@Riffle[
         opList,
-        opList//Map[tensorank@#-1&]//Map[ConstantArray[slot,#]&]
+        opList//Map[ConstantArray[slot,tensorank@#-1]&]
     ];
 
 
@@ -129,8 +129,8 @@ tensorPermute[cycle_Cycles][x_tensor] :=
 
 
 $composition =
-    tensor[x__]**tensor[y__]:>
-        compose[{x},{y}];
+    tensor[x_,x1__]**tensor[y_,y1__]:>
+        compose[{x,x1},{y,y1}];
 
 
 (* ::Subsection::Closed:: *)
