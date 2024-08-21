@@ -36,11 +36,8 @@ tensorPermute::usage =
     "permute the arguments of the tensor.";
 
 
-(* ::Text:: *)
-(*This is used by algebraInternal["Tensor"] in Internal.wl.*)
-
-
-$composition;
+compose::usage =
+    "used by algebraInternal[\"Tensor\"] in Internal.wl."
 
 
 (* ::Subsection:: *)
@@ -97,7 +94,7 @@ compose[opList1_,opList2_] :=
 addSlot[opList_] :=
     Flatten@Riffle[
         opList,
-        opList//Map[ConstantArray[slot,tensorank@#-1]&]
+        opList//Map[ConstantArray[slot,tensorankUnsafe@#-1]&]
     ];
 
 
@@ -122,15 +119,6 @@ tensorPermute[positionList:{__Integer}..][x_tensor] :=
 
 tensorPermute[cycle_Cycles][x_tensor] :=
     Permute[x,cycle];
-
-
-(* ::Subsection:: *)
-(*$composition*)
-
-
-$composition =
-    tensor[x_,x1__]**tensor[y_,y1__]:>
-        compose[{x,x1},{y,y1}];
 
 
 (* ::Subsection::Closed:: *)

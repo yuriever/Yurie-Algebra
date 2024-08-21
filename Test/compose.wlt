@@ -44,7 +44,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	padRight[opList_] := Flatten[Riffle[opList, (Map[ConstantArray[slot, tensorank[#1] - 1] & ])[opList]]]; 
+	padRight[opList_] := Flatten[Riffle[opList, (Map[ConstantArray[slot, tensorankUnsafe[#1] - 1] & ])[opList]]]; 
 	,
 	Null
 	,

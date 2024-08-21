@@ -57,9 +57,11 @@
 
 * `#!wl tensorank` - return the tensor rank of the expression by the default algebra.
 
-* `#!wl tensorankSafe` - check whether the expression is valid and return the tensor rank of by the default algebra.
+* `#!wl tensorankUnsafe` - return the tensor rank of the expression by the default algebra without validating the expression.
 
 * `#!wl parity` - return the parity of the expression by the default algebra.
+
+* `#!wl parityUnsafe` - return the parity of the expression by the default algebra without validating the expression.
 
 * `#!wl algS` - algebraSimplify.
 

@@ -100,7 +100,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	(Map[tensorank])[{1, id, tensor[id], tensor[id, id]}]
+	(Map[tensorankUnsafe])[{1, id, tensor[id], tensor[id, id]}]
 	,
 	{0, 1, 1, 2}
 	,
@@ -108,7 +108,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	(Map[tensorank])[{x[0], 2*x[0], tensor[x[0]], tensor[2*x[0]], tensor[id, x[0]], 2*tensor[id, 2*x[0]]}]
+	(Map[tensorankUnsafe])[{x[0], 2*x[0], tensor[x[0]], tensor[2*x[0]], tensor[id, x[0]], 2*tensor[id, 2*x[0]]}]
 	,
 	{1, 1, 1, 1, 2, 2}
 	,
@@ -116,7 +116,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	(Map[tensorank])[{R[], 2*R[], tensor[R[]], tensor[2*R[]], tensor[R[], S[], x[0]], 2*tensor[2*R[], 2*S[], 2*x[0]]}]
+	(Map[tensorankUnsafe])[{R[], 2*R[], tensor[R[]], tensor[2*R[]], tensor[R[], S[], x[0]], 2*tensor[2*R[], 2*S[], 2*x[0]]}]
 	,
 	{3, 3, 3, 3, 6, 6}
 	,
@@ -124,7 +124,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	tensorank[tensor[R[]**tensor[S[], x[0]], x[0]]]
+	tensorankUnsafe[tensor[R[]**tensor[S[], x[0]], x[0]]]
 	,
 	4
 	,
@@ -132,7 +132,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-	tensorank[tensor[id**x[0], R[]**tensor[x[0], x[0], x[0]]]]
+	tensorankUnsafe[tensor[id**x[0], R[]**tensor[x[0], x[0], x[0]]]]
 	,
 	4
 	,
@@ -140,39 +140,71 @@ VerificationTest[
 ]
 
 VerificationTest[
-	tensorankSafe[2*R[]**x[0]]
+	tensorank[2*R[]**x[0]]
 	,
-	Quiet[tensorankSafe[R[]**x[0]]]
+	Quiet[tensorank[R[]**x[0]]]
 	,
-	{Yurie`Algebra`tensorankSafe::rankNotMatch}
+	{Yurie`Algebra`tensorank::rankNotMatch}
 	,
 	TestID->"17-tensor-product.nb"
 ]
 
 VerificationTest[
-	tensorankSafe[tensor[id**S[], R[]**tensor[S[], id], x[0]]]
+	tensorank[tensor[id**S[], R[]**tensor[S[], id], x[0]]]
 	,
-	Quiet[4 + tensorankSafe[id**S[]]]
+	Quiet[tensorank[id**S[]]]
 	,
-	{Yurie`Algebra`tensorankSafe::rankNotMatch}
+	{Yurie`Algebra`tensorank::rankNotMatch}
 	,
 	TestID->"18-tensor-product.nb"
 ]
 
 VerificationTest[
-	tensorank[x[0] + tensor[x[0], x[0]]]
+	tensorankUnsafe[x[0] + tensor[x[0]]]
 	,
-	tensorank[tensor[x[0], x[0]] + x[0]]
+	tensorankUnsafe[tensor[x[0]] + x[0]]
 	,
 	TestID->"19-tensor-product.nb"
 ]
 
 VerificationTest[
-	tensorank[tensor[x[0], x[0] + x[1]]]
+	tensorank[x[0] + tensor[x[0]]]
 	,
-	1 + tensorank[x[0] + x[1]]
+	1
 	,
 	TestID->"20-tensor-product.nb"
+]
+
+VerificationTest[
+	tensorankUnsafe[x[0] + tensor[x[0], x[0]]]
+	,
+	tensorankUnsafe[tensor[x[0], x[0]] + x[0]]
+	,
+	TestID->"21-tensor-product.nb"
+]
+
+VerificationTest[
+	tensorank[x[0] + tensor[x[0], x[0]]]
+	,
+	Indeterminate
+	,
+	TestID->"22-tensor-product.nb"
+]
+
+VerificationTest[
+	tensorankUnsafe[tensor[x[0], x[0] + x[1]]]
+	,
+	1 + tensorankUnsafe[x[0] + x[1]]
+	,
+	TestID->"23-tensor-product.nb"
+]
+
+VerificationTest[
+	tensorank[tensor[x[0], x[0] + x[1]]]
+	,
+	2
+	,
+	TestID->"24-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -180,7 +212,7 @@ VerificationTest[
 	,
 	2*tensor[id**x[0], x[0]**id]
 	,
-	TestID->"21-tensor-product.nb"
+	TestID->"25-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -188,7 +220,7 @@ VerificationTest[
 	,
 	2*tensor[id**x[0], R[]**tensor[x[0], S[]]]
 	,
-	TestID->"22-tensor-product.nb"
+	TestID->"26-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -196,7 +228,7 @@ VerificationTest[
 	,
 	tensor[id**id, R[]**tensor[S[], id]]
 	,
-	TestID->"23-tensor-product.nb"
+	TestID->"27-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -204,7 +236,7 @@ VerificationTest[
 	,
 	tensor[id**x[0]**x[1], x[0]**id**x[2]]
 	,
-	TestID->"24-tensor-product.nb"
+	TestID->"28-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -212,7 +244,7 @@ VerificationTest[
 	,
 	tensor[id**id**x[0], R[]**tensor[S[], id]**tensor[x[0], x[0], x[0]]]
 	,
-	TestID->"25-tensor-product.nb"
+	TestID->"29-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -220,7 +252,7 @@ VerificationTest[
 	,
 	tensor[id**id**x[0], R[]**tensor[S[], id]**tensor[x[0], x[0], x[0]]]
 	,
-	TestID->"26-tensor-product.nb"
+	TestID->"30-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -228,7 +260,7 @@ VerificationTest[
 	,
 	tensor[S[], S[]]**tensor[id, R[1, 2, u, v]]
 	,
-	TestID->"27-tensor-product.nb"
+	TestID->"31-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -236,7 +268,7 @@ VerificationTest[
 	,
 	tensor[S[], S[]]**tensor[id, R[1, 2, u, v]]**tensor[x[1], x[2], x[3], x[4]]
 	,
-	TestID->"28-tensor-product.nb"
+	TestID->"32-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -244,7 +276,7 @@ VerificationTest[
 	,
 	tensor[a, b, c, d, e]
 	,
-	TestID->"29-tensor-product.nb"
+	TestID->"33-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -252,7 +284,7 @@ VerificationTest[
 	,
 	tensor[b, a, c, d, e]
 	,
-	TestID->"30-tensor-product.nb"
+	TestID->"34-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -260,7 +292,7 @@ VerificationTest[
 	,
 	tensor[b, a, d, c, e]
 	,
-	TestID->"31-tensor-product.nb"
+	TestID->"35-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -268,7 +300,7 @@ VerificationTest[
 	,
 	2*tensor[b, a] + tensor[d, c]
 	,
-	TestID->"32-tensor-product.nb"
+	TestID->"36-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -278,7 +310,7 @@ VerificationTest[
 	,
 	{Permute::lowlen}
 	,
-	TestID->"33-tensor-product.nb"
+	TestID->"37-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -288,7 +320,7 @@ VerificationTest[
 	,
 	{Yurie`Cluster`cluster::rmdefault}
 	,
-	TestID->"34-tensor-product.nb"
+	TestID->"38-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -296,7 +328,7 @@ VerificationTest[
 	,
 	{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
 	,
-	TestID->"35-tensor-product.nb"
+	TestID->"39-tensor-product.nb"
 ]
 
 VerificationTest[
@@ -305,7 +337,7 @@ VerificationTest[
 	,
 	{}
 	,
-	TestID->"36-tensor-product.nb"
+	TestID->"40-tensor-product.nb"
 ]
 
 VerificationTest[

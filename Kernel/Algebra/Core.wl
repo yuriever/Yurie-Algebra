@@ -54,12 +54,15 @@ algebraPrint::usage =
 tensorank::usage =
     "return the tensor rank of the expression by the default algebra.";
 
-tensorankSafe::usage =
-    "check whether the expression is valid and return the tensor rank of by the default algebra.";
+tensorankUnsafe::usage =
+    "return the tensor rank of the expression by the default algebra without validating the expression.";
 
 
 parity::usage =
     "return the parity of the expression by the default algebra.";
+
+parityUnsafe::usage =
+    "return the parity of the expression by the default algebra without validating the expression.";
 
 
 (* ::Subsection:: *)
@@ -175,23 +178,6 @@ algebraPrint[expr_] :=
 
 
 (* ::Subsection:: *)
-(*tensorank*)
-
-
-tensorank[k_.*x_tensor] :=
-    Total[Map[tensorank,x],AllowedHeads->tensor];
-
-tensorank[k_.*x_NonCommutativeMultiply] :=
-    tensorank@First@x;
-
-tensorank[k_.*Shortest[x_?generatorQ]] :=
-    $tensorank[x];
-
-tensorank[k_?scalarQ] :=
-    0;
-
-
-(* ::Subsection:: *)
 (*tensorankSafe*)
 
 
@@ -199,7 +185,7 @@ tensorank[k_?scalarQ] :=
 (*Message*)
 
 
-tensorankSafe::rankNotMatch =
+tensorank::rankNotMatch =
     "the tensor ranks in `` do not match.";
 
 
@@ -207,22 +193,52 @@ tensorankSafe::rankNotMatch =
 (*Main*)
 
 
-tensorankSafe[Optional[k_?scalarQ]*x_tensor] :=
-    Total[Map[tensorankSafe,x],AllowedHeads->tensor];
+tensorank[expr_] :=
+    expr//tensorankKernel//Catch//ReplaceAll[tensorankKernel->tensorank];
 
-tensorankSafe[Optional[k_?scalarQ]*x_NonCommutativeMultiply] :=
-    Catch[
-        If[ AllSameBy[x,tensorankSafe]===False,
-            Message[tensorankSafe::rankNotMatch,x];
-            Throw@Defer@tensorankSafe[x]
-        ];
-        tensorankSafe@First@x
+
+tensorankKernel[x_+y_] :=
+    With[ {rank = tensorankKernel[x]},
+        If[ rank===tensorankKernel[y],
+            rank,
+            (*Else*)
+            Throw@Indeterminate
+        ]
     ];
 
-tensorankSafe[Optional[k_?scalarQ]*x_?generatorQ] :=
+tensorankKernel[Optional[k_?scalarQ]*x_tensor] :=
+    Total[Map[tensorankKernel,x],AllowedHeads->tensor];
+
+tensorankKernel[Optional[k_?scalarQ]*x_NonCommutativeMultiply] :=
+    (
+        If[ AllSameBy[x,tensorankKernel]===False,
+            Message[tensorank::rankNotMatch,x];
+            Throw@Defer@tensorankKernel[x]
+        ];
+        tensorankKernel@First@x
+    );
+
+tensorankKernel[Optional[k_?scalarQ]*x_?generatorQ] :=
     $tensorank[x];
 
-tensorankSafe[k_?scalarQ] :=
+tensorankKernel[k_?scalarQ] :=
+    0;
+
+
+(* ::Subsection:: *)
+(*tensorankUnsafe*)
+
+
+tensorankUnsafe[k_.*x_tensor] :=
+    Total[Map[tensorankUnsafe,x],AllowedHeads->tensor];
+
+tensorankUnsafe[k_.*x_NonCommutativeMultiply] :=
+    tensorankUnsafe@First@x;
+
+tensorankUnsafe[k_.*Shortest[x_?generatorQ]] :=
+    $tensorank[x];
+
+tensorankUnsafe[k_?scalarQ] :=
     0;
 
 
@@ -235,6 +251,13 @@ parity[Optional[k_?scalarQ]*x_NonCommutativeMultiply] :=
         Total[Map[parity,x],AllowedHeads->NonCommutativeMultiply],
         2
     ];
+
+
+(* ::Subsection:: *)
+(*parityUnsafe*)
+
+
+
 
 
 (* ::Subsection:: *)

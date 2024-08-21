@@ -124,7 +124,8 @@ algebraInternal["Tensor"] = <|
         tensor[z_,x_+y_]:>
             tensor[z,x]+tensor[z,y],
         (*composition*)
-        $composition
+	    tensor[x1_,x2__]**tensor[y1_,y2__]:>
+	        compose[{x1,x2},{y1,y2}]
     },
     "Printing"->{
         tensor->CircleTimes

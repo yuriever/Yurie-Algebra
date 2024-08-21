@@ -115,7 +115,7 @@ VerificationTest[
 
 VerificationTest[
 	algebraAdd["alg1", "alg2"]["Rank" -> {x -> 2}]; 
-	tensorank[x]
+	tensorankUnsafe[x]
 	,
 	2
 	,

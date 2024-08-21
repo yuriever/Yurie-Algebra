@@ -81,11 +81,14 @@ algebraPrint::usage =
 tensorank::usage =
 	"return the tensor rank of the expression by the default algebra.";
 
-tensorankSafe::usage =
-	"check whether the expression is valid and return the tensor rank of by the default algebra.";
+tensorankUnsafe::usage =
+	"return the tensor rank of the expression by the default algebra without validating the expression.";
 
 parity::usage =
 	"return the parity of the expression by the default algebra.";
+
+parityUnsafe::usage =
+	"return the parity of the expression by the default algebra without validating the expression.";
 
 algS::usage =
 	"algebraSimplify.";
