@@ -58,17 +58,14 @@ Begin["`Private`"];
 tensorCompose[tensor[x__],tensor[y__]] :=
     compose[{x},{y}];
 
-tensorCompose[x_,y_] :=
-    x**y;
-
-tensorCompose[x_tensor] :=
-    x;
-
 tensorCompose[x_NonCommutativeMultiply] :=
     Fold[tensorCompose,x];
 
 tensorCompose[k_?scalarQ*x_.] :=
     k*tensorCompose[x];
+
+tensorCompose[x_,y_] :=
+    x**y;
 
 
 (* ::Subsubsection:: *)
