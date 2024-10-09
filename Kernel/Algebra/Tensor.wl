@@ -81,11 +81,11 @@ slot::usage =
 
 compose[opList1_,opList2_] :=
     head[addSlot@opList1,addSlot@opList2]//Thread//
-    	Split[#,MemberQ[#2,slot]&]&//
-	    	Map[Thread[#,head]&]//
-				ReplaceAll[slot->Nothing]//
-					ReplaceAll[{z_}:>z]//
-						ReplaceAll[{head->NonCommutativeMultiply,List->tensor}];
+        Split[#,MemberQ[#2,slot]&]&//
+            Map[Thread[#,head]&]//
+                ReplaceAll[slot->Nothing]//
+                    ReplaceAll[{z_}:>z]//
+                        ReplaceAll[{head->NonCommutativeMultiply,List->tensor}];
 
 
 addSlot[opList_] :=
