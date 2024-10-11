@@ -4,7 +4,7 @@ A Mathematica paclet for implementing and managing finitely presented associativ
 
 ## Documentation
 
-<https://yuriever.github.io/symbolic/Yurie__Algebra/doc/>
+<https://yuriever.github.io/symbolic/Yurie-Algebra/doc/>
 
 ## Install
 
