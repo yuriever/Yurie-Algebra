@@ -34,7 +34,7 @@
 
 * `#!wl innerProduct` - inner product of the states.
 
-* `#!wl expectationValue` - expectation value of the operator under the states.
+* `#!wl exptValue` - expectation value of the operator under the states.
 
 
 <!-- Core.wl -->

@@ -48,7 +48,7 @@ conjugate::usage =
 innerProduct::usage =
 	"inner product of the states.";
 
-expectationValue::usage =
+exptValue::usage =
 	"expectation value of the operator under the states.";
 
 
