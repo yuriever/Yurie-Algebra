@@ -33,16 +33,17 @@ PacletObject[
         "Kernel",
         "Root" -> "Dataset",
         "Context" -> {
-          "Yurie`Algebra`BosonFermion`",
           "Yurie`Algebra`BCGhost`",
+          "Yurie`Algebra`BinomialHopf",
+          "Yurie`Algebra`BosonFermion`",
           "Yurie`Algebra`CCFT2`",
           "Yurie`Algebra`CFT1`",
           "Yurie`Algebra`CFTd`",
+          "Yurie`Algebra`Harmonic`",
           "Yurie`Algebra`SL2`",
-          "Yurie`Algebra`YBE`",
-          "Yurie`Algebra`BinomialHopf",
           "Yurie`Algebra`Sweedler",
-          "Yurie`Algebra`TrigHopf`"
+          "Yurie`Algebra`TrigHopf`",
+          "Yurie`Algebra`YBE`"
         }
       },
       {

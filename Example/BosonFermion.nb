@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12551,        382]
+NotebookDataLength[     12552,        382]
 NotebookOptionsPosition[      9535,        323]
-NotebookOutlinePosition[      9983,        341]
-CellTagsIndexPosition[      9940,        338]
+NotebookOutlinePosition[      9984,        341]
+CellTagsIndexPosition[      9941,        338]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -322,8 +322,8 @@ Cell[BoxData[
 }, Open  ]]
 },
 Editable->True,
-WindowSize->{840, 1022},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowSize->{1280, 1387},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
 TaggingRules-><|"TryRealOnly" -> False|>,
 FrontEndVersion->"14.1 for Mac OS X ARM (64-bit) (July 16, 2024)",
 StyleDefinitions->"Yurie.nb",
@@ -360,7 +360,7 @@ Cell[4296, 144, 624, 20, 66, "Code",ExpressionUUID->"51814dc4-5af0-414f-bcee-9b5
 Cell[4923, 166, 492, 16, 66, "Code",ExpressionUUID->"0b5516fc-5827-45a2-800b-b20c3e8eeefe"],
 Cell[CellGroupData[{
 Cell[5440, 186, 220, 6, 66, "Code",ExpressionUUID->"8d432b41-3797-4e2d-a131-d8bcb338f62a"],
-Cell[5663, 194, 1305, 42, 67, "Output",ExpressionUUID->"87d52478-7015-45c2-bfca-d2c2d2511dae"]
+Cell[5663, 194, 1305, 42, 41, "Output",ExpressionUUID->"87d52478-7015-45c2-bfca-d2c2d2511dae"]
 }, Open  ]],
 Cell[6983, 239, 84, 0, 60, "Text",ExpressionUUID->"6477490a-de67-402f-9b1b-bc8972be3337"],
 Cell[CellGroupData[{
@@ -372,7 +372,7 @@ Cell[CellGroupData[{
 Cell[7462, 258, 84, 0, 66, "Subsection",ExpressionUUID->"920d514b-9f88-4faf-9217-e6b2bdce3dd4"],
 Cell[CellGroupData[{
 Cell[7571, 262, 142, 3, 66, "Code",ExpressionUUID->"db3a6d89-e95c-44d9-8319-01e8e43a3f7f"],
-Cell[7716, 267, 738, 14, 53, "Message",ExpressionUUID->"23d77ea4-e5e6-4306-a592-4f45e8301fde"]
+Cell[7716, 267, 738, 14, 32, "Message",ExpressionUUID->"23d77ea4-e5e6-4306-a592-4f45e8301fde"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[8491, 286, 143, 3, 66, "Code",ExpressionUUID->"3c162257-1a20-4b26-b9ed-92e0b27e1ef7"],
