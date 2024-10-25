@@ -32,7 +32,9 @@
 
 * `#!wl conjugate` - conjugate of the operator.
 
-* `#!wl innerProduct` - inner product of the two operators.
+* `#!wl innerProduct` - inner product of the states.
+
+* `#!wl expectationValue` - expectation value of the operator under the states.
 
 
 <!-- Core.wl -->

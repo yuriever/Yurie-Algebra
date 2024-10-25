@@ -46,7 +46,10 @@ conjugate::usage =
 	"conjugate of the operator.";
 
 innerProduct::usage =
-	"inner product of the two operators.";
+	"inner product of the states.";
+
+expectationValue::usage =
+	"expectation value of the operator under the states.";
 
 
 (* Core.wl *)
