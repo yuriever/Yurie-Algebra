@@ -22,7 +22,7 @@ innerProduct::usage =
     "inner product of the states.";
 
 
-expectationValue::usage =
+exptValue::usage =
     "expectation value of the operator under the states."
 
 
@@ -48,10 +48,10 @@ innerProduct[x_] :=
     conjugate[x]**x;
 
 
-expectationValue[x_][y_] :=
+exptValue[x_][y_] :=
     conjugate[x]**y**x;
 
-expectationValue[x_,y_][z_] :=
+exptValue[x_,y_][z_] :=
     conjugate[x]**z**y;
 
 
