@@ -27,8 +27,11 @@ cr::usage =
 an::usage =
     "operator: annihilation.";
 
+bra::usage =
+    "state: out.";
+
 ket::usage =
-    "state: vacuum.";
+    "state: in.";
 
 
 (* ::Section:: *)
@@ -78,14 +81,16 @@ $algebraList//algebraDefine
 <|
     "Generator"->{ket},
     "Relation"->{
-        conjugate[ket[n_]]:>ket[n],
         an**ket[n_]:>Sqrt[n]*ket[n-1],
         cr**ket[n_]:>Sqrt[n+1]*ket[n+1],
-        ket[n_]**an:>Sqrt[n+1]*ket[n+1],
-        ket[n_]**cr:>Sqrt[n]*ket[n-1],
-        ket[n_]**ket[m_]:>KroneckerDelta[n,m]
+        bra[n_]**an:>Sqrt[n+1]*ket[n+1],
+        bra[n_]**cr:>Sqrt[n]*ket[n-1],
+        bra[n_]**ket[m_]:>KroneckerDelta[n,m],
+        conjugate[bra[n_]]:>ket[n],
+        conjugate[ket[n_]]:>bra[n]
     },
     "Printing"->{
+        bra[n_]:>Bra[{n}],
         ket[n_]:>Ket[{n}]
     }
 |>//algebraAdd["vacuum"]
