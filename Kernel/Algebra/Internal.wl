@@ -50,7 +50,7 @@ NonCommutativeMultiply//Unprotect;
 NonCommutativeMultiply//ClearAll;
 
 NonCommutativeMultiply//Attributes =
-    {Flat,OneIdentity,Listable};
+    {Flat,OneIdentity};
 
 
 tensor//Attributes =
