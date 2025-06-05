@@ -11,7 +11,7 @@ Needs["Yurie`Algebra`"];
 (*Begin*)
 
 
-BeginPackage["Yurie`Algebra`BinomialHopf`"];
+BeginPackage["Global`"];
 
 
 Needs["Yurie`Algebra`"];
@@ -21,8 +21,14 @@ Needs["Yurie`Algebra`"];
 (*Public*)
 
 
+R::usage =
+    "operator: R.";
+
+S::usage =
+    "operator: S.";
+
 x::usage =
-    "operator.";
+    "state.";
 
 
 (* ::Section:: *)
@@ -40,33 +46,34 @@ Begin["`Private`"];
 (*Algebra*)
 
 
-$algebraList = {"BinomialHopf"};
+$algebraList = {"YBE"};
 
 $algebraList//algebraUnset//Quiet
 
 $algebraList//algebraDefine
 
 
-(* ::Subsubsection:: *)
-(*BinomialHopf*)
-
-
 <|
     "Generator"->{
-        x[_]
+        x[_],
+        S[],
+        R[___]
     },
     "Relation"->{
-        x[0]->id,
-        x[n_]**x[m_]:>x[n+m],
-        comultiply[x[n_]]:>
-            Sum[Binomial[n,i]*tensor[x[i],x[n-i]],{i,0,n}],
-        counit[x[n_]]:>KroneckerDelta[n,0],
-        antipode[x[n_]]:>(-1)^n*x[n]
+        S[]**tensor[x_,y_]:>tensor[y,x],
+        R[i_,j_,u_,v_]**tensor[x_,y_,z_]:>
+            (u-v)/(u-v+I)*tensor[x,y,z]+I/(u-v+I)*Permute[tensor[x,y,z],Cycles@{{i,j}}]
     },
     "Printing"->{
-        x[n_]:>Power[x,n]
+        x[i_]:>Subscript[x,i],
+        S[]->S,
+        R[i_,j_,u_,v_]:>Subscript[R,i,j]
+    },
+    "Rank"->{
+        S[]->2,
+        R[___]->3
     }
-|>//algebraAdd["BinomialHopf"]
+|>//algebraAdd["YBE"]
 
 
 (* ::Subsection:: *)

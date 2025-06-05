@@ -11,7 +11,7 @@ Needs["Yurie`Algebra`"];
 (*Begin*)
 
 
-BeginPackage["Yurie`Algebra`BCGhost`"];
+BeginPackage["Global`"];
 
 
 Needs["Yurie`Algebra`"];
@@ -54,8 +54,8 @@ $algebraList//algebraDefine
 
 
 (* ::Text:: *)
-(*\[CapitalDelta][b]==h*)
-(*\[CapitalDelta][c]==1-h*)
+(*h[b]==h*)
+(*h[c]==1-h*)
 
 
 (* ::Subsubsection:: *)

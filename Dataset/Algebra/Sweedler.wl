@@ -11,7 +11,7 @@ Needs["Yurie`Algebra`"];
 (*Begin*)
 
 
-BeginPackage["Yurie`Algebra`Sweedler`"];
+BeginPackage["Global`"];
 
 
 Needs["Yurie`Algebra`"];
