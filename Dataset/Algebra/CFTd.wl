@@ -71,11 +71,11 @@ Begin["`Private`"];
 
 
 $algebraList = {
-    "isometry-algebra",
-    "conformal-algebra",
-    "vacuum",
-    "conjugateE",
-    "conjugateL"
+    "IsometryAlgebra",
+    "ConformalAlgebra",
+    "Vacuum",
+    "EuclideanConjugate",
+    "LorentzianConjugate"
 };
 
 $algebraList//algebraUnset//Quiet
@@ -87,9 +87,9 @@ $algebraList//algebraDefine
 (*Isometry and conformal algebras*)
 
 
-"Generator"->{genP,genM}//algebraAdd["isometry-algebra"]
+"Generator"->{genP,genM}//algebraAdd["IsometryAlgebra"]
 
-"Generator"->{genP,genM,genD,genK}//algebraAdd["conformal-algebra"]
+"Generator"->{genP,genM,genD,genK}//algebraAdd["ConformalAlgebra"]
 
 
 "Relation"->{
@@ -103,7 +103,7 @@ $algebraList//algebraDefine
     commDefine[genM[i_,j_],genM[k_,l_]]:>
         genM[i,l]*metric[j,k]+genM[j,k]*metric[i,l]-genM[j,l]*metric[i,k]-genM[i,k]*metric[j,l]/;
             coordOrder[k>i||(k==i&&l>j)]
-}//algebraAdd["isometry-algebra","conformal-algebra"]
+}//algebraAdd["IsometryAlgebra","ConformalAlgebra"]
 
 
 "Relation"->{
@@ -117,13 +117,13 @@ $algebraList//algebraDefine
     commDefine[genD[],genM[i_,j_]]:>0,
     (*[K,P]*)
     commDefine[genK[i_],genP[j_]]:>2genD[]*metric[i,j]-2*genM[i,j]
-}//algebraAdd["conformal-algebra"]
+}//algebraAdd["ConformalAlgebra"]
 
 
 "Printing"->{
     genP[i_]:>Subscript["P",i],
     genM[i_,j_]:>Subscript["M",i,j]
-}//algebraAdd["isometry-algebra"]
+}//algebraAdd["IsometryAlgebra"]
 
 
 "Printing"->{
@@ -131,14 +131,14 @@ $algebraList//algebraDefine
     genP[i_]:>Subscript["P",i],
     genK[i_]:>Subscript["K",i],
     genM[i_,j_]:>Subscript["M",i,j]
-}//algebraAdd["conformal-algebra"]
+}//algebraAdd["ConformalAlgebra"]
 
 
 (* ::Subsubsection:: *)
 (*Vacuum*)
 
 
-"Generator"->{vacuum}//algebraAdd["vacuum"]
+"Generator"->{vacuum}//algebraAdd["Vacuum"]
 
 
 "Relation"->{
@@ -146,7 +146,7 @@ $algebraList//algebraDefine
     genP[_]**vacuum:>0,
     genK[_]**vacuum:>0,
     genM[_,_]**vacuum:>0
-}//algebraAdd["vacuum"]
+}//algebraAdd["Vacuum"]
 
 
 (* ::Subsubsection:: *)
@@ -155,7 +155,7 @@ $algebraList//algebraDefine
 
 "Relation"->{
     conjugate[op_?generatorQ]:>-op
-}//algebraAdd["conjugateE"]
+}//algebraAdd["EuclideanConjugate"]
 
 
 (* ::Subsection:: *)

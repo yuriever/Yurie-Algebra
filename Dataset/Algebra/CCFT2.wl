@@ -76,11 +76,11 @@ Begin["`Private`"];
 
 
 $algebraList = {
-    "conformal-algebra","conformal-algebra-conjugate",
-    "BMS","BMS-conjugate",
-    "vacuum","vacuum-conjugate",
-    "singlet","singlet-conjugate",
-    "multiplet","multiplet-upper","multiplet-lower","multiplet-conjugate"
+    "ConformalAlgebra","ConformalAlgebraConjugate",
+    "BMS","BMSConjugate",
+    "Vacuum","VacuumConjugate",
+    "Singlet","SingletConjugate",
+    "Multiplet","MultipletUpper","MultipletLower","MultipletConjugate"
 };
 
 $algebraList//algebraUnset//Quiet
@@ -101,14 +101,14 @@ $algebraList//algebraDefine
         M[n_]**M[m_]:>M[m]**M[n]/;n>m
     },
     "Printing"->{
-        L[n_]:>Subscript["L",n],
-        M[n_]:>Subscript["M",n],
+        L[n_]:>Subscript[L,n],
+        M[n_]:>Subscript[M,n],
         Subscript[op_,n_]**Subscript[op_,n_]:>Subsuperscript[op,n,2],
         Subscript[op_,n_]**Subsuperscript[op_,n_,power_]:>Subsuperscript[op,n,power+1],
         Subsuperscript[op_,n_,power_]**Subscript[op_,n_]:>Subsuperscript[op,n,power+1],
         Subsuperscript[op_,n_,power1_]**Subsuperscript[op_,n_,power2_]:>Subsuperscript[op,n,power1+power2]
     }
-|>//algebraAdd["conformal-algebra"]
+|>//algebraAdd["ConformalAlgebra"]
 
 
 (* ::Subsubsection:: *)
@@ -124,14 +124,14 @@ $algebraList//algebraDefine
         M[n_]**M[m_]:>M[m]**M[n]/;n>m
     },
     "Printing"->{
-        L[n_]:>Subscript["L",n],
-        M[n_]:>Subscript["M",n],
+        L[n_]:>Subscript[L,n],
+        M[n_]:>Subscript[M,n],
         Subscript[op_,n_]**Subscript[op_,n_]:>Subsuperscript[op,n,2],
         Subscript[op_,n_]**Subsuperscript[op_,n_,power_]:>Subsuperscript[op,n,power+1],
         Subsuperscript[op_,n_,power_]**Subscript[op_,n_]:>Subsuperscript[op,n,power+1],
         Subsuperscript[op_,n_,power1_]**Subsuperscript[op_,n_,power2_]:>Subsuperscript[op,n,power1+power2],
-        $centralChargeL->Subscript["c","L"],
-        $centralChargeM->Subscript["c","M"]
+        $centralChargeL->Subscript[c,L],
+        $centralChargeM->Subscript[c,M]
     }
 |>//algebraAdd["BMS"]
 
@@ -148,7 +148,7 @@ $algebraList//algebraDefine
         vacuum**L[_]:>0,
         vacuum**M[_]:>0
     }
-|>//algebraAdd["vacuum"]
+|>//algebraAdd["Vacuum"]
 
 
 (* ::Subsubsection:: *)
@@ -166,7 +166,7 @@ $algebraList//algebraDefine
         primary[delta_,xi_]**M[n_]:>0/;n<=-1,
         M[0]**primary[delta_,xi_]:>xi*primary[delta,xi]
     }
-|>//algebraAdd["singlet"]
+|>//algebraAdd["Singlet"]
 
 
 (* ::Subsubsection:: *)
@@ -186,7 +186,7 @@ $algebraList//algebraDefine
         M[n_]**primary[rank_,a_,delta_,xi_]:>0/;n>=1,
         primary[rank_,a_,delta_,xi_]**M[n_]:>0/;n<=-1
     }
-|>//algebraAdd["multiplet","multiplet-upper","multiplet-lower"]
+|>//algebraAdd["Multiplet","MultipletUpper","MultipletLower"]
 
 
 (* ::Text:: *)
@@ -195,11 +195,11 @@ $algebraList//algebraDefine
 
 "Relation"->{
     M[0]**primary[rank_,a_,delta_,xi_]:>xi*primary[rank,a,delta,xi]+primary[rank,a+1,delta,xi]
-}//algebraAdd["multiplet","multiplet-upper"]
+}//algebraAdd["Multiplet","MultipletUpper"]
 
 "Relation"->{
     M[0]**primary[rank_,a_,delta_,xi_]:>xi*primary[rank,a,delta,xi]+primary[rank,a-1,delta,xi]
-}//algebraAdd["multiplet-lower"]
+}//algebraAdd["MultipletLower"]
 
 
 (* ::Subsubsection:: *)
@@ -209,25 +209,25 @@ $algebraList//algebraDefine
 "Relation"->{
     conjugate[L[n_]]:>L[-n],
     conjugate[M[n_]]:>M[-n]
-}//algebraAdd["conformal-algebra-conjugate"]
+}//algebraAdd["ConformalAlgebraConjugate"]
 
 
 "Relation"->{
     vacuum**vacuum->1,
     conjugate[vacuum]->vacuum
-}//algebraAdd["vacuum-conjugate"]
+}//algebraAdd["VacuumConjugate"]
 
 
 "Relation"->{
     primary[delta_,xi_]**primary[delta_,xi_]:>1,
     conjugate[primary[delta_,xi_]]:>primary[delta,xi]
-}//algebraAdd["singlet-conjugate"]
+}//algebraAdd["SingletConjugate"]
 
 
 "Relation"->{
     primary[rank_,a_,delta_,xi_]**primary[rank_,b_,delta_,xi_]:>KroneckerDelta[a+b,rank+1],
     conjugate[primary[rank_,a_,delta_,xi_]]:>primary[rank,a,delta,xi]
-}//algebraAdd["multiplet-conjugate"]
+}//algebraAdd["MultipletConjugate"]
 
 
 (* ::Subsection:: *)

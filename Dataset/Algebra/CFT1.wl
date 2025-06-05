@@ -64,11 +64,11 @@ Begin["`Private`"];
 
 
 $algebraList = {
-    "conformal-algebra","conformal-algebra-conjugate",
-    "Virasoro","Virasoro-conjugate",
-    "vacuum","vacuum-conjugate",
-    "singlet","singlet-conjugate",
-    "multiplet","multiplet-upper","multiplet-lower","multiplet-conjugate"
+    "ConformalAlgebra","ConformalAlgebraConjugate",
+    "Virasoro","VirasoroConjugate",
+    "Vacuum","VacuumConjugate",
+    "Singlet","SingletConjugate",
+    "Multiplet","MultipletUpper","MultipletLower","MultipletConjugate"
 };
 
 $algebraList//algebraUnset//Quiet
@@ -86,13 +86,13 @@ $algebraList//algebraDefine
         L[n_]**L[m_]:>L[m]**L[n]+(n-m)L[n+m]/;n>m
     },
     "Printing"->{
-        L[n_]:>Subscript["L",n],
+        L[n_]:>Subscript[L,n],
         Subscript[op_,n_]**Subscript[op_,n_]:>Subsuperscript[op,n,2],
         Subscript[op_,n_]**Subsuperscript[op_,n_,power_]:>Subsuperscript[op,n,power+1],
         Subsuperscript[op_,n_,power_]**Subscript[op_,n_]:>Subsuperscript[op,n,power+1],
         Subsuperscript[op_,n_,power1_]**Subsuperscript[op_,n_,power2_]:>Subsuperscript[op,n,power1+power2]
     }
-|>//algebraAdd["conformal-algebra"]
+|>//algebraAdd["ConformalAlgebra"]
 
 
 (* ::Subsubsection:: *)
@@ -105,12 +105,12 @@ $algebraList//algebraDefine
         L[n_]**L[m_]:>L[m]**L[n]+(n-m)L[n+m]+$centralCharge*KroneckerDelta[n+m,0]*(n^3-n)/12*id/;n>m
     },
     "Printing"->{
-        L[n_]:>Subscript["L",n],
+        L[n_]:>Subscript[L,n],
         Subscript[op_,n_]**Subscript[op_,n_]:>Subsuperscript[op,n,2],
         Subscript[op_,n_]**Subsuperscript[op_,n_,power_]:>Subsuperscript[op,n,power+1],
         Subsuperscript[op_,n_,power_]**Subscript[op_,n_]:>Subsuperscript[op,n,power+1],
         Subsuperscript[op_,n_,power1_]**Subsuperscript[op_,n_,power2_]:>Subsuperscript[op,n,power1+power2],
-        $centralCharge->"c"
+        $centralCharge->c
     }
 |>//algebraAdd["Virasoro"]
 
@@ -125,7 +125,7 @@ $algebraList//algebraDefine
         L[_]**vacuum:>0,
         vacuum**L[_]:>0
     }
-|>//algebraAdd["vacuum"]
+|>//algebraAdd["Vacuum"]
 
 
 (* ::Subsubsection:: *)
@@ -140,7 +140,7 @@ $algebraList//algebraDefine
         primary[h_]**L[n_]:>0/;n<=-1,
         L[0]**primary[h_]:>h*primary[h]
     }
-|>//algebraAdd["singlet"]
+|>//algebraAdd["Singlet"]
 
 
 (* ::Subsubsection:: *)
@@ -157,7 +157,7 @@ $algebraList//algebraDefine
         L[n_]**primary[rank_,a_,h_]:>0/;n>=1,
         primary[rank_,a_,h_]**L[n_]:>0/;n<=-1
     }
-|>//algebraAdd["multiplet","multiplet-upper","multiplet-lower"]
+|>//algebraAdd["Multiplet","MultipletUpper","MultipletLower"]
 
 
 (* ::Text:: *)
@@ -166,11 +166,11 @@ $algebraList//algebraDefine
 
 "Relation"->{
     L[0]**primary[rank_,a_,h_]:>h*primary[rank,a,h]+primary[rank,a+1,h]
-}//algebraAdd["multiplet","multiplet-upper"]
+}//algebraAdd["Multiplet","MultipletUpper"]
 
 "Relation"->{
     L[0]**primary[rank_,a_,h_]:>h*primary[rank,a,h]+primary[rank,a-1,h]
-}//algebraAdd["multiplet-lower"]
+}//algebraAdd["MultipletLower"]
 
 
 (* ::Subsubsection:: *)
@@ -179,25 +179,25 @@ $algebraList//algebraDefine
 
 "Relation"->{
     conjugate[L[n_]]:>L[-n]
-}//algebraAdd["conformal-algebra-conjugate","Virasoro-conjugate"]
+}//algebraAdd["ConformalAlgebraConjugate","VirasoroConjugate"]
 
 
 "Relation"->{
     vacuum**vacuum->1,
     conjugate[vacuum]->vacuum
-}//algebraAdd["vacuum-conjugate"]
+}//algebraAdd["VacuumConjugate"]
 
 
 "Relation"->{
     primary[h_]**primary[h_]:>1,
     conjugate[primary[h_]]:>primary[h]
-}//algebraAdd["singlet-conjugate"]
+}//algebraAdd["SingletConjugate"]
 
 
 "Relation"->{
     primary[rank_,a_,h_]**primary[rank_,b_,h_]:>KroneckerDelta[a+b,rank+1],
     conjugate[primary[rank_,a_,h_]]:>primary[rank,a,h]
-}//algebraAdd["multiplet-conjugate"]
+}//algebraAdd["MultipletConjugate"]
 
 
 (* ::Subsection:: *)

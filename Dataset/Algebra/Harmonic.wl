@@ -49,7 +49,7 @@ Begin["`Private`"];
 (*Algebra*)
 
 
-$algebraList = {"HO","vacuum"};
+$algebraList = {"HarmonicOscillator","Vacuum"};
 
 $algebraList//algebraUnset//Quiet
 
@@ -68,10 +68,10 @@ $algebraList//algebraDefine
         conjugate[an]:>cr
     },
     "Printing"->{
-        cr:>SuperDagger["a"],
-        an:>"a"
+        cr:>SuperDagger[a],
+        an:>a
     }
-|>//algebraAdd["HO"]
+|>//algebraAdd["HarmonicOscillator"]
 
 
 (* ::Subsubsection:: *)
@@ -93,7 +93,7 @@ $algebraList//algebraDefine
         bra[n_]:>Bra[{n}],
         ket[n_]:>Ket[{n}]
     }
-|>//algebraAdd["vacuum"]
+|>//algebraAdd["Vacuum"]
 
 
 (* ::Subsection:: *)

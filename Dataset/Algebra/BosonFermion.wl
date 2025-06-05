@@ -53,8 +53,8 @@ Begin["`Private`"];
 
 
 $algebraList = {
-    "boson","fermion","boson-fermion",
-    "vacuum","boson-vacuum","fermion-vacuum"
+    "Boson","Fermion","BosonFermion",
+    "Vacuum","BosonVacuum","FermionVacuum"
 };
 
 $algebraList//algebraUnset//Quiet
@@ -79,7 +79,7 @@ $algebraList//algebraDefine
         boson[i_,cr]:>Subscript[SuperDagger["a"],i],
         boson[i_,an]:>Subscript["a",i]
     }
-|>//algebraAdd["boson"]
+|>//algebraAdd["Boson"]
 
 
 <|
@@ -96,7 +96,7 @@ $algebraList//algebraDefine
         fermion[i_,cr]:>Subscript[SuperDagger["b"],i],
         fermion[i_,an]:>Subscript["b",i]
     }
-|>//algebraAdd["fermion"]
+|>//algebraAdd["Fermion"]
 
 
 "Relation"->{
@@ -104,7 +104,7 @@ $algebraList//algebraDefine
     commDefine[op1_[i_,an],op2_[j_,cr]]:>0/;op1=!=op2,
     (*move boson operators to the right if the tags are the same.*)
     commDefine[boson[i_,tag_],fermion[j_,tag_]]:>0
-}//algebraAdd["boson-fermion"]
+}//algebraAdd["BosonFermion"]
 
 
 (* ::Subsubsection:: *)
@@ -117,19 +117,19 @@ $algebraList//algebraDefine
         vacuum**vacuum->1,
         conjugate[vacuum]->vacuum
     }
-|>//algebraAdd["vacuum"]
+|>//algebraAdd["Vacuum"]
 
 
 "Relation"->{
     boson[i_,an]**vacuum:>0,
     vacuum**boson[i_,cr]:>0
-}//algebraAdd["boson-vacuum"]
+}//algebraAdd["BosonVacuum"]
 
 
 "Relation"->{
     fermion[i_,an]**vacuum:>0,
     vacuum**fermion[i_,cr]:>0
-}//algebraAdd["fermion-vacuum"]
+}//algebraAdd["FermionVacuum"]
 
 
 (* ::Subsection:: *)

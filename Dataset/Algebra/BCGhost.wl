@@ -46,7 +46,7 @@ Begin["`Private`"];
 (*Algebra*)
 
 
-$algebraList = {"bc","bc-vacuum"};
+$algebraList = {"BCGhost","Vacuum"};
 
 $algebraList//algebraUnset//Quiet
 
@@ -78,7 +78,7 @@ $algebraList//algebraDefine
         ghostB[h_,n_]:>Subscript["b",n],
         ghostC[h_,n_]:>Subscript["c",n]
     }
-|>//algebraAdd["bc"]
+|>//algebraAdd["BCGhost"]
 
 
 (* ::Subsubsection:: *)
@@ -94,7 +94,7 @@ $algebraList//algebraDefine
         vacuum**ghostC[h_,n_]:>0/;n<=-h,
         conjugate[vacuum]->vacuum
     }
-|>//algebraAdd["bc-vacuum"]
+|>//algebraAdd["Vacuum"]
 
 
 (* ::Subsection:: *)
