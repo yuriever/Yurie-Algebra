@@ -58,7 +58,7 @@ $thisKernelDir =
     FileNameJoin@{$thisPacletDir,"Kernel"};
 
 $thisDatasetDir =
-    FileNameJoin@{$thisPacletDir,"Dataset"};
+    FileNameJoin@{$thisPacletDir,"Dataset","Algebra"};
 
 $thisTestDir =
     $thisPaclet["AssetLocation","Test"];
