@@ -36,7 +36,7 @@ PacletObject[
           "Yurie`Algebra`BCGhost`",
           "Yurie`Algebra`BinomialHopf",
           "Yurie`Algebra`BosonFermion`",
-          "Yurie`Algebra`CCFT2`",
+          "Yurie`Algebra`CarCFT2`",
           "Yurie`Algebra`CFT1`",
           "Yurie`Algebra`CFTd`",
           "Yurie`Algebra`Harmonic`",

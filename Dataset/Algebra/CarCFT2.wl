@@ -27,7 +27,7 @@ L::usage =
 M::usage =
     "operator: M.";
 
-vacuum::usage =
+vac::usage =
     "state: vacuum.";
 
 primary::usage =
@@ -141,12 +141,12 @@ $algebraList//algebraDefine
 
 
 <|
-    "Generator"->{vacuum},
+    "Generator"->{vac},
     "Relation"->{
-        L[_]**vacuum:>0,
-        M[_]**vacuum:>0,
-        vacuum**L[_]:>0,
-        vacuum**M[_]:>0
+        L[_]**vac:>0,
+        M[_]**vac:>0,
+        vac**L[_]:>0,
+        vac**M[_]:>0
     }
 |>//algebraAdd["Vacuum"]
 
@@ -213,8 +213,8 @@ $algebraList//algebraDefine
 
 
 "Relation"->{
-    vacuum**vacuum->1,
-    conjugate[vacuum]->vacuum
+    vac**vac->1,
+    conjugate[vac]->vac
 }//algebraAdd["VacuumConjugate"]
 
 
