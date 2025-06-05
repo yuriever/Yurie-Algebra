@@ -120,7 +120,7 @@ algebraInternal["Tensor"] = <|
         tensor[k_?scalarQ*x_.,y_]:>
             k*tensor[x,y],
         tensor[x_+y_,z_]:>
-            tensor[x,z]+tensor[y,z], 
+            tensor[x,z]+tensor[y,z],
         tensor[z_,x_+y_]:>
             tensor[z,x]+tensor[z,y],
         (*composition*)
