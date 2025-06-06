@@ -151,8 +151,8 @@ algebraInternal["Coalgebra"] = <|
             counit[x]+counit[y]
     },
     "Printing"->{
-        comultiply->"\[CapitalDelta]",
-        counit->"\[Epsilon]"
+        comultiply->ToExpression["Δ"],
+        counit->ToExpression["ϵ"]
     }
 |>;
 
@@ -195,7 +195,7 @@ algebraInternal["Antipode"] = <|
             id
     },
     "Printing"->{
-        antipode->"S"
+        antipode->ToExpression["S"]
     }
 |>;
 

@@ -165,16 +165,47 @@ operatorQ[expr__] :=
 (*algebraSimplify*)
 
 
+(* ::Subsubsection:: *)
+(*Option*)
+
+
+algebraSimplify//Options = {
+    "Post":>Simplify
+};
+
+
+(* ::Subsubsection:: *)
+(*Main*)
+
+
 algebraSimplify[expr_] :=
-    ReplaceRepeated[expr,$relation]//Simplify;
+    expr//ReplaceRepeated[$relation]//Simplify;
+
+
+algebraSimplify[expr_,opts:OptionsPattern[]] :=
+    expr//ReplaceRepeated[$relation]//OptionValue["Post"];
 
 
 (* ::Subsection:: *)
 (*algebraPrint*)
 
 
+(* ::Subsubsection:: *)
+(*Main*)
+
+
 algebraPrint[expr_] :=
-    ReplaceRepeated[expr,$printing];
+    expr//ReplaceRepeated[$printing]//printNC;
+
+
+(* ::Subsubsection:: *)
+(*Helper*)
+
+
+printNC[expr_] :=
+    expr//ReplaceRepeated[{
+        co_.*NonCommutativeMultiply[args__]:>HoldForm[Times[co,args]]
+    }];
 
 
 (* ::Subsection:: *)
@@ -255,9 +286,6 @@ parity[Optional[k_?scalarQ]*x_NonCommutativeMultiply] :=
 
 (* ::Subsection:: *)
 (*parityUnsafe*)
-
-
-
 
 
 (* ::Subsection:: *)

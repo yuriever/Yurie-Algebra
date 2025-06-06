@@ -189,19 +189,22 @@ adjointExp[op_,max_,t_:1][expr_] :=
 (*Power and exp*)
 
 
-operatorPower[_,0] :=
+operatorPower[op_,0] :=
     id;
 
 operatorPower[op_,1] :=
     op;
 
-operatorPower[op_,order_:1] :=
-    NonCommutativeMultiply@@ConstantArray[op,order];
+operatorPower[op_,order_Integer?Positive] :=
+    ConstantArray[op,order]//Apply[NonCommutativeMultiply];
 
 
-operatorExp[op_,max_,t_:1] :=
-    Module[ {order},
-        Sum[operatorPower[op,order]*t^order/order!,{order,0,max}]
+operatorExp[op_,0,t_:1] :=
+    id;
+
+operatorExp[op_,max_Integer?Positive,t_:1] :=
+    Module[ {i},
+        Sum[operatorPower[op,i]*t^i/i!,{i,0,max}]
     ];
 
 
@@ -214,10 +217,10 @@ operatorExp[op_,max_,t_:1] :=
 
 
 operatorSeparate::extractionFailed =
-    "The extracted operators together with their coefficients cannot recover the original expression.";
+    "the extracted operators together with their coefficients cannot recover the original expression.";
 
 operatorSeparate::notOperator =
-    "The expression is not an operator.";
+    "the expression is not an operator.";
 
 
 (* ::Subsubsection:: *)
