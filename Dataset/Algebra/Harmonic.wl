@@ -68,8 +68,8 @@ $algebraList//algebraDefine
         conjugate[an]:>cr
     },
     "Printing"->{
-        cr:>SuperDagger[a],
-        an:>a
+        cr:>SuperDagger[ToExpression["a"]],
+        an:>ToExpression["a"]
     }
 |>//algebraAdd["HarmonicOscillator"]
 

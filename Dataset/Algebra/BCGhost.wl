@@ -21,13 +21,13 @@ Needs["Yurie`Algebra`"];
 (*Public*)
 
 
-ghostB::usage =
-    "operator: b.";
+b::usage =
+    "operator: b ghost.";
 
-ghostC::usage =
-    "operator: c.";
+c::usage =
+    "operator: c ghost.";
 
-vacuum::usage =
+vac::usage =
     "state: vacuum.";
 
 
@@ -63,20 +63,20 @@ $algebraList//algebraDefine
 
 
 <|
-    "Generator"->{ghostB,ghostC},
+    "Generator"->{b,c},
     "Relation"->{
-        commDefine[ghostB[h_,n_],ghostC[h_,m_],1]:>KroneckerDelta[n+m,0]*id/;n>=1-h,
-        commDefine[ghostB[h_,n_],ghostC[h_,m_],1,Reverse]:>KroneckerDelta[n+m,0]*id/;n<1-h,
-        commDefine[ghostB[h_,n_],ghostB[h_,m_],1]:>0/;n>m,
-        commDefine[ghostC[h_,n_],ghostC[h_,m_],1]:>0/;n>m,
-        ghostB[h_,n_]**ghostB[h_,n_]:>0,
-        ghostC[h_,n_]**ghostC[h_,n_]:>0,
-        conjugate[ghostB[h_,n_]]:>ghostB[h,-n],
-        conjugate[ghostC[h_,n_]]:>ghostC[h,-n]
+        commDefine[b[h_,n_],c[h_,m_],1]:>KroneckerDelta[n+m,0]*id/;n>=1-h,
+        commDefine[b[h_,n_],c[h_,m_],1,Reverse]:>KroneckerDelta[n+m,0]*id/;n<1-h,
+        commDefine[b[h_,n_],b[h_,m_],1]:>0/;n>m,
+        commDefine[c[h_,n_],c[h_,m_],1]:>0/;n>m,
+        b[h_,n_]**b[h_,n_]:>0,
+        c[h_,n_]**c[h_,n_]:>0,
+        conjugate[b[h_,n_]]:>b[h,-n],
+        conjugate[c[h_,n_]]:>c[h,-n]
     },
     "Printing"->{
-        ghostB[h_,n_]:>Subscript["b",n],
-        ghostC[h_,n_]:>Subscript["c",n]
+        b[h_,n_]:>Subscript[ToExpression["b"],n],
+        c[h_,n_]:>Subscript[ToExpression["c"],n]
     }
 |>//algebraAdd["BCGhost"]
 
@@ -86,13 +86,16 @@ $algebraList//algebraDefine
 
 
 <|
-    "Generator"->{vacuum},
+    "Generator"->{vac},
     "Relation"->{
-        ghostB[h_,n_]**vacuum:>0/;n>=1-h,
-        ghostC[h_,n_]**vacuum:>0/;n>=h,
-        vacuum**ghostB[h_,n_]:>0/;n<=h-1,
-        vacuum**ghostC[h_,n_]:>0/;n<=-h,
-        conjugate[vacuum]->vacuum
+        b[h_,n_]**vac:>0/;n>=1-h,
+        c[h_,n_]**vac:>0/;n>=h,
+        vac**b[h_,n_]:>0/;n<=h-1,
+        vac**c[h_,n_]:>0/;n<=-h,
+        conjugate[vac]:>vac
+    },
+    "Printing"->{
+        vac:>Ket[{0}]
     }
 |>//algebraAdd["Vacuum"]
 

@@ -24,17 +24,17 @@ Needs["Yurie`Algebra`"];
 L::usage =
     "operator: L.";
 
-vacuum::usage =
+vac::usage =
     "state: vacuum.";
 
-primary::usage =
-    "state: primary.";
+prim::usage =
+    "state: prim.";
 
-descendant::usage =
-    "state: descendant.";
+desc::usage =
+    "state: desc.";
 
 
-CFT1::usage =
+$CFT::usage =
     "index list, generator list and Casimir element of the conformal algebra.";
 
 $centralCharge::usage =
@@ -120,10 +120,13 @@ $algebraList//algebraDefine
 
 
 <|
-    "Generator"->{vacuum},
+    "Generator"->{vac},
     "Relation"->{
-        L[_]**vacuum:>0,
-        vacuum**L[_]:>0
+        L[_]**vac:>0,
+        vac**L[_]:>0
+    },
+    "Printing"->{
+        vac:>Ket[{0}]
     }
 |>//algebraAdd["Vacuum"]
 
@@ -133,12 +136,15 @@ $algebraList//algebraDefine
 
 
 <|
-    "Generator"->{primary},
+    "Generator"->{prim},
     "Relation"->{
         (*annihilation rule*)
-        L[n_]**primary[h_]:>0/;n>=1,
-        primary[h_]**L[n_]:>0/;n<=-1,
-        L[0]**primary[h_]:>h*primary[h]
+        L[n_]**prim[h_]:>0/;n>=1,
+        prim[h_]**L[n_]:>0/;n<=-1,
+        L[0]**prim[h_]:>h*prim[h]
+    },
+    "Printing"->{
+        prim[h_]:>Ket[{h}]
     }
 |>//algebraAdd["Singlet"]
 
@@ -148,14 +154,17 @@ $algebraList//algebraDefine
 
 
 <|
-    "Generator"->{primary},
+    "Generator"->{prim},
     "Relation"->{
         (*boundary condition*)
-        primary[rank_,a_,h_]:>0/;a<=0,
-        primary[rank_,a_,h_]:>0/;a>rank,
+        prim[rank_,a_][h_]:>0/;a<=0,
+        prim[rank_,a_][h_]:>0/;a>rank,
         (*annihilation rule*)
-        L[n_]**primary[rank_,a_,h_]:>0/;n>=1,
-        primary[rank_,a_,h_]**L[n_]:>0/;n<=-1
+        L[n_]**prim[rank_,a_][h_]:>0/;n>=1,
+        prim[rank_,a_][h_]**L[n_]:>0/;n<=-1
+    },
+    "Printing"->{
+        prim[rank_,a_][h_]:>Subsuperscript[Ket[{h}],rank,a]
     }
 |>//algebraAdd["Multiplet","MultipletUpper","MultipletLower"]
 
@@ -165,16 +174,16 @@ $algebraList//algebraDefine
 
 
 "Relation"->{
-    L[0]**primary[rank_,a_,h_]:>h*primary[rank,a,h]+primary[rank,a+1,h]
+    L[0]**prim[rank_,a_][h_]:>h*prim[rank,a][h]+prim[rank,a+1][h]
 }//algebraAdd["Multiplet","MultipletUpper"]
 
 "Relation"->{
-    L[0]**primary[rank_,a_,h_]:>h*primary[rank,a,h]+primary[rank,a-1,h]
+    L[0]**prim[rank_,a_][h_]:>h*prim[rank,a][h]+prim[rank,a-1][h]
 }//algebraAdd["MultipletLower"]
 
 
 (* ::Subsubsection:: *)
-(*Conjugation*)
+(*Conjugate*)
 
 
 "Relation"->{
@@ -183,20 +192,20 @@ $algebraList//algebraDefine
 
 
 "Relation"->{
-    vacuum**vacuum->1,
-    conjugate[vacuum]->vacuum
+    vac**vac:>1,
+    conjugate[vac]:>vac
 }//algebraAdd["VacuumConjugate"]
 
 
 "Relation"->{
-    primary[h_]**primary[h_]:>1,
-    conjugate[primary[h_]]:>primary[h]
+    prim[h_]**prim[h_]:>1,
+    conjugate[prim[h_]]:>prim[h]
 }//algebraAdd["SingletConjugate"]
 
 
 "Relation"->{
-    primary[rank_,a_,h_]**primary[rank_,b_,h_]:>KroneckerDelta[a+b,rank+1],
-    conjugate[primary[rank_,a_,h_]]:>primary[rank,a,h]
+    prim[rank_,a_][h_]**prim[rank_,b_][h_]:>KroneckerDelta[a+b,rank+1],
+    conjugate[prim[rank_,a_][h_]]:>prim[rank,a][h]
 }//algebraAdd["MultipletConjugate"]
 
 
@@ -204,7 +213,7 @@ $algebraList//algebraDefine
 (*Constant*)
 
 
-CFT1 = <|
+$CFT = <|
     "Index"->{-1,0,1},
     "L"->{L[-1],L[0],L[1]},
     "Casimir"->(L[0]**L[0]-L[0]-L[-1]**L[1])
@@ -216,24 +225,24 @@ CFT1 = <|
 
 
 Lmonomial[] :=
-    1;
+    id;
 
 Lmonomial[n_] :=
     L[n];
 
-Lmonomial[n_,m__] :=
-    Lmonomial[n]**Lmonomial[m];
+Lmonomial[n__] :=
+    Map[L,NonCommutativeMultiply[n]];
 
 
 Lpower[k_,n_Integer] :=
     operatorPower[L[k],n];
 
 
-descendant[h_,n_Integer] :=
-    operatorPower[L[-1],n]**primary[h];
+desc[h_,n_Integer] :=
+    operatorPower[L[-1],n]**prim[h];
 
-descendant[rank_,a_,h_,n_Integer] :=
-    operatorPower[L[-1],n]**primary[rank,a,h];
+desc[rank_,a_][h_,n_Integer] :=
+    operatorPower[L[-1],n]**prim[rank,a,h];
 
 
 (* ::Subsection:: *)

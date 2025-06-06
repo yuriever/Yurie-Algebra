@@ -53,14 +53,14 @@ $algebraList//algebraDefine
 <|
     "Generator"->{c,s},
     "Relation"->{
-        s**s->id-c**c,
-        c**s->s**c,
-        comultiply[c]->tensor[c,c]-tensor[s,s],
-        comultiply[s]->tensor[c,s]+tensor[s,c],
-        counit[c]->1,
-        counit[s]->0,
-        antipode[c]->c,
-        antipode[s]->-s
+        s**s:>id-c**c,
+        c**s:>s**c,
+        comultiply[c]:>tensor[c,c]-tensor[s,s],
+        comultiply[s]:>tensor[c,s]+tensor[s,c],
+        counit[c]:>1,
+        counit[s]:>0,
+        antipode[c]:>c,
+        antipode[s]:>-s
     }
 |>//algebraAdd["TrigHopf"]
 

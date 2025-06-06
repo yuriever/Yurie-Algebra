@@ -30,21 +30,21 @@ M::usage =
 vac::usage =
     "state: vacuum.";
 
-primary::usage =
+prim::usage =
     "state: primary.";
 
-descendant::usage =
+desc::usage =
     "state: descendant.";
 
 
-CCFT2::usage =
+$CarCFT::usage =
     "index list, generator list and Casimir element of the conformal algebra.";
 
 $centralChargeL::usage =
-    "BMS central charge c_L.";
+    "central charge: c_L.";
 
 $centralChargeM::usage =
-    "BMS central charge c_M.";
+    "central charge: c_M.";
 
 
 Lmonomial::usage =
@@ -147,6 +147,9 @@ $algebraList//algebraDefine
         M[_]**vac:>0,
         vac**L[_]:>0,
         vac**M[_]:>0
+    },
+    "Printing"->{
+        vac:>Ket[{0}]
     }
 |>//algebraAdd["Vacuum"]
 
@@ -156,15 +159,18 @@ $algebraList//algebraDefine
 
 
 <|
-    "Generator"->{primary},
+    "Generator"->{prim},
     "Relation"->{
         (*annihilation rule*)
-        L[n_]**primary[delta_,xi_]:>0/;n>=1,
-        primary[delta_,xi_]**L[n_]:>0/;n<=-1,
-        L[0]**primary[delta_,xi_]:>delta*primary[delta,xi],
-        M[n_]**primary[delta_,xi_]:>0/;n>=1,
-        primary[delta_,xi_]**M[n_]:>0/;n<=-1,
-        M[0]**primary[delta_,xi_]:>xi*primary[delta,xi]
+        L[n_]**prim[h_,ξ_]:>0/;n>=1,
+        prim[h_,ξ_]**L[n_]:>0/;n<=-1,
+        L[0]**prim[h_,ξ_]:>h*prim[h,ξ],
+        M[n_]**prim[h_,ξ_]:>0/;n>=1,
+        prim[h_,ξ_]**M[n_]:>0/;n<=-1,
+        M[0]**prim[h_,ξ_]:>ξ*prim[h,ξ]
+    },
+    "Printing"->{
+        prim[h_,ξ_]:>Ket[{h,ξ}]
     }
 |>//algebraAdd["Singlet"]
 
@@ -174,17 +180,20 @@ $algebraList//algebraDefine
 
 
 <|
-    "Generator"->{primary},
+    "Generator"->{prim},
     "Relation"->{
         (*boundary conditions*)
-        primary[rank_,a_,delta_,xi_]:>0/;a<=0,
-        primary[rank_,a_,delta_,xi_]:>0/;a>rank,
+        prim[rank_,a_][h_,ξ_]:>0/;a<=0,
+        prim[rank_,a_][h_,ξ_]:>0/;a>rank,
         (*annihilation rule*)
-        L[n_]**primary[rank_,a_,delta_,xi_]:>0/;n>=1,
-        primary[rank_,a_,delta_,xi_]**L[n_]:>0/;n<=-1,
-        L[0]**primary[rank_,a_,delta_,xi_]:>delta*primary[rank,a,delta,xi],
-        M[n_]**primary[rank_,a_,delta_,xi_]:>0/;n>=1,
-        primary[rank_,a_,delta_,xi_]**M[n_]:>0/;n<=-1
+        L[n_]**prim[rank_,a_][h_,ξ_]:>0/;n>=1,
+        prim[rank_,a_][h_,ξ_]**L[n_]:>0/;n<=-1,
+        L[0]**prim[rank_,a_][h_,ξ_]:>h*prim[rank,a][h,ξ],
+        M[n_]**prim[rank_,a_][h_,ξ_]:>0/;n>=1,
+        prim[rank_,a_][h_,ξ_]**M[n_]:>0/;n<=-1
+    },
+    "Printing"->{
+        prim[rank_,a_][h_,ξ_]:>Subsuperscript[Ket[{h,ξ}],rank,a]
     }
 |>//algebraAdd["Multiplet","MultipletUpper","MultipletLower"]
 
@@ -194,16 +203,16 @@ $algebraList//algebraDefine
 
 
 "Relation"->{
-    M[0]**primary[rank_,a_,delta_,xi_]:>xi*primary[rank,a,delta,xi]+primary[rank,a+1,delta,xi]
+    M[0]**prim[rank_,a_][h_,ξ_]:>ξ*prim[rank,a][h,ξ]+prim[rank,a+1][h,ξ]
 }//algebraAdd["Multiplet","MultipletUpper"]
 
 "Relation"->{
-    M[0]**primary[rank_,a_,delta_,xi_]:>xi*primary[rank,a,delta,xi]+primary[rank,a-1,delta,xi]
+    M[0]**prim[rank_,a_][h_,ξ_]:>ξ*prim[rank,a][h,ξ]+prim[rank,a-1][h,ξ]
 }//algebraAdd["MultipletLower"]
 
 
 (* ::Subsubsection:: *)
-(*Conjugation*)
+(*Conjugate*)
 
 
 "Relation"->{
@@ -213,20 +222,20 @@ $algebraList//algebraDefine
 
 
 "Relation"->{
-    vac**vac->1,
-    conjugate[vac]->vac
+    vac**vac:>1,
+    conjugate[vac]:>vac
 }//algebraAdd["VacuumConjugate"]
 
 
 "Relation"->{
-    primary[delta_,xi_]**primary[delta_,xi_]:>1,
-    conjugate[primary[delta_,xi_]]:>primary[delta,xi]
+    prim[h_,ξ_]**prim[h_,ξ_]:>1,
+    conjugate[prim[h_,ξ_]]:>prim[h,ξ]
 }//algebraAdd["SingletConjugate"]
 
 
 "Relation"->{
-    primary[rank_,a_,delta_,xi_]**primary[rank_,b_,delta_,xi_]:>KroneckerDelta[a+b,rank+1],
-    conjugate[primary[rank_,a_,delta_,xi_]]:>primary[rank,a,delta,xi]
+    prim[rank_,a_][h_,ξ_]**prim[rank_,b_][h_,ξ_]:>KroneckerDelta[a+b,rank+1],
+    conjugate[prim[rank_,a_][h_,ξ_]]:>prim[rank,a][h,ξ]
 }//algebraAdd["MultipletConjugate"]
 
 
@@ -234,7 +243,7 @@ $algebraList//algebraDefine
 (*Constant*)
 
 
-CCFT2 = <|
+$CarCFT = <|
     "Index"->{-1,0,1},
     "L"->{L[-1],L[0],L[1]},
     "M"->{M[-1],M[0],M[1]},
@@ -249,23 +258,23 @@ CCFT2 = <|
 
 
 Lmonomial[] :=
-    1;
+    id;
 
 Lmonomial[n_] :=
     L[n];
 
-Lmonomial[n_,m__] :=
-    Lmonomial[n]**Lmonomial[m];
+Lmonomial[n__] :=
+    Map[L,NonCommutativeMultiply[n]];
 
 
 Mmonomial[] :=
     1;
 
 Mmonomial[n_] :=
-    L[n];
+    M[n];
 
-Mmonomial[n_,m__] :=
-    Mmonomial[n]**Mmonomial[m];
+Mmonomial[n__] :=
+    Map[M,NonCommutativeMultiply[n]];
 
 
 Lpower[k_,n_Integer] :=
@@ -276,11 +285,11 @@ Mpower[k_,n_Integer] :=
     operatorPower[M[k],n];
 
 
-descendant[delta_,xi_,n_Integer,m_Integer] :=
-    operatorPower[L[-1],n]**operatorPower[M[-1],m]**primary[delta,xi];
+desc[h_,ξ_,n_Integer,m_Integer] :=
+    operatorPower[L[-1],n]**operatorPower[M[-1],m]**prim[h,ξ];
 
-descendant[rank_,a_,delta_,xi_,n_Integer,m_Integer] :=
-    operatorPower[L[-1],n]**operatorPower[M[-1],m]**primary[rank,a,delta,xi];
+desc[rank_,a_,h_,ξ_,n_Integer,m_Integer] :=
+    operatorPower[L[-1],n]**operatorPower[M[-1],m]**prim[rank,a,h,ξ];
 
 
 (* ::Subsection:: *)

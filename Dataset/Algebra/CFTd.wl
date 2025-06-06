@@ -27,7 +27,7 @@ genD::usage =
     "operator: dilatation.";
 
 genM::usage =
-    "operator: rotation.";
+    "operator: rotation and boost.";
 
 genP::usage =
     "operator: translation.";
@@ -35,11 +35,11 @@ genP::usage =
 genK::usage =
     "operator: SCT.";
 
-vacuum::usage =
+vac::usage =
     "state: vacuum.";
 
 
-CFTd::usage =
+$CFT::usage =
     "generator list of the conformal algebra.";
 
 
@@ -121,16 +121,16 @@ $algebraList//algebraDefine
 
 
 "Printing"->{
-    genP[i_]:>Subscript["P",i],
-    genM[i_,j_]:>Subscript["M",i,j]
+    genP[i_]:>Subscript[ToExpression["P"],i],
+    genM[i_,j_]:>Subscript[ToExpression["M"],i,j]
 }//algebraAdd["IsometryAlgebra"]
 
 
 "Printing"->{
-    genD[]:>"D",
-    genP[i_]:>Subscript["P",i],
-    genK[i_]:>Subscript["K",i],
-    genM[i_,j_]:>Subscript["M",i,j]
+    genD[]:>ToExpression["D"],
+    genP[i_]:>Subscript[ToExpression["P"],i],
+    genK[i_]:>Subscript[ToExpression["K"],i],
+    genM[i_,j_]:>Subscript[ToExpression["M"],i,j]
 }//algebraAdd["ConformalAlgebra"]
 
 
@@ -138,19 +138,21 @@ $algebraList//algebraDefine
 (*Vacuum*)
 
 
-"Generator"->{vacuum}//algebraAdd["Vacuum"]
-
-
-"Relation"->{
-    genD[]**vacuum:>0,
-    genP[_]**vacuum:>0,
-    genK[_]**vacuum:>0,
-    genM[_,_]**vacuum:>0
-}//algebraAdd["Vacuum"]
+<|
+    "Generator"->{vac},
+    "Relation"->{
+        genD[]**vac:>0,
+        genP[_]**vac:>0,
+        genK[_]**vac:>0,
+        genM[_,_]**vac:>0
+    },
+    "Printing"->{
+        vac:>Ket[{0}]
+}|>//algebraAdd["Vacuum"]
 
 
 (* ::Subsubsection:: *)
-(*Conjugation*)
+(*Conjugate*)
 
 
 "Relation"->{
@@ -162,7 +164,7 @@ $algebraList//algebraDefine
 (*Constant*)
 
 
-CFTd :=
+$CFT :=
     Module[ {i,j,assoc},
         assoc = <|
             "D"->

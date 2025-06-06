@@ -28,7 +28,7 @@ S::usage =
     "operator: S.";
 
 x::usage =
-    "state.";
+    "state: x.";
 
 
 (* ::Section:: *)
@@ -60,7 +60,8 @@ $algebraList//algebraDefine
         R[___]
     },
     "Relation"->{
-        S[]**tensor[x_,y_]:>tensor[y,x],
+        S[]**tensor[x_,y_]:>
+            tensor[y,x],
         R[i_,j_,u_,v_]**tensor[x_,y_,z_]:>
             (u-v)/(u-v+I)*tensor[x,y,z]+I/(u-v+I)*Permute[tensor[x,y,z],Cycles@{{i,j}}]
     },

@@ -27,7 +27,7 @@ boson::usage =
 fermion::usage =
     "operator: fermion.";
 
-vacuum::usage =
+vac::usage =
     "state: vacuum.";
 
 an::usage =
@@ -76,8 +76,8 @@ $algebraList//algebraDefine
         conjugate[boson[i_,an]]:>boson[i,cr]
     },
     "Printing"->{
-        boson[i_,cr]:>Subscript[SuperDagger["a"],i],
-        boson[i_,an]:>Subscript["a",i]
+        boson[i_,cr]:>Subscript[SuperDagger[ToExpression["a"]],i],
+        boson[i_,an]:>Subscript[ToExpression["a"],i]
     }
 |>//algebraAdd["Boson"]
 
@@ -93,8 +93,8 @@ $algebraList//algebraDefine
         conjugate[fermion[i_,an]]:>fermion[i,cr]
     },
     "Printing"->{
-        fermion[i_,cr]:>Subscript[SuperDagger["b"],i],
-        fermion[i_,an]:>Subscript["b",i]
+        fermion[i_,cr]:>Subscript[SuperDagger[ToExpression["b"]],i],
+        fermion[i_,an]:>Subscript[ToExpression["b"],i]
     }
 |>//algebraAdd["Fermion"]
 
@@ -112,23 +112,26 @@ $algebraList//algebraDefine
 
 
 <|
-    "Generator"->{vacuum},
+    "Generator"->{vac},
     "Relation"->{
-        vacuum**vacuum->1,
-        conjugate[vacuum]->vacuum
+        vac**vac:>1,
+        conjugate[vac]:>vac
+    },
+    "Printing"->{
+        vac:>Ket[{0}]
     }
 |>//algebraAdd["Vacuum"]
 
 
 "Relation"->{
-    boson[i_,an]**vacuum:>0,
-    vacuum**boson[i_,cr]:>0
+    boson[i_,an]**vac:>0,
+    vac**boson[i_,cr]:>0
 }//algebraAdd["BosonVacuum"]
 
 
 "Relation"->{
-    fermion[i_,an]**vacuum:>0,
-    vacuum**fermion[i_,cr]:>0
+    fermion[i_,an]**vac:>0,
+    vac**fermion[i_,cr]:>0
 }//algebraAdd["FermionVacuum"]
 
 
