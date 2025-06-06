@@ -28,7 +28,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-    algebraDefault[{"conformal-algebra", "singlet", "Conjugate", "conformal-algebra-conjugate", "singlet-conjugate"}]
+    algebraDefault[{"ConformalAlgebra", "Singlet", "Conjugate", "ConformalAlgebraConjugate", "SingletConjugate"}]
     ,
     Null
     ,
@@ -36,7 +36,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-    algFS[Table[innerProduct[descendant[h, i], descendant[h, j]], {i, Range[4]}, {j, Range[4]}]]
+    algFS[Table[innerProduct[desc[h, i], desc[h, j]], {i, Range[4]}, {j, Range[4]}]]
     ,
     {{2*h, 0, 0, 0}, {0, 4*h*(1 + 2*h), 0, 0}, {0, 0, 24*h*(1 + h)*(1 + 2*h), 0}, {0, 0, 0, 96*h*(1 + h)*(1 + 2*h)*(3 + 2*h)}}
     ,
@@ -53,7 +53,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-    algebraDefault[{"Virasoro", "vacuum", "singlet", "Conjugate", "Virasoro-conjugate", "singlet-conjugate", "vacuum-conjugate"}]
+    algebraDefault[{"Virasoro", "Vacuum", "Singlet", "Conjugate", "VirasoroConjugate", "SingletConjugate"}]
     ,
     Null
     ,
@@ -61,7 +61,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-    algSP[gramian[1, primary[h]]]
+    algSP[gramian[1, prim[h]]]
     ,
     {{2*h}}
     ,
@@ -69,9 +69,9 @@ VerificationTest[
 ]
 
 VerificationTest[
-    algSP[gramian[2, primary[h]]]
+    algSP[gramian[2, prim[h]]]
     ,
-    {{(1/2)*("c" + 8*h), 6*h}, {6*h, 4*h*(1 + 2*h)}}
+    {{(1/2)*(c + 8*h), 6*h}, {6*h, 4*h*(1 + 2*h)}}
     ,
     TestID->"8-CFT1.nb"
 ]

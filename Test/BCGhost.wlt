@@ -28,7 +28,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-    genL[h_, m_] := Sum[(m - n)*normOrder[ghostB[h, m + n]**ghostC[h, -n]], {n, Range[-max, max]}]; 
+    genL[h_, m_] := Sum[(m - n)*normOrder[b[h, m + n]**c[h, -n]], {n, Range[-max, max]}]; 
     ,
     Null
     ,
@@ -44,7 +44,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-    ghostNumber[h_] := Sum[ghostC[h, -n]**ghostB[h, n] - ghostB[h, -n]**ghostC[h, n], {n, Range[1, max]}] + ghostC[h, 0]**ghostB[h, 0] - 1/2; 
+    ghostNumber[h_] := Sum[c[h, -n]**b[h, n] - b[h, -n]**c[h, n], {n, Range[1, max]}] + c[h, 0]**b[h, 0] - 1/2; 
     ,
     Null
     ,
@@ -52,8 +52,8 @@ VerificationTest[
 ]
 
 VerificationTest[
-    normOrder[ghostB[h_, n_]**ghostC[h_, m_]] := -ghostC[h, m]**ghostB[h, n] /; n >= 1 - h; 
-    (normOrder[ghostB[h_, n_]**ghostC[h_, m_]] := ghostB[h, n]**ghostC[h, m] /; n < 1 - h; )
+    normOrder[b[h_, n_]**c[h_, m_]] := -c[h, m]**b[h, n] /; n >= 1 - h; 
+    (normOrder[b[h_, n_]**c[h_, m_]] := b[h, n]**c[h, m] /; n < 1 - h; )
     ,
     Null
     ,
@@ -61,7 +61,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-    algebraDefault[{"bc", "bc-vacuum", "Conjugate"}]
+    algebraDefault[{"BCGhost", "Vacuum", "Conjugate"}]
     ,
     Null
     ,
@@ -78,7 +78,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-    algS[Table[op**vacuum, {op, genSL2[h0]}]]
+    algS[Table[op**vac, {op, genSL2[h0]}]]
     ,
     {0, 0, 0}
     ,
@@ -86,23 +86,23 @@ VerificationTest[
 ]
 
 VerificationTest[
-    algSP[Table[op**ghostC[2, -1]**vacuum, {op, genSL2[h0]}]]
+    algS[Table[op**c[2, -1]**vac, {op, genSL2[h0]}]]
     ,
-    {3*Subscript["c", -2]**vacuum, Subscript["c", -1]**vacuum, -Subscript["c", 0]**vacuum}
+    {3*c[2, -2]**vac, c[2, -1]**vac, -c[2, 0]**vac}
     ,
     TestID->"10-BCGhost.nb"
 ]
 
 VerificationTest[
-    algSP[Table[op**ghostC[2, 1]**vacuum, {op, genSL2[h0]}]]
+    algS[Table[op**c[2, 1]**vac, {op, genSL2[h0]}]]
     ,
-    {Subscript["c", 0]**vacuum, -Subscript["c", 1]**vacuum, 0}
+    {c[2, 0]**vac, -c[2, 1]**vac, 0}
     ,
     TestID->"11-BCGhost.nb"
 ]
 
 VerificationTest[
-    algS[genL[h0, 1]**ghostC[h0, -1]**vacuum + genL[h0, -1]**ghostC[h0, 1]**vacuum]
+    algS[genL[h0, 1]**c[h0, -1]**vac + genL[h0, -1]**c[h0, 1]**vac]
     ,
     0
     ,

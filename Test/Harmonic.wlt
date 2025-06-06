@@ -28,7 +28,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-    algebraDefault[{"HO", "vacuum", "Conjugate"}]
+    algebraDefault[{"HarmonicOscillator", "Vacuum", "Conjugate"}]
     ,
     Null
     ,

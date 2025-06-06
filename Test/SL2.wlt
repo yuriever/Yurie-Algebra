@@ -28,7 +28,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-    algebraDefault[{"SL2", "Verma-module"}]
+    algebraDefault[{"SL2", "VermaModule"}]
     ,
     Null
     ,
@@ -68,7 +68,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-    algebraDefault[{"SL2", "Verma-module-extension"}]; 
+    algebraDefault[{"SL2", "VermaModuleExtension"}]; 
     ,
     Null
     ,

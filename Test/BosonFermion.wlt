@@ -28,7 +28,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-    algebraDefault[{"boson", "fermion", "boson-fermion", "vacuum", "boson-vacuum", "fermion-vacuum", "Conjugate"}]
+    algebraDefault[{"Boson", "Fermion", "BosonFermion", "Vacuum", "BosonVacuum", "FermionVacuum", "Conjugate"}]
     ,
     Null
     ,
@@ -44,19 +44,11 @@ VerificationTest[
 ]
 
 VerificationTest[
-    algP[expr]
+    (operatorSeparate[#1, "Operator" -> True] & )[algS[expr**vac]]
     ,
-    (Subscript["a", 1] + Subscript["a", 2] + Subscript[SuperDagger["a"], 1])**Subscript[SuperDagger["a"], 1]**(Subscript["a", 2]**Subscript["b", 1] + Subscript[SuperDagger["b"], 1])**Subscript[SuperDagger["a"], 2]
+    {fermion[1, cr]**boson[1, cr]**vac -> 1, fermion[1, cr]**boson[2, cr]**vac -> 1, fermion[1, cr]**boson[2, cr]**boson[1, cr]**boson[1, cr]**vac -> 1}
     ,
     TestID->"5-BosonFermion.nb"
-]
-
-VerificationTest[
-    algSP[expr**vacuum]
-    ,
-    Subscript[SuperDagger["b"], 1]**Subscript[SuperDagger["a"], 1]**vacuum + Subscript[SuperDagger["b"], 1]**Subscript[SuperDagger["a"], 2]**vacuum + Subscript[SuperDagger["b"], 1]**Subscript[SuperDagger["a"], 2]**Subscript[SuperDagger["a"], 1]**Subscript[SuperDagger["a"], 1]**vacuum
-    ,
-    TestID->"6-BosonFermion.nb"
 ]
 
 VerificationTest[
@@ -64,7 +56,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"7-BosonFermion.nb"
+    TestID->"6-BosonFermion.nb"
 ]
 
 VerificationTest[
@@ -72,23 +64,23 @@ VerificationTest[
     ,
     Null
     ,
+    TestID->"7-BosonFermion.nb"
+]
+
+VerificationTest[
+    (operatorSeparate[#1, "Operator" -> True] & )[algS[Hsum[expr**vac]]]
+    ,
+    {fermion[1, cr]**boson[1, cr]**vac -> f[1] + g[1], fermion[1, cr]**boson[2, cr]**vac -> f[2] + g[1], fermion[1, cr]**boson[2, cr]**boson[1, cr]**boson[1, cr]**vac -> 2*f[1] + f[2] + g[1]}
+    ,
     TestID->"8-BosonFermion.nb"
 ]
 
 VerificationTest[
-    algSP[Hsum[expr**vacuum]]
-    ,
-    (f[1] + g[1])*Subscript[SuperDagger["b"], 1]**Subscript[SuperDagger["a"], 1]**vacuum + (f[2] + g[1])*Subscript[SuperDagger["b"], 1]**Subscript[SuperDagger["a"], 2]**vacuum + (2*f[1] + f[2] + g[1])*Subscript[SuperDagger["b"], 1]**Subscript[SuperDagger["a"], 2]**Subscript[SuperDagger["a"], 1]**Subscript[SuperDagger["a"], 1]**vacuum
-    ,
-    TestID->"9-BosonFermion.nb"
-]
-
-VerificationTest[
-    algS[innerProduct[expr**vacuum]]
+    algS[innerProduct[expr**vac]]
     ,
     4
     ,
-    TestID->"10-BosonFermion.nb"
+    TestID->"9-BosonFermion.nb"
 ]
 
 VerificationTest[
@@ -98,7 +90,7 @@ VerificationTest[
     ,
     {Yurie`Cluster`cluster::rmdefault}
     ,
-    TestID->"11-BosonFermion.nb"
+    TestID->"10-BosonFermion.nb"
 ]
 
 VerificationTest[
@@ -106,7 +98,7 @@ VerificationTest[
     ,
     {"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
     ,
-    TestID->"12-BosonFermion.nb"
+    TestID->"11-BosonFermion.nb"
 ]
 
 VerificationTest[
@@ -115,7 +107,7 @@ VerificationTest[
     ,
     {}
     ,
-    TestID->"13-BosonFermion.nb"
+    TestID->"12-BosonFermion.nb"
 ]
 
 VerificationTest[

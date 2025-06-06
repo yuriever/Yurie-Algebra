@@ -44,9 +44,9 @@ VerificationTest[
 ]
 
 VerificationTest[
-    algP[expr == algS[expr]]
+    expr == algS[expr]
     ,
-    Subscript[R, 1, 2]**(Subscript[x, 1] ⊗ Subscript[x, 2] ⊗ Subscript[x, 3]) == ((u - v)*Subscript[x, 1] ⊗ Subscript[x, 2] ⊗ Subscript[x, 3] + I*Subscript[x, 2] ⊗ Subscript[x, 1] ⊗ Subscript[x, 3])/(I + u - v)
+    R[1, 2, u, v]**tensor[x[1], x[2], x[3]] == ((u - v)*tensor[x[1], x[2], x[3]] + I*tensor[x[2], x[1], x[3]])/(I + u - v)
     ,
     TestID->"5-YBE.nb"
 ]
@@ -61,9 +61,9 @@ VerificationTest[
 ]
 
 VerificationTest[
-    algSP[LHS]
+    algS[LHS]
     ,
-    ((u - v)*(u - w)*(v - w)*Subscript[x, 1] ⊗ Subscript[x, 2] ⊗ Subscript[x, 3] + I*((u - v)*(u - w)*Subscript[x, 1] ⊗ Subscript[x, 3] ⊗ Subscript[x, 2] + (u - w)*(v - w)*Subscript[x, 2] ⊗ Subscript[x, 1] ⊗ Subscript[x, 3] + I*u*Subscript[x, 2] ⊗ Subscript[x, 3] ⊗ Subscript[x, 1] - I*w*Subscript[x, 2] ⊗ Subscript[x, 3] ⊗ Subscript[x, 1] + I*u*Subscript[x, 3] ⊗ Subscript[x, 1] ⊗ Subscript[x, 2] - I*w*Subscript[x, 3] ⊗ Subscript[x, 1] ⊗ Subscript[x, 2] - Subscript[x, 3] ⊗ Subscript[x, 2] ⊗ Subscript[x, 1] + u*v*Subscript[x, 3] ⊗ Subscript[x, 2] ⊗ Subscript[x, 1] - v^2*Subscript[x, 3] ⊗ Subscript[x, 2] ⊗ Subscript[x, 1] - u*w*Subscript[x, 3] ⊗ Subscript[x, 2] ⊗ Subscript[x, 1] + v*w*Subscript[x, 3] ⊗ Subscript[x, 2] ⊗ Subscript[x, 1]))/((I + u - v)*(I + u - w)*(I + v - w))
+    (1/((I + u - v)*(I + u - w)*(I + v - w)))*((u - v)*(u - w)*(v - w)*tensor[x[1], x[2], x[3]] + I*((u - v)*(u - w)*tensor[x[1], x[3], x[2]] + (u - w)*(v - w)*tensor[x[2], x[1], x[3]] + I*u*tensor[x[2], x[3], x[1]] - I*w*tensor[x[2], x[3], x[1]] + I*u*tensor[x[3], x[1], x[2]] - I*w*tensor[x[3], x[1], x[2]] - tensor[x[3], x[2], x[1]] + u*v*tensor[x[3], x[2], x[1]] - v^2*tensor[x[3], x[2], x[1]] - u*w*tensor[x[3], x[2], x[1]] + v*w*tensor[x[3], x[2], x[1]]))
     ,
     TestID->"7-YBE.nb"
 ]
