@@ -163,11 +163,11 @@ $algebraList//algebraDefine
     "Relation"->{
         (*annihilation rule*)
         L[n_]**prim[h_,ξ_]:>0/;n>=1,
-        prim[h_,ξ_]**L[n_]:>0/;n<=-1,
-        L[0]**prim[h_,ξ_]:>h*prim[h,ξ],
         M[n_]**prim[h_,ξ_]:>0/;n>=1,
-        prim[h_,ξ_]**M[n_]:>0/;n<=-1,
-        M[0]**prim[h_,ξ_]:>ξ*prim[h,ξ]
+        L[0]**prim[h_,ξ_]:>h*prim[h,ξ],
+        M[0]**prim[h_,ξ_]:>ξ*prim[h,ξ],
+        prim[h_,ξ_]**L[n_]:>0/;n<=-1,
+        prim[h_,ξ_]**M[n_]:>0/;n<=-1
     },
     "Printing"->{
         prim[h_,ξ_]:>Ket[{h,ξ}]
