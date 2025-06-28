@@ -82,9 +82,9 @@ $algebraList = {
     "Singlet","SingletConjugate"
 };
 
-$algebraList//algebraUnset//Quiet
+$algebraList//algebraUnset//Quiet;
 
-$algebraList//algebraDefine
+$algebraList//algebraDefine;
 
 
 (* ::Subsubsection:: *)
@@ -107,7 +107,7 @@ $algebraList//algebraDefine
         Subsuperscript[op_,n_,power_]**Subscript[op_,n_]:>Subsuperscript[op,n,power+1],
         Subsuperscript[op_,n_,power1_]**Subsuperscript[op_,n_,power2_]:>Subsuperscript[op,n,power1+power2]
     }
-|>//algebraAdd["ConformalAlgebra"]
+|>//algebraAdd["ConformalAlgebra"];
 
 
 (* ::Subsubsection:: *)
@@ -132,7 +132,7 @@ $algebraList//algebraDefine
         $centralCharge->c,
         $centralChargeb->OverBar[c]
     }
-|>//algebraAdd["Virasoro"]
+|>//algebraAdd["Virasoro"];
 
 
 (* ::Subsubsection:: *)
@@ -150,7 +150,7 @@ $algebraList//algebraDefine
     "Printing"->{
         vac:>Ket[{0}]
     }
-|>//algebraAdd["Vacuum"]
+|>//algebraAdd["Vacuum"];
 
 
 (* ::Subsubsection:: *)
@@ -171,7 +171,7 @@ $algebraList//algebraDefine
     "Printing"->{
         prim[h_,hb_]:>Ket[{h,hb}]
     }
-|>//algebraAdd["Singlet"]
+|>//algebraAdd["Singlet"];
 
 
 (* ::Subsubsection:: *)
@@ -181,19 +181,19 @@ $algebraList//algebraDefine
 "Relation"->{
     conjugate[L[n_]]:>L[-n],
     conjugate[Lb[n_]]:>Lb[-n]
-}//algebraAdd["ConformalAlgebraConjugate","VirasoroConjugate"]
+}//algebraAdd["ConformalAlgebraConjugate","VirasoroConjugate"];
 
 
 "Relation"->{
     vac**vac:>1,
     conjugate[vac]:>vac
-}//algebraAdd["VacuumConjugate"]
+}//algebraAdd["VacuumConjugate"];
 
 
 "Relation"->{
     prim[h_,hb_]**prim[h_,hb_]:>1,
     conjugate[prim[h_,hb_]]:>prim[h,hb]
-}//algebraAdd["SingletConjugate"]
+}//algebraAdd["SingletConjugate"];
 
 
 (* ::Subsection:: *)

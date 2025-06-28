@@ -57,9 +57,9 @@ Begin["`Private`"];
 
 $algebraList = {"SL2","VermaModule","VermaModuleExtension"};
 
-$algebraList//algebraUnset//Quiet
+$algebraList//algebraUnset//Quiet;
 
-$algebraList//algebraDefine
+$algebraList//algebraDefine;
 
 
 (* ::Subsubsection:: *)
@@ -73,7 +73,7 @@ $algebraList//algebraDefine
         commDefine[h,y]->-2y,
         commDefine[x,y]->h
     }
-|>//algebraAdd["SL2"]
+|>//algebraAdd["SL2"];
 
 
 (* ::Subsubsection:: *)
@@ -90,7 +90,7 @@ $algebraList//algebraDefine
     "Printing"->{
         v[h_]:>Subscript[v,h]
     }
-|>//algebraAdd["VermaModule"]
+|>//algebraAdd["VermaModule"];
 
 
 (* ::Subsubsection:: *)
@@ -109,7 +109,7 @@ $algebraList//algebraDefine
     "Printing"->{
         v[i_,h_]:>Subscript[v,i,h]
     }
-|>//algebraAdd["VermaModuleExtension"]
+|>//algebraAdd["VermaModuleExtension"];
 
 
 (* ::Subsection:: *)

@@ -57,9 +57,9 @@ $algebraList = {
     "Vacuum","BosonVacuum","FermionVacuum"
 };
 
-$algebraList//algebraUnset//Quiet
+$algebraList//algebraUnset//Quiet;
 
-$algebraList//algebraDefine
+$algebraList//algebraDefine;
 
 
 (* ::Subsubsection:: *)
@@ -79,7 +79,7 @@ $algebraList//algebraDefine
         boson[i_,cr]:>Subscript[SuperDagger[ToExpression["a"]],i],
         boson[i_,an]:>Subscript[ToExpression["a"],i]
     }
-|>//algebraAdd["Boson"]
+|>//algebraAdd["Boson"];
 
 
 <|
@@ -96,7 +96,7 @@ $algebraList//algebraDefine
         fermion[i_,cr]:>Subscript[SuperDagger[ToExpression["b"]],i],
         fermion[i_,an]:>Subscript[ToExpression["b"],i]
     }
-|>//algebraAdd["Fermion"]
+|>//algebraAdd["Fermion"];
 
 
 "Relation"->{
@@ -104,7 +104,7 @@ $algebraList//algebraDefine
     commDefine[op1_[i_,an],op2_[j_,cr]]:>0/;op1=!=op2,
     (*move boson operators to the right if the tags are the same.*)
     commDefine[boson[i_,tag_],fermion[j_,tag_]]:>0
-}//algebraAdd["BosonFermion"]
+}//algebraAdd["BosonFermion"];
 
 
 (* ::Subsubsection:: *)
@@ -120,19 +120,19 @@ $algebraList//algebraDefine
     "Printing"->{
         vac:>Ket[{0}]
     }
-|>//algebraAdd["Vacuum"]
+|>//algebraAdd["Vacuum"];
 
 
 "Relation"->{
     boson[i_,an]**vac:>0,
     vac**boson[i_,cr]:>0
-}//algebraAdd["BosonVacuum"]
+}//algebraAdd["BosonVacuum"];
 
 
 "Relation"->{
     fermion[i_,an]**vac:>0,
     vac**fermion[i_,cr]:>0
-}//algebraAdd["FermionVacuum"]
+}//algebraAdd["FermionVacuum"];
 
 
 (* ::Subsection:: *)

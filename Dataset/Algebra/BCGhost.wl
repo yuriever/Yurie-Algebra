@@ -48,9 +48,9 @@ Begin["`Private`"];
 
 $algebraList = {"BCGhost","Vacuum"};
 
-$algebraList//algebraUnset//Quiet
+$algebraList//algebraUnset//Quiet;
 
-$algebraList//algebraDefine
+$algebraList//algebraDefine;
 
 
 (* ::Text:: *)
@@ -78,7 +78,7 @@ $algebraList//algebraDefine
         b[h_,n_]:>Subscript[ToExpression["b"],n],
         c[h_,n_]:>Subscript[ToExpression["c"],n]
     }
-|>//algebraAdd["BCGhost"]
+|>//algebraAdd["BCGhost"];
 
 
 (* ::Subsubsection:: *)
@@ -97,7 +97,7 @@ $algebraList//algebraDefine
     "Printing"->{
         vac:>Ket[{0}]
     }
-|>//algebraAdd["Vacuum"]
+|>//algebraAdd["Vacuum"];
 
 
 (* ::Subsection:: *)

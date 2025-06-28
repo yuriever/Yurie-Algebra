@@ -78,18 +78,18 @@ $algebraList = {
     "LorentzianConjugate"
 };
 
-$algebraList//algebraUnset//Quiet
+$algebraList//algebraUnset//Quiet;
 
-$algebraList//algebraDefine
+$algebraList//algebraDefine;
 
 
 (* ::Subsubsection:: *)
 (*Isometry and conformal algebras*)
 
 
-"Generator"->{genP,genM}//algebraAdd["IsometryAlgebra"]
+"Generator"->{genP,genM}//algebraAdd["IsometryAlgebra"];
 
-"Generator"->{genP,genM,genD,genK}//algebraAdd["ConformalAlgebra"]
+"Generator"->{genP,genM,genD,genK}//algebraAdd["ConformalAlgebra"];
 
 
 "Relation"->{
@@ -103,7 +103,7 @@ $algebraList//algebraDefine
     commDefine[genM[i_,j_],genM[k_,l_]]:>
         genM[i,l]*metric[j,k]+genM[j,k]*metric[i,l]-genM[j,l]*metric[i,k]-genM[i,k]*metric[j,l]/;
             coordOrder[k>i||(k==i&&l>j)]
-}//algebraAdd["IsometryAlgebra","ConformalAlgebra"]
+}//algebraAdd["IsometryAlgebra","ConformalAlgebra"];
 
 
 "Relation"->{
@@ -117,13 +117,13 @@ $algebraList//algebraDefine
     commDefine[genD[],genM[i_,j_]]:>0,
     (*[K,P]*)
     commDefine[genK[i_],genP[j_]]:>2genD[]*metric[i,j]-2*genM[i,j]
-}//algebraAdd["ConformalAlgebra"]
+}//algebraAdd["ConformalAlgebra"];
 
 
 "Printing"->{
     genP[i_]:>Subscript[ToExpression["P"],i],
     genM[i_,j_]:>Subscript[ToExpression["M"],i,j]
-}//algebraAdd["IsometryAlgebra"]
+}//algebraAdd["IsometryAlgebra"];
 
 
 "Printing"->{
@@ -131,7 +131,7 @@ $algebraList//algebraDefine
     genP[i_]:>Subscript[ToExpression["P"],i],
     genK[i_]:>Subscript[ToExpression["K"],i],
     genM[i_,j_]:>Subscript[ToExpression["M"],i,j]
-}//algebraAdd["ConformalAlgebra"]
+}//algebraAdd["ConformalAlgebra"];
 
 
 (* ::Subsubsection:: *)
@@ -148,7 +148,7 @@ $algebraList//algebraDefine
     },
     "Printing"->{
         vac:>Ket[{0}]
-}|>//algebraAdd["Vacuum"]
+}|>//algebraAdd["Vacuum"];
 
 
 (* ::Subsubsection:: *)
@@ -157,7 +157,7 @@ $algebraList//algebraDefine
 
 "Relation"->{
     conjugate[op_?generatorQ]:>-op
-}//algebraAdd["EuclideanConjugate"]
+}//algebraAdd["EuclideanConjugate"];
 
 
 (* ::Subsection:: *)

@@ -83,9 +83,9 @@ $algebraList = {
     "Multiplet","MultipletUpper","MultipletLower","MultipletConjugate"
 };
 
-$algebraList//algebraUnset//Quiet
+$algebraList//algebraUnset//Quiet;
 
-$algebraList//algebraDefine
+$algebraList//algebraDefine;
 
 
 (* ::Subsubsection:: *)
@@ -108,7 +108,7 @@ $algebraList//algebraDefine
         Subsuperscript[op_,n_,power_]**Subscript[op_,n_]:>Subsuperscript[op,n,power+1],
         Subsuperscript[op_,n_,power1_]**Subsuperscript[op_,n_,power2_]:>Subsuperscript[op,n,power1+power2]
     }
-|>//algebraAdd["ConformalAlgebra"]
+|>//algebraAdd["ConformalAlgebra"];
 
 
 (* ::Subsubsection:: *)
@@ -133,7 +133,7 @@ $algebraList//algebraDefine
         $centralChargeL->Subscript[c,L],
         $centralChargeM->Subscript[c,M]
     }
-|>//algebraAdd["BMS"]
+|>//algebraAdd["BMS"];
 
 
 (* ::Subsubsection:: *)
@@ -151,7 +151,7 @@ $algebraList//algebraDefine
     "Printing"->{
         vac:>Ket[{0}]
     }
-|>//algebraAdd["Vacuum"]
+|>//algebraAdd["Vacuum"];
 
 
 (* ::Subsubsection:: *)
@@ -172,7 +172,7 @@ $algebraList//algebraDefine
     "Printing"->{
         prim[h_,ξ_]:>Ket[{h,ξ}]
     }
-|>//algebraAdd["Singlet"]
+|>//algebraAdd["Singlet"];
 
 
 (* ::Subsubsection:: *)
@@ -195,7 +195,7 @@ $algebraList//algebraDefine
     "Printing"->{
         prim[rank_,a_][h_,ξ_]:>Subsuperscript[Ket[{h,ξ}],rank,a]
     }
-|>//algebraAdd["Multiplet","MultipletUpper","MultipletLower"]
+|>//algebraAdd["Multiplet","MultipletUpper","MultipletLower"];
 
 
 (* ::Text:: *)
@@ -204,11 +204,11 @@ $algebraList//algebraDefine
 
 "Relation"->{
     M[0]**prim[rank_,a_][h_,ξ_]:>ξ*prim[rank,a][h,ξ]+prim[rank,a+1][h,ξ]
-}//algebraAdd["Multiplet","MultipletUpper"]
+}//algebraAdd["Multiplet","MultipletUpper"];
 
 "Relation"->{
     M[0]**prim[rank_,a_][h_,ξ_]:>ξ*prim[rank,a][h,ξ]+prim[rank,a-1][h,ξ]
-}//algebraAdd["MultipletLower"]
+}//algebraAdd["MultipletLower"];
 
 
 (* ::Subsubsection:: *)
@@ -218,25 +218,25 @@ $algebraList//algebraDefine
 "Relation"->{
     conjugate[L[n_]]:>L[-n],
     conjugate[M[n_]]:>M[-n]
-}//algebraAdd["ConformalAlgebraConjugate"]
+}//algebraAdd["ConformalAlgebraConjugate"];
 
 
 "Relation"->{
     vac**vac:>1,
     conjugate[vac]:>vac
-}//algebraAdd["VacuumConjugate"]
+}//algebraAdd["VacuumConjugate"];
 
 
 "Relation"->{
     prim[h_,ξ_]**prim[h_,ξ_]:>1,
     conjugate[prim[h_,ξ_]]:>prim[h,ξ]
-}//algebraAdd["SingletConjugate"]
+}//algebraAdd["SingletConjugate"];
 
 
 "Relation"->{
     prim[rank_,a_][h_,ξ_]**prim[rank_,b_][h_,ξ_]:>KroneckerDelta[a+b,rank+1],
     conjugate[prim[rank_,a_][h_,ξ_]]:>prim[rank,a][h,ξ]
-}//algebraAdd["MultipletConjugate"]
+}//algebraAdd["MultipletConjugate"];
 
 
 (* ::Subsection:: *)

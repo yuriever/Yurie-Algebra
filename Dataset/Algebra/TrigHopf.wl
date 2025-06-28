@@ -45,9 +45,9 @@ Begin["`Private`"];
 
 $algebraList = {"TrigHopf"};
 
-$algebraList//algebraUnset//Quiet
+$algebraList//algebraUnset//Quiet;
 
-$algebraList//algebraDefine
+$algebraList//algebraDefine;
 
 
 <|
@@ -62,7 +62,7 @@ $algebraList//algebraDefine
         antipode[c]:>c,
         antipode[s]:>-s
     }
-|>//algebraAdd["TrigHopf"]
+|>//algebraAdd["TrigHopf"];
 
 
 (* ::Subsection:: *)

@@ -48,9 +48,9 @@ Begin["`Private`"];
 
 $algebraList = {"YBE"};
 
-$algebraList//algebraUnset//Quiet
+$algebraList//algebraUnset//Quiet;
 
-$algebraList//algebraDefine
+$algebraList//algebraDefine;
 
 
 <|
@@ -74,7 +74,7 @@ $algebraList//algebraDefine
         S[]->2,
         R[___]->3
     }
-|>//algebraAdd["YBE"]
+|>//algebraAdd["YBE"];
 
 
 (* ::Subsection:: *)
