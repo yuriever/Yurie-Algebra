@@ -79,7 +79,9 @@ $algebraList = {
     "ConformalAlgebra","ConformalAlgebraConjugate",
     "Virasoro","VirasoroConjugate",
     "Vacuum","VacuumConjugate",
-    "Singlet","SingletConjugate"
+    "Singlet","SingletConjugate",
+    "MultipletSplit","MultipletSplitConjugate",
+    "MultipletDiagonal","MultipletDiagonalConjugate","MultipletDiagonalConjugateAnsatz"
 };
 
 $algebraList//algebraUnset//Quiet;
@@ -175,6 +177,70 @@ $algebraList//algebraDefine;
 
 
 (* ::Subsubsection:: *)
+(*MultipletSplit*)
+
+
+<|
+    "Generator"->{prim},
+    "Relation"->{
+        (*boundary condition*)
+        prim[rank1_,rank2_,a1_,a2_][h_,hb_]:>0/;a1<=0||a2<=0,
+        prim[rank1_,rank2_,a1_,a2_][h_,hb_]:>0/;a1>rank1||a2>rank2,
+        (*annihilation rule*)
+        L[n_]**prim[rank1_,rank2_,a1_,a2_][h_,hb_]:>0/;n>=1,
+        Lb[n_]**prim[rank1_,rank2_,a1_,a2_][h_,hb_]:>0/;n>=1,
+        prim[rank1_,rank2_,a1_,a2_][h_,hb_]**L[n_]:>0/;n<=-1,
+        prim[rank1_,rank2_,a1_,a2_][h_,hb_]**Lb[n_]:>0/;n<=-1
+    },
+    "Printing"->{
+        prim[rank1_,rank2_,a1_,a2_][h_,hb_]:>Subsuperscript[Ket[{h,hb}],Row[{rank1,rank2},","],Row[{a1,a2},","]]
+    }
+|>//algebraAdd["MultipletSplit"];
+
+
+(* ::Text:: *)
+(*action of L[0]*)
+
+
+"Relation"->{
+    L[0]**prim[rank1_,rank2_,a1_,a2_][h_,hb_]:>h*prim[rank1,rank2,a1,a2][h,hb]+prim[rank1,rank2,a1+1,a2][h,hb],
+    Lb[0]**prim[rank1_,rank2_,a1_,a2_][h_,hb_]:>hb*prim[rank1,rank2,a1,a2][h,hb]+prim[rank1,rank2,a1,a2+1][h,hb]
+}//algebraAdd["MultipletSplit"];
+
+
+(* ::Subsubsection:: *)
+(*MultipletDiagonal*)
+
+
+<|
+    "Generator"->{prim},
+    "Relation"->{
+        (*boundary condition*)
+        prim[rank_,a_][h_,hb_]:>0/;a<=0,
+        prim[rank_,a_][h_,hb_]:>0/;a>rank,
+        (*annihilation rule*)
+        L[n_]**prim[rank_,a_][h_,hb_]:>0/;n>=1,
+        Lb[n_]**prim[rank_,a_][h_,hb_]:>0/;n>=1,
+        prim[rank_,a_][h_,hb_]**L[n_]:>0/;n<=-1,
+        prim[rank_,a_][h_,hb_]**Lb[n_]:>0/;n<=-1
+    },
+    "Printing"->{
+        prim[rank_,a_][h_,hb_]:>Subsuperscript[Ket[{h,hb}],rank,a]
+    }
+|>//algebraAdd["MultipletDiagonal"];
+
+
+(* ::Text:: *)
+(*action of L[0]*)
+
+
+"Relation"->{
+    L[0]**prim[rank_,a_][h_,hb_]:>h*prim[rank,a][h,hb]+1/2*prim[rank,a+1][h,hb],
+    Lb[0]**prim[rank_,a_][h_,hb_]:>hb*prim[rank,a][h,hb]+1/2*prim[rank,a+1][h,hb]
+}//algebraAdd["MultipletDiagonal"];
+
+
+(* ::Subsubsection:: *)
 (*Conjugate*)
 
 
@@ -194,6 +260,24 @@ $algebraList//algebraDefine;
     prim[h_,hb_]**prim[h_,hb_]:>1,
     conjugate[prim[h_,hb_]]:>prim[h,hb]
 }//algebraAdd["SingletConjugate"];
+
+
+"Relation"->{
+    prim[rank1_,rank2_,a1_,a2_][h_,hb_]**prim[rank1_,rank2_,b1_,b2_][h_,hb_]:>KroneckerDelta[a1+b1,rank1+1]*KroneckerDelta[a2+b2,rank2+1],
+    conjugate[prim[rank1_,rank2_,a1_,a2_][h_,hb_]]:>prim[rank1,rank2,a1,a2][h,hb]
+}//algebraAdd["MultipletSplitConjugate"];
+
+
+"Relation"->{
+    prim[rank_,a_][h_,hb_]**prim[rank_,b_][h_,hb_]:>KroneckerDelta[a+b,rank+1],
+    conjugate[prim[rank_,a_][h_,hb_]]:>prim[rank,a][h,hb]
+}//algebraAdd["MultipletDiagonalConjugate"];
+
+
+"Relation"->{
+    prim[rank_,a_][h_,hb_]**prim[rank_,b_][h_,hb_]/;1<=a<=rank&&1<=b<=rank:>C[rank,a,b],
+    conjugate[prim[rank_,a_][h_,hb_]]:>prim[rank,a][h,hb]
+}//algebraAdd["MultipletDiagonalConjugateAnsatz"];
 
 
 (* ::Subsection:: *)
@@ -242,8 +326,14 @@ Lbpower[k_,n_Integer] :=
     operatorPower[Lb[k],n];
 
 
-desc[h_,hb_,n_Integer,m_Integer] :=
+desc[h_,hb_][n_Integer,m_Integer] :=
     operatorPower[L[-1],n]**operatorPower[Lb[-1],m]**prim[h,hb];
+
+desc[rank1_,rank2_,a1_,a2_][h_,hb_][n_Integer,m_Integer] :=
+    operatorPower[L[-1],n]**operatorPower[Lb[-1],m]**prim[rank1,rank2,a1,a2][h,hb];
+
+desc[rank_,a_][h_,hb_][n_Integer,m_Integer] :=
+    operatorPower[L[-1],n]**operatorPower[Lb[-1],m]**prim[rank,a][h,hb];
 
 
 (* ::Subsection:: *)
