@@ -48,9 +48,6 @@ conjugate::usage =
 innerProduct::usage =
     "inner product of the states.";
 
-exptValue::usage =
-    "expectation value of the operator under the states.";
-
 
 (* Core.wl *)
 
@@ -96,17 +93,11 @@ parityUnsafe::usage =
 algS::usage =
     "algebraSimplify.";
 
-algFS::usage =
-    "algebraSimplify + FullSimplify.";
-
 algP::usage =
     "algebraPrint.";
 
 algSP::usage =
     "algebraSimplify + algebraPrint.";
-
-algFSP::usage =
-    "algebraSimplify + FullSimplify + algebraPrint.";
 
 algEqualQ::usage =
     "x==y for operators.";
@@ -167,3 +158,6 @@ operatorExp::usage =
 
 operatorSeparate::usage =
     "separate scalars and operators in the given linear expression.";
+
+scalarSimplify::usage =
+    "simplify the scalar part of the expression.";

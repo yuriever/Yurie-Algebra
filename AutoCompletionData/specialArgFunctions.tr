@@ -1,1 +1,2 @@
-{"operatorSeparate" -> {0, {"Scalar", "Operator"}}}
+{"algebraSimplify" -> {0, {"Post"}}, "operatorSeparate" -> 
+  {0, {"Scalar", "Operator"}}}

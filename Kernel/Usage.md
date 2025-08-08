@@ -34,8 +34,6 @@
 
 * `#!wl innerProduct` - inner product of the states.
 
-* `#!wl exptValue` - expectation value of the operator under the states.
-
 
 <!-- Core.wl -->
 
@@ -67,13 +65,9 @@
 
 * `#!wl algS` - algebraSimplify.
 
-* `#!wl algFS` - algebraSimplify + FullSimplify.
-
 * `#!wl algP` - algebraPrint.
 
 * `#!wl algSP` - algebraSimplify + algebraPrint.
-
-* `#!wl algFSP` - algebraSimplify + FullSimplify + algebraPrint.
 
 * `#!wl algEqualQ` - x==y for operators.
 
@@ -116,3 +110,5 @@
 * `#!wl operatorExp` - exponential of the operator truncated at the given order.
 
 * `#!wl operatorSeparate` - separate scalars and operators in the given linear expression.
+
+* `#!wl scalarSimplify` - simplify the scalar part of the expression.
