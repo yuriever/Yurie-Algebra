@@ -36,7 +36,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-    algFS[Table[innerProduct[desc[h, i], desc[h, j]], {i, Range[4]}, {j, Range[4]}]]
+    Factor[algS[Table[innerProduct[desc[h, i], desc[h, j]], {i, Range[4]}, {j, Range[4]}]]]
     ,
     {{2*h, 0, 0, 0}, {0, 4*h*(1 + 2*h), 0, 0}, {0, 0, 24*h*(1 + h)*(1 + 2*h), 0}, {0, 0, 0, 96*h*(1 + h)*(1 + 2*h)*(3 + 2*h)}}
     ,

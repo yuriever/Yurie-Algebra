@@ -126,7 +126,7 @@ VerificationTest[
     algebraAdd["alg1", "alg2"]["Parity" -> {x -> 0}]; 
     parity[x]
     ,
-    Null
+    parity[x]
     ,
     TestID->"13-algebraCluster.nb"
 ]
