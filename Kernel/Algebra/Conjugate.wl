@@ -22,10 +22,6 @@ innerProduct::usage =
     "inner product of the states.";
 
 
-exptValue::usage =
-    "expectation value of the operator under the states."
-
-
 (* ::Section:: *)
 (*Private*)
 
@@ -41,18 +37,14 @@ Begin["`Private`"];
 (*Main*)
 
 
-innerProduct[x_,y_] :=
-    conjugate[x]**y;
-
 innerProduct[x_] :=
     conjugate[x]**x;
 
+innerProduct[x_,y_] :=
+    conjugate[x]**y;
 
-exptValue[x_][y_] :=
-    conjugate[x]**y**x;
-
-exptValue[x_,y_][z_] :=
-    conjugate[x]**z**y;
+innerProduct[x_,y_,z_] :=
+    conjugate[x]**y**z;
 
 
 (* ::Subsection:: *)

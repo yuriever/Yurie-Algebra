@@ -23,9 +23,6 @@ Needs["Yurie`Algebra`Internal`"];
 algebraDefine::usage =
     "define the algebras.";
 
-(*algebraDefineQ::usage =
-    "check whether the algebra is defined.";*)
-
 algebraDefault::usage =
     "set the default algebras.";
 
@@ -63,6 +60,9 @@ algebraDefine[algs___String|{algs___String}] :=
 (* ::Subsection:: *)
 (*algebraDefineQ*)
 
+
+algebraDefineQ::usage =
+    "check whether the algebra is defined."
 
 algebraDefineQ[alg_String] :=
     MemberQ[clusterPropGet[$algebraCluster,"StarList"],alg];
@@ -204,7 +204,7 @@ hideEmptyPlanet[data_][unit_] :=
 hideContextInRelation::usage =
     "hide context in algebra relations.";
 
-hideContextInRelation/:MakeBoxes[hideContextInRelation[expr_],form_] := 
+hideContextInRelation/:MakeBoxes[hideContextInRelation[expr_],form_] :=
     Block[ {Internal`$ContextMarks = False},
         MakeBoxes[expr,form]
     ];

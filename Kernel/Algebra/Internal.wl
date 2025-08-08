@@ -45,14 +45,6 @@ algebraInternal[] = {
 };
 
 
-NonCommutativeMultiply//Unprotect;
-
-NonCommutativeMultiply//ClearAll;
-
-NonCommutativeMultiply//Attributes =
-    {Flat,OneIdentity};
-
-
 tensor//Attributes =
     {Flat,OneIdentity};
 
