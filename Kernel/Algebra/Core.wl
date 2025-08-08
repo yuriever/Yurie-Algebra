@@ -72,18 +72,11 @@ parityUnsafe::usage =
 algS::usage =
     "algebraSimplify.";
 
-algFS::usage =
-    "algebraSimplify + FullSimplify.";
-
-
 algP::usage =
     "algebraPrint.";
 
 algSP::usage =
     "algebraSimplify + algebraPrint.";
-
-algFSP::usage =
-    "algebraSimplify + FullSimplify + algebraPrint.";
 
 
 algEqualQ::usage =
@@ -170,16 +163,12 @@ operatorQ[expr__] :=
 
 
 algebraSimplify//Options = {
-    "Post":>Simplify
+    "Post"->scalarSimplify
 };
 
 
 (* ::Subsubsection:: *)
 (*Main*)
-
-
-algebraSimplify[expr_] :=
-    expr//ReplaceRepeated[$relation]//Simplify;
 
 
 algebraSimplify[expr_,opts:OptionsPattern[]] :=
@@ -295,18 +284,11 @@ parity[Optional[k_?scalarQ]*x_NonCommutativeMultiply] :=
 algS :=
     algebraSimplify;
 
-algFS :=
-    algebraSimplify/*FullSimplify;
-
-
 algP :=
     algebraPrint;
 
 algSP :=
     algebraSimplify/*algebraPrint;
-
-algFSP :=
-    algebraSimplify/*FullSimplify/*algebraPrint;
 
 
 algEqualQ[x_,y_] :=

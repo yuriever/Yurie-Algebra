@@ -46,7 +46,7 @@ adjointExp::usage =
 
 
 (* ::Subsection:: *)
-(*Power and exp*)
+(*Power*)
 
 
 operatorPower::usage =
@@ -57,11 +57,15 @@ operatorExp::usage =
 
 
 (* ::Subsection:: *)
-(*Operator separation*)
+(*Utility*)
 
 
 operatorSeparate::usage =
     "separate scalars and operators in the given linear expression.";
+
+
+scalarSimplify::usage =
+    "simplify the scalar part of the expression.";
 
 
 (* ::Section:: *)
@@ -186,7 +190,7 @@ adjointExp[op_,max_,t_:1][expr_] :=
 
 
 (* ::Subsection:: *)
-(*Power and exp*)
+(*Power*)
 
 
 operatorPower[op_,0] :=
@@ -209,7 +213,7 @@ operatorExp[op_,max_Integer?Positive,t_:1] :=
 
 
 (* ::Subsection:: *)
-(*Operator separation*)
+(*Utility: operatorSeparate*)
 
 
 (* ::Subsubsection:: *)
@@ -262,7 +266,7 @@ operatorSeparateKernel[expr_] :=
     Module[ {opList,coList},
         opList = operatorList[expr];
         coList = Map[Coefficient[expr,#]&,opList];
-        If[ Simplify[opList . coList-expr]=!=0,
+        If[ scalarSimplify[opList . coList-expr]=!=0,
             Message[operatorSeparate::extractionFailed];
             expr//Throw
         ];
@@ -287,6 +291,17 @@ operatorList[expr_?scalarQ] :=
         Message[operatorSeparate::notOperator];
         expr//Throw
     );
+
+
+(* ::Subsection:: *)
+(*Utility: scalarSimplify*)
+
+
+scalarSimplify[expr_] :=
+    Activate[
+        Inactivate[expr,NonCommutativeMultiply]//Simplify,
+        NonCommutativeMultiply
+    ];
 
 
 (* ::Subsection:: *)

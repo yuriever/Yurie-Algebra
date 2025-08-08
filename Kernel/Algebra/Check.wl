@@ -47,7 +47,7 @@ Begin["`Private`"];
 
 checkLieBracket[x_,y_,z_] :=
     {x,y,z}->
-        Simplify[
+        scalarSimplify[
             commSim[x,commSim[y,z]]+
             commSim[y,commSim[z,x]]+
             commSim[z,commSim[x,y]]
@@ -56,7 +56,7 @@ checkLieBracket[x_,y_,z_] :=
 
 checkLieModule[x_,y_,z_] :=
     {x,y,z}->
-        Simplify[
+        scalarSimplify[
             algebraSimplify[commSim[x,y]**z]-
             algebraSimplify[x**algebraSimplify[y**z]]+
             algebraSimplify[y**algebraSimplify[x**z]]
@@ -64,14 +64,14 @@ checkLieModule[x_,y_,z_] :=
 
 
 checkCoassociativity[x_] :=
-    {x}->Simplify[
+    {x}->scalarSimplify[
         comultiplyInTensor["Left"]@algebraSimplify@comultiply[x]-
         comultiplyInTensor["Right"]@algebraSimplify@comultiply[x]
     ];
 
 
 checkCounitality[x_] :=
-    {x}->Simplify[{
+    {x}->scalarSimplify[{
         multiplyTensorWithCounit["Left"]@algebraSimplify@comultiply[x]-
             x,
         multiplyTensorWithCounit["Right"]@algebraSimplify@comultiply[x]-
@@ -80,7 +80,7 @@ checkCounitality[x_] :=
 
 
 checkAntipode[x_] :=
-    {x}->Simplify[{
+    {x}->scalarSimplify[{
         multiplyTensorWithAntipode["Left"]@algebraSimplify@comultiply[x]-
             algebraSimplify[counit[x]*id],
         multiplyTensorWithAntipode["Right"]@algebraSimplify@comultiply[x]-
