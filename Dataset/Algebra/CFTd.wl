@@ -6,6 +6,8 @@
 
 Needs["Yurie`Algebra`"];
 
+Needs["Yurie`Cartesian`"];
+
 
 (* ::Section:: *)
 (*Begin*)
