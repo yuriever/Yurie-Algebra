@@ -32,24 +32,14 @@ Begin["`Private`"];
 
 
 (* ::Subsection:: *)
-(*Main*)
-
-
-algebraInternal[] = {
-    "Algebra",
-    "Conjugate",
-    "Tensor",
-    "Coalgebra",
-    "Bialgebra",
-    "Antipode"
-};
+(*Property*)
 
 
 tensor//Attributes =
     {Flat,OneIdentity};
 
 
-(* ::Subsubsection:: *)
+(* ::Subsection:: *)
 (*Multiplication*)
 
 
@@ -76,7 +66,7 @@ algebraInternal["Algebra"] = <|
 |>;
 
 
-(* ::Subsubsection:: *)
+(* ::Subsection:: *)
 (*Conjugate*)
 
 
@@ -99,7 +89,7 @@ algebraInternal["Conjugate"] = <|
 |>;
 
 
-(* ::Subsubsection:: *)
+(* ::Subsection:: *)
 (*Tensor product*)
 
 
@@ -124,7 +114,7 @@ algebraInternal["Tensor"] = <|
 |>;
 
 
-(* ::Subsubsection:: *)
+(* ::Subsection:: *)
 (*Coalgebra*)
 
 
@@ -142,13 +132,13 @@ algebraInternal["Coalgebra"] = <|
             counit[x]+counit[y]
     },
     "Printing"->{
-        comultiply->ToExpression["Δ"],
-        counit->ToExpression["ϵ"]
+        comultiply->ToExpression["\[CapitalDelta]"],
+        counit->ToExpression["\[Epsilon]"]
     }
 |>;
 
 
-(* ::Subsubsection:: *)
+(* ::Subsection:: *)
 (*Bialgebra*)
 
 
@@ -167,7 +157,7 @@ algebraInternal["Bialgebra"] = <|
 |>;
 
 
-(* ::Subsubsection:: *)
+(* ::Subsection:: *)
 (*Antipode*)
 
 
@@ -189,6 +179,24 @@ algebraInternal["Antipode"] = <|
         antipode->ToExpression["S"]
     }
 |>;
+
+
+(* ::Subsection:: *)
+(*Summary*)
+
+
+algebraInternal[] = {
+    "Algebra",
+    "Conjugate",
+    "Tensor",
+    "Coalgebra",
+    "Bialgebra",
+    "Antipode"
+};
+
+
+algebraInternal[All,"Relation"] =
+    Map[algebraInternal[#]["Relation"]&,algebraInternal[]]//Flatten;
 
 
 (* ::Subsection:: *)
