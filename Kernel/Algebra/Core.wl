@@ -221,7 +221,7 @@ tensorankKernel[x_+y_] :=
     With[ {rank = tensorankKernel[x]},
         If[ rank===tensorankKernel[y],
             rank,
-            (*Else*)
+            (* Else *)
             Throw@Indeterminate
         ]
     ];

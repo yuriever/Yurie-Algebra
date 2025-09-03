@@ -56,16 +56,15 @@ tensor//Attributes =
 algebraInternal["Algebra"] = <|
     "Generator"->{id},
     "Relation"->{
-        (*linearity*)
+        (* Linearity *)
         (k_?scalarQ*x_)**y_:>k*x**y,
         x_**(k_?scalarQ*y_):>k*x**y,
         (x_+y_)**z_:>x**z+y**z,
         z_**(x_+y_):>z**x+z**y,
-        (*zero*)
+        (* Zero *)
         0**_->0,
         _**0->0,
-        (*NonCommutativeMultiply[___,0,___]->0,*)
-        (*identity*)
+        (* Identity *)
         id**x_:>x,
         x_**id:>x
     },
@@ -83,15 +82,15 @@ algebraInternal["Algebra"] = <|
 
 algebraInternal["Conjugate"] = <|
     "Relation"->{
-        (*linearity*)
+        (* Linearity *)
         conjugate[k_?scalarQ*x_.]:>
             Conjugate[k]*conjugate[x],
         conjugate[x_+y_]:>
             conjugate[x]+conjugate[y],
-        (*anti-morphism*)
+        (* Anti-morphism *)
         conjugate[x_**y_]:>
             conjugate[y]**conjugate[x],
-        (*identity*)
+        (* Identity *)
         conjugate[id]:>id
     },
     "Printing"->{
@@ -106,7 +105,7 @@ algebraInternal["Conjugate"] = <|
 
 algebraInternal["Tensor"] = <|
     "Relation"->{
-        (*linearity*)
+        (* Linearity *)
         tensor[x_,k_?scalarQ*y_.]:>
             k*tensor[x,y],
         tensor[k_?scalarQ*x_.,y_]:>
@@ -115,7 +114,7 @@ algebraInternal["Tensor"] = <|
             tensor[x,z]+tensor[y,z],
         tensor[z_,x_+y_]:>
             tensor[z,x]+tensor[z,y],
-        (*composition*)
+        (* Composition *)
         tensor[x1_,x2__]**tensor[y1_,y2__]:>
             compose[{x1,x2},{y1,y2}]
     },
@@ -131,12 +130,12 @@ algebraInternal["Tensor"] = <|
 
 algebraInternal["Coalgebra"] = <|
     "Relation"->{
-        (*linearity*)
+        (* Linearity *)
         comultiply[k_?scalarQ*x_.]:>
             k*comultiply[x],
         comultiply[x_+y_]:>
             comultiply[x]+comultiply[y],
-        (*linearity*)
+        (* Linearity *)
         counit[k_?scalarQ*x_.]:>
             k*counit[x],
         counit[x_+y_]:>
@@ -155,7 +154,7 @@ algebraInternal["Coalgebra"] = <|
 
 algebraInternal["Bialgebra"] = <|
     "Relation"->{
-        (*compatibility between coalgebra and algebra structures*)
+        (* Compatibility between coalgebra and algebra structures. *)
         comultiply[x_**y_]:>
             comultiply[x]**comultiply[y],
         comultiply[id]:>
@@ -174,15 +173,15 @@ algebraInternal["Bialgebra"] = <|
 
 algebraInternal["Antipode"] = <|
     "Relation"->{
-        (*linearity*)
+        (* Linearity *)
         antipode[k_?scalarQ*x_.]:>
             k*antipode[x],
         antipode[x_+y_]:>
             antipode[x]+antipode[y],
-        (*anti-morphism*)
+        (* Anti-morphism *)
         antipode[x_**y_]:>
             antipode[y]**antipode[x],
-        (*identity*)
+        (* Identity *)
         antipode[id]:>
             id
     },

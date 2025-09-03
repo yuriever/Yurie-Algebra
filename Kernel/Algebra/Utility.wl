@@ -131,7 +131,7 @@ commDefine/:rule_[
             x**y,
             (-1)^sign*stripPattern@y**stripPattern@x+result
         ],
-        (*Else*)
+        (* Else *)
         Inactive[rule][
             y**x,
             (-1)^sign*stripPattern@x**stripPattern@y-(-1)^sign*result
@@ -220,11 +220,11 @@ operatorExp[op_,max_Integer?Positive,t_:1] :=
 (*Message*)
 
 
-operatorSeparate::extractionFailed =
-    "the extracted operators together with their coefficients cannot recover the original expression.";
+operatorSeparate::ExtractionFailed =
+    "The extracted operators together with their coefficients cannot recover the original expression.";
 
-operatorSeparate::notOperator =
-    "the expression is not an operator.";
+operatorSeparate::NotOperator =
+    "The expression is not an operator.";
 
 
 (* ::Subsubsection:: *)
@@ -267,7 +267,7 @@ operatorSeparateKernel[expr_] :=
         opList = operatorList[expr];
         coList = Map[Coefficient[expr,#]&,opList];
         If[ scalarSimplify[opList . coList-expr]=!=0,
-            Message[operatorSeparate::extractionFailed];
+            Message[operatorSeparate::ExtractionFailed];
             expr//Throw
         ];
         {opList,coList}
@@ -288,7 +288,7 @@ operatorList[expr_?generatorQ] :=
 
 operatorList[expr_?scalarQ] :=
     (
-        Message[operatorSeparate::notOperator];
+        Message[operatorSeparate::NotOperator];
         expr//Throw
     );
 
