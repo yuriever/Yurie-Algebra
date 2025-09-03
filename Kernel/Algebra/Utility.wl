@@ -21,16 +21,10 @@ Needs["Yurie`Algebra`"];
 comm::usage =
     "commutator.";
 
-anticomm::usage =
-    "anti-commutator.";
-
 commSim::usage =
     "simplify the commutator.";
 
-anticommSim::usage =
-    "simplify the anti-commutator.";
-
-commDefine::usage =
+commIn::usage =
     "define the (anti-)commutator with the given order and condition.";
 
 
@@ -85,40 +79,26 @@ Begin["`Private`"];
 
 (* ::Text:: *)
 (*n-commutator: [x,y,z,...]=[x,[y,[z,...]]]*)
-
-
-comm[x_,y_] :=
-    x**y-y**x;
-
-comm[x_,y__] :=
-    x**comm[y]-comm[y]**x;
-
-
-commSim[x__] :=
-    comm[x]//algebraSimplify;
-
-
-(* ::Text:: *)
 (*n-anti-commutator: {x,y,z,...}={x,{y,{z,...}}}*)
 
 
-anticomm[x_,y_] :=
-    x**y+y**x;
-
-anticomm[x_,y__] :=
-    x**anticomm[y]+anticomm[y]**x;
-
-
-anticommSim[x__] :=
-    anticomm[x]//algebraSimplify;
-
-
 (* ::Subsubsection:: *)
-(*commDefine*)
+(*Main*)
 
 
-commDefine/:rule_[
-    commDefine[x_,y_,
+comm[x:Except[_List],y:Except[_List],sign:0|1:0] :=
+    commKernel[{x,y},sign];
+
+comm[{x___},sign:0|1:0] :=
+    commKernel[{x},sign];
+
+
+commSim[x___] :=
+    comm[x]//algebraSimplify;
+
+
+commIn/:(rule:Rule|RuleDelayed)[
+    commIn[x_,y_,
         OrderlessPatternSequence[
             sign:(0|1):0,
             order:(Normal|Reverse):Normal
@@ -126,20 +106,10 @@ commDefine/:rule_[
     ],
     result_
 ] :=
-    If[ order===Normal,
-        Inactive[rule][
-            x**y,
-            (-1)^sign*stripPattern@y**stripPattern@x+result
-        ],
-        (* Else *)
-        Inactive[rule][
-            y**x,
-            (-1)^sign*stripPattern@x**stripPattern@y-(-1)^sign*result
-        ]
-    ]//Activate;
+    commInKernel[{x,y,result},order,sign,rule]//Activate;
 
-commDefine/:rule_[
-    commDefine[x_,y_,
+commIn/:(rule:Rule|RuleDelayed)[
+    commIn[x_,y_,
         OrderlessPatternSequence[
             sign:(0|1):0,
             order:(Normal|Reverse):Normal
@@ -147,16 +117,59 @@ commDefine/:rule_[
     ],
     Verbatim[Condition][result_,condition_]
 ]:=
-    If[ order===Normal,
-        Inactive[rule][
-            x**y,
-            Condition[(-1)^sign*stripPattern@y**stripPattern@x+result,condition]
-        ],
-        Inactive[rule][
-            y**x,
-            Condition[(-1)^sign*stripPattern@x**stripPattern@y-(-1)^sign*result,condition]
-        ]
-    ]//Activate;
+    commInKernel[{x,y,result,condition},order,sign,rule]//Activate;
+
+
+(* ::Subsubsection:: *)
+(*Helper*)
+
+
+commKernel[{},_] :=
+    id;
+
+commKernel[{x_},_] :=
+    x;
+
+commKernel[{x_,y_},0] :=
+    x**y-y**x;
+
+commKernel[{x_,y_},1] :=
+    x**y+y**x;
+
+commKernel[{x_,y__},0] :=
+    x**commKernel[{y},0]-commKernel[{y},0]**x;
+
+commKernel[{x_,y__},1] :=
+    x**commKernel[{y},1]+commKernel[{y},1]**x;
+
+
+commInKernel//Attributes = {
+    HoldFirst
+};
+
+commInKernel[{x_,y_,res_},Normal,sign_,rule_] :=
+    Inactive[rule][
+        x**y,
+        (-1)^sign*stripPattern@y**stripPattern@x+res
+    ];
+
+commInKernel[{x_,y_,res_,condition_},Normal,sign_,rule_] :=
+    Inactive[rule][
+        x**y,
+        Condition[(-1)^sign*stripPattern@y**stripPattern@x+res,condition]
+    ];
+
+commInKernel[{x_,y_,res_},Reverse,sign_,rule_] :=
+    Inactive[rule][
+        y**x,
+        (-1)^sign*stripPattern@x**stripPattern@y-(-1)^sign*res
+    ];
+
+commInKernel[{x_,y_,res_,condition_},Reverse,sign_,rule_] :=
+    Inactive[rule][
+        y**x,
+        Condition[(-1)^sign*stripPattern@x**stripPattern@y-(-1)^sign*res,condition]
+    ];
 
 
 stripPattern[pattern_] :=
