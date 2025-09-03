@@ -1,2 +1,3 @@
-{"algebraSimplify" -> {0, {"Post"}}, "operatorSeparate" -> 
-  {0, {"Scalar", "Operator"}}}
+{"algebraDefine" -> {0, {"ForceReset"}, {"ForceReset"}, {"ForceReset"}, 
+   {"ForceReset"}}, "algebraSimplify" -> {0, {"Post"}}, 
+ "operatorSeparate" -> {0, {"Scalar", "Operator"}, {"Scalar", "Operator"}}}

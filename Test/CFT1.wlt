@@ -1,14 +1,14 @@
 
 
-(*CFT1.nb*)
+(* CFT1.nb *)
 
 VerificationTest[
     Begin["Global`"];
-	ClearAll["`*"]
+    ClearAll["`*"]
     ,
     Null
     ,
-    TestID->"0-CFT1.nb"
+    TestID->"[0] CFT1.nb"
 ]
 
 VerificationTest[
@@ -16,7 +16,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"1-CFT1.nb"
+    TestID->"[1] CFT1.nb"
 ]
 
 VerificationTest[
@@ -24,7 +24,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"2-CFT1.nb"
+    TestID->"[2] CFT1.nb"
 ]
 
 VerificationTest[
@@ -32,7 +32,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"3-CFT1.nb"
+    TestID->"[3] CFT1.nb"
 ]
 
 VerificationTest[
@@ -40,7 +40,7 @@ VerificationTest[
     ,
     {{2*h, 0, 0, 0}, {0, 4*h*(1 + 2*h), 0, 0}, {0, 0, 24*h*(1 + h)*(1 + 2*h), 0}, {0, 0, 0, 96*h*(1 + h)*(1 + 2*h)*(3 + 2*h)}}
     ,
-    TestID->"4-CFT1.nb"
+    TestID->"[4] CFT1.nb"
 ]
 
 VerificationTest[
@@ -49,7 +49,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"5-CFT1.nb"
+    TestID->"[5] CFT1.nb"
 ]
 
 VerificationTest[
@@ -57,7 +57,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"6-CFT1.nb"
+    TestID->"[6] CFT1.nb"
 ]
 
 VerificationTest[
@@ -65,7 +65,7 @@ VerificationTest[
     ,
     {{2*h}}
     ,
-    TestID->"7-CFT1.nb"
+    TestID->"[7] CFT1.nb"
 ]
 
 VerificationTest[
@@ -73,25 +73,18 @@ VerificationTest[
     ,
     {{(1/2)*(c + 8*h), 6*h}, {6*h, 4*h*(1 + 2*h)}}
     ,
-    TestID->"8-CFT1.nb"
+    TestID->"[8] CFT1.nb"
 ]
 
 VerificationTest[
-    algebraUnset[]
-    ,
-    Null
-    ,
-    {Yurie`Cluster`cluster::rmdefault}
-    ,
-    TestID->"9-CFT1.nb"
-]
-
-VerificationTest[
+    algebraUnset[]; 
     algebraDefine[]
     ,
-    {"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
+    Quiet[{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}]
     ,
-    TestID->"10-CFT1.nb"
+    {General::StarRemoveDefault}
+    ,
+    TestID->"[9] CFT1.nb"
 ]
 
 VerificationTest[
@@ -100,14 +93,14 @@ VerificationTest[
     ,
     {}
     ,
-    TestID->"11-CFT1.nb"
+    TestID->"[10] CFT1.nb"
 ]
 
 VerificationTest[
     ClearAll["`*"];
-	End[]
+    End[]
     ,
     "Global`"
     ,
-    TestID->"∞-CFT1.nb"
+    TestID->"[∞] CFT1.nb"
 ]

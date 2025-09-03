@@ -1,14 +1,14 @@
 
 
-(*TrigHopf.nb*)
+(* TrigHopf.nb *)
 
 VerificationTest[
     Begin["Global`"];
-	ClearAll["`*"]
+    ClearAll["`*"]
     ,
     Null
     ,
-    TestID->"0-TrigHopf.nb"
+    TestID->"[0] TrigHopf.nb"
 ]
 
 VerificationTest[
@@ -16,7 +16,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"1-TrigHopf.nb"
+    TestID->"[1] TrigHopf.nb"
 ]
 
 VerificationTest[
@@ -24,7 +24,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"2-TrigHopf.nb"
+    TestID->"[2] TrigHopf.nb"
 ]
 
 VerificationTest[
@@ -32,7 +32,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"3-TrigHopf.nb"
+    TestID->"[3] TrigHopf.nb"
 ]
 
 VerificationTest[
@@ -40,7 +40,7 @@ VerificationTest[
     ,
     {{id} -> 0, {c} -> 0, {s} -> 0}
     ,
-    TestID->"4-TrigHopf.nb"
+    TestID->"[4] TrigHopf.nb"
 ]
 
 VerificationTest[
@@ -48,7 +48,7 @@ VerificationTest[
     ,
     {{id} -> {0, 0}, {c} -> {0, 0}, {s} -> {0, 0}}
     ,
-    TestID->"5-TrigHopf.nb"
+    TestID->"[5] TrigHopf.nb"
 ]
 
 VerificationTest[
@@ -56,25 +56,18 @@ VerificationTest[
     ,
     {{id} -> {0, 0}, {c} -> {0, 0}, {s} -> {0, 0}}
     ,
-    TestID->"6-TrigHopf.nb"
+    TestID->"[6] TrigHopf.nb"
 ]
 
 VerificationTest[
-    algebraUnset[]
-    ,
-    Null
-    ,
-    {Yurie`Cluster`cluster::rmdefault}
-    ,
-    TestID->"7-TrigHopf.nb"
-]
-
-VerificationTest[
+    algebraUnset[]; 
     algebraDefine[]
     ,
-    {"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
+    Quiet[{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}]
     ,
-    TestID->"8-TrigHopf.nb"
+    {General::StarRemoveDefault}
+    ,
+    TestID->"[7] TrigHopf.nb"
 ]
 
 VerificationTest[
@@ -83,14 +76,14 @@ VerificationTest[
     ,
     {}
     ,
-    TestID->"9-TrigHopf.nb"
+    TestID->"[8] TrigHopf.nb"
 ]
 
 VerificationTest[
     ClearAll["`*"];
-	End[]
+    End[]
     ,
     "Global`"
     ,
-    TestID->"∞-TrigHopf.nb"
+    TestID->"[∞] TrigHopf.nb"
 ]

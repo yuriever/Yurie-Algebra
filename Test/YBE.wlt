@@ -1,14 +1,14 @@
 
 
-(*YBE.nb*)
+(* YBE.nb *)
 
 VerificationTest[
     Begin["Global`"];
-	ClearAll["`*"]
+    ClearAll["`*"]
     ,
     Null
     ,
-    TestID->"0-YBE.nb"
+    TestID->"[0] YBE.nb"
 ]
 
 VerificationTest[
@@ -16,7 +16,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"1-YBE.nb"
+    TestID->"[1] YBE.nb"
 ]
 
 VerificationTest[
@@ -24,7 +24,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"2-YBE.nb"
+    TestID->"[2] YBE.nb"
 ]
 
 VerificationTest[
@@ -32,7 +32,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"3-YBE.nb"
+    TestID->"[3] YBE.nb"
 ]
 
 VerificationTest[
@@ -40,7 +40,7 @@ VerificationTest[
     ,
     R[1, 2, u, v]**tensor[x[1], x[2], x[3]]
     ,
-    TestID->"4-YBE.nb"
+    TestID->"[4] YBE.nb"
 ]
 
 VerificationTest[
@@ -48,7 +48,7 @@ VerificationTest[
     ,
     R[1, 2, u, v]**tensor[x[1], x[2], x[3]] == ((u - v)*tensor[x[1], x[2], x[3]] + I*tensor[x[2], x[1], x[3]])/(I + u - v)
     ,
-    TestID->"5-YBE.nb"
+    TestID->"[5] YBE.nb"
 ]
 
 VerificationTest[
@@ -57,7 +57,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"6-YBE.nb"
+    TestID->"[6] YBE.nb"
 ]
 
 VerificationTest[
@@ -65,7 +65,7 @@ VerificationTest[
     ,
     (1/((I + u - v)*(I + u - w)*(I + v - w)))*((u - v)*(u - w)*(v - w)*tensor[x[1], x[2], x[3]] + I*((u - v)*(u - w)*tensor[x[1], x[3], x[2]] + (u - w)*(v - w)*tensor[x[2], x[1], x[3]] + I*u*tensor[x[2], x[3], x[1]] - I*w*tensor[x[2], x[3], x[1]] + I*u*tensor[x[3], x[1], x[2]] - I*w*tensor[x[3], x[1], x[2]] - tensor[x[3], x[2], x[1]] + u*v*tensor[x[3], x[2], x[1]] - v^2*tensor[x[3], x[2], x[1]] - u*w*tensor[x[3], x[2], x[1]] + v*w*tensor[x[3], x[2], x[1]]))
     ,
-    TestID->"7-YBE.nb"
+    TestID->"[7] YBE.nb"
 ]
 
 VerificationTest[
@@ -73,25 +73,18 @@ VerificationTest[
     ,
     True
     ,
-    TestID->"8-YBE.nb"
+    TestID->"[8] YBE.nb"
 ]
 
 VerificationTest[
-    algebraUnset[]
-    ,
-    Null
-    ,
-    {Yurie`Cluster`cluster::rmdefault}
-    ,
-    TestID->"9-YBE.nb"
-]
-
-VerificationTest[
+    algebraUnset[]; 
     algebraDefine[]
     ,
-    {"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
+    Quiet[{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}]
     ,
-    TestID->"10-YBE.nb"
+    {General::StarRemoveDefault}
+    ,
+    TestID->"[9] YBE.nb"
 ]
 
 VerificationTest[
@@ -100,14 +93,14 @@ VerificationTest[
     ,
     {}
     ,
-    TestID->"11-YBE.nb"
+    TestID->"[10] YBE.nb"
 ]
 
 VerificationTest[
     ClearAll["`*"];
-	End[]
+    End[]
     ,
     "Global`"
     ,
-    TestID->"∞-YBE.nb"
+    TestID->"[∞] YBE.nb"
 ]

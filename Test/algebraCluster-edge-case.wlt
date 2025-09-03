@@ -1,14 +1,14 @@
 
 
-(*algebraCluster-edge-case.nb*)
+(* algebraCluster-edge-case.nb *)
 
 VerificationTest[
     Begin["Global`"];
-	ClearAll["`*"]
+    ClearAll["`*"]
     ,
     Null
     ,
-    TestID->"0-algebraCluster-edge-case.nb"
+    TestID->"[0] algebraCluster-edge-case.nb"
 ]
 
 VerificationTest[
@@ -16,7 +16,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"1-algebraCluster-edge-case.nb"
+    TestID->"[1] algebraCluster-edge-case.nb"
 ]
 
 VerificationTest[
@@ -25,7 +25,7 @@ VerificationTest[
     ,
     {"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
     ,
-    TestID->"2-algebraCluster-edge-case.nb"
+    TestID->"[2] algebraCluster-edge-case.nb"
 ]
 
 VerificationTest[
@@ -35,7 +35,7 @@ VerificationTest[
     ,
     {id}
     ,
-    TestID->"3-algebraCluster-edge-case.nb"
+    TestID->"[3] algebraCluster-edge-case.nb"
 ]
 
 VerificationTest[
@@ -44,7 +44,7 @@ VerificationTest[
     ,
     {id}
     ,
-    TestID->"4-algebraCluster-edge-case.nb"
+    TestID->"[4] algebraCluster-edge-case.nb"
 ]
 
 VerificationTest[
@@ -53,23 +53,16 @@ VerificationTest[
     ,
     {id}
     ,
-    TestID->"5-algebraCluster-edge-case.nb"
+    TestID->"[5] algebraCluster-edge-case.nb"
 ]
 
 VerificationTest[
-    algebraUnset[]
-    ,
-    Null
-    ,
-    TestID->"6-algebraCluster-edge-case.nb"
-]
-
-VerificationTest[
+    algebraUnset[]; 
     algebraDefine[]
     ,
     {"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
     ,
-    TestID->"7-algebraCluster-edge-case.nb"
+    TestID->"[6] algebraCluster-edge-case.nb"
 ]
 
 VerificationTest[
@@ -78,14 +71,14 @@ VerificationTest[
     ,
     {}
     ,
-    TestID->"8-algebraCluster-edge-case.nb"
+    TestID->"[7] algebraCluster-edge-case.nb"
 ]
 
 VerificationTest[
     ClearAll["`*"];
-	End[]
+    End[]
     ,
     "Global`"
     ,
-    TestID->"∞-algebraCluster-edge-case.nb"
+    TestID->"[∞] algebraCluster-edge-case.nb"
 ]

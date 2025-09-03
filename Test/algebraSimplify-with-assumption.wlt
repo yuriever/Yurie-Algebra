@@ -1,14 +1,14 @@
 
 
-(*algebraSimplify-with-assumption.nb*)
+(* algebraSimplify-with-assumption.nb *)
 
 VerificationTest[
     Begin["Global`"];
-	ClearAll["`*"]
+    ClearAll["`*"]
     ,
     Null
     ,
-    TestID->"0-algebraSimplify-with-assumption.nb"
+    TestID->"[0] algebraSimplify-with-assumption.nb"
 ]
 
 VerificationTest[
@@ -16,7 +16,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"1-algebraSimplify-with-assumption.nb"
+    TestID->"[1] algebraSimplify-with-assumption.nb"
 ]
 
 VerificationTest[
@@ -24,7 +24,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"2-algebraSimplify-with-assumption.nb"
+    TestID->"[2] algebraSimplify-with-assumption.nb"
 ]
 
 VerificationTest[
@@ -32,7 +32,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"3-algebraSimplify-with-assumption.nb"
+    TestID->"[3] algebraSimplify-with-assumption.nb"
 ]
 
 VerificationTest[
@@ -40,7 +40,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"4-algebraSimplify-with-assumption.nb"
+    TestID->"[4] algebraSimplify-with-assumption.nb"
 ]
 
 VerificationTest[
@@ -48,7 +48,7 @@ VerificationTest[
     ,
     ((-f[k - m])*f[k + m - n] + f[k - n]*f[k - m + n] + f[-m + n]*f[-k + m + n])*L[k + m + n]
     ,
-    TestID->"5-algebraSimplify-with-assumption.nb"
+    TestID->"[5] algebraSimplify-with-assumption.nb"
 ]
 
 VerificationTest[
@@ -56,7 +56,7 @@ VerificationTest[
     ,
     {0}
     ,
-    TestID->"6-algebraSimplify-with-assumption.nb"
+    TestID->"[6] algebraSimplify-with-assumption.nb"
 ]
 
 VerificationTest[
@@ -64,25 +64,18 @@ VerificationTest[
     ,
     {2*(k - n)*(-m + n)*(k^2 - 2*k*m + m^2 - n^2)}
     ,
-    TestID->"7-algebraSimplify-with-assumption.nb"
+    TestID->"[7] algebraSimplify-with-assumption.nb"
 ]
 
 VerificationTest[
-    algebraUnset["test"]
-    ,
-    Null
-    ,
-    {Yurie`Cluster`cluster::rmdefault}
-    ,
-    TestID->"8-algebraSimplify-with-assumption.nb"
-]
-
-VerificationTest[
+    algebraUnset[]; 
     algebraDefine[]
     ,
-    {"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
+    Quiet[{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}]
     ,
-    TestID->"9-algebraSimplify-with-assumption.nb"
+    {General::StarRemoveDefault}
+    ,
+    TestID->"[8] algebraSimplify-with-assumption.nb"
 ]
 
 VerificationTest[
@@ -91,14 +84,14 @@ VerificationTest[
     ,
     {}
     ,
-    TestID->"10-algebraSimplify-with-assumption.nb"
+    TestID->"[9] algebraSimplify-with-assumption.nb"
 ]
 
 VerificationTest[
     ClearAll["`*"];
-	End[]
+    End[]
     ,
     "Global`"
     ,
-    TestID->"∞-algebraSimplify-with-assumption.nb"
+    TestID->"[∞] algebraSimplify-with-assumption.nb"
 ]

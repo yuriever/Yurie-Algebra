@@ -1,14 +1,14 @@
 
 
-(*checkCoalgebra.nb*)
+(* checkCoalgebra.nb *)
 
 VerificationTest[
     Begin["Global`"];
-	ClearAll["`*"]
+    ClearAll["`*"]
     ,
     Null
     ,
-    TestID->"0-checkCoalgebra.nb"
+    TestID->"[0] checkCoalgebra.nb"
 ]
 
 VerificationTest[
@@ -16,7 +16,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"1-checkCoalgebra.nb"
+    TestID->"[1] checkCoalgebra.nb"
 ]
 
 VerificationTest[
@@ -24,7 +24,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"2-checkCoalgebra.nb"
+    TestID->"[2] checkCoalgebra.nb"
 ]
 
 VerificationTest[
@@ -32,7 +32,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"3-checkCoalgebra.nb"
+    TestID->"[3] checkCoalgebra.nb"
 ]
 
 VerificationTest[
@@ -40,7 +40,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"4-checkCoalgebra.nb"
+    TestID->"[4] checkCoalgebra.nb"
 ]
 
 VerificationTest[
@@ -48,7 +48,7 @@ VerificationTest[
     ,
     {(-1 + c[1])*c[1], (-1 + c[1])*c[1]}
     ,
-    TestID->"5-checkCoalgebra.nb"
+    TestID->"[5] checkCoalgebra.nb"
 ]
 
 VerificationTest[
@@ -56,7 +56,7 @@ VerificationTest[
     ,
     {{c[1] -> 0}, {c[1] -> 1}}
     ,
-    TestID->"6-checkCoalgebra.nb"
+    TestID->"[6] checkCoalgebra.nb"
 ]
 
 VerificationTest[
@@ -64,7 +64,7 @@ VerificationTest[
     ,
     {-1 + d[1], c[1]*d[2], -1 + c[1], d[2], -1 + d[1], -1 + d[1], c[1]*d[1]*d[2], d[1]*d[2], -1 + c[1]*d[1]}
     ,
-    TestID->"7-checkCoalgebra.nb"
+    TestID->"[7] checkCoalgebra.nb"
 ]
 
 VerificationTest[
@@ -72,7 +72,7 @@ VerificationTest[
     ,
     {{c[1] -> 1, d[1] -> 1, d[2] -> 0}}
     ,
-    TestID->"8-checkCoalgebra.nb"
+    TestID->"[8] checkCoalgebra.nb"
 ]
 
 VerificationTest[
@@ -80,7 +80,7 @@ VerificationTest[
     ,
     {{a[4] + b[2], b[1], b[4], a[1] + b[3], b[1], 1 + b[3], b[4], b[2], -1 + a[1], -a[3], a[4], -a[2], -1 + a[1], a[3], a[4], a[2]}}
     ,
-    TestID->"9-checkCoalgebra.nb"
+    TestID->"[9] checkCoalgebra.nb"
 ]
 
 VerificationTest[
@@ -88,7 +88,7 @@ VerificationTest[
     ,
     {{a[1] -> 1, a[2] -> 0, a[3] -> 0, a[4] -> 0, b[1] -> 0, b[2] -> 0, b[3] -> -1, b[4] -> 0}}
     ,
-    TestID->"10-checkCoalgebra.nb"
+    TestID->"[10] checkCoalgebra.nb"
 ]
 
 VerificationTest[
@@ -96,25 +96,18 @@ VerificationTest[
     ,
     {{{tensor[g, x] + tensor[x, id], 1, 0, g, -g**x}}}
     ,
-    TestID->"11-checkCoalgebra.nb"
+    TestID->"[11] checkCoalgebra.nb"
 ]
 
 VerificationTest[
-    algebraUnset["test"]
-    ,
-    Null
-    ,
-    {Yurie`Cluster`cluster::rmdefault}
-    ,
-    TestID->"12-checkCoalgebra.nb"
-]
-
-VerificationTest[
+    algebraUnset[]; 
     algebraDefine[]
     ,
-    {"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
+    Quiet[{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}]
     ,
-    TestID->"13-checkCoalgebra.nb"
+    {General::StarRemoveDefault}
+    ,
+    TestID->"[12] checkCoalgebra.nb"
 ]
 
 VerificationTest[
@@ -123,14 +116,14 @@ VerificationTest[
     ,
     {}
     ,
-    TestID->"14-checkCoalgebra.nb"
+    TestID->"[13] checkCoalgebra.nb"
 ]
 
 VerificationTest[
     ClearAll["`*"];
-	End[]
+    End[]
     ,
     "Global`"
     ,
-    TestID->"∞-checkCoalgebra.nb"
+    TestID->"[∞] checkCoalgebra.nb"
 ]

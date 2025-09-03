@@ -1,14 +1,14 @@
 
 
-(*SL2.nb*)
+(* SL2.nb *)
 
 VerificationTest[
     Begin["Global`"];
-	ClearAll["`*"]
+    ClearAll["`*"]
     ,
     Null
     ,
-    TestID->"0-SL2.nb"
+    TestID->"[0] SL2.nb"
 ]
 
 VerificationTest[
@@ -16,7 +16,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"1-SL2.nb"
+    TestID->"[1] SL2.nb"
 ]
 
 VerificationTest[
@@ -24,7 +24,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"2-SL2.nb"
+    TestID->"[2] SL2.nb"
 ]
 
 VerificationTest[
@@ -32,7 +32,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"3-SL2.nb"
+    TestID->"[3] SL2.nb"
 ]
 
 VerificationTest[
@@ -40,7 +40,7 @@ VerificationTest[
     ,
     {0, 0, 0, 0, 0}
     ,
-    TestID->"4-SL2.nb"
+    TestID->"[4] SL2.nb"
 ]
 
 VerificationTest[
@@ -48,7 +48,7 @@ VerificationTest[
     ,
     {0, 0, 0, 0, 0}
     ,
-    TestID->"5-SL2.nb"
+    TestID->"[5] SL2.nb"
 ]
 
 VerificationTest[
@@ -56,7 +56,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"6-SL2.nb"
+    TestID->"[6] SL2.nb"
 ]
 
 VerificationTest[
@@ -64,7 +64,7 @@ VerificationTest[
     ,
     {0, 0, 0, 0, 0}
     ,
-    TestID->"7-SL2.nb"
+    TestID->"[7] SL2.nb"
 ]
 
 VerificationTest[
@@ -72,7 +72,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"8-SL2.nb"
+    TestID->"[8] SL2.nb"
 ]
 
 VerificationTest[
@@ -80,7 +80,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"9-SL2.nb"
+    TestID->"[9] SL2.nb"
 ]
 
 VerificationTest[
@@ -88,7 +88,7 @@ VerificationTest[
     ,
     {{{x, x, v[2, 4, 2]} -> 0, {x, y, v[2, 4, 2]} -> 0, {x, h, v[2, 4, 2]} -> 0}, {{y, x, v[2, 4, 2]} -> 0, {y, y, v[2, 4, 2]} -> 0, {y, h, v[2, 4, 2]} -> 0}, {{h, x, v[2, 4, 2]} -> 0, {h, y, v[2, 4, 2]} -> 0, {h, h, v[2, 4, 2]} -> 0}}
     ,
-    TestID->"10-SL2.nb"
+    TestID->"[10] SL2.nb"
 ]
 
 VerificationTest[
@@ -96,7 +96,7 @@ VerificationTest[
     ,
     {0, 0, 0, 0, 0}
     ,
-    TestID->"11-SL2.nb"
+    TestID->"[11] SL2.nb"
 ]
 
 VerificationTest[
@@ -104,7 +104,7 @@ VerificationTest[
     ,
     {0, 0, 0, 0, 0}
     ,
-    TestID->"12-SL2.nb"
+    TestID->"[12] SL2.nb"
 ]
 
 VerificationTest[
@@ -112,25 +112,18 @@ VerificationTest[
     ,
     {0, 0, 0, 0, 0}
     ,
-    TestID->"13-SL2.nb"
+    TestID->"[13] SL2.nb"
 ]
 
 VerificationTest[
-    algebraUnset[]
-    ,
-    Null
-    ,
-    {Yurie`Cluster`cluster::rmdefault}
-    ,
-    TestID->"14-SL2.nb"
-]
-
-VerificationTest[
+    algebraUnset[]; 
     algebraDefine[]
     ,
-    {"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
+    Quiet[{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}]
     ,
-    TestID->"15-SL2.nb"
+    {General::StarRemoveDefault}
+    ,
+    TestID->"[14] SL2.nb"
 ]
 
 VerificationTest[
@@ -139,14 +132,14 @@ VerificationTest[
     ,
     {}
     ,
-    TestID->"16-SL2.nb"
+    TestID->"[15] SL2.nb"
 ]
 
 VerificationTest[
     ClearAll["`*"];
-	End[]
+    End[]
     ,
     "Global`"
     ,
-    TestID->"∞-SL2.nb"
+    TestID->"[∞] SL2.nb"
 ]

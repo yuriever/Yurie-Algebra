@@ -1,14 +1,14 @@
 
 
-(*operatorSeparate.nb*)
+(* operatorSeparate.nb *)
 
 VerificationTest[
     Begin["Global`"];
-	ClearAll["`*"]
+    ClearAll["`*"]
     ,
     Null
     ,
-    TestID->"0-operatorSeparate.nb"
+    TestID->"[0] operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -16,7 +16,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"1-operatorSeparate.nb"
+    TestID->"[1] operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -24,7 +24,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"2-operatorSeparate.nb"
+    TestID->"[2] operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -32,7 +32,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"3-operatorSeparate.nb"
+    TestID->"[3] operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -41,7 +41,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"4-operatorSeparate.nb"
+    TestID->"[4] operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -49,7 +49,7 @@ VerificationTest[
     ,
     {"Scalar" -> True, "Operator" -> True}
     ,
-    TestID->"5-operatorSeparate.nb"
+    TestID->"[5] operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -57,9 +57,9 @@ VerificationTest[
     ,
     Quiet[1]
     ,
-    {Yurie`Algebra`operatorSeparate::notOperator}
+    {Yurie`Algebra`operatorSeparate::NotOperator}
     ,
-    TestID->"6-operatorSeparate.nb"
+    TestID->"[6] operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -67,7 +67,7 @@ VerificationTest[
     ,
     {x -> 1}
     ,
-    TestID->"7-operatorSeparate.nb"
+    TestID->"[7] operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -75,7 +75,7 @@ VerificationTest[
     ,
     {x -> 2}
     ,
-    TestID->"8-operatorSeparate.nb"
+    TestID->"[8] operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -83,7 +83,7 @@ VerificationTest[
     ,
     {x**y -> 1}
     ,
-    TestID->"9-operatorSeparate.nb"
+    TestID->"[9] operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -91,7 +91,7 @@ VerificationTest[
     ,
     {x**y -> 2}
     ,
-    TestID->"10-operatorSeparate.nb"
+    TestID->"[10] operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -99,7 +99,7 @@ VerificationTest[
     ,
     {tensor[x, y] -> 1}
     ,
-    TestID->"11-operatorSeparate.nb"
+    TestID->"[11] operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -107,7 +107,7 @@ VerificationTest[
     ,
     {tensor[x, y] -> 2}
     ,
-    TestID->"12-operatorSeparate.nb"
+    TestID->"[12] operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -115,7 +115,7 @@ VerificationTest[
     ,
     {x -> a[0], x**y -> a[1]}
     ,
-    TestID->"13-operatorSeparate.nb"
+    TestID->"[13] operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -123,7 +123,7 @@ VerificationTest[
     ,
     {a[0], a[1]}
     ,
-    TestID->"14-operatorSeparate.nb"
+    TestID->"[14] operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -131,7 +131,7 @@ VerificationTest[
     ,
     {x, x**y}
     ,
-    TestID->"15-operatorSeparate.nb"
+    TestID->"[15] operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -139,25 +139,18 @@ VerificationTest[
     ,
     {"Scalar" -> True, "Operator" -> False}
     ,
-    TestID->"16-operatorSeparate.nb"
+    TestID->"[16] operatorSeparate.nb"
 ]
 
 VerificationTest[
-    algebraUnset["test"]
-    ,
-    Null
-    ,
-    {Yurie`Cluster`cluster::rmdefault}
-    ,
-    TestID->"17-operatorSeparate.nb"
-]
-
-VerificationTest[
+    algebraUnset[]; 
     algebraDefine[]
     ,
-    {"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
+    Quiet[{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}]
     ,
-    TestID->"18-operatorSeparate.nb"
+    {General::StarRemoveDefault}
+    ,
+    TestID->"[17] operatorSeparate.nb"
 ]
 
 VerificationTest[
@@ -166,14 +159,14 @@ VerificationTest[
     ,
     {}
     ,
-    TestID->"19-operatorSeparate.nb"
+    TestID->"[18] operatorSeparate.nb"
 ]
 
 VerificationTest[
     ClearAll["`*"];
-	End[]
+    End[]
     ,
     "Global`"
     ,
-    TestID->"∞-operatorSeparate.nb"
+    TestID->"[∞] operatorSeparate.nb"
 ]

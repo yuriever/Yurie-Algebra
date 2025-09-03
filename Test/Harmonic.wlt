@@ -1,14 +1,14 @@
 
 
-(*Harmonic.nb*)
+(* Harmonic.nb *)
 
 VerificationTest[
     Begin["Global`"];
-	ClearAll["`*"]
+    ClearAll["`*"]
     ,
     Null
     ,
-    TestID->"0-Harmonic.nb"
+    TestID->"[0] Harmonic.nb"
 ]
 
 VerificationTest[
@@ -16,7 +16,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"1-Harmonic.nb"
+    TestID->"[1] Harmonic.nb"
 ]
 
 VerificationTest[
@@ -24,7 +24,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"2-Harmonic.nb"
+    TestID->"[2] Harmonic.nb"
 ]
 
 VerificationTest[
@@ -32,7 +32,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"3-Harmonic.nb"
+    TestID->"[3] Harmonic.nb"
 ]
 
 VerificationTest[
@@ -44,7 +44,7 @@ VerificationTest[
     ,
     ω*ℏ*(id/2 + cr**an)
     ,
-    TestID->"4-Harmonic.nb"
+    TestID->"[4] Harmonic.nb"
 ]
 
 VerificationTest[
@@ -52,7 +52,7 @@ VerificationTest[
     ,
     I*id*ℏ
     ,
-    TestID->"5-Harmonic.nb"
+    TestID->"[5] Harmonic.nb"
 ]
 
 VerificationTest[
@@ -60,7 +60,7 @@ VerificationTest[
     ,
     0
     ,
-    TestID->"6-Harmonic.nb"
+    TestID->"[6] Harmonic.nb"
 ]
 
 VerificationTest[
@@ -68,7 +68,7 @@ VerificationTest[
     ,
     {0, Ket[{1}], 2*Ket[{2}], 3*Ket[{3}], 4*Ket[{4}]}
     ,
-    TestID->"7-Harmonic.nb"
+    TestID->"[7] Harmonic.nb"
 ]
 
 VerificationTest[
@@ -76,25 +76,18 @@ VerificationTest[
     ,
     {(ω*ℏ*Ket[{0}])/2, (3*ω*ℏ*Ket[{1}])/2, (5*ω*ℏ*Ket[{2}])/2, (7*ω*ℏ*Ket[{3}])/2, (9*ω*ℏ*Ket[{4}])/2}
     ,
-    TestID->"8-Harmonic.nb"
+    TestID->"[8] Harmonic.nb"
 ]
 
 VerificationTest[
-    algebraUnset[]
-    ,
-    Null
-    ,
-    {Yurie`Cluster`cluster::rmdefault}
-    ,
-    TestID->"9-Harmonic.nb"
-]
-
-VerificationTest[
+    algebraUnset[]; 
     algebraDefine[]
     ,
-    {"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
+    Quiet[{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}]
     ,
-    TestID->"10-Harmonic.nb"
+    {General::StarRemoveDefault}
+    ,
+    TestID->"[9] Harmonic.nb"
 ]
 
 VerificationTest[
@@ -103,14 +96,14 @@ VerificationTest[
     ,
     {}
     ,
-    TestID->"11-Harmonic.nb"
+    TestID->"[10] Harmonic.nb"
 ]
 
 VerificationTest[
     ClearAll["`*"];
-	End[]
+    End[]
     ,
     "Global`"
     ,
-    TestID->"∞-Harmonic.nb"
+    TestID->"[∞] Harmonic.nb"
 ]

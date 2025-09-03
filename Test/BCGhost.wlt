@@ -1,14 +1,14 @@
 
 
-(*BCGhost.nb*)
+(* BCGhost.nb *)
 
 VerificationTest[
     Begin["Global`"];
-	ClearAll["`*"]
+    ClearAll["`*"]
     ,
     Null
     ,
-    TestID->"0-BCGhost.nb"
+    TestID->"[0] BCGhost.nb"
 ]
 
 VerificationTest[
@@ -16,7 +16,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"1-BCGhost.nb"
+    TestID->"[1] BCGhost.nb"
 ]
 
 VerificationTest[
@@ -24,7 +24,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"2-BCGhost.nb"
+    TestID->"[2] BCGhost.nb"
 ]
 
 VerificationTest[
@@ -32,7 +32,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"3-BCGhost.nb"
+    TestID->"[3] BCGhost.nb"
 ]
 
 VerificationTest[
@@ -40,7 +40,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"4-BCGhost.nb"
+    TestID->"[4] BCGhost.nb"
 ]
 
 VerificationTest[
@@ -48,7 +48,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"5-BCGhost.nb"
+    TestID->"[5] BCGhost.nb"
 ]
 
 VerificationTest[
@@ -57,15 +57,15 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"6-BCGhost.nb"
+    TestID->"[6] BCGhost.nb"
 ]
 
 VerificationTest[
-    algebraDefault[{"BCGhost", "Vacuum", "Conjugate"}]
+    algebraDefault["BCGhost", "Vacuum", "Conjugate"]
     ,
     Null
     ,
-    TestID->"7-BCGhost.nb"
+    TestID->"[7] BCGhost.nb"
 ]
 
 VerificationTest[
@@ -74,7 +74,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"8-BCGhost.nb"
+    TestID->"[8] BCGhost.nb"
 ]
 
 VerificationTest[
@@ -82,7 +82,7 @@ VerificationTest[
     ,
     {0, 0, 0}
     ,
-    TestID->"9-BCGhost.nb"
+    TestID->"[9] BCGhost.nb"
 ]
 
 VerificationTest[
@@ -90,7 +90,7 @@ VerificationTest[
     ,
     {3*c[2, -2]**vac, c[2, -1]**vac, -c[2, 0]**vac}
     ,
-    TestID->"10-BCGhost.nb"
+    TestID->"[10] BCGhost.nb"
 ]
 
 VerificationTest[
@@ -98,7 +98,7 @@ VerificationTest[
     ,
     {c[2, 0]**vac, -c[2, 1]**vac, 0}
     ,
-    TestID->"11-BCGhost.nb"
+    TestID->"[11] BCGhost.nb"
 ]
 
 VerificationTest[
@@ -106,25 +106,18 @@ VerificationTest[
     ,
     0
     ,
-    TestID->"12-BCGhost.nb"
+    TestID->"[12] BCGhost.nb"
 ]
 
 VerificationTest[
-    algebraUnset[]
-    ,
-    Null
-    ,
-    {Yurie`Cluster`cluster::rmdefault}
-    ,
-    TestID->"13-BCGhost.nb"
-]
-
-VerificationTest[
+    algebraUnset[]; 
     algebraDefine[]
     ,
-    {"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
+    Quiet[{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}]
     ,
-    TestID->"14-BCGhost.nb"
+    {General::StarRemoveDefault}
+    ,
+    TestID->"[13] BCGhost.nb"
 ]
 
 VerificationTest[
@@ -133,14 +126,14 @@ VerificationTest[
     ,
     {}
     ,
-    TestID->"15-BCGhost.nb"
+    TestID->"[14] BCGhost.nb"
 ]
 
 VerificationTest[
     ClearAll["`*"];
-	End[]
+    End[]
     ,
     "Global`"
     ,
-    TestID->"∞-BCGhost.nb"
+    TestID->"[∞] BCGhost.nb"
 ]

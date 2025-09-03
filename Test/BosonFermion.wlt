@@ -1,14 +1,14 @@
 
 
-(*BosonFermion.nb*)
+(* BosonFermion.nb *)
 
 VerificationTest[
     Begin["Global`"];
-	ClearAll["`*"]
+    ClearAll["`*"]
     ,
     Null
     ,
-    TestID->"0-BosonFermion.nb"
+    TestID->"[0] BosonFermion.nb"
 ]
 
 VerificationTest[
@@ -16,7 +16,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"1-BosonFermion.nb"
+    TestID->"[1] BosonFermion.nb"
 ]
 
 VerificationTest[
@@ -24,7 +24,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"2-BosonFermion.nb"
+    TestID->"[2] BosonFermion.nb"
 ]
 
 VerificationTest[
@@ -32,7 +32,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"3-BosonFermion.nb"
+    TestID->"[3] BosonFermion.nb"
 ]
 
 VerificationTest[
@@ -40,7 +40,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"4-BosonFermion.nb"
+    TestID->"[4] BosonFermion.nb"
 ]
 
 VerificationTest[
@@ -48,7 +48,7 @@ VerificationTest[
     ,
     {fermion[1, cr]**boson[1, cr]**vac -> 1, fermion[1, cr]**boson[2, cr]**vac -> 1, fermion[1, cr]**boson[2, cr]**boson[1, cr]**boson[1, cr]**vac -> 1}
     ,
-    TestID->"5-BosonFermion.nb"
+    TestID->"[5] BosonFermion.nb"
 ]
 
 VerificationTest[
@@ -56,7 +56,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"6-BosonFermion.nb"
+    TestID->"[6] BosonFermion.nb"
 ]
 
 VerificationTest[
@@ -64,7 +64,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"7-BosonFermion.nb"
+    TestID->"[7] BosonFermion.nb"
 ]
 
 VerificationTest[
@@ -72,7 +72,7 @@ VerificationTest[
     ,
     {fermion[1, cr]**boson[1, cr]**vac -> f[1] + g[1], fermion[1, cr]**boson[2, cr]**vac -> f[2] + g[1], fermion[1, cr]**boson[2, cr]**boson[1, cr]**boson[1, cr]**vac -> 2*f[1] + f[2] + g[1]}
     ,
-    TestID->"8-BosonFermion.nb"
+    TestID->"[8] BosonFermion.nb"
 ]
 
 VerificationTest[
@@ -80,25 +80,18 @@ VerificationTest[
     ,
     4
     ,
-    TestID->"9-BosonFermion.nb"
+    TestID->"[9] BosonFermion.nb"
 ]
 
 VerificationTest[
-    algebraUnset[]
-    ,
-    Null
-    ,
-    {Yurie`Cluster`cluster::rmdefault}
-    ,
-    TestID->"10-BosonFermion.nb"
-]
-
-VerificationTest[
+    algebraUnset[]; 
     algebraDefine[]
     ,
-    {"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
+    Quiet[{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}]
     ,
-    TestID->"11-BosonFermion.nb"
+    {General::StarRemoveDefault}
+    ,
+    TestID->"[10] BosonFermion.nb"
 ]
 
 VerificationTest[
@@ -107,14 +100,14 @@ VerificationTest[
     ,
     {}
     ,
-    TestID->"12-BosonFermion.nb"
+    TestID->"[11] BosonFermion.nb"
 ]
 
 VerificationTest[
     ClearAll["`*"];
-	End[]
+    End[]
     ,
     "Global`"
     ,
-    TestID->"∞-BosonFermion.nb"
+    TestID->"[∞] BosonFermion.nb"
 ]

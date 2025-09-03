@@ -1,14 +1,14 @@
 
 
-(*commDefine.nb*)
+(* commDefine.nb *)
 
 VerificationTest[
     Begin["Global`"];
-	ClearAll["`*"]
+    ClearAll["`*"]
     ,
     Null
     ,
-    TestID->"0-commDefine.nb"
+    TestID->"[0] commDefine.nb"
 ]
 
 VerificationTest[
@@ -16,7 +16,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"1-commDefine.nb"
+    TestID->"[1] commDefine.nb"
 ]
 
 VerificationTest[
@@ -24,7 +24,7 @@ VerificationTest[
     ,
     x**y -> z + y**x /; x > y
     ,
-    TestID->"2-commDefine.nb"
+    TestID->"[2] commDefine.nb"
 ]
 
 VerificationTest[
@@ -32,7 +32,7 @@ VerificationTest[
     ,
     (x_Symbol)**(y_)?IntegerQ :> z + y**x /; x > y
     ,
-    TestID->"3-commDefine.nb"
+    TestID->"[3] commDefine.nb"
 ]
 
 VerificationTest[
@@ -40,7 +40,7 @@ VerificationTest[
     ,
     x**y -> z + y**x
     ,
-    TestID->"4-commDefine.nb"
+    TestID->"[4] commDefine.nb"
 ]
 
 VerificationTest[
@@ -48,7 +48,7 @@ VerificationTest[
     ,
     (x_)**(y_) :> z + y**x
     ,
-    TestID->"5-commDefine.nb"
+    TestID->"[5] commDefine.nb"
 ]
 
 VerificationTest[
@@ -56,7 +56,7 @@ VerificationTest[
     ,
     x**y -> z - y**x
     ,
-    TestID->"6-commDefine.nb"
+    TestID->"[6] commDefine.nb"
 ]
 
 VerificationTest[
@@ -64,7 +64,7 @@ VerificationTest[
     ,
     (x_)**(y_) :> z - y**x
     ,
-    TestID->"7-commDefine.nb"
+    TestID->"[7] commDefine.nb"
 ]
 
 VerificationTest[
@@ -72,7 +72,7 @@ VerificationTest[
     ,
     y**x -> -z + x**y
     ,
-    TestID->"8-commDefine.nb"
+    TestID->"[8] commDefine.nb"
 ]
 
 VerificationTest[
@@ -80,7 +80,7 @@ VerificationTest[
     ,
     (y_)**(x_) :> -z + x**y
     ,
-    TestID->"9-commDefine.nb"
+    TestID->"[9] commDefine.nb"
 ]
 
 VerificationTest[
@@ -88,7 +88,7 @@ VerificationTest[
     ,
     y**x -> z - x**y
     ,
-    TestID->"10-commDefine.nb"
+    TestID->"[10] commDefine.nb"
 ]
 
 VerificationTest[
@@ -96,14 +96,14 @@ VerificationTest[
     ,
     (y_)**(x_) :> z - x**y
     ,
-    TestID->"11-commDefine.nb"
+    TestID->"[11] commDefine.nb"
 ]
 
 VerificationTest[
     ClearAll["`*"];
-	End[]
+    End[]
     ,
     "Global`"
     ,
-    TestID->"∞-commDefine.nb"
+    TestID->"[∞] commDefine.nb"
 ]

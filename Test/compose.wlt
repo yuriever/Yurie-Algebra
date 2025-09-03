@@ -1,14 +1,14 @@
 
 
-(*compose.nb*)
+(* compose.nb *)
 
 VerificationTest[
     Begin["Global`"];
-	ClearAll["`*"]
+    ClearAll["`*"]
     ,
     Null
     ,
-    TestID->"0-compose.nb"
+    TestID->"[0] compose.nb"
 ]
 
 VerificationTest[
@@ -16,7 +16,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"1-compose.nb"
+    TestID->"[1] compose.nb"
 ]
 
 VerificationTest[
@@ -24,7 +24,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"2-compose.nb"
+    TestID->"[2] compose.nb"
 ]
 
 VerificationTest[
@@ -32,7 +32,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"3-compose.nb"
+    TestID->"[3] compose.nb"
 ]
 
 VerificationTest[
@@ -40,7 +40,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"4-compose.nb"
+    TestID->"[4] compose.nb"
 ]
 
 VerificationTest[
@@ -48,7 +48,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"5-compose.nb"
+    TestID->"[5] compose.nb"
 ]
 
 VerificationTest[
@@ -56,7 +56,7 @@ VerificationTest[
     ,
     tensor[R[], id]**tensor[x[0], S[], x[0]]
     ,
-    TestID->"6-compose.nb"
+    TestID->"[6] compose.nb"
 ]
 
 VerificationTest[
@@ -64,7 +64,7 @@ VerificationTest[
     ,
     {R[], slot, slot, id}
     ,
-    TestID->"7-compose.nb"
+    TestID->"[7] compose.nb"
 ]
 
 VerificationTest[
@@ -72,7 +72,7 @@ VerificationTest[
     ,
     {R[]**x[0], slot**S[], slot**slot, id**x[0]}
     ,
-    TestID->"8-compose.nb"
+    TestID->"[8] compose.nb"
 ]
 
 VerificationTest[
@@ -80,7 +80,7 @@ VerificationTest[
     ,
     {{R[]**x[0], slot**S[], slot**slot}, {id**x[0]}}
     ,
-    TestID->"9-compose.nb"
+    TestID->"[9] compose.nb"
 ]
 
 VerificationTest[
@@ -88,7 +88,7 @@ VerificationTest[
     ,
     {{R[], slot, slot}**{x[0], S[], slot}, {id}**{x[0]}}
     ,
-    TestID->"10-compose.nb"
+    TestID->"[10] compose.nb"
 ]
 
 VerificationTest[
@@ -96,25 +96,18 @@ VerificationTest[
     ,
     tensor[R[]**tensor[x[0], S[]], id**x[0]]
     ,
-    TestID->"11-compose.nb"
+    TestID->"[11] compose.nb"
 ]
 
 VerificationTest[
-    algebraUnset["test"]
-    ,
-    Null
-    ,
-    {Yurie`Cluster`cluster::rmdefault}
-    ,
-    TestID->"12-compose.nb"
-]
-
-VerificationTest[
+    algebraUnset[]; 
     algebraDefine[]
     ,
-    {"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
+    Quiet[{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}]
     ,
-    TestID->"13-compose.nb"
+    {General::StarRemoveDefault}
+    ,
+    TestID->"[12] compose.nb"
 ]
 
 VerificationTest[
@@ -123,14 +116,14 @@ VerificationTest[
     ,
     {}
     ,
-    TestID->"14-compose.nb"
+    TestID->"[13] compose.nb"
 ]
 
 VerificationTest[
     ClearAll["`*"];
-	End[]
+    End[]
     ,
     "Global`"
     ,
-    TestID->"∞-compose.nb"
+    TestID->"[∞] compose.nb"
 ]

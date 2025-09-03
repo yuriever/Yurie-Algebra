@@ -1,14 +1,14 @@
 
 
-(*BonimialHopf.nb*)
+(* BonimialHopf.nb *)
 
 VerificationTest[
     Begin["Global`"];
-	ClearAll["`*"]
+    ClearAll["`*"]
     ,
     Null
     ,
-    TestID->"0-BonimialHopf.nb"
+    TestID->"[0] BonimialHopf.nb"
 ]
 
 VerificationTest[
@@ -16,7 +16,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"1-BonimialHopf.nb"
+    TestID->"[1] BonimialHopf.nb"
 ]
 
 VerificationTest[
@@ -24,7 +24,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"2-BonimialHopf.nb"
+    TestID->"[2] BonimialHopf.nb"
 ]
 
 VerificationTest[
@@ -32,7 +32,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"3-BonimialHopf.nb"
+    TestID->"[3] BonimialHopf.nb"
 ]
 
 VerificationTest[
@@ -41,7 +41,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"4-BonimialHopf.nb"
+    TestID->"[4] BonimialHopf.nb"
 ]
 
 VerificationTest[
@@ -49,7 +49,7 @@ VerificationTest[
     ,
     {1 + a[1], 1 + 2*a[1] + a[2], 1 + 3*a[1] + 3*a[2] + a[3], 1 + 4*a[1] + 6*a[2] + 4*a[3] + a[4], 1 + 5*a[1] + 10*a[2] + 10*a[3] + 5*a[4] + a[5]}
     ,
-    TestID->"5-BonimialHopf.nb"
+    TestID->"[5] BonimialHopf.nb"
 ]
 
 VerificationTest[
@@ -57,25 +57,18 @@ VerificationTest[
     ,
     {{a[1] -> -1, a[2] -> 1, a[3] -> -1, a[4] -> 1, a[5] -> -1}}
     ,
-    TestID->"6-BonimialHopf.nb"
+    TestID->"[6] BonimialHopf.nb"
 ]
 
 VerificationTest[
-    algebraUnset[]
-    ,
-    Null
-    ,
-    {Yurie`Cluster`cluster::rmdefault}
-    ,
-    TestID->"7-BonimialHopf.nb"
-]
-
-VerificationTest[
+    algebraUnset[]; 
     algebraDefine[]
     ,
-    {"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
+    Quiet[{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}]
     ,
-    TestID->"8-BonimialHopf.nb"
+    {General::StarRemoveDefault}
+    ,
+    TestID->"[7] BonimialHopf.nb"
 ]
 
 VerificationTest[
@@ -84,14 +77,14 @@ VerificationTest[
     ,
     {}
     ,
-    TestID->"9-BonimialHopf.nb"
+    TestID->"[8] BonimialHopf.nb"
 ]
 
 VerificationTest[
     ClearAll["`*"];
-	End[]
+    End[]
     ,
     "Global`"
     ,
-    TestID->"∞-BonimialHopf.nb"
+    TestID->"[∞] BonimialHopf.nb"
 ]

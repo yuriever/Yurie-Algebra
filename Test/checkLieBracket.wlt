@@ -1,14 +1,14 @@
 
 
-(*checkLieBracket.nb*)
+(* checkLieBracket.nb *)
 
 VerificationTest[
     Begin["Global`"];
-	ClearAll["`*"]
+    ClearAll["`*"]
     ,
     Null
     ,
-    TestID->"0-checkLieBracket.nb"
+    TestID->"[0] checkLieBracket.nb"
 ]
 
 VerificationTest[
@@ -16,7 +16,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"1-checkLieBracket.nb"
+    TestID->"[1] checkLieBracket.nb"
 ]
 
 VerificationTest[
@@ -24,7 +24,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"2-checkLieBracket.nb"
+    TestID->"[2] checkLieBracket.nb"
 ]
 
 VerificationTest[
@@ -32,7 +32,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"3-checkLieBracket.nb"
+    TestID->"[3] checkLieBracket.nb"
 ]
 
 VerificationTest[
@@ -40,7 +40,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"4-checkLieBracket.nb"
+    TestID->"[4] checkLieBracket.nb"
 ]
 
 VerificationTest[
@@ -48,7 +48,7 @@ VerificationTest[
     ,
     {x, y, z} -> x**yz - xy**z
     ,
-    TestID->"5-checkLieBracket.nb"
+    TestID->"[5] checkLieBracket.nb"
 ]
 
 VerificationTest[
@@ -56,25 +56,18 @@ VerificationTest[
     ,
     {x, y, z} -> -x**yz + xy**z
     ,
-    TestID->"6-checkLieBracket.nb"
+    TestID->"[6] checkLieBracket.nb"
 ]
 
 VerificationTest[
-    algebraUnset["test"]
-    ,
-    Null
-    ,
-    {Yurie`Cluster`cluster::rmdefault}
-    ,
-    TestID->"7-checkLieBracket.nb"
-]
-
-VerificationTest[
+    algebraUnset[]; 
     algebraDefine[]
     ,
-    {"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
+    Quiet[{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}]
     ,
-    TestID->"8-checkLieBracket.nb"
+    {General::StarRemoveDefault}
+    ,
+    TestID->"[7] checkLieBracket.nb"
 ]
 
 VerificationTest[
@@ -83,14 +76,14 @@ VerificationTest[
     ,
     {}
     ,
-    TestID->"9-checkLieBracket.nb"
+    TestID->"[8] checkLieBracket.nb"
 ]
 
 VerificationTest[
     ClearAll["`*"];
-	End[]
+    End[]
     ,
     "Global`"
     ,
-    TestID->"∞-checkLieBracket.nb"
+    TestID->"[∞] checkLieBracket.nb"
 ]

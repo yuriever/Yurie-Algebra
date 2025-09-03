@@ -1,14 +1,14 @@
 
 
-(*algebraCluster.nb*)
+(* algebraCluster.nb *)
 
 VerificationTest[
     Begin["Global`"];
-	ClearAll["`*"]
+    ClearAll["`*"]
     ,
     Null
     ,
-    TestID->"0-algebraCluster.nb"
+    TestID->"[0] algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -16,7 +16,7 @@ VerificationTest[
     ,
     Null
     ,
-    TestID->"1-algebraCluster.nb"
+    TestID->"[1] algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -24,9 +24,9 @@ VerificationTest[
     ,
     Null
     ,
-    {Yurie`Cluster`cluster::starundef}
+    {General::StarUndef}
     ,
-    TestID->"2-algebraCluster.nb"
+    TestID->"[2] algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -34,9 +34,9 @@ VerificationTest[
     ,
     Null
     ,
-    {Yurie`Cluster`cluster::starundef}
+    {General::StarUndef}
     ,
-    TestID->"3-algebraCluster.nb"
+    TestID->"[3] algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -44,9 +44,9 @@ VerificationTest[
     ,
     Null
     ,
-    {Yurie`Cluster`cluster::starundef}
+    {General::StarUndef}
     ,
-    TestID->"4-algebraCluster.nb"
+    TestID->"[4] algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -55,7 +55,7 @@ VerificationTest[
     ,
     {"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode", "alg1", "alg2"}
     ,
-    TestID->"5-algebraCluster.nb"
+    TestID->"[5] algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -64,7 +64,7 @@ VerificationTest[
     ,
     {"alg1", "alg2"}
     ,
-    TestID->"6-algebraCluster.nb"
+    TestID->"[6] algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -74,7 +74,7 @@ VerificationTest[
     ,
     {id, w, z, y, x}
     ,
-    TestID->"7-algebraCluster.nb"
+    TestID->"[7] algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -83,7 +83,7 @@ VerificationTest[
     ,
     {id, w, y, x}
     ,
-    TestID->"8-algebraCluster.nb"
+    TestID->"[8] algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -92,7 +92,7 @@ VerificationTest[
     ,
     {w -> 1, z -> 1, y -> 1 /; x}
     ,
-    TestID->"9-algebraCluster.nb"
+    TestID->"[9] algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -101,7 +101,7 @@ VerificationTest[
     ,
     {w -> 1, z -> 1}
     ,
-    TestID->"10-algebraCluster.nb"
+    TestID->"[10] algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -110,7 +110,7 @@ VerificationTest[
     ,
     {id -> 1, x -> 1}
     ,
-    TestID->"11-algebraCluster.nb"
+    TestID->"[11] algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -119,7 +119,7 @@ VerificationTest[
     ,
     2
     ,
-    TestID->"12-algebraCluster.nb"
+    TestID->"[12] algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -128,7 +128,7 @@ VerificationTest[
     ,
     parity[x]
     ,
-    TestID->"13-algebraCluster.nb"
+    TestID->"[13] algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -137,7 +137,7 @@ VerificationTest[
     ,
     {id, y, x}
     ,
-    TestID->"14-algebraCluster.nb"
+    TestID->"[14] algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -146,9 +146,9 @@ VerificationTest[
     ,
     Quiet[{id, y, x}]
     ,
-    {Yurie`Cluster`cluster::rmdefault}
+    {General::StarRemoveDefault}
     ,
-    TestID->"15-algebraCluster.nb"
+    TestID->"[15] algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -157,25 +157,18 @@ VerificationTest[
     ,
     Quiet[{id}]
     ,
-    {Yurie`Cluster`cluster::rmdefault}
+    {General::StarRemoveDefault}
     ,
-    TestID->"16-algebraCluster.nb"
+    TestID->"[16] algebraCluster.nb"
 ]
 
 VerificationTest[
-    algebraUnset[]
-    ,
-    Null
-    ,
-    TestID->"17-algebraCluster.nb"
-]
-
-VerificationTest[
+    algebraUnset[]; 
     algebraDefine[]
     ,
     {"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
     ,
-    TestID->"18-algebraCluster.nb"
+    TestID->"[17] algebraCluster.nb"
 ]
 
 VerificationTest[
@@ -184,14 +177,14 @@ VerificationTest[
     ,
     {}
     ,
-    TestID->"19-algebraCluster.nb"
+    TestID->"[18] algebraCluster.nb"
 ]
 
 VerificationTest[
     ClearAll["`*"];
-	End[]
+    End[]
     ,
     "Global`"
     ,
-    TestID->"∞-algebraCluster.nb"
+    TestID->"[∞] algebraCluster.nb"
 ]
