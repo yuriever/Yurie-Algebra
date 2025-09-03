@@ -5,9 +5,7 @@
 
 A Mathematica paclet for implementing and managing finitely presented associative algebras.
 
-
 ## [Documentation](https://yuriever.github.io/symbolic/Yurie-Algebra/doc/)
-
 
 ## Usage
 
@@ -31,13 +29,11 @@ A Mathematica paclet for implementing and managing finitely presented associativ
     Needs["Yurie`Algebra`"]
     ```
 
-
 ### Uninstallation
 
 ```wl
 PacletUninstall["Yurie/Algebra"]
 ```
-
 
 ### Installation checking
 
