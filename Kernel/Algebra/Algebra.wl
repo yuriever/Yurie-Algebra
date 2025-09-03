@@ -172,8 +172,8 @@ algebraShowKernel[algData_] :=
     TableForm[
         {
             algData["Generator"]//algebraShowUnit["Generator"],
-            algData["Relation"]//algebraShowUnit["Relation"],
-            algData["Printing"]//algebraShowUnit["Printing"],
+            algData["Relation"]//dropInternalRelation//algebraShowUnit["Relation"],
+            (* algData["Printing"]//algebraShowUnit["Printing"], *)
             algData["Rank"]//algebraShowUnit["Rank"],
             algData["Parity"]//algebraShowUnit["Parity"]
         },
@@ -183,9 +183,9 @@ algebraShowKernel[algData_] :=
 
 
 algebraShowUnit["Default"][data_] :=
-    StringRiffle[
-        data,
-        {"Default: ",", ","."}
+    Style[
+        StringRiffle[data,{"Default: ",", ","."}],
+        StandardBlue
     ];
 
 algebraShowUnit["Generator"][data_] :=
@@ -197,7 +197,7 @@ algebraShowUnit["Generator"][data_] :=
 algebraShowUnit[planet:"Relation"|"Printing"|"Rank"|"Parity"][data_] :=
     {
         planet,
-        data//Map[hideContextInRelation,#,{1}]&//TableForm
+        data//Map[hideContextMark,#,{1}]&//TableForm
     }//hideEmptyPlanet[data];
 
 
@@ -209,10 +209,14 @@ hideEmptyPlanet[data_][unit_] :=
     ];
 
 
-hideContextInRelation::usage =
-    "hide context in algebra relations.";
+dropInternalRelation[data_] :=
+    DeleteCases[data,Alternatives@@Map[Verbatim,algebraInternal[All,"Relation"]]];
 
-hideContextInRelation/:MakeBoxes[hideContextInRelation[expr_],form_] :=
+
+hideContextMark::usage =
+    "hide context mark in algebra data.";
+
+hideContextMark/:MakeBoxes[hideContextMark[expr_],form_] :=
     Block[ {Internal`$ContextMarks = False},
         MakeBoxes[expr,form]
     ];
