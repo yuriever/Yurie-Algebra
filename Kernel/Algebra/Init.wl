@@ -63,25 +63,14 @@ $parity[_] :=
 (*Cluster initialization*)
 
 
-clusterInit[
-    {"$algebraCluster","Yurie`Algebra`Variable`"},
-    {
-        "Generator",
-        "Relation",
-        "Printing",
-        "Rank",
-        "Parity"
-    },
-    Table[{},5],
-    Values@algebraInternal["Algebra"],
-    {
-        DeleteDuplicates@*Join,
-        DeleteDuplicates@*Join,
-        DeleteDuplicates@*Join,
-        DeleteDuplicates@*Join,
-        DeleteDuplicates@*Join
-    }
-];
+$algebraCluster =
+    clusterInit[
+        "AlgebraCluster",
+        {"Generator","Relation","Printing","Rank","Parity"},
+        Table[{},5],
+        Values@algebraInternal["Algebra"],
+        Table[DeleteDuplicates@*Join,5]
+    ];
 
 
 (* ::Text:: *)
@@ -91,36 +80,35 @@ clusterInit[
 starPostIntercept[$algebraCluster,"starDefine"|"starUnset",___] :=
     (
         $algebraP =
-            Alternatives@@clusterPropGet[$algebraCluster,"StarList"];
+            Alternatives@@clusterGet[$algebraCluster,"StarList"];
     );
 
 
 starPostIntercept[$algebraCluster,"starDefine"|"starReset"|"starUnset"|"starMerge"|"starChange",___] :=
     (
         $algebraData =
-            clusterPropGet[$algebraCluster,"StarData"];
+            clusterGet[$algebraCluster,"StarData"];
     );
 
 
 starPostIntercept[$algebraCluster,"starUpdateDefault",_] :=
     (
         $generator =
-            clusterPropGet[$algebraCluster,"StarDefaultData"]["Generator"];
-        (**)
+            clusterGet[$algebraCluster,"StarDefaultData"]["Generator"];
         $generatorP =
             Alternatives@@$generator;
-        (**)
+        (*  *)
         $relation =
-            clusterPropGet[$algebraCluster,"StarDefaultData"]["Relation"]//Dispatch;
-        (**)
+            clusterGet[$algebraCluster,"StarDefaultData"]["Relation"]//Dispatch;
+        (*  *)
         $printing =
-            clusterPropGet[$algebraCluster,"StarDefaultData"]["Printing"]//Dispatch;
-        (**)
+            clusterGet[$algebraCluster,"StarDefaultData"]["Printing"]//Dispatch;
+        (*  *)
         $tensorank//Clear;
         $tensorank[_] :=
             1;
         ReplaceAll[
-            clusterPropGet[$algebraCluster,"StarDefaultData"]["Rank"],
+            clusterGet[$algebraCluster,"StarDefaultData"]["Rank"],
             {
                 Verbatim[Rule][lhs_,rhs_]:>(
                     $tensorank[lhs] =
@@ -132,12 +120,12 @@ starPostIntercept[$algebraCluster,"starUpdateDefault",_] :=
                 )
             }
         ];
-        (**)
+        (*  *)
         $parity//Clear;
         $parity[_] :=
             0;
         ReplaceAll[
-            clusterPropGet[$algebraCluster,"StarDefaultData"]["Parity"],
+            clusterGet[$algebraCluster,"StarDefaultData"]["Parity"],
             {
                 Verbatim[Rule][lhs_,rhs_]:>(
                     $parity[lhs] =
