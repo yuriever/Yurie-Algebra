@@ -53,8 +53,16 @@ Begin["`Private`"];
 (*algebraDefine*)
 
 
-algebraDefine[algs___String|{algs___String}] :=
-    starDefine[$algebraCluster,{algs}];
+algebraDefine//Options = {
+    "ForceReset"->True
+};
+
+algebraDefine[algs___String|{algs___String},opts:OptionsPattern[]] :=
+    If[ OptionValue["ForceReset"]===True,
+        starDefineReset[$algebraCluster,{algs}],
+        (* Else *)
+        starDefine[$algebraCluster,{algs}]
+    ];
 
 
 (* ::Subsection:: *)
@@ -65,7 +73,7 @@ algebraDefineQ::usage =
     "check whether the algebra is defined."
 
 algebraDefineQ[alg_String] :=
-    MemberQ[clusterPropGet[$algebraCluster,"StarList"],alg];
+    MemberQ[clusterGet[$algebraCluster,"StarList"],alg];
 
 algebraDefineQ[_] :=
     False;
@@ -147,12 +155,12 @@ complementRuleList[list_List] :=
 
 
 algebraShow[alg_String?algebraDefineQ] :=
-    clusterPropGet[$algebraCluster,"StarData"][alg]//algebraShowKernel;
+    clusterGet[$algebraCluster,"StarData"][alg]//algebraShowKernel;
 
 algebraShow[] :=
     (
-        clusterPropGet[$algebraCluster,"StarDefaultList"]//algebraShowUnit["Default"]//Print;
-        clusterPropGet[$algebraCluster,"StarDefaultData"]//algebraShowKernel
+        clusterGet[$algebraCluster,"StarDefaultList"]//algebraShowUnit["Default"]//Print;
+        clusterGet[$algebraCluster,"StarDefaultData"]//algebraShowKernel
     );
 
 
@@ -196,7 +204,7 @@ algebraShowUnit[planet:"Relation"|"Printing"|"Rank"|"Parity"][data_] :=
 hideEmptyPlanet[data_][unit_] :=
     If[ data=!={},
         unit,
-        (*Else*)
+        (* Else *)
         Nothing
     ];
 
@@ -215,14 +223,14 @@ hideContextInRelation/:MakeBoxes[hideContextInRelation[expr_],form_] :=
 
 
 algebraDefine[] :=
-    clusterPropGet[$algebraCluster,"StarList"];
+    clusterGet[$algebraCluster,"StarList"];
 
 
 algebraDefault[] :=
-    clusterPropGet[$algebraCluster,"StarDefaultList"];
+    clusterGet[$algebraCluster,"StarDefaultList"];
 
 
-(*reset/unset the defined except internal algebras.*)
+(* Reset/Unset the defined except internal algebras. *)
 
 algebraReset[] :=
     algebraReset@Complement[algebraDefine[],algebraInternal[]];
