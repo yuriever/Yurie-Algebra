@@ -65,10 +65,10 @@ $algebraList//algebraDefine;
 <|
     "Generator"->{b,c},
     "Relation"->{
-        commDefine[b[h_,n_],c[h_,m_],1]:>KroneckerDelta[n+m,0]*id/;n>=1-h,
-        commDefine[b[h_,n_],c[h_,m_],1,Reverse]:>KroneckerDelta[n+m,0]*id/;n<1-h,
-        commDefine[b[h_,n_],b[h_,m_],1]:>0/;n>m,
-        commDefine[c[h_,n_],c[h_,m_],1]:>0/;n>m,
+        commIn[b[h_,n_],c[h_,m_],1]:>KroneckerDelta[n+m,0]*id/;n>=1-h,
+        commIn[b[h_,n_],c[h_,m_],1,Reverse]:>KroneckerDelta[n+m,0]*id/;n<1-h,
+        commIn[b[h_,n_],b[h_,m_],1]:>0/;n>m,
+        commIn[c[h_,n_],c[h_,m_],1]:>0/;n>m,
         b[h_,n_]**b[h_,n_]:>0,
         c[h_,n_]**c[h_,n_]:>0,
         conjugate[b[h_,n_]]:>b[h,-n],

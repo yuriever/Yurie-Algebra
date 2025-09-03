@@ -63,7 +63,7 @@ $algebraList//algebraDefine;
 <|
     "Generator"->{an,cr},
     "Relation"->{
-        commDefine[an,cr]:>id,
+        commIn[an,cr]:>id,
         conjugate[cr]:>an,
         conjugate[an]:>cr
     },

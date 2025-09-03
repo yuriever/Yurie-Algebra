@@ -93,13 +93,9 @@
 
 * `#!wl comm` - commutator.
 
-* `#!wl anticomm` - anti-commutator.
-
 * `#!wl commSim` - simplify the commutator.
 
-* `#!wl anticommSim` - simplify the anti-commutator.
-
-* `#!wl commDefine` - define the (anti-)commutator with the given order and condition.
+* `#!wl commIn` - define the (anti-)commutator with the given order and condition.
 
 * `#!wl adjoint` - the adjoint action of Lie algebra.
 

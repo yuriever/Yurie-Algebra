@@ -132,16 +132,10 @@ tensorPermute::usage =
 comm::usage =
     "commutator.";
 
-anticomm::usage =
-    "anti-commutator.";
-
 commSim::usage =
     "simplify the commutator.";
 
-anticommSim::usage =
-    "simplify the anti-commutator.";
-
-commDefine::usage =
+commIn::usage =
     "define the (anti-)commutator with the given order and condition.";
 
 adjoint::usage =

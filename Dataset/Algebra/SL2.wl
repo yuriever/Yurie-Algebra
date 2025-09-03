@@ -69,9 +69,9 @@ $algebraList//algebraDefine;
 <|
     "Generator"->{x,y,h},
     "Relation"->{
-        commDefine[h,x,Reverse]->2x,
-        commDefine[h,y]->-2y,
-        commDefine[x,y]->h
+        commIn[h,x,Reverse]->2x,
+        commIn[h,y]->-2y,
+        commIn[x,y]->h
     }
 |>//algebraAdd["SL2"];
 

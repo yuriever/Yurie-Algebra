@@ -53,7 +53,7 @@ $algebraList//algebraDefine;
 <|
     "Generator"->{g,x},
     "Relation"->{
-        commDefine[g,x,Reverse,1]->0,
+        commIn[g,x,Reverse,1]->0,
         x**x:>0,
         g**g:>id,
         comultiply[g]:>tensor[g,g],

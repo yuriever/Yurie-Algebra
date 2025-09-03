@@ -69,9 +69,9 @@ $algebraList//algebraDefine;
 <|
     "Generator"->{boson},
     "Relation"->{
-        commDefine[boson[i_,an],boson[j_,cr]]:>KroneckerDelta[i,j]*id,
-        commDefine[boson[i_,an],boson[j_,an]]:>0/;i>j,
-        commDefine[boson[i_,cr],boson[j_,cr]]:>0/;i<j,
+        commIn[boson[i_,an],boson[j_,cr]]:>KroneckerDelta[i,j]*id,
+        commIn[boson[i_,an],boson[j_,an]]:>0/;i>j,
+        commIn[boson[i_,cr],boson[j_,cr]]:>0/;i<j,
         conjugate[boson[i_,cr]]:>boson[i,an],
         conjugate[boson[i_,an]]:>boson[i,cr]
     },
@@ -85,9 +85,9 @@ $algebraList//algebraDefine;
 <|
     "Generator"->{fermion},
     "Relation"->{
-        commDefine[fermion[i_,an],fermion[j_,cr],1]:>KroneckerDelta[i,j]*id,
-        commDefine[fermion[i_,an],fermion[j_,an],1]:>0/;i>j,
-        commDefine[fermion[i_,cr],fermion[j_,cr],1]:>0/;i<j,
+        commIn[fermion[i_,an],fermion[j_,cr],1]:>KroneckerDelta[i,j]*id,
+        commIn[fermion[i_,an],fermion[j_,an],1]:>0/;i>j,
+        commIn[fermion[i_,cr],fermion[j_,cr],1]:>0/;i<j,
         fermion[i_,tag_]**fermion[i_,tag_]:>0,
         conjugate[fermion[i_,cr]]:>fermion[i,an],
         conjugate[fermion[i_,an]]:>fermion[i,cr]
@@ -101,9 +101,9 @@ $algebraList//algebraDefine;
 
 "Relation"->{
     (*move annihilation operators to the right.*)
-    commDefine[op1_[i_,an],op2_[j_,cr]]:>0/;op1=!=op2,
+    commIn[op1_[i_,an],op2_[j_,cr]]:>0/;op1=!=op2,
     (*move boson operators to the right if the tags are the same.*)
-    commDefine[boson[i_,tag_],fermion[j_,tag_]]:>0
+    commIn[boson[i_,tag_],fermion[j_,tag_]]:>0
 }//algebraAdd["BosonFermion"];
 
 

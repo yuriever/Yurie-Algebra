@@ -97,28 +97,28 @@ $algebraList//algebraDefine;
 "Relation"->{
     genM[i_,i_]:>0,
     genM[i_,j_]:>-genM[j,i]/;coordOrder[j>i],
-    commDefine[genP[i_],genP[j_]]:>0/;coordOrder[j>i],
+    commIn[genP[i_],genP[j_]]:>0/;coordOrder[j>i],
     (*[M,P]*)
-    commDefine[genM[i_,j_],genP[k_]]:>
+    commIn[genM[i_,j_],genP[k_]]:>
         genP[i]*metric[j,k]-genP[j]*metric[i,k],
     (*[M,M]*)
-    commDefine[genM[i_,j_],genM[k_,l_]]:>
+    commIn[genM[i_,j_],genM[k_,l_]]:>
         genM[i,l]*metric[j,k]+genM[j,k]*metric[i,l]-genM[j,l]*metric[i,k]-genM[i,k]*metric[j,l]/;
             coordOrder[k>i||(k==i&&l>j)]
 }//algebraAdd["IsometryAlgebra","ConformalAlgebra"];
 
 
 "Relation"->{
-    commDefine[genK[i_],genK[j_]]:>0/;coordOrder[j>i],
+    commIn[genK[i_],genK[j_]]:>0/;coordOrder[j>i],
     (*[M,K]*)
-    commDefine[genM[i_,j_],genK[k_],Reverse]:>
+    commIn[genM[i_,j_],genK[k_],Reverse]:>
         genK[i]*metric[j,k]-genK[j]*metric[i,k],
     (*[D,P]=P, [D,K]=-K, [D,M]=0*)
-    commDefine[genD[],genP[i_]]:>genP[i],
-    commDefine[genD[],genK[i_],Reverse]:>-genK[i],
-    commDefine[genD[],genM[i_,j_]]:>0,
+    commIn[genD[],genP[i_]]:>genP[i],
+    commIn[genD[],genK[i_],Reverse]:>-genK[i],
+    commIn[genD[],genM[i_,j_]]:>0,
     (*[K,P]*)
-    commDefine[genK[i_],genP[j_]]:>2genD[]*metric[i,j]-2*genM[i,j]
+    commIn[genK[i_],genP[j_]]:>2genD[]*metric[i,j]-2*genM[i,j]
 }//algebraAdd["ConformalAlgebra"];
 
 
