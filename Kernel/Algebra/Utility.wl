@@ -106,7 +106,7 @@ commIn/:(rule:Rule|RuleDelayed)[
     ],
     result_
 ] :=
-    commInKernel[{x,y,result},order,sign,rule]//Activate;
+    commInKernel[{x,y,result},order,sign,rule];
 
 commIn/:(rule:Rule|RuleDelayed)[
     commIn[x_,y_,
@@ -117,7 +117,7 @@ commIn/:(rule:Rule|RuleDelayed)[
     ],
     Verbatim[Condition][result_,condition_]
 ]:=
-    commInKernel[{x,y,result,condition},order,sign,rule]//Activate;
+    commInKernel[{x,y,result,condition},order,sign,rule];
 
 
 (* ::Subsubsection:: *)
@@ -148,36 +148,45 @@ commInKernel//Attributes = {
 };
 
 commInKernel[{x_,y_,res_},Normal,sign_,rule_] :=
-    Inactive[rule][
-        x**y,
-        (-1)^sign*stripPattern@y**stripPattern@x+res
-    ];
+    With[ {
+            rhs = (-1)^sign*stripPattern[y]**stripPattern[x]
+        },
+        Hold[rule,x**y,rhs+res]
+    ]//makeRule;
 
 commInKernel[{x_,y_,res_,condition_},Normal,sign_,rule_] :=
-    Inactive[rule][
-        x**y,
-        Condition[(-1)^sign*stripPattern@y**stripPattern@x+res,condition]
-    ];
+    With[ {
+            rhs = (-1)^sign*stripPattern[y]**stripPattern[x]
+        },
+        Hold[rule,x**y,Condition[rhs+res,condition]]
+    ]//makeRule;
 
 commInKernel[{x_,y_,res_},Reverse,sign_,rule_] :=
-    Inactive[rule][
-        y**x,
-        (-1)^sign*stripPattern@x**stripPattern@y-(-1)^sign*res
-    ];
+    With[ {
+            rhs = (-1)^sign*stripPattern[x]**stripPattern[y],
+            sign1 = -(-1)^sign
+        },
+        Hold[rule,y**x,rhs+sign1*res]
+    ]//makeRule;
 
 commInKernel[{x_,y_,res_,condition_},Reverse,sign_,rule_] :=
-    Inactive[rule][
-        y**x,
-        Condition[(-1)^sign*stripPattern@x**stripPattern@y-(-1)^sign*res,condition]
-    ];
+    With[ {
+            rhs = (-1)^sign*stripPattern[x]**stripPattern[y],
+            sign1 = -(-1)^sign
+        },
+        Hold[rule,y**x,Condition[rhs+sign1*res,condition]]
+    ]//makeRule;
 
 
 stripPattern[pattern_] :=
     pattern//ReplaceRepeated[{
-        (
-            Verbatim[Pattern]|Verbatim[Optional]|
-                Verbatim[PatternTest]|Verbatim[Condition]
-        )[pattern1_,_]:>pattern1
+        (Verbatim[Pattern]|Verbatim[Optional]|Verbatim[PatternTest]|Verbatim[Condition])[pattern1_,_]:>pattern1
+    }];
+
+
+makeRule[ruleData_] :=
+    ruleData//ReplaceAll[{
+        Hold[rule_,lhs_,rhs_]:>rule[lhs,rhs]
     }];
 
 
