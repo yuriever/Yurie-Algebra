@@ -52,9 +52,9 @@ VerificationTest[
 ]
 
 VerificationTest[
-    commIn[x, y] -> z /; x > y
+    commIn[x, y] -> z /; condition
     ,
-    x**y -> z + y**x /; x > y
+    x**y -> z + y**x /; condition
     ,
     TestID->"[6] comm.nb"
 ]
@@ -62,7 +62,7 @@ VerificationTest[
 VerificationTest[
     commIn[x_Symbol, (y_)?IntegerQ] :> z /; x > y
     ,
-    (x_Symbol)**(y_)?IntegerQ :> z + y**x /; x > y
+    (x_Symbol)**(y_)?IntegerQ :> y**x + z /; x > y
     ,
     TestID->"[7] comm.nb"
 ]
@@ -78,7 +78,7 @@ VerificationTest[
 VerificationTest[
     commIn[x_, y_, Normal, 0] :> z
     ,
-    (x_)**(y_) :> z + y**x
+    (x_)**(y_) :> y**x + z
     ,
     TestID->"[9] comm.nb"
 ]
@@ -94,7 +94,7 @@ VerificationTest[
 VerificationTest[
     commIn[x_, y_, Normal, 1] :> z
     ,
-    (x_)**(y_) :> z - y**x
+    (x_)**(y_) :> -y**x + z
     ,
     TestID->"[11] comm.nb"
 ]
@@ -110,7 +110,7 @@ VerificationTest[
 VerificationTest[
     commIn[x_, y_, Reverse, 0] :> z
     ,
-    (y_)**(x_) :> -z + x**y
+    (y_)**(x_) :> x**y - z
     ,
     TestID->"[13] comm.nb"
 ]
@@ -126,9 +126,57 @@ VerificationTest[
 VerificationTest[
     commIn[x_, y_, Reverse, 1] :> z
     ,
-    (y_)**(x_) :> z - x**y
+    (y_)**(x_) :> -x**y + 1*z
     ,
     TestID->"[15] comm.nb"
+]
+
+VerificationTest[
+    a = 1; 
+    ,
+    Null
+    ,
+    TestID->"[16] comm.nb"
+]
+
+VerificationTest[
+    commIn[x, y] -> a
+    ,
+    x**y -> 1 + y**x
+    ,
+    TestID->"[17] comm.nb"
+]
+
+VerificationTest[
+    commIn[x, y] -> a /; condition
+    ,
+    x**y -> 1 + y**x /; condition
+    ,
+    TestID->"[18] comm.nb"
+]
+
+VerificationTest[
+    commIn[x_, y_] :> a
+    ,
+    (x_)**(y_) :> y**x + a
+    ,
+    TestID->"[19] comm.nb"
+]
+
+VerificationTest[
+    commIn[x_, y_] :> a /; x > y
+    ,
+    (x_)**(y_) :> y**x + a /; x > y
+    ,
+    TestID->"[20] comm.nb"
+]
+
+VerificationTest[
+    a =. 
+    ,
+    Null
+    ,
+    TestID->"[21] comm.nb"
 ]
 
 VerificationTest[
