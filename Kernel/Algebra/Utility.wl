@@ -201,13 +201,16 @@ makeRule[ruleData_] :=
 adjoint[op_,0][expr_] :=
     expr;
 
-adjoint[op_,order_:1][expr_] :=
-    comm@Join[ConstantArray[op,order],{expr}];
+adjoint[op_,n:_Integer?Positive][expr_] :=
+    commKernel[Join[ConstantArray[op,n],{expr}],0];
 
 
-adjointExp[op_,max_,t_:1][expr_] :=
-    Module[ {order},
-        Sum[adjoint[op,order][expr]*t^order/order!,{order,0,max}]
+adjointExp[op_,0,t_:1][expr_] :=
+    expr;
+
+adjointExp[op_,max_Integer?Positive,t_:1][expr_] :=
+    Module[ {n},
+        Sum[commKernel[Join[ConstantArray[op,n],{expr}],0]*t^n/n!,{n,0,max}]
     ];
 
 
@@ -221,16 +224,19 @@ operatorPower[op_,0] :=
 operatorPower[op_,1] :=
     op;
 
-operatorPower[op_,order_Integer?Positive] :=
-    ConstantArray[op,order]//Apply[NonCommutativeMultiply];
+operatorPower[op_,n_Integer?Positive] :=
+    NonCommutativeMultiply@@ConstantArray[op,n];
 
 
 operatorExp[op_,0,t_:1] :=
     id;
 
+operatorExp[op_,1,t_:1] :=
+    id+op*t;
+
 operatorExp[op_,max_Integer?Positive,t_:1] :=
-    Module[ {i},
-        Sum[operatorPower[op,i]*t^i/i!,{i,0,max}]
+    Module[ {n},
+        id+op*t+Sum[NonCommutativeMultiply@@ConstantArray[op,n]*t^n/n!,{n,2,max}]
     ];
 
 
