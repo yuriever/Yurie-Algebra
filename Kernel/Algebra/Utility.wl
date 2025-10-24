@@ -202,7 +202,7 @@ adjoint[op_,0][expr_] :=
     expr;
 
 adjoint[op_,order_:1][expr_] :=
-    comm[Sequence@@ConstantArray[op,order],expr];
+    comm@Join[ConstantArray[op,order],{expr}];
 
 
 adjointExp[op_,max_,t_:1][expr_] :=
