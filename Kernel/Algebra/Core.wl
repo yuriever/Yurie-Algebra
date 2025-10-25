@@ -218,8 +218,8 @@ tensorank[expr_] :=
 
 
 tensorankKernel[x_+y_] :=
-    With[ {rank = tensorankKernel[x]},
-        If[ rank===tensorankKernel[y],
+    With[{rank = tensorankKernel[x]},
+        If[rank===tensorankKernel[y],
             rank,
             (* Else *)
             Throw@Indeterminate
@@ -231,7 +231,7 @@ tensorankKernel[Optional[k_?scalarQ]*x_tensor] :=
 
 tensorankKernel[Optional[k_?scalarQ]*x_NonCommutativeMultiply] :=
     (
-        If[ AllSameBy[x,tensorankKernel]===False,
+        If[AllSameBy[x,tensorankKernel]===False,
             Message[tensorank::rankNotMatch,x];
             Throw@Defer@tensorankKernel[x]
         ];

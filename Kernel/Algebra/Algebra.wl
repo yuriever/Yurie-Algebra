@@ -58,7 +58,7 @@ algebraDefine//Options = {
 };
 
 algebraDefine[algs___String|{algs___String},opts:OptionsPattern[]] :=
-    If[ OptionValue["ForceReset"]===True,
+    If[OptionValue["ForceReset"]===True,
         starDefineReset[$algebraCluster,{algs}],
         (* Else *)
         starDefine[$algebraCluster,{algs}]
@@ -202,7 +202,7 @@ algebraShowUnit[planet:"Relation"|"Printing"|"Rank"|"Parity"][data_] :=
 
 
 hideEmptyPlanet[data_][unit_] :=
-    If[ data=!={},
+    If[data=!={},
         unit,
         (* Else *)
         Nothing
@@ -217,7 +217,7 @@ hideContextMark::usage =
     "hide context mark in algebra data.";
 
 hideContextMark/:MakeBoxes[hideContextMark[expr_],form_] :=
-    Block[ {Internal`$ContextMarks = False},
+    Block[{Internal`$ContextMarks = False},
         MakeBoxes[expr,form]
     ];
 

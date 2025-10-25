@@ -148,21 +148,21 @@ commInKernel//Attributes = {
 };
 
 commInKernel[{x_,y_,res_},Normal,sign_,rule_] :=
-    With[ {
+    With[{
             rhs = (-1)^sign*stripPattern[y]**stripPattern[x]
         },
         Hold[rule,x**y,rhs+res]
     ]//makeRule;
 
 commInKernel[{x_,y_,res_,condition_},Normal,sign_,rule_] :=
-    With[ {
+    With[{
             rhs = (-1)^sign*stripPattern[y]**stripPattern[x]
         },
         Hold[rule,x**y,Condition[rhs+res,condition]]
     ]//makeRule;
 
 commInKernel[{x_,y_,res_},Reverse,sign_,rule_] :=
-    With[ {
+    With[{
             rhs = (-1)^sign*stripPattern[x]**stripPattern[y],
             sign1 = -(-1)^sign
         },
@@ -170,7 +170,7 @@ commInKernel[{x_,y_,res_},Reverse,sign_,rule_] :=
     ]//makeRule;
 
 commInKernel[{x_,y_,res_,condition_},Reverse,sign_,rule_] :=
-    With[ {
+    With[{
             rhs = (-1)^sign*stripPattern[x]**stripPattern[y],
             sign1 = -(-1)^sign
         },
@@ -209,7 +209,7 @@ adjointExp[op_,0,t_:1][expr_] :=
     expr;
 
 adjointExp[op_,max_Integer?Positive,t_:1][expr_] :=
-    Module[ {n},
+    Module[{n},
         Sum[commKernel[Join[ConstantArray[op,n],{expr}],0]*t^n/n!,{n,0,max}]
     ];
 
@@ -235,7 +235,7 @@ operatorExp[op_,1,t_:1] :=
     id+op*t;
 
 operatorExp[op_,max_Integer?Positive,t_:1] :=
-    Module[ {n},
+    Module[{n},
         id+op*t+Sum[NonCommutativeMultiply@@ConstantArray[op,n]*t^n/n!,{n,2,max}]
     ];
 
@@ -270,7 +270,7 @@ operatorSeparate//Options = {
 
 
 operatorSeparate[expr_,opts:OptionsPattern[]] :=
-    Module[ {result},
+    Module[{result},
         result = expr//operatorSeparateKernel;
         Switch[{OptionValue["Scalar"],OptionValue["Operator"]},
             {True,True},
@@ -291,10 +291,10 @@ operatorSeparate[exprList_List,opts:OptionsPattern[]] :=
 
 
 operatorSeparateKernel[expr_] :=
-    Module[ {opList,coList},
+    Module[{opList,coList},
         opList = operatorList[expr];
         coList = Map[Coefficient[expr,#]&,opList];
-        If[ scalarSimplify[opList . coList-expr]=!=0,
+        If[scalarSimplify[opList . coList-expr]=!=0,
             Message[operatorSeparate::ExtractionFailed];
             expr//Throw
         ];
