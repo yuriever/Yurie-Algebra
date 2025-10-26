@@ -17,9 +17,12 @@ Needs["Yurie`Algebra`"];
 conjugate::usage =
     "conjugate of the operator.";
 
-
 innerProduct::usage =
     "inner product of the states.";
+
+
+inverse::usage =
+    "inverse of the operator.";
 
 
 (* ::Section:: *)

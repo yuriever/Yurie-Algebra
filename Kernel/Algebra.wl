@@ -27,7 +27,7 @@ Get["Yurie`Algebra`Core`"];
 (*Extension*)
 
 
-Get["Yurie`Algebra`Conjugate`"];
+Get["Yurie`Algebra`Involution`"];
 
 Get["Yurie`Algebra`Tensor`"];
 
