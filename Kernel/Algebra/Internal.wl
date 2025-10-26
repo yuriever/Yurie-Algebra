@@ -90,6 +90,31 @@ algebraInternal["Conjugate"] = <|
 
 
 (* ::Subsection:: *)
+(*Inverse*)
+
+
+algebraInternal["Inverse"] = <|
+    "Relation"->{
+        (* Inverse *)
+        inverse[k_?scalarQ*x_.]:>
+            1/k*inverse[x],
+        inverse[x_]**x_:>
+            id,
+        x_**inverse[x_]:>
+            id,
+        (* Anti-morphism *)
+        inverse[x_**y_]:>
+            inverse[y]**inverse[x],
+        (* Identity *)
+        inverse[id]:>id
+    },
+    "Printing"->{
+        inverse->Inverse
+    }
+|>;
+
+
+(* ::Subsection:: *)
 (*Tensor product*)
 
 
@@ -188,6 +213,7 @@ algebraInternal["Antipode"] = <|
 algebraInternal[] = {
     "Algebra",
     "Conjugate",
+    "Inverse",
     "Tensor",
     "Coalgebra",
     "Bialgebra",

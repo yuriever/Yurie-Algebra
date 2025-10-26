@@ -1,4 +1,12 @@
-(* Algebra.wl *)
+(* ::Package:: *)
+
+(* ::Subsection:: *)
+(*Usage*)
+
+
+(* ::Subsubsection:: *)
+(*Algebra.wl*)
+
 
 algebraDefine::usage =
     "define the algebras.";
@@ -22,7 +30,9 @@ algebraShow::usage =
     "show the algebra.";
 
 
-(* Check.wl *)
+(* ::Subsubsection:: *)
+(*Check.wl*)
+
 
 checkLieBracket::usage =
     "check the Jacobi identity of Lie algebra.";
@@ -40,16 +50,9 @@ checkAntipode::usage =
     "check the antipode of Hopf algebra.";
 
 
-(* Conjugate.wl *)
+(* ::Subsubsection:: *)
+(*Core.wl*)
 
-conjugate::usage =
-    "conjugate of the operator.";
-
-innerProduct::usage =
-    "inner product of the states.";
-
-
-(* Core.wl *)
 
 id::usage =
     "identity operator.";
@@ -106,7 +109,23 @@ algSameQ::usage =
     "x===y for operators.";
 
 
-(* Tensor.wl *)
+(* ::Subsubsection:: *)
+(*Involution.wl*)
+
+
+conjugate::usage =
+    "conjugate of the operator.";
+
+innerProduct::usage =
+    "inner product of the states.";
+
+inverse::usage =
+    "inverse of the operator.";
+
+
+(* ::Subsubsection:: *)
+(*Tensor.wl*)
+
 
 tensor::usage =
     "tensor product.";
@@ -127,7 +146,9 @@ tensorPermute::usage =
     "permute the arguments of the tensor.";
 
 
-(* Utility.wl *)
+(* ::Subsubsection:: *)
+(*Utility.wl*)
+
 
 comm::usage =
     "commutator.";

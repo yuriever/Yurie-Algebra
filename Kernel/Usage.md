@@ -1,4 +1,6 @@
-<!-- Algebra.wl -->
+# Usage
+
+## Algebra.wl
 
 * `#!wl algebraDefine` - define the algebras.
 
@@ -14,8 +16,7 @@
 
 * `#!wl algebraShow` - show the algebra.
 
-
-<!-- Check.wl -->
+## Check.wl
 
 * `#!wl checkLieBracket` - check the Jacobi identity of Lie algebra.
 
@@ -27,15 +28,7 @@
 
 * `#!wl checkAntipode` - check the antipode of Hopf algebra.
 
-
-<!-- Conjugate.wl -->
-
-* `#!wl conjugate` - conjugate of the operator.
-
-* `#!wl innerProduct` - inner product of the states.
-
-
-<!-- Core.wl -->
+## Core.wl
 
 * `#!wl id` - identity operator.
 
@@ -73,8 +66,15 @@
 
 * `#!wl algSameQ` - x===y for operators.
 
+## Involution.wl
 
-<!-- Tensor.wl -->
+* `#!wl conjugate` - conjugate of the operator.
+
+* `#!wl innerProduct` - inner product of the states.
+
+* `#!wl inverse` - inverse of the operator.
+
+## Tensor.wl
 
 * `#!wl tensor` - tensor product.
 
@@ -88,8 +88,7 @@
 
 * `#!wl tensorPermute` - permute the arguments of the tensor.
 
-
-<!-- Utility.wl -->
+## Utility.wl
 
 * `#!wl comm` - commutator.
 
