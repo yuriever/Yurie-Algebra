@@ -144,11 +144,11 @@ starPostIntercept[$algebraCluster,"starUpdateDefault",_] :=
 (*Internal algebra initialization*)
 
 
-algebraDefine@algebraInternal[];
+algebraDefine@$algebraInternal;
 
 Table[
     algebraAdd[alg]@algebraInternal[alg],
-    {alg,algebraInternal[]}
+    {alg,$algebraInternal}
 ];
 
 

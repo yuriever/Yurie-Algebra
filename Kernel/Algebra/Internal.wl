@@ -17,7 +17,10 @@ Needs["Yurie`Algebra`Tensor`"];
 
 
 algebraInternal::usage =
-    "internal algebras.";
+    "internal algebra: data.";
+
+$algebraInternal::usage =
+    "internal algebra: name list.";
 
 
 (* ::Section:: *)
@@ -210,7 +213,7 @@ algebraInternal["Antipode"] = <|
 (*Summary*)
 
 
-algebraInternal[] = {
+$algebraInternal = {
     "Algebra",
     "Conjugate",
     "Inverse",
@@ -221,8 +224,8 @@ algebraInternal[] = {
 };
 
 
-algebraInternal[All,"Relation"] =
-    Map[algebraInternal[#]["Relation"]&,algebraInternal[]]//Flatten;
+algebraInternal[All]["Relation"] =
+    Map[algebraInternal[#]["Relation"]&,$algebraInternal]//Flatten;
 
 
 (* ::Subsection:: *)
