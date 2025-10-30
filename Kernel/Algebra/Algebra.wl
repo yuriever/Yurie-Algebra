@@ -20,6 +20,13 @@ Needs["Yurie`Algebra`Internal`"];
 (*Public*)
 
 
+$algebraDefine::usage =
+    "list of the defined algebras.";
+
+$algebraDefault::usage =
+    "list of the default algebras.";
+
+
 algebraDefine::usage =
     "define the algebras.";
 
@@ -50,6 +57,22 @@ Begin["`Private`"];
 
 
 (* ::Subsection:: *)
+(*$algebraDefine*)
+
+
+$algebraDefine :=
+    clusterGet[$algebraCluster,"StarList"];
+
+
+(* ::Subsection:: *)
+(*$algebraDefault*)
+
+
+$algebraDefault :=
+    clusterGet[$algebraCluster,"StarDefaultList"];
+
+
+(* ::Subsection:: *)
 (*algebraDefine*)
 
 
@@ -73,7 +96,7 @@ algebraDefineQ::usage =
     "check whether the algebra is defined."
 
 algebraDefineQ[alg_String] :=
-    MemberQ[clusterGet[$algebraCluster,"StarList"],alg];
+    MemberQ[$algebraDefine,alg];
 
 algebraDefineQ[_] :=
     False;
@@ -95,12 +118,26 @@ algebraReset[algs___String|{algs___String}] :=
     starReset[$algebraCluster,{algs}];
 
 
+algebraReset[] :=
+    algebraReset@Complement[$algebraDefine,$algebraInternal];
+
+algebraReset[Default] :=
+    algebraReset@Complement[$algebraDefault,$algebraInternal];
+
+
 (* ::Subsection:: *)
 (*algebraUnset*)
 
 
 algebraUnset[algs___String|{algs___String}] :=
     starUnset[$algebraCluster,{algs}];
+
+
+algebraUnset[] :=
+    algebraUnset@Complement[$algebraDefine,$algebraInternal];
+
+algebraUnset[Default] :=
+    algebraUnset@Complement[$algebraDefault,$algebraInternal];
 
 
 (* ::Subsection:: *)
@@ -210,7 +247,7 @@ hideEmptyPlanet[data_][unit_] :=
 
 
 dropInternalRelation[data_] :=
-    DeleteCases[data,Alternatives@@Map[Verbatim,algebraInternal[All,"Relation"]]];
+    DeleteCases[data,Alternatives@@Map[Verbatim,algebraInternal[All]["Relation"]]];
 
 
 hideContextMark::usage =
@@ -220,27 +257,6 @@ hideContextMark/:MakeBoxes[hideContextMark[expr_],form_] :=
     Block[{Internal`$ContextMarks = False},
         MakeBoxes[expr,form]
     ];
-
-
-(* ::Subsection:: *)
-(*Default argument*)
-
-
-algebraDefine[] :=
-    clusterGet[$algebraCluster,"StarList"];
-
-
-algebraDefault[] :=
-    clusterGet[$algebraCluster,"StarDefaultList"];
-
-
-(* Reset/Unset the defined except internal algebras. *)
-
-algebraReset[] :=
-    algebraReset@Complement[algebraDefine[],algebraInternal[]];
-
-algebraUnset[] :=
-    algebraUnset@Complement[algebraDefine[],algebraInternal[]];
 
 
 (* ::Subsection:: *)
