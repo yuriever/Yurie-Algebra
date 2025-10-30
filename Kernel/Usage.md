@@ -2,6 +2,10 @@
 
 ## Algebra.wl
 
+* `#!wl $algebraDefine` - list of the defined algebras.
+
+* `#!wl $algebraDefault` - list of the default algebras.
+
 * `#!wl algebraDefine` - define the algebras.
 
 * `#!wl algebraDefault` - set the default algebras.

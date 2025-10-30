@@ -8,6 +8,12 @@
 (*Algebra.wl*)
 
 
+$algebraDefine::usage =
+    "list of the defined algebras.";
+
+$algebraDefault::usage =
+    "list of the default algebras.";
+
 algebraDefine::usage =
     "define the algebras.";
 
