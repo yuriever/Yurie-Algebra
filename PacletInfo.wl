@@ -39,7 +39,6 @@ PacletObject[
           "Yurie`Algebra`CarCFT2`",
           "Yurie`Algebra`CFT1`",
           "Yurie`Algebra`CFT2`",
-          "Yurie`Algebra`CFTd`",
           "Yurie`Algebra`Harmonic`",
           "Yurie`Algebra`SL2`",
           "Yurie`Algebra`Sweedler",
