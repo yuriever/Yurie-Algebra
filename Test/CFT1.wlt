@@ -77,23 +77,13 @@ VerificationTest[
 ]
 
 VerificationTest[
+    algebraDefault[]; 
     algebraUnset[]; 
-    algebraDefine[]
-    ,
-    Quiet[{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}]
-    ,
-    {General::StarRemoveDefault}
-    ,
-    TestID->"[9] CFT1.nb"
-]
-
-VerificationTest[
-    algebraDefault[{}]; 
-    algebraDefault[]
+    $algebraDefault
     ,
     {}
     ,
-    TestID->"[10] CFT1.nb"
+    TestID->"[9] CFT1.nb"
 ]
 
 VerificationTest[

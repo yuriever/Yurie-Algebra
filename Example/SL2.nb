@@ -1,12 +1,19 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
-NotebookDataPosition[         0,          0]
-NotebookDataLength[     14969,        460]
-NotebookOptionsPosition[     11622,        389]
-NotebookOutlinePosition[     12070,        407]
-CellTagsIndexPosition[     12027,        404]
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     13397,        422]
+NotebookOptionsPosition[     10522,        363]
+NotebookOutlinePosition[     10970,        381]
+CellTagsIndexPosition[     10927,        378]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -340,50 +347,17 @@ Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"algebraUnset", "[", "]"}], "\n"}], "\n", 
- RowBox[{"algebraDefine", "[", "]"}]}], "Code",
- CellLabel->
-  "In[181]:=",ExpressionUUID->"46669400-d801-4e33-904f-e6394e18a6bb"],
-
-Cell[BoxData[
- TemplateBox[{
-  "General", "StarRemoveDefault", 
-   "\"\\!\\(\\*TemplateBox[List[\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \
-StyleBox[\\\"\\\\\\\"SL2\\\\\\\"\\\", RGBColor[0.4`, 0.6`, 1], \
-Rule[StripOnInput, False]], StyleBox[\\\"\\\\\\\"VermaModuleExtension\\\\\\\"\
-\\\", RGBColor[0.4`, 0.6`, 1], Rule[StripOnInput, False]]], \
-\\\"RowWithSeparators\\\"]\\) in \\!\\(\\*StyleBox[\\\"\\\\\\\"AlgebraCluster\
-\\\\\\\"\\\", RGBColor[0.4`, 0.6`, 1], Rule[StripOnInput, False]]\\) has been \
-removed from default.\"", 2, 181, 13, 24712062172188721187, "Local"},
-  "MessageTemplate",
-  BaseStyle->"MSG"]], "Message",
- CellLabel->
-  "During evaluation of \
-In[181]:=",ExpressionUUID->"7347f0c7-693c-4d9a-8d88-a08e1f3c8ae4"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"\<\"Algebra\"\>", ",", "\<\"Conjugate\"\>", ",", "\<\"Tensor\"\>", 
-   ",", "\<\"Coalgebra\"\>", ",", "\<\"Bialgebra\"\>", 
-   ",", "\<\"Antipode\"\>"}], "}"}]], "Output",
- CellLabel->
-  "Out[182]=",ExpressionUUID->"08429150-e75c-4f67-8095-45920303c9d2"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[{
+  RowBox[{"algebraDefault", "[", "]"}], "\n"}], "\n", 
  RowBox[{
-  RowBox[{"algebraDefault", "[", 
-   RowBox[{"{", "}"}], "]"}], "\n"}], "\n", 
- RowBox[{"algebraDefault", "[", "]"}]}], "Code",
+  RowBox[{"algebraUnset", "[", "]"}], 
+  "\n"}], "\n", "$algebraDefault"}], "Code",
  CellLabel->
-  "In[183]:=",ExpressionUUID->"5906281a-3fd4-4d8d-bb09-cdae6b317b81"],
+  "In[378]:=",ExpressionUUID->"dffafa4a-24a1-4626-8c3b-9977a2eee373"],
 
 Cell[BoxData[
  RowBox[{"{", "}"}]], "Output",
  CellLabel->
-  "Out[184]=",ExpressionUUID->"0297e0d5-802c-4c0d-97b3-1a04e27758f9"]
+  "Out[380]=",ExpressionUUID->"0182f748-26d4-41b0-9187-9b388c9abace"]
 }, Open  ]]
 }, Open  ]]
 },
@@ -406,56 +380,53 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[400, 13, 152, 3, 65, "Code",ExpressionUUID->"90cc8b47-9b0d-4bfa-a41f-bb6b01f7e3be"],
-Cell[555, 18, 144, 3, 65, "Code",ExpressionUUID->"b71d718c-96bd-4c41-b4d1-2f247e30c08f"],
+Cell[554, 20, 152, 3, 65, "Code",ExpressionUUID->"90cc8b47-9b0d-4bfa-a41f-bb6b01f7e3be"],
+Cell[709, 25, 144, 3, 65, "Code",ExpressionUUID->"b71d718c-96bd-4c41-b4d1-2f247e30c08f"],
 Cell[CellGroupData[{
-Cell[724, 25, 81, 0, 66, "Subsection",ExpressionUUID->"1dd6f076-ae68-40dd-9fba-a13cfab1fb20"],
-Cell[808, 27, 219, 5, 65, "Code",ExpressionUUID->"eaa2284b-56ae-4c31-b269-65106e9753ad"],
+Cell[878, 32, 81, 0, 66, "Subsection",ExpressionUUID->"1dd6f076-ae68-40dd-9fba-a13cfab1fb20"],
+Cell[962, 34, 219, 5, 65, "Code",ExpressionUUID->"eaa2284b-56ae-4c31-b269-65106e9753ad"],
 Cell[CellGroupData[{
-Cell[1052, 36, 592, 18, 65, "Code",ExpressionUUID->"e58e4d9e-a484-4693-9073-8547f24bf918"],
-Cell[1647, 56, 186, 4, 41, "Output",ExpressionUUID->"cbdf9e56-5274-49e4-9050-bff75bc8330e"]
+Cell[1206, 43, 592, 18, 65, "Code",ExpressionUUID->"e58e4d9e-a484-4693-9073-8547f24bf918"],
+Cell[1801, 63, 186, 4, 41, "Output",ExpressionUUID->"cbdf9e56-5274-49e4-9050-bff75bc8330e"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1870, 65, 612, 18, 65, "Code",ExpressionUUID->"3f5cb082-b718-4957-ae2d-7e34a1dc98ca"],
-Cell[2485, 85, 186, 4, 41, "Output",ExpressionUUID->"28c212bb-9fac-437e-bf03-9208f8d479f7"]
+Cell[2024, 72, 612, 18, 65, "Code",ExpressionUUID->"3f5cb082-b718-4957-ae2d-7e34a1dc98ca"],
+Cell[2639, 92, 186, 4, 41, "Output",ExpressionUUID->"28c212bb-9fac-437e-bf03-9208f8d479f7"]
 }, Open  ]],
-Cell[2686, 92, 282, 9, 65, "Code",ExpressionUUID->"049b4aaa-8948-4243-bc4a-e5caefa3cd9d"],
+Cell[2840, 99, 282, 9, 65, "Code",ExpressionUUID->"049b4aaa-8948-4243-bc4a-e5caefa3cd9d"],
 Cell[CellGroupData[{
-Cell[2993, 105, 593, 17, 65, "Code",ExpressionUUID->"48b65116-e646-420f-82dd-0b618fcca67d"],
-Cell[3589, 124, 186, 4, 41, "Output",ExpressionUUID->"bba73c26-829c-480c-a429-380f8c735fd0"]
+Cell[3147, 112, 593, 17, 65, "Code",ExpressionUUID->"48b65116-e646-420f-82dd-0b618fcca67d"],
+Cell[3743, 131, 186, 4, 41, "Output",ExpressionUUID->"bba73c26-829c-480c-a429-380f8c735fd0"]
 }, Open  ]],
-Cell[3790, 131, 251, 7, 65, "Code",ExpressionUUID->"1b6a02ef-04e5-43d3-8aed-3773f1a1a02c"],
-Cell[4044, 140, 164, 4, 65, "Code",ExpressionUUID->"d94d6841-f591-4a4a-95f4-b7b8fb85606e"],
+Cell[3944, 138, 251, 7, 65, "Code",ExpressionUUID->"1b6a02ef-04e5-43d3-8aed-3773f1a1a02c"],
+Cell[4198, 147, 164, 4, 65, "Code",ExpressionUUID->"d94d6841-f591-4a4a-95f4-b7b8fb85606e"],
 Cell[CellGroupData[{
-Cell[4233, 148, 578, 16, 136, "Code",ExpressionUUID->"f42420b0-60f4-4b0d-ac88-7b517f48430d"],
-Cell[4814, 166, 1939, 64, 92, "Output",ExpressionUUID->"08a3d20a-ecbb-4fc1-b0f8-d1b6ab811b91"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[6790, 235, 625, 18, 65, "Code",ExpressionUUID->"8ea5c517-eb65-4746-9da6-704a29f1722b"],
-Cell[7418, 255, 186, 4, 41, "Output",ExpressionUUID->"ffa8e124-c089-41f9-b1fe-74be7c402ecc"]
+Cell[4387, 155, 578, 16, 136, "Code",ExpressionUUID->"f42420b0-60f4-4b0d-ac88-7b517f48430d"],
+Cell[4968, 173, 1939, 64, 92, "Output",ExpressionUUID->"08a3d20a-ecbb-4fc1-b0f8-d1b6ab811b91"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7641, 264, 947, 28, 65, "Code",ExpressionUUID->"bca36df3-edba-4e6c-bf61-33f25512fbc1"],
-Cell[8591, 294, 186, 4, 41, "Output",ExpressionUUID->"737c54c9-63a2-4274-a2dc-ebfbf830f266"]
+Cell[6944, 242, 625, 18, 65, "Code",ExpressionUUID->"8ea5c517-eb65-4746-9da6-704a29f1722b"],
+Cell[7572, 262, 186, 4, 41, "Output",ExpressionUUID->"ffa8e124-c089-41f9-b1fe-74be7c402ecc"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8814, 303, 792, 21, 65, "Code",ExpressionUUID->"06b457ce-22f4-40f9-84e7-d2b6d61fe9b6"],
-Cell[9609, 326, 186, 4, 41, "Output",ExpressionUUID->"ca02c373-5962-4768-b83d-d57e3d69f1e0"]
+Cell[7795, 271, 947, 28, 65, "Code",ExpressionUUID->"bca36df3-edba-4e6c-bf61-33f25512fbc1"],
+Cell[8745, 301, 186, 4, 41, "Output",ExpressionUUID->"737c54c9-63a2-4274-a2dc-ebfbf830f266"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8968, 310, 792, 21, 65, "Code",ExpressionUUID->"06b457ce-22f4-40f9-84e7-d2b6d61fe9b6"],
+Cell[9763, 333, 186, 4, 41, "Output",ExpressionUUID->"ca02c373-5962-4768-b83d-d57e3d69f1e0"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9844, 336, 84, 0, 66, "Subsection",ExpressionUUID->"b0f7ab0b-3048-468f-bb8a-77689f01badd"],
+Cell[9998, 343, 84, 0, 66, "Subsection",ExpressionUUID->"b0f7ab0b-3048-468f-bb8a-77689f01badd"],
 Cell[CellGroupData[{
-Cell[9953, 340, 208, 5, 112, "Code",ExpressionUUID->"46669400-d801-4e33-904f-e6394e18a6bb"],
-Cell[10164, 347, 730, 14, 32, "Message",ExpressionUUID->"7347f0c7-693c-4d9a-8d88-a08e1f3c8ae4"],
-Cell[10897, 363, 294, 6, 41, "Output",ExpressionUUID->"08429150-e75c-4f67-8095-45920303c9d2"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[11228, 374, 235, 6, 112, "Code",ExpressionUUID->"5906281a-3fd4-4d8d-bb09-cdae6b317b81"],
-Cell[11466, 382, 128, 3, 41, "Output",ExpressionUUID->"0297e0d5-802c-4c0d-97b3-1a04e27758f9"]
+Cell[10107, 347, 256, 7, 160, "Code",ExpressionUUID->"dffafa4a-24a1-4626-8c3b-9977a2eee373"],
+Cell[10366, 356, 128, 3, 41, "Output",ExpressionUUID->"0182f748-26d4-41b0-9187-9b388c9abace"]
 }, Open  ]]
 }, Open  ]]
 }
 ]
 *)
+
+(* End of internal cache information *)
 

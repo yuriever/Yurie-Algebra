@@ -60,23 +60,13 @@ VerificationTest[
 ]
 
 VerificationTest[
+    algebraDefault[]; 
     algebraUnset[]; 
-    algebraDefine[]
-    ,
-    Quiet[{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}]
-    ,
-    {General::StarRemoveDefault}
-    ,
-    TestID->"[7] TrigHopf.nb"
-]
-
-VerificationTest[
-    algebraDefault[{}]; 
-    algebraDefault[]
+    $algebraDefault
     ,
     {}
     ,
-    TestID->"[8] TrigHopf.nb"
+    TestID->"[7] TrigHopf.nb"
 ]
 
 VerificationTest[

@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Wolfram 14.2' *)
+(* CreatedBy='Wolfram 14.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[     11674,        346]
-NotebookOptionsPosition[      9088,        295]
-NotebookOutlinePosition[      9536,        313]
-CellTagsIndexPosition[      9493,        310]
+NotebookDataLength[      9709,        302]
+NotebookOptionsPosition[      7440,        256]
+NotebookOutlinePosition[      7888,        274]
+CellTagsIndexPosition[      7845,        271]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -240,56 +240,17 @@ Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"algebraUnset", "[", "]"}], "\n"}], "\n", 
- RowBox[{"algebraDefine", "[", "]"}]}], "Code",
- CellLabel->
-  "In[115]:=",ExpressionUUID->"a04ddcb7-0108-40e5-8167-489ed143e24c"],
-
-Cell[BoxData[
- TemplateBox[{
-  "General", "StarRemoveDefault", 
-   "\"\\!\\(\\*TemplateBox[List[\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \
-StyleBox[\\\"\\\\\\\"Boson\\\\\\\"\\\", RGBColor[0.4`, 0.6`, 1], \
-Rule[StripOnInput, False]], StyleBox[\\\"\\\\\\\"Fermion\\\\\\\"\\\", \
-RGBColor[0.4`, 0.6`, 1], Rule[StripOnInput, False]], \
-StyleBox[\\\"\\\\\\\"BosonFermion\\\\\\\"\\\", RGBColor[0.4`, 0.6`, 1], \
-Rule[StripOnInput, False]], StyleBox[\\\"\\\\\\\"Vacuum\\\\\\\"\\\", \
-RGBColor[0.4`, 0.6`, 1], Rule[StripOnInput, False]], \
-StyleBox[\\\"\\\\\\\"BosonVacuum\\\\\\\"\\\", RGBColor[0.4`, 0.6`, 1], \
-Rule[StripOnInput, False]], StyleBox[\\\"\\\\\\\"FermionVacuum\\\\\\\"\\\", \
-RGBColor[0.4`, 0.6`, 1], Rule[StripOnInput, False]]], \\\"RowWithSeparators\\\
-\"]\\) in \\!\\(\\*StyleBox[\\\"\\\\\\\"AlgebraCluster\\\\\\\"\\\", \
-RGBColor[0.4`, 0.6`, 1], Rule[StripOnInput, False]]\\) has been removed from \
-default.\"", 2, 115, 9, 24712062172188721187, "Local"},
-  "MessageTemplate",
-  BaseStyle->"MSG"]], "Message",
- CellLabel->
-  "During evaluation of \
-In[115]:=",ExpressionUUID->"658dcf06-ec5f-4232-8bed-9ab6d74f3465"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"\<\"Algebra\"\>", ",", "\<\"Conjugate\"\>", ",", "\<\"Tensor\"\>", 
-   ",", "\<\"Coalgebra\"\>", ",", "\<\"Bialgebra\"\>", 
-   ",", "\<\"Antipode\"\>"}], "}"}]], "Output",
- CellLabel->
-  "Out[116]=",ExpressionUUID->"4db5ac91-a163-4b3d-96a5-025da87c722f"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[{
+  RowBox[{"algebraDefault", "[", "]"}], "\n"}], "\n", 
  RowBox[{
-  RowBox[{"algebraDefault", "[", 
-   RowBox[{"{", "}"}], "]"}], "\n"}], "\n", 
- RowBox[{"algebraDefault", "[", "]"}]}], "Code",
+  RowBox[{"algebraUnset", "[", "]"}], 
+  "\n"}], "\n", "$algebraDefault"}], "Code",
  CellLabel->
-  "In[117]:=",ExpressionUUID->"0c81ef69-538c-45e6-83aa-2226f37fb96a"],
+  "In[378]:=",ExpressionUUID->"03268670-caef-48f4-bd36-c189b9447c53"],
 
 Cell[BoxData[
  RowBox[{"{", "}"}]], "Output",
  CellLabel->
-  "Out[118]=",ExpressionUUID->"95edeb03-4c9f-4afe-8347-20e9c184aff0"]
+  "Out[380]=",ExpressionUUID->"24fdcfa9-7adc-4d31-b6cc-c93d5503bb41"]
 }, Open  ]]
 }, Open  ]]
 },
@@ -339,16 +300,13 @@ Cell[6756, 228, 111, 2, 41, "Output",ExpressionUUID->"b27aa374-c3af-4dbe-bfaf-0c
 Cell[CellGroupData[{
 Cell[6916, 236, 84, 0, 66, "Subsection",ExpressionUUID->"920d514b-9f88-4faf-9217-e6b2bdce3dd4"],
 Cell[CellGroupData[{
-Cell[7025, 240, 208, 5, 112, "Code",ExpressionUUID->"a04ddcb7-0108-40e5-8167-489ed143e24c"],
-Cell[7236, 247, 1124, 20, 32, "Message",ExpressionUUID->"658dcf06-ec5f-4232-8bed-9ab6d74f3465"],
-Cell[8363, 269, 294, 6, 41, "Output",ExpressionUUID->"4db5ac91-a163-4b3d-96a5-025da87c722f"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[8694, 280, 235, 6, 112, "Code",ExpressionUUID->"0c81ef69-538c-45e6-83aa-2226f37fb96a"],
-Cell[8932, 288, 128, 3, 41, "Output",ExpressionUUID->"95edeb03-4c9f-4afe-8347-20e9c184aff0"]
+Cell[7025, 240, 256, 7, 160, "Code",ExpressionUUID->"03268670-caef-48f4-bd36-c189b9447c53"],
+Cell[7284, 249, 128, 3, 41, "Output",ExpressionUUID->"24fdcfa9-7adc-4d31-b6cc-c93d5503bb41"]
 }, Open  ]]
 }, Open  ]]
 }
 ]
 *)
+
+(* End of internal cache information *)
 

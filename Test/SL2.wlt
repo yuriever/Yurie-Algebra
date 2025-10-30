@@ -116,23 +116,13 @@ VerificationTest[
 ]
 
 VerificationTest[
+    algebraDefault[]; 
     algebraUnset[]; 
-    algebraDefine[]
-    ,
-    Quiet[{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}]
-    ,
-    {General::StarRemoveDefault}
-    ,
-    TestID->"[14] SL2.nb"
-]
-
-VerificationTest[
-    algebraDefault[{}]; 
-    algebraDefault[]
+    $algebraDefault
     ,
     {}
     ,
-    TestID->"[15] SL2.nb"
+    TestID->"[14] SL2.nb"
 ]
 
 VerificationTest[

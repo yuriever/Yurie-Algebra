@@ -20,58 +20,92 @@ VerificationTest[
 ]
 
 VerificationTest[
-    algebraDefine[{}]; 
-    algebraDefine[]
+    monitor := {$algebraDefine, $algebraDefault, generator[]}
     ,
-    {"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
+    Null
     ,
     TestID->"[2] algebraCluster-edge-case.nb"
 ]
 
 VerificationTest[
-    algebraAdd[{}][{"Generator" -> {x}}]; 
-    algebraDefault[{}]; 
-    generator[]
+    monitor
     ,
-    {id}
+    {{"Algebra", "Conjugate", "Inverse", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}, {}, {id}}
     ,
     TestID->"[3] algebraCluster-edge-case.nb"
 ]
 
 VerificationTest[
-    algebraReset[{}]; 
-    generator[]
+    algebraDefine[{}]; 
+    monitor
     ,
-    {id}
+    {{"Algebra", "Conjugate", "Inverse", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}, {}, {id}}
     ,
     TestID->"[4] algebraCluster-edge-case.nb"
 ]
 
 VerificationTest[
-    algebraUnset[{}]; 
-    generator[]
+    algebraDefine[]; 
+    monitor
     ,
-    {id}
+    {{"Algebra", "Conjugate", "Inverse", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}, {}, {id}}
     ,
     TestID->"[5] algebraCluster-edge-case.nb"
 ]
 
 VerificationTest[
-    algebraUnset[]; 
-    algebraDefine[]
+    algebraDefault[{}]; 
+    monitor
     ,
-    {"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
+    {{"Algebra", "Conjugate", "Inverse", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}, {}, {id}}
     ,
     TestID->"[6] algebraCluster-edge-case.nb"
 ]
 
 VerificationTest[
-    algebraDefault[{}]; 
-    algebraDefault[]
+    algebraDefault[]; 
+    monitor
     ,
-    {}
+    {{"Algebra", "Conjugate", "Inverse", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}, {}, {id}}
     ,
     TestID->"[7] algebraCluster-edge-case.nb"
+]
+
+VerificationTest[
+    algebraReset[{}]; 
+    monitor
+    ,
+    {{"Algebra", "Conjugate", "Inverse", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}, {}, {id}}
+    ,
+    TestID->"[8] algebraCluster-edge-case.nb"
+]
+
+VerificationTest[
+    algebraUnset[{}]; 
+    monitor
+    ,
+    {{"Algebra", "Conjugate", "Inverse", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}, {}, {id}}
+    ,
+    TestID->"[9] algebraCluster-edge-case.nb"
+]
+
+VerificationTest[
+    algebraAdd[{}][{"Generator" -> {x}}]; 
+    monitor
+    ,
+    {{"Algebra", "Conjugate", "Inverse", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}, {}, {id}}
+    ,
+    TestID->"[10] algebraCluster-edge-case.nb"
+]
+
+VerificationTest[
+    algebraDefault[]; 
+    algebraUnset[]; 
+    monitor
+    ,
+    {{"Algebra", "Conjugate", "Inverse", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}, {}, {id}}
+    ,
+    TestID->"[11] algebraCluster-edge-case.nb"
 ]
 
 VerificationTest[

@@ -80,23 +80,13 @@ VerificationTest[
 ]
 
 VerificationTest[
+    algebraDefault[]; 
     algebraUnset[]; 
-    algebraDefine[]
-    ,
-    Quiet[{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}]
-    ,
-    {General::StarRemoveDefault}
-    ,
-    TestID->"[9] Harmonic.nb"
-]
-
-VerificationTest[
-    algebraDefault[{}]; 
-    algebraDefault[]
+    $algebraDefault
     ,
     {}
     ,
-    TestID->"[10] Harmonic.nb"
+    TestID->"[9] Harmonic.nb"
 ]
 
 VerificationTest[

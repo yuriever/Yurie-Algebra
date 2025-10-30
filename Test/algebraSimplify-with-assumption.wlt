@@ -68,23 +68,13 @@ VerificationTest[
 ]
 
 VerificationTest[
+    algebraDefault[]; 
     algebraUnset[]; 
-    algebraDefine[]
+    {$algebraDefine, $algebraDefault}
     ,
-    Quiet[{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}]
-    ,
-    {General::StarRemoveDefault}
+    {{"Algebra", "Conjugate", "Inverse", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}, {}}
     ,
     TestID->"[8] algebraSimplify-with-assumption.nb"
-]
-
-VerificationTest[
-    algebraDefault[{}]; 
-    algebraDefault[]
-    ,
-    {}
-    ,
-    TestID->"[9] algebraSimplify-with-assumption.nb"
 ]
 
 VerificationTest[

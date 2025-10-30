@@ -51,16 +51,16 @@ VerificationTest[
 
 VerificationTest[
     algebraDefine["alg1", "alg2"]; 
-    algebraDefine[]
+    $algebraDefine
     ,
-    {"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode", "alg1", "alg2"}
+    {"Algebra", "Conjugate", "Inverse", "Tensor", "Coalgebra", "Bialgebra", "Antipode", "alg1", "alg2"}
     ,
     TestID->"[5] algebraCluster.nb"
 ]
 
 VerificationTest[
     algebraDefault[{"alg1", "alg2"}]; 
-    algebraDefault[]
+    $algebraDefault
     ,
     {"alg1", "alg2"}
     ,
@@ -163,21 +163,13 @@ VerificationTest[
 ]
 
 VerificationTest[
+    algebraDefault[]; 
     algebraUnset[]; 
-    algebraDefine[]
+    {$algebraDefine, $algebraDefault}
     ,
-    {"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}
+    {{"Algebra", "Conjugate", "Inverse", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}, {}}
     ,
     TestID->"[17] algebraCluster.nb"
-]
-
-VerificationTest[
-    algebraDefault[{}]; 
-    algebraDefault[]
-    ,
-    {}
-    ,
-    TestID->"[18] algebraCluster.nb"
 ]
 
 VerificationTest[

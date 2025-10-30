@@ -3,17 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Wolfram 14.2' *)
+(* CreatedBy='Wolfram 14.3' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[     11966,        366]
-NotebookOptionsPosition[      9245,        312]
-NotebookOutlinePosition[      9693,        330]
-CellTagsIndexPosition[      9650,        327]
+NotebookDataLength[     10425,        332]
+NotebookOptionsPosition[      8020,        283]
+NotebookOutlinePosition[      8468,        301]
+CellTagsIndexPosition[      8425,        298]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -267,46 +267,17 @@ Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"algebraUnset", "[", "]"}], "\n"}], "\n", 
- RowBox[{"algebraDefine", "[", "]"}]}], "Code",
- CellLabel->"In[91]:=",ExpressionUUID->"221dd54c-66b6-4db3-9492-7e4eac88e3d6"],
-
-Cell[BoxData[
- TemplateBox[{
-  "General", "StarRemoveDefault", 
-   "\"\\!\\(\\*TemplateBox[List[\\\",\\\", \\\"\\\\\\\",\\\\\\\"\\\", \
-StyleBox[\\\"\\\\\\\"BCGhost\\\\\\\"\\\", RGBColor[0.4`, 0.6`, 1], \
-Rule[StripOnInput, False]], StyleBox[\\\"\\\\\\\"Vacuum\\\\\\\"\\\", \
-RGBColor[0.4`, 0.6`, 1], Rule[StripOnInput, False]]], \\\"RowWithSeparators\\\
-\"]\\) in \\!\\(\\*StyleBox[\\\"\\\\\\\"AlgebraCluster\\\\\\\"\\\", \
-RGBColor[0.4`, 0.6`, 1], Rule[StripOnInput, False]]\\) has been removed from \
-default.\"", 2, 91, 7, 24712062172188721187, "Local"},
-  "MessageTemplate",
-  BaseStyle->"MSG"]], "Message",
- CellLabel->
-  "During evaluation of \
-In[91]:=",ExpressionUUID->"8977f0f2-8568-435b-9a67-06e129fc06cf"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"\<\"Algebra\"\>", ",", "\<\"Conjugate\"\>", ",", "\<\"Tensor\"\>", 
-   ",", "\<\"Coalgebra\"\>", ",", "\<\"Bialgebra\"\>", 
-   ",", "\<\"Antipode\"\>"}], "}"}]], "Output",
- CellLabel->"Out[92]=",ExpressionUUID->"22ca46f1-2bda-4c09-a64f-1862559a37b7"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[{
+  RowBox[{"algebraDefault", "[", "]"}], "\n"}], "\n", 
  RowBox[{
-  RowBox[{"algebraDefault", "[", 
-   RowBox[{"{", "}"}], "]"}], "\n"}], "\n", 
- RowBox[{"algebraDefault", "[", "]"}]}], "Code",
- CellLabel->"In[93]:=",ExpressionUUID->"f78a5e41-eddb-4f4b-8f23-b0c9d57811d9"],
+  RowBox[{"algebraUnset", "[", "]"}], 
+  "\n"}], "\n", "$algebraDefault"}], "Code",
+ CellLabel->
+  "In[378]:=",ExpressionUUID->"9d3a63a9-d9dc-4e7c-af4a-2a753a9cb31f"],
 
 Cell[BoxData[
  RowBox[{"{", "}"}]], "Output",
- CellLabel->"Out[94]=",ExpressionUUID->"151e466d-4132-40d7-9636-7aa98583a52b"]
+ CellLabel->
+  "Out[380]=",ExpressionUUID->"e8c77f9c-6885-4a0b-b03d-cba5889f3b5f"]
 }, Open  ]]
 }, Open  ]]
 },
@@ -359,16 +330,13 @@ Cell[7340, 256, 107, 1, 41, "Output",ExpressionUUID->"de386eba-ec52-4340-bcba-a0
 Cell[CellGroupData[{
 Cell[7496, 263, 84, 0, 66, "Subsection",ExpressionUUID->"1939ccb6-9ab7-42f0-bcbf-7ceffd6fa929"],
 Cell[CellGroupData[{
-Cell[7605, 267, 204, 4, 112, "Code",ExpressionUUID->"221dd54c-66b6-4db3-9492-7e4eac88e3d6"],
-Cell[7812, 273, 717, 14, 32, "Message",ExpressionUUID->"8977f0f2-8568-435b-9a67-06e129fc06cf"],
-Cell[8532, 289, 290, 5, 41, "Output",ExpressionUUID->"22ca46f1-2bda-4c09-a64f-1862559a37b7"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[8859, 299, 231, 5, 112, "Code",ExpressionUUID->"f78a5e41-eddb-4f4b-8f23-b0c9d57811d9"],
-Cell[9093, 306, 124, 2, 41, "Output",ExpressionUUID->"151e466d-4132-40d7-9636-7aa98583a52b"]
+Cell[7605, 267, 256, 7, 160, "Code",ExpressionUUID->"9d3a63a9-d9dc-4e7c-af4a-2a753a9cb31f"],
+Cell[7864, 276, 128, 3, 41, "Output",ExpressionUUID->"e8c77f9c-6885-4a0b-b03d-cba5889f3b5f"]
 }, Open  ]]
 }, Open  ]]
 }
 ]
 *)
+
+(* End of internal cache information *)
 

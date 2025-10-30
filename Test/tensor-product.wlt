@@ -314,23 +314,13 @@ VerificationTest[
 ]
 
 VerificationTest[
+    algebraDefault[]; 
     algebraUnset[]; 
-    algebraDefine[]
+    {$algebraDefine, $algebraDefault}
     ,
-    Quiet[{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}]
-    ,
-    {General::StarRemoveDefault}
+    {{"Algebra", "Conjugate", "Inverse", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}, {}}
     ,
     TestID->"[38] tensor-product.nb"
-]
-
-VerificationTest[
-    algebraDefault[{}]; 
-    algebraDefault[]
-    ,
-    {}
-    ,
-    TestID->"[39] tensor-product.nb"
 ]
 
 VerificationTest[

@@ -60,23 +60,13 @@ VerificationTest[
 ]
 
 VerificationTest[
+    algebraDefault[]; 
     algebraUnset[]; 
-    algebraDefine[]
+    {$algebraDefine, $algebraDefault}
     ,
-    Quiet[{"Algebra", "Conjugate", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}]
-    ,
-    {General::StarRemoveDefault}
+    {{"Algebra", "Conjugate", "Inverse", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}, {}}
     ,
     TestID->"[7] checkLieBracket.nb"
-]
-
-VerificationTest[
-    algebraDefault[{}]; 
-    algebraDefault[]
-    ,
-    {}
-    ,
-    TestID->"[8] checkLieBracket.nb"
 ]
 
 VerificationTest[
