@@ -114,11 +114,11 @@ algebraDefault[algs___String|{algs___String}] :=
 (*algebraReset*)
 
 
-algebraReset[algs___String|{algs___String}] :=
+algebraReset[algs__String|{algs___String}] :=
     starReset[$algebraCluster,{algs}];
 
 
-algebraReset[] :=
+algebraReset[All|PatternSequence[]] :=
     algebraReset@Complement[$algebraDefine,$algebraInternal];
 
 algebraReset[Default] :=
@@ -129,11 +129,11 @@ algebraReset[Default] :=
 (*algebraUnset*)
 
 
-algebraUnset[algs___String|{algs___String}] :=
+algebraUnset[algs__String|{algs___String}] :=
     starUnset[$algebraCluster,{algs}];
 
 
-algebraUnset[] :=
+algebraUnset[All|PatternSequence[]] :=
     algebraUnset@Complement[$algebraDefine,$algebraInternal];
 
 algebraUnset[Default] :=
