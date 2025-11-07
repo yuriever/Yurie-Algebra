@@ -116,7 +116,7 @@ commIn/:(rule:Rule|RuleDelayed)[
         ]
     ],
     Verbatim[Condition][result_,condition_]
-]:=
+] :=
     commInKernel[{x,y,result,condition},order,sign,rule];
 
 
