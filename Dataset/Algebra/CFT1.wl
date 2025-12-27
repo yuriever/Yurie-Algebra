@@ -65,10 +65,14 @@ Begin["`Private`"];
 
 $algebraList = {
     "ConformalAlgebra","ConformalAlgebraConjugate",
-    "Virasoro","VirasoroConjugate",
-    "Vacuum","VacuumConjugate",
     "Singlet","SingletConjugate",
-    "Multiplet","MultipletUpper","MultipletLower","MultipletConjugate"
+    "Multiplet","MultipletUpper","MultipletLower","MultipletConjugate",
+    (*  *)
+    "Virasoro","VirasoroConjugate",
+    "VirasoroSinglet","VirasoroSingletConjugate",
+    "VirasoroMultiplet","VirasoroMultipletUpper","VirasoroMultipletLower","VirasoroMultipletConjugate",
+    (*  *)
+    "Vacuum","VacuumConjugate"
 };
 
 $algebraList//algebraUnset//Quiet;
@@ -95,8 +99,13 @@ $algebraList//algebraDefine;
 |>//algebraAdd["ConformalAlgebra"];
 
 
+"Relation"->{
+    conjugate[L[n_]]:>L[-n]
+}//algebraAdd["ConformalAlgebraConjugate"];
+
+
 (* ::Subsubsection:: *)
-(*Virasoro*)
+(*Virasoro algebra*)
 
 
 <|
@@ -115,6 +124,11 @@ $algebraList//algebraDefine;
 |>//algebraAdd["Virasoro"];
 
 
+"Relation"->{
+    conjugate[L[n_]]:>L[-n]
+}//algebraAdd["VirasoroConjugate"];
+
+
 (* ::Subsubsection:: *)
 (*Vacuum*)
 
@@ -122,13 +136,18 @@ $algebraList//algebraDefine;
 <|
     "Generator"->{vac},
     "Relation"->{
-        L[_]**vac:>0,
-        vac**L[_]:>0
+        L[_]**vac:>0
     },
     "Printing"->{
         vac:>Ket[{0}]
     }
 |>//algebraAdd["Vacuum"];
+
+
+"Relation"->{
+    conjugate[vac]**vac:>1,
+    conjugate[vac]**L[_]:>0
+}//algebraAdd["VacuumConjugate"];
 
 
 (* ::Subsubsection:: *)
@@ -138,15 +157,19 @@ $algebraList//algebraDefine;
 <|
     "Generator"->{prim},
     "Relation"->{
-        (*annihilation rule*)
-        L[n_]**prim[h_]:>0/;n>=1,
-        prim[h_]**L[n_]:>0/;n<=-1,
-        L[0]**prim[h_]:>h*prim[h]
+        L[0]**prim[h_]:>h*prim[h],
+        L[1]**prim[h_]:>0
     },
     "Printing"->{
         prim[h_]:>Ket[{h}]
     }
 |>//algebraAdd["Singlet"];
+
+
+"Relation"->{
+    conjugate[prim[h_]]**prim[h_]:>1,
+    conjugate[prim[h_]]**L[-1]:>0
+}//algebraAdd["SingletConjugate"];
 
 
 (* ::Subsubsection:: *)
@@ -156,17 +179,22 @@ $algebraList//algebraDefine;
 <|
     "Generator"->{prim},
     "Relation"->{
-        (*boundary condition*)
+        (* Boundary condition *)
         prim[rank_,a_][h_]:>0/;a<=0,
         prim[rank_,a_][h_]:>0/;a>rank,
-        (*annihilation rule*)
-        L[n_]**prim[rank_,a_][h_]:>0/;n>=1,
-        prim[rank_,a_][h_]**L[n_]:>0/;n<=-1
+        (* Annihilation rule *)
+        L[1]**prim[rank_,a_][h_]:>0
     },
     "Printing"->{
         prim[rank_,a_][h_]:>Subsuperscript[Ket[{h}],rank,a]
     }
 |>//algebraAdd["Multiplet","MultipletUpper","MultipletLower"];
+
+
+"Relation"->{
+    conjugate[prim[rank_,a_][h_]]**prim[rank_,b_][h_]:>KroneckerDelta[a+b,rank+1],
+    conjugate[prim[rank_,a_][h_]]**L[-1]:>0
+}//algebraAdd["MultipletConjugate"];
 
 
 (* ::Text:: *)
@@ -183,30 +211,63 @@ $algebraList//algebraDefine;
 
 
 (* ::Subsubsection:: *)
-(*Conjugate*)
+(*Virasoro singlet*)
+
+
+<|
+    "Generator"->{prim},
+    "Relation"->{
+        L[0]**prim[h_]:>h*prim[h],
+        L[n_]**prim[h_]:>0/;n>=1
+    },
+    "Printing"->{
+        prim[h_]:>Ket[{h}]
+    }
+|>//algebraAdd["VirasoroSinglet"];
 
 
 "Relation"->{
-    conjugate[L[n_]]:>L[-n]
-}//algebraAdd["ConformalAlgebraConjugate","VirasoroConjugate"];
+    conjugate[prim[h_]]**prim[h_]:>1,
+    conjugate[prim[h_]]**L[n_]:>0/;n<=-1
+}//algebraAdd["VirasoroSingletConjugate"];
+
+
+(* ::Subsubsection:: *)
+(*Virasoro multiplet*)
+
+
+<|
+    "Generator"->{prim},
+    "Relation"->{
+        (* Boundary condition *)
+        prim[rank_,a_][h_]:>0/;a<=0,
+        prim[rank_,a_][h_]:>0/;a>rank,
+        (* Annihilation rule *)
+        L[n_]**prim[rank_,a_][h_]:>0/;n>=1
+    },
+    "Printing"->{
+        prim[rank_,a_][h_]:>Subsuperscript[Ket[{h}],rank,a]
+    }
+|>//algebraAdd["VirasoroMultiplet","VirasoroMultipletUpper","VirasoroMultipletLower"];
 
 
 "Relation"->{
-    vac**vac:>1,
-    conjugate[vac]:>vac
-}//algebraAdd["VacuumConjugate"];
+    conjugate[prim[rank_,a_][h_]]**prim[rank_,b_][h_]:>KroneckerDelta[a+b,rank+1],
+    conjugate[prim[rank_,a_][h_]]**L[n_]:>0/;n<=-1
+}//algebraAdd["VirasoroMultipletConjugate"];
+
+
+(* ::Text:: *)
+(*action of L[0]*)
 
 
 "Relation"->{
-    prim[h_]**prim[h_]:>1,
-    conjugate[prim[h_]]:>prim[h]
-}//algebraAdd["SingletConjugate"];
-
+    L[0]**prim[rank_,a_][h_]:>h*prim[rank,a][h]+prim[rank,a+1][h]
+}//algebraAdd["VirasoroMultiplet","VirasoroMultipletUpper"];
 
 "Relation"->{
-    prim[rank_,a_][h_]**prim[rank_,b_][h_]:>KroneckerDelta[a+b,rank+1],
-    conjugate[prim[rank_,a_][h_]]:>prim[rank,a][h]
-}//algebraAdd["MultipletConjugate"];
+    L[0]**prim[rank_,a_][h_]:>h*prim[rank,a][h]+prim[rank,a-1][h]
+}//algebraAdd["VirasoroMultipletLower"];
 
 
 (* ::Subsection:: *)
