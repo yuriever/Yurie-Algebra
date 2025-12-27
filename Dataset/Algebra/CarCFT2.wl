@@ -77,7 +77,7 @@ Begin["`Private`"];
 
 $algebraList = {
     "ConformalAlgebra","ConformalAlgebraConjugate",
-    "BMS","BMSConjugate",
+    "CALocal","CALocalConjugate",
     "Vacuum","VacuumConjugate",
     "Singlet","SingletConjugate",
     "Multiplet","MultipletUpper","MultipletLower","MultipletConjugate"
@@ -111,8 +111,14 @@ $algebraList//algebraDefine;
 |>//algebraAdd["ConformalAlgebra"];
 
 
+"Relation"->{
+    conjugate[L[n_]]:>L[-n],
+    conjugate[M[n_]]:>M[-n]
+}//algebraAdd["ConformalAlgebraConjugate"];
+
+
 (* ::Subsubsection:: *)
-(*BMS*)
+(*CALocal*)
 
 
 <|
@@ -133,7 +139,7 @@ $algebraList//algebraDefine;
         $centralChargeL->Subscript[c,L],
         $centralChargeM->Subscript[c,M]
     }
-|>//algebraAdd["BMS"];
+|>//algebraAdd["CALocal"];
 
 
 (* ::Subsubsection:: *)
@@ -213,12 +219,6 @@ $algebraList//algebraDefine;
 
 (* ::Subsubsection:: *)
 (*Conjugate*)
-
-
-"Relation"->{
-    conjugate[L[n_]]:>L[-n],
-    conjugate[M[n_]]:>M[-n]
-}//algebraAdd["ConformalAlgebraConjugate"];
 
 
 "Relation"->{
