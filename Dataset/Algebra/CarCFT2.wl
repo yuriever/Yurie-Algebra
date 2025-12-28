@@ -187,9 +187,6 @@ $algebraList//algebraDefine;
         M[0]**prim[h_,ξ_]:>ξ*prim[h,ξ],
         L[1]**prim[h_,ξ_]:>0,
         M[1]**prim[h_,ξ_]:>0
-    },
-    "Printing"->{
-        prim[h_,ξ_]:>Ket[{h,ξ}]
     }
 |>//algebraAdd["Verma"];
 
@@ -215,9 +212,6 @@ $algebraList//algebraDefine;
         L[0]**prim[rank_,a_,h_,ξ_]:>h*prim[rank,a,h,ξ],
         L[1]**prim[rank_,a_,h_,ξ_]:>0,
         M[1]**prim[rank_,a_,h_,ξ_]:>0
-    },
-    "Printing"->{
-        prim[rank_,a_,h_,ξ_]:>Subsuperscript[Ket[{h,ξ}],rank,a]
     }
 |>//algebraAdd["VermaM0","VermaM0Upper","VermaM0Lower"];
 
@@ -249,9 +243,6 @@ $algebraList//algebraDefine;
         M[0]**prim[h_,ξ_]:>ξ*prim[h,ξ],
         L[n_]**prim[h_,ξ_]:>0/;n>=1,
         M[n_]**prim[h_,ξ_]:>0/;n>=1
-    },
-    "Printing"->{
-        prim[h_,ξ_]:>Ket[{h,ξ}]
     }
 |>//algebraAdd["LocalVerma"];
 
@@ -277,9 +268,6 @@ $algebraList//algebraDefine;
         L[0]**prim[rank_,a_,h_,ξ_]:>h*prim[rank,a,h,ξ],
         L[n_]**prim[rank_,a_,h_,ξ_]:>0/;n>=1,
         M[n_]**prim[rank_,a_,h_,ξ_]:>0/;n>=1
-    },
-    "Printing"->{
-        prim[rank_,a_,h_,ξ_]:>Subsuperscript[Ket[{h,ξ}],rank,a]
     }
 |>//algebraAdd["LocalVermaM0","LocalVermaM0Upper","LocalVermaM0Lower"];
 

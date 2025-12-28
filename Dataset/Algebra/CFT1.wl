@@ -159,9 +159,6 @@ $algebraList//algebraDefine;
     "Relation"->{
         L[0]**prim[h_]:>h*prim[h],
         L[1]**prim[h_]:>0
-    },
-    "Printing"->{
-        prim[h_]:>Ket[{h}]
     }
 |>//algebraAdd["Verma"];
 
@@ -184,9 +181,6 @@ $algebraList//algebraDefine;
         prim[rank_,a_,h_]:>0/;a>rank,
         (* Annihilation rule *)
         L[1]**prim[rank_,a_,h_]:>0
-    },
-    "Printing"->{
-        prim[rank_,a_,h_]:>Subsuperscript[Ket[{h}],rank,a]
     }
 |>//algebraAdd["VermaLog","VermaLogUpper","VermaLogLower"];
 
@@ -215,9 +209,6 @@ $algebraList//algebraDefine;
     "Relation"->{
         L[0]**prim[h_]:>h*prim[h],
         L[n_]**prim[h_]:>0/;n>=1
-    },
-    "Printing"->{
-        prim[h_]:>Ket[{h}]
     }
 |>//algebraAdd["LocalVerma"];
 
@@ -240,9 +231,6 @@ $algebraList//algebraDefine;
         prim[rank_,a_,h_]:>0/;a>rank,
         (* Annihilation rule *)
         L[n_]**prim[rank_,a_,h_]:>0/;n>=1
-    },
-    "Printing"->{
-        prim[rank_,a_,h_]:>Subsuperscript[Ket[{h}],rank,a]
     }
 |>//algebraAdd["LocalVermaLog","LocalVermaLogUpper","LocalVermaLogLower"];
 
