@@ -76,15 +76,15 @@ Begin["`Private`"];
 
 
 $algebraList = {
-    "ConformalAlgebra","ConformalAlgebraConjugate",
-    "Singlet","SingletConjugate",
-    "Multiplet","MultipletUpper","MultipletLower","MultipletConjugate",
+    "CA","CAIP",
+    "Verma","VermaIP",
+    "VermaLog","VermaLogUpper","VermaLogLower","VermaLogIP",
     (*  *)
-    "Virasoro","VirasoroConjugate",
-    "VirasoroSinglet","VirasoroSingletConjugate",
-    "VirasoroMultiplet","VirasoroMultipletUpper","VirasoroMultipletLower","VirasoroMultipletConjugate",
+    "LocalCA","LocalCAIP",
+    "LocalVerma","LocalVermaIP",
+    "LocalVermaLog","LocalVermaLogUpper","LocalVermaLogLower","LocalVermaLogIP",
     (*  *)
-    "Vacuum","VacuumConjugate"
+    "Vacuum","VacuumIP"
 };
 
 $algebraList//algebraUnset//Quiet;
@@ -112,17 +112,17 @@ $algebraList//algebraDefine;
         Subsuperscript[op_,n_,power_]**Subscript[op_,n_]:>Subsuperscript[op,n,power+1],
         Subsuperscript[op_,n_,power1_]**Subsuperscript[op_,n_,power2_]:>Subsuperscript[op,n,power1+power2]
     }
-|>//algebraAdd["ConformalAlgebra"];
+|>//algebraAdd["CA"];
 
 
 "Relation"->{
     conjugate[L[n_]]:>L[-n],
     conjugate[Lb[n_]]:>Lb[-n]
-}//algebraAdd["ConformalAlgebraConjugate"];
+}//algebraAdd["CAIP"];
 
 
 (* ::Subsubsection:: *)
-(*Virasoro*)
+(*Conformal algebra: local*)
 
 
 <|
@@ -143,13 +143,13 @@ $algebraList//algebraDefine;
         $centralCharge->c,
         $centralChargeb->OverBar[c]
     }
-|>//algebraAdd["Virasoro"];
+|>//algebraAdd["LocalCA"];
 
 
 "Relation"->{
     conjugate[L[n_]]:>L[-n],
     conjugate[Lb[n_]]:>Lb[-n]
-}//algebraAdd["VirasoroConjugate"];
+}//algebraAdd["LocalCAIP"];
 
 
 (* ::Subsubsection:: *)
@@ -172,17 +172,16 @@ $algebraList//algebraDefine;
     conjugate[vac]**vac:>1,
     conjugate[vac]**L[_]:>0,
     conjugate[vac]**Lb[_]:>0
-}//algebraAdd["VacuumConjugate"];
+}//algebraAdd["VacuumIP"];
 
 
 (* ::Subsubsection:: *)
-(*Singlet*)
+(*Verma*)
 
 
 <|
     "Generator"->{prim},
     "Relation"->{
-        (*annihilation rule*)
         L[0]**prim[h_,hb_]:>h*prim[h,hb],
         Lb[0]**prim[h_,hb_]:>hb*prim[h,hb],
         L[1]**prim[h_,hb_]:>0,
@@ -191,43 +190,18 @@ $algebraList//algebraDefine;
     "Printing"->{
         prim[h_,hb_]:>Ket[{h,hb}]
     }
-|>//algebraAdd["Singlet"];
+|>//algebraAdd["Verma"];
 
 
 "Relation"->{
     conjugate[prim[h_,hb_]]**prim[h_,hb_]:>1,
     conjugate[prim[h_,hb_]]**L[-1]:>0,
     conjugate[prim[h_,hb_]]**Lb[-1]:>0
-}//algebraAdd["SingletConjugate"];
+}//algebraAdd["VermaIP"];
 
 
 (* ::Subsubsection:: *)
-(*Virasoro singlet*)
-
-
-<|
-    "Generator"->{prim},
-    "Relation"->{
-        L[0]**prim[h_,hb_]:>h*prim[h,hb],
-        Lb[0]**prim[h_,hb_]:>hb*prim[h,hb],
-        L[n_]**prim[h_,hb_]:>0/;n>=1,
-        Lb[n_]**prim[h_,hb_]:>0/;n>=1
-    },
-    "Printing"->{
-        prim[h_,hb_]:>Ket[{h,hb}]
-    }
-|>//algebraAdd["VirasoroSinglet"];
-
-
-"Relation"->{
-    conjugate[prim[h_,hb_]]**prim[h_,hb_]:>1,
-    conjugate[prim[h_,hb_]]**L[n_]:>0/;n<=-1,
-    conjugate[prim[h_,hb_]]**Lb[n_]:>0/;n<=-1
-}//algebraAdd["VirasoroSingletConjugate"];
-
-
-(* ::Subsubsection:: *)
-(*Multiplet*)
+(*Verma: log*)
 
 
 <|
@@ -243,33 +217,54 @@ $algebraList//algebraDefine;
     "Printing"->{
         prim[rank_,a_][h_,hb_]:>Subsuperscript[Ket[{h,hb}],rank,a]
     }
-|>//algebraAdd["Multiplet","MultipletUpper","MultipletLower"];
+|>//algebraAdd["VermaLog","VermaLogUpper","VermaLogLower"];
 
 
 "Relation"->{
     conjugate[prim[rank_,a_][h_,hb_]]**prim[rank_,b_][h_,hb_]:>KroneckerDelta[a+b,rank+1],
     conjugate[prim[rank_,a_][h_,hb_]]**L[-1]:>0,
     conjugate[prim[rank_,a_][h_,hb_]]**Lb[-1]:>0
-}//algebraAdd["MultipletConjugate"];
-
-
-(* ::Text:: *)
-(*action of L[0]*)
+}//algebraAdd["VermaLogIP"];
 
 
 "Relation"->{
     L[0]**prim[rank_,a_][h_,hb_]:>h*prim[rank,a][h,hb]+1/2*prim[rank,a+1][h,hb],
     Lb[0]**prim[rank_,a_][h_,hb_]:>hb*prim[rank,a][h,hb]+1/2*prim[rank,a+1][h,hb]
-}//algebraAdd["Multiplet","MultipletUpper"];
+}//algebraAdd["VermaLog","VermaLogUpper"];
 
 "Relation"->{
     L[0]**prim[rank_,a_][h_,hb_]:>h*prim[rank,a][h,hb]+1/2*prim[rank,a-1][h,hb],
     Lb[0]**prim[rank_,a_][h_,hb_]:>hb*prim[rank,a][h,hb]+1/2*prim[rank,a-1][h,hb]
-}//algebraAdd["MultipletLower"];
+}//algebraAdd["VermaLogLower"];
 
 
 (* ::Subsubsection:: *)
-(*Virasoro multiplet*)
+(*Verma: local*)
+
+
+<|
+    "Generator"->{prim},
+    "Relation"->{
+        L[0]**prim[h_,hb_]:>h*prim[h,hb],
+        Lb[0]**prim[h_,hb_]:>hb*prim[h,hb],
+        L[n_]**prim[h_,hb_]:>0/;n>=1,
+        Lb[n_]**prim[h_,hb_]:>0/;n>=1
+    },
+    "Printing"->{
+        prim[h_,hb_]:>Ket[{h,hb}]
+    }
+|>//algebraAdd["LocalVerma"];
+
+
+"Relation"->{
+    conjugate[prim[h_,hb_]]**prim[h_,hb_]:>1,
+    conjugate[prim[h_,hb_]]**L[n_]:>0/;n<=-1,
+    conjugate[prim[h_,hb_]]**Lb[n_]:>0/;n<=-1
+}//algebraAdd["LocalVermaIP"];
+
+
+(* ::Subsubsection:: *)
+(*Verma: local, log*)
 
 
 <|
@@ -285,29 +280,25 @@ $algebraList//algebraDefine;
     "Printing"->{
         prim[rank_,a_][h_,hb_]:>Subsuperscript[Ket[{h,hb}],rank,a]
     }
-|>//algebraAdd["VirasoroMultiplet","VirasoroMultipletUpper","VirasoroMultipletLower"];
+|>//algebraAdd["LocalVermaLog","LocalVermaLogUpper","LocalVermaLogLower"];
 
 
 "Relation"->{
     conjugate[prim[rank_,a_][h_,hb_]]**prim[rank_,b_][h_,hb_]:>KroneckerDelta[a+b,rank+1],
     conjugate[prim[rank_,a_][h_,hb_]]**L[n_]:>0/;n<=-1,
     conjugate[prim[rank_,a_][h_,hb_]]**Lb[n_]:>0/;n<=-1
-}//algebraAdd["VirasoroMultipletConjugate"];
-
-
-(* ::Text:: *)
-(*action of L[0]*)
+}//algebraAdd["LocalVermaLogIP"];
 
 
 "Relation"->{
     L[0]**prim[rank_,a_][h_,hb_]:>h*prim[rank,a][h,hb]+1/2*prim[rank,a+1][h,hb],
     Lb[0]**prim[rank_,a_][h_,hb_]:>hb*prim[rank,a][h,hb]+1/2*prim[rank,a+1][h,hb]
-}//algebraAdd["VirasoroMultiplet","VirasoroMultipletUpper"];
+}//algebraAdd["LocalVermaLog","LocalVermaLogUpper"];
 
 "Relation"->{
     L[0]**prim[rank_,a_][h_,hb_]:>h*prim[rank,a][h,hb]+1/2*prim[rank,a-1][h,hb],
     Lb[0]**prim[rank_,a_][h_,hb_]:>hb*prim[rank,a][h,hb]+1/2*prim[rank,a-1][h,hb]
-}//algebraAdd["VirasoroMultipletLower"];
+}//algebraAdd["LocalVermaLogLower"];
 
 
 (* ::Subsection:: *)
