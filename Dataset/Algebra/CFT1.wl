@@ -275,14 +275,14 @@ Lmonomial[n__] :=
     Map[L,NonCommutativeMultiply[n]];
 
 
-Lpower[k_,n_Integer] :=
+Lpower[k_,n_Integer?NonNegative] :=
     operatorPower[L[k],n];
 
 
-desc[h_,n_Integer] :=
+desc[h_,n_Integer?NonNegative] :=
     operatorPower[L[-1],n]**prim[h];
 
-desc[rank_,a_,h_,n_Integer] :=
+desc[rank_,a_,h_,n_Integer?NonNegative] :=
     operatorPower[L[-1],n]**prim[rank,a,h];
 
 

@@ -326,18 +326,18 @@ Mmonomial[n__] :=
     Map[M,NonCommutativeMultiply[n]];
 
 
-Lpower[k_,n_Integer] :=
+Lpower[k_,n_Integer?NonNegative] :=
     operatorPower[L[k],n];
 
 
-Mpower[k_,n_Integer] :=
+Mpower[k_,n_Integer?NonNegative] :=
     operatorPower[M[k],n];
 
 
-desc[h_,ξ_,n_Integer,m_Integer] :=
+desc[h_,ξ_,n_Integer?NonNegative,m_Integer?NonNegative] :=
     operatorPower[L[-1],n]**operatorPower[M[-1],m]**prim[h,ξ];
 
-desc[rank_,a_,h_,ξ_,n_Integer,m_Integer] :=
+desc[rank_,a_,h_,ξ_,n_Integer?NonNegative,m_Integer?NonNegative] :=
     operatorPower[L[-1],n]**operatorPower[M[-1],m]**prim[rank,a,h,ξ];
 
 
