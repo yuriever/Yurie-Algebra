@@ -28,7 +28,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-    algebraDefault[{"ConformalAlgebra", "Singlet", "Conjugate", "ConformalAlgebraConjugate", "SingletConjugate"}]
+    algebraDefault[{"CA", "Verma", "Conjugate", "CAIP", "VermaIP"}]
     ,
     Null
     ,

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[      8377,        260]
-NotebookOptionsPosition[      6290,        216]
-NotebookOutlinePosition[      6738,        234]
-CellTagsIndexPosition[      6695,        231]
+NotebookDataLength[      8288,        259]
+NotebookOptionsPosition[      6201,        215]
+NotebookOutlinePosition[      6649,        233]
+CellTagsIndexPosition[      6606,        230]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -21,12 +21,12 @@ Notebook[{
 Cell[BoxData[
  RowBox[{"ClearAll", "[", "\"\<`*\>\"", "]"}]], "Code",
  CellLabel->
-  "In[130]:=",ExpressionUUID->"bd86d24e-9029-442a-98c7-7899311658f1"],
+  "In[252]:=",ExpressionUUID->"bd86d24e-9029-442a-98c7-7899311658f1"],
 
 Cell[BoxData[
  RowBox[{"<<", "Yurie`Algebra`CFT1`"}]], "Code",
  CellLabel->
-  "In[131]:=",ExpressionUUID->"b71d718c-96bd-4c41-b4d1-2f247e30c08f"],
+  "In[253]:=",ExpressionUUID->"b71d718c-96bd-4c41-b4d1-2f247e30c08f"],
 
 Cell[CellGroupData[{
 
@@ -37,11 +37,10 @@ Cell["Gramian of Verma module of sl(2)", "Text",ExpressionUUID->"56cdb518-1b23-4
 Cell[BoxData[
  RowBox[{"algebraDefault", "@", 
   RowBox[{"{", 
-   RowBox[{"\"\<ConformalAlgebra\>\"", ",", "\"\<Singlet\>\"", 
-    ",", "\"\<Conjugate\>\"", ",", "\"\<ConformalAlgebraConjugate\>\"", 
-    ",", "\"\<SingletConjugate\>\""}], "}"}]}]], "Code",
+   RowBox[{"\"\<CA\>\"", ",", "\"\<Verma\>\"", ",", "\"\<Conjugate\>\"", 
+    ",", "\"\<CAIP\>\"", ",", "\"\<VermaIP\>\""}], "}"}]}]], "Code",
  CellLabel->
-  "In[132]:=",ExpressionUUID->"66a906f1-a881-4817-9a52-5c82958aa1f9"],
+  "In[254]:=",ExpressionUUID->"66a906f1-a881-4817-9a52-5c82958aa1f9"],
 
 Cell[CellGroupData[{
 
@@ -64,7 +63,7 @@ Cell[BoxData[
        RowBox[{"Range", "[", "4", "]"}]}], "}"}]}], "]"}], "//", "algS"}], "//",
    "Factor"}]], "Code",
  CellLabel->
-  "In[133]:=",ExpressionUUID->"6de1e6e0-ce4b-4448-a78e-580b2acf18f7"],
+  "In[255]:=",ExpressionUUID->"6de1e6e0-ce4b-4448-a78e-580b2acf18f7"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -99,7 +98,7 @@ Cell[BoxData[
        RowBox[{"3", "+", 
         RowBox[{"2", " ", "h"}]}], ")"}]}]}], "}"}]}], "}"}]], "Output",
  CellLabel->
-  "Out[133]=",ExpressionUUID->"0bddc106-c028-435f-8b1a-e08692c366f6"]
+  "Out[255]=",ExpressionUUID->"225cf0a1-9575-460b-87fe-d9b9e4b9b4d7"]
 }, Open  ]],
 
 Cell["Gramian of Verma module of Virasoro", "Text",ExpressionUUID->"c4700a56-3374-4c4b-a427-0c51a7097025"],
@@ -130,16 +129,16 @@ Cell[BoxData[{
       RowBox[{"ket", ",", 
        RowBox[{"Llist", "[", "n", "]"}]}], "}"}]}], "]"}]}], ";"}]}], "Code",
  CellLabel->
-  "In[134]:=",ExpressionUUID->"843434b7-0856-4ec7-83a1-ac78390893e8"],
+  "In[256]:=",ExpressionUUID->"843434b7-0856-4ec7-83a1-ac78390893e8"],
 
 Cell[BoxData[
  RowBox[{"algebraDefault", "@", 
   RowBox[{"{", 
-   RowBox[{"\"\<Virasoro\>\"", ",", "\"\<Vacuum\>\"", ",", "\"\<Singlet\>\"", 
-    ",", "\"\<Conjugate\>\"", ",", "\"\<VirasoroConjugate\>\"", 
-    ",", "\"\<SingletConjugate\>\""}], "}"}]}]], "Code",
+   RowBox[{"\"\<LocalCA\>\"", ",", "\"\<LocalVerma\>\"", 
+    ",", "\"\<Conjugate\>\"", ",", "\"\<CAIP\>\"", 
+    ",", "\"\<LocalVermaIP\>\""}], "}"}]}]], "Code",
  CellLabel->
-  "In[136]:=",ExpressionUUID->"26204563-bc72-459a-9512-842b7433ba06"],
+  "In[258]:=",ExpressionUUID->"26204563-bc72-459a-9512-842b7433ba06"],
 
 Cell[CellGroupData[{
 
@@ -149,14 +148,14 @@ Cell[BoxData[
    RowBox[{"1", ",", 
     RowBox[{"prim", "[", "h", "]"}]}], "]"}], "//", "algSP"}]], "Code",
  CellLabel->
-  "In[137]:=",ExpressionUUID->"2aadf4af-3303-4792-b11e-51f2314d8c0b"],
+  "In[259]:=",ExpressionUUID->"2aadf4af-3303-4792-b11e-51f2314d8c0b"],
 
 Cell[BoxData[
  RowBox[{"{", 
   RowBox[{"{", 
    RowBox[{"2", " ", "h"}], "}"}], "}"}]], "Output",
  CellLabel->
-  "Out[137]=",ExpressionUUID->"a1f411e2-1ae6-4793-87b8-f08defd0d9b0"]
+  "Out[259]=",ExpressionUUID->"32d5663c-8ec4-4909-9dec-78a2f776054b"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -167,7 +166,7 @@ Cell[BoxData[
    RowBox[{"2", ",", 
     RowBox[{"prim", "[", "h", "]"}]}], "]"}], "//", "algSP"}]], "Code",
  CellLabel->
-  "In[138]:=",ExpressionUUID->"ca7588a5-12ee-4566-a991-9cd497f4db36"],
+  "In[260]:=",ExpressionUUID->"ca7588a5-12ee-4566-a991-9cd497f4db36"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -188,7 +187,7 @@ Cell[BoxData[
        RowBox[{"1", "+", 
         RowBox[{"2", " ", "h"}]}], ")"}]}]}], "}"}]}], "}"}]], "Output",
  CellLabel->
-  "Out[138]=",ExpressionUUID->"e3b75176-c340-4064-90b3-e39743a36394"]
+  "Out[260]=",ExpressionUUID->"6fa26f1b-a0bc-4dcb-abd0-5db00a110075"]
 }, Open  ]]
 }, Open  ]],
 
@@ -216,7 +215,7 @@ Cell[BoxData[
 },
 Editable->True,
 WindowSize->{1280, 1387},
-WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 TaggingRules-><|"TryRealOnly" -> False|>,
 FrontEndVersion->"14.3 for Mac OS X ARM (64-bit) (July 8, 2025)",
 StyleDefinitions->"Yurie.nb",
@@ -238,28 +237,28 @@ Cell[709, 25, 145, 3, 65, "Code",ExpressionUUID->"b71d718c-96bd-4c41-b4d1-2f247e
 Cell[CellGroupData[{
 Cell[879, 32, 81, 0, 66, "Subsection",ExpressionUUID->"3cd2dd95-15c3-4ae6-9236-e05d38ad42e7"],
 Cell[963, 34, 103, 0, 60, "Text",ExpressionUUID->"56cdb518-1b23-49a5-89c9-0f559f1bf5a7"],
-Cell[1069, 36, 339, 7, 65, "Code",ExpressionUUID->"66a906f1-a881-4817-9a52-5c82958aa1f9"],
+Cell[1069, 36, 288, 6, 65, "Code",ExpressionUUID->"66a906f1-a881-4817-9a52-5c82958aa1f9"],
 Cell[CellGroupData[{
-Cell[1433, 47, 614, 19, 65, "Code",ExpressionUUID->"6de1e6e0-ce4b-4448-a78e-580b2acf18f7"],
-Cell[2050, 68, 1068, 33, 41, "Output",ExpressionUUID->"0bddc106-c028-435f-8b1a-e08692c366f6"]
+Cell[1382, 46, 614, 19, 65, "Code",ExpressionUUID->"6de1e6e0-ce4b-4448-a78e-580b2acf18f7"],
+Cell[1999, 67, 1068, 33, 41, "Output",ExpressionUUID->"225cf0a1-9575-460b-87fe-d9b9e4b9b4d7"]
 }, Open  ]],
-Cell[3133, 104, 106, 0, 60, "Text",ExpressionUUID->"c4700a56-3374-4c4b-a427-0c51a7097025"],
-Cell[3242, 106, 863, 26, 112, "Code",ExpressionUUID->"843434b7-0856-4ec7-83a1-ac78390893e8"],
-Cell[4108, 134, 346, 7, 65, "Code",ExpressionUUID->"26204563-bc72-459a-9512-842b7433ba06"],
+Cell[3082, 103, 106, 0, 60, "Text",ExpressionUUID->"c4700a56-3374-4c4b-a427-0c51a7097025"],
+Cell[3191, 105, 863, 26, 112, "Code",ExpressionUUID->"843434b7-0856-4ec7-83a1-ac78390893e8"],
+Cell[4057, 133, 308, 7, 65, "Code",ExpressionUUID->"26204563-bc72-459a-9512-842b7433ba06"],
 Cell[CellGroupData[{
-Cell[4479, 145, 227, 6, 65, "Code",ExpressionUUID->"2aadf4af-3303-4792-b11e-51f2314d8c0b"],
-Cell[4709, 153, 180, 5, 41, "Output",ExpressionUUID->"a1f411e2-1ae6-4793-87b8-f08defd0d9b0"]
+Cell[4390, 144, 227, 6, 65, "Code",ExpressionUUID->"2aadf4af-3303-4792-b11e-51f2314d8c0b"],
+Cell[4620, 152, 180, 5, 41, "Output",ExpressionUUID->"32d5663c-8ec4-4909-9dec-78a2f776054b"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4926, 163, 227, 6, 65, "Code",ExpressionUUID->"ca7588a5-12ee-4566-a991-9cd497f4db36"],
-Cell[5156, 171, 561, 19, 55, "Output",ExpressionUUID->"e3b75176-c340-4064-90b3-e39743a36394"]
+Cell[4837, 162, 227, 6, 65, "Code",ExpressionUUID->"ca7588a5-12ee-4566-a991-9cd497f4db36"],
+Cell[5067, 170, 561, 19, 55, "Output",ExpressionUUID->"6fa26f1b-a0bc-4dcb-abd0-5db00a110075"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5766, 196, 84, 0, 66, "Subsection",ExpressionUUID->"90849790-7f06-4ee2-b901-85ff4e934f79"],
+Cell[5677, 195, 84, 0, 66, "Subsection",ExpressionUUID->"90849790-7f06-4ee2-b901-85ff4e934f79"],
 Cell[CellGroupData[{
-Cell[5875, 200, 256, 7, 160, "Code",ExpressionUUID->"7e5751e9-9ef5-40a7-80c2-77c8608e3c9d"],
-Cell[6134, 209, 128, 3, 41, "Output",ExpressionUUID->"e2f422dc-23e9-43aa-a7e5-914f8dde0e9a"]
+Cell[5786, 199, 256, 7, 160, "Code",ExpressionUUID->"7e5751e9-9ef5-40a7-80c2-77c8608e3c9d"],
+Cell[6045, 208, 128, 3, 41, "Output",ExpressionUUID->"e2f422dc-23e9-43aa-a7e5-914f8dde0e9a"]
 }, Open  ]]
 }, Open  ]]
 }

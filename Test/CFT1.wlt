@@ -28,7 +28,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-    algebraDefault[{"ConformalAlgebra", "Singlet", "Conjugate", "ConformalAlgebraConjugate", "SingletConjugate"}]
+    algebraDefault[{"CA", "Verma", "Conjugate", "CAIP", "VermaIP"}]
     ,
     Null
     ,
@@ -53,7 +53,7 @@ VerificationTest[
 ]
 
 VerificationTest[
-    algebraDefault[{"Virasoro", "Vacuum", "Singlet", "Conjugate", "VirasoroConjugate", "SingletConjugate"}]
+    algebraDefault[{"LocalCA", "LocalVerma", "Conjugate", "CAIP", "LocalVermaIP"}]
     ,
     Null
     ,
