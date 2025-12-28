@@ -257,7 +257,7 @@ $algebraList//algebraDefine;
 $CFT = <|
     "Index"->{-1,0,1},
     "L"->{L[-1],L[0],L[1]},
-    "Casimir"->(L[0]**L[0]-L[0]-L[-1]**L[1])
+    "Casimir"->L[0]**L[0]-L[0]-L[-1]**L[1]
 |>;
 
 
