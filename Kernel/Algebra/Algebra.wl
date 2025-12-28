@@ -229,13 +229,13 @@ algebraShowUnit["Generator"][data_] :=
     {
         "Generator",
         Row[data,Spacer[4]]
-    }//hideEmptyPlanet[data];
+    }//hideEmptyPlanet[data]//algebraPrint;
 
 algebraShowUnit[planet:"Relation"|"Printing"|"Rank"|"Parity"][data_] :=
     {
         planet,
         data//Map[hideContextMark,#,{1}]&//TableForm
-    }//hideEmptyPlanet[data];
+    }//hideEmptyPlanet[data]//algebraPrint;
 
 
 hideEmptyPlanet[data_][unit_] :=
