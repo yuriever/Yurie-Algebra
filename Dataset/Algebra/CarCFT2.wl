@@ -76,11 +76,16 @@ Begin["`Private`"];
 
 
 $algebraList = {
-    "ConformalAlgebra","ConformalAlgebraConjugate",
-    "CALocal","CALocalConjugate",
-    "Vacuum","VacuumConjugate",
-    "Singlet","SingletConjugate",
-    "Multiplet","MultipletUpper","MultipletLower","MultipletConjugate"
+    "CA","CAIP",
+    (*  *)
+    "Verma","VermaIP",
+    "VermaM0","VermaM0Upper","VermaM0Lower","VermaM0IP",
+    (*  *)
+    "LocalCA","LocalCAIP",
+    "LocalVerma","LocalVermaIP",
+    "LocalVermaM0","LocalVermaM0Upper","LocalVermaM0Lower","LocalVermaM0IP",
+    (*  *)
+    "Vacuum","VacuumIP"
 };
 
 $algebraList//algebraUnset//Quiet;
@@ -108,17 +113,17 @@ $algebraList//algebraDefine;
         Subsuperscript[op_,n_,power_]**Subscript[op_,n_]:>Subsuperscript[op,n,power+1],
         Subsuperscript[op_,n_,power1_]**Subsuperscript[op_,n_,power2_]:>Subsuperscript[op,n,power1+power2]
     }
-|>//algebraAdd["ConformalAlgebra"];
+|>//algebraAdd["CA"];
 
 
 "Relation"->{
     conjugate[L[n_]]:>L[-n],
     conjugate[M[n_]]:>M[-n]
-}//algebraAdd["ConformalAlgebraConjugate"];
+}//algebraAdd["CAIP"];
 
 
 (* ::Subsubsection:: *)
-(*CALocal*)
+(*Conformal algebra: local*)
 
 
 <|
@@ -139,7 +144,13 @@ $algebraList//algebraDefine;
         $centralChargeL->Subscript[c,L],
         $centralChargeM->Subscript[c,M]
     }
-|>//algebraAdd["CALocal"];
+|>//algebraAdd["LocalCA"];
+
+
+"Relation"->{
+    conjugate[L[n_]]:>L[-n],
+    conjugate[M[n_]]:>M[-n]
+}//algebraAdd["LocalCAIP"];
 
 
 (* ::Subsubsection:: *)
@@ -150,9 +161,7 @@ $algebraList//algebraDefine;
     "Generator"->{vac},
     "Relation"->{
         L[_]**vac:>0,
-        M[_]**vac:>0,
-        vac**L[_]:>0,
-        vac**M[_]:>0
+        M[_]**vac:>0
     },
     "Printing"->{
         vac:>Ket[{0}]
@@ -160,83 +169,135 @@ $algebraList//algebraDefine;
 |>//algebraAdd["Vacuum"];
 
 
+"Relation"->{
+    conjugate[vac]**vac:>1,
+    conjugate[vac]**L[_]:>0,
+    conjugate[vac]**M[_]:>0
+}//algebraAdd["VacuumIP"];
+
+
 (* ::Subsubsection:: *)
-(*Singlet*)
+(*Verma*)
 
 
 <|
     "Generator"->{prim},
     "Relation"->{
-        (*annihilation rule*)
-        L[n_]**prim[h_,ξ_]:>0/;n>=1,
-        M[n_]**prim[h_,ξ_]:>0/;n>=1,
         L[0]**prim[h_,ξ_]:>h*prim[h,ξ],
         M[0]**prim[h_,ξ_]:>ξ*prim[h,ξ],
-        prim[h_,ξ_]**L[n_]:>0/;n<=-1,
-        prim[h_,ξ_]**M[n_]:>0/;n<=-1
+        L[1]**prim[h_,ξ_]:>0,
+        M[1]**prim[h_,ξ_]:>0
     },
     "Printing"->{
         prim[h_,ξ_]:>Ket[{h,ξ}]
     }
-|>//algebraAdd["Singlet"];
+|>//algebraAdd["Verma"];
+
+
+"Relation"->{
+    conjugate[prim[h_,ξ_]]**prim[h_,ξ_]:>1,
+    conjugate[prim[h_,ξ_]]**L[-1]:>0,
+    conjugate[prim[h_,ξ_]]**M[-1]:>0
+}//algebraAdd["VermaIP"];
 
 
 (* ::Subsubsection:: *)
-(*Multiplet*)
+(*Verma: ξ-multiplet*)
 
 
 <|
     "Generator"->{prim},
     "Relation"->{
-        (*boundary conditions*)
+        (* Boundary condition *)
         prim[rank_,a_][h_,ξ_]:>0/;a<=0,
         prim[rank_,a_][h_,ξ_]:>0/;a>rank,
-        (*annihilation rule*)
-        L[n_]**prim[rank_,a_][h_,ξ_]:>0/;n>=1,
-        prim[rank_,a_][h_,ξ_]**L[n_]:>0/;n<=-1,
+        (* Annihilation rule *)
         L[0]**prim[rank_,a_][h_,ξ_]:>h*prim[rank,a][h,ξ],
-        M[n_]**prim[rank_,a_][h_,ξ_]:>0/;n>=1,
-        prim[rank_,a_][h_,ξ_]**M[n_]:>0/;n<=-1
+        L[1]**prim[rank_,a_][h_,ξ_]:>0,
+        M[1]**prim[rank_,a_][h_,ξ_]:>0
     },
     "Printing"->{
         prim[rank_,a_][h_,ξ_]:>Subsuperscript[Ket[{h,ξ}],rank,a]
     }
-|>//algebraAdd["Multiplet","MultipletUpper","MultipletLower"];
+|>//algebraAdd["VermaM0","VermaM0Upper","VermaM0Lower"];
 
 
-(* ::Text:: *)
-(*action of M[0]*)
+"Relation"->{
+    conjugate[prim[rank_,a_][h_,ξ_]]**prim[rank_,b_][h_,ξ_]:>KroneckerDelta[a+b,rank+1],
+    conjugate[prim[rank_,a_][h_,ξ_]]**L[-1]:>0,
+    conjugate[prim[rank_,a_][h_,ξ_]]**M[-1]:>0
+}//algebraAdd["VermaM0IP"];
 
 
 "Relation"->{
     M[0]**prim[rank_,a_][h_,ξ_]:>ξ*prim[rank,a][h,ξ]+prim[rank,a+1][h,ξ]
-}//algebraAdd["Multiplet","MultipletUpper"];
+}//algebraAdd["VermaM0","VermaM0Upper"];
 
 "Relation"->{
     M[0]**prim[rank_,a_][h_,ξ_]:>ξ*prim[rank,a][h,ξ]+prim[rank,a-1][h,ξ]
-}//algebraAdd["MultipletLower"];
+}//algebraAdd["VermaM0Lower"];
 
 
 (* ::Subsubsection:: *)
-(*Conjugate*)
+(*Verma: local*)
+
+
+<|
+    "Generator"->{prim},
+    "Relation"->{
+        L[0]**prim[h_,ξ_]:>h*prim[h,ξ],
+        M[0]**prim[h_,ξ_]:>ξ*prim[h,ξ],
+        L[n_]**prim[h_,ξ_]:>0/;n>=1,
+        M[n_]**prim[h_,ξ_]:>0/;n>=1
+    },
+    "Printing"->{
+        prim[h_,ξ_]:>Ket[{h,ξ}]
+    }
+|>//algebraAdd["LocalVerma"];
 
 
 "Relation"->{
-    vac**vac:>1,
-    conjugate[vac]:>vac
-}//algebraAdd["VacuumConjugate"];
+    conjugate[prim[h_,ξ_]]**prim[h_,ξ_]:>1,
+    conjugate[prim[h_,ξ_]]**L[n_]:>0/;n<=-1,
+    conjugate[prim[h_,ξ_]]**M[n_]:>0/;n<=-1
+}//algebraAdd["LocalVermaIP"];
+
+
+(* ::Subsubsection:: *)
+(*Verma: local, ξ-multiplet*)
+
+
+<|
+    "Generator"->{prim},
+    "Relation"->{
+        (* Boundary condition *)
+        prim[rank_,a_][h_,ξ_]:>0/;a<=0,
+        prim[rank_,a_][h_,ξ_]:>0/;a>rank,
+        (* Annihilation rule *)
+        L[0]**prim[rank_,a_][h_,ξ_]:>h*prim[rank,a][h,ξ],
+        L[n_]**prim[rank_,a_][h_,ξ_]:>0/;n>=1,
+        M[n_]**prim[rank_,a_][h_,ξ_]:>0/;n>=1
+    },
+    "Printing"->{
+        prim[rank_,a_][h_,ξ_]:>Subsuperscript[Ket[{h,ξ}],rank,a]
+    }
+|>//algebraAdd["LocalVermaM0","LocalVermaM0Upper","LocalVermaM0Lower"];
 
 
 "Relation"->{
-    prim[h_,ξ_]**prim[h_,ξ_]:>1,
-    conjugate[prim[h_,ξ_]]:>prim[h,ξ]
-}//algebraAdd["SingletConjugate"];
+    conjugate[prim[rank_,a_][h_,ξ_]]**prim[rank_,b_][h_,ξ_]:>KroneckerDelta[a+b,rank+1],
+    conjugate[prim[rank_,a_][h_,ξ_]]**L[n_]:>0/;n<=-1,
+    conjugate[prim[rank_,a_][h_,ξ_]]**M[n_]:>0/;n<=-1
+}//algebraAdd["LocalVermaM0IP"];
 
 
 "Relation"->{
-    prim[rank_,a_][h_,ξ_]**prim[rank_,b_][h_,ξ_]:>KroneckerDelta[a+b,rank+1],
-    conjugate[prim[rank_,a_][h_,ξ_]]:>prim[rank,a][h,ξ]
-}//algebraAdd["MultipletConjugate"];
+    M[0]**prim[rank_,a_][h_,ξ_]:>ξ*prim[rank,a][h,ξ]+prim[rank,a+1][h,ξ]
+}//algebraAdd["LocalVermaM0","LocalVermaM0Upper"];
+
+"Relation"->{
+    M[0]**prim[rank_,a_][h_,ξ_]:>ξ*prim[rank,a][h,ξ]+prim[rank,a-1][h,ξ]
+}//algebraAdd["LocalVermaM0Lower"];
 
 
 (* ::Subsection:: *)
