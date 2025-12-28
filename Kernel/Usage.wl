@@ -177,6 +177,9 @@ operatorPower::usage =
 operatorExp::usage =
     "exponential of the operator truncated at the given order.";
 
+operatorPolynomial::usage =
+    "polynomial of the operator.";
+
 operatorSeparate::usage =
     "separate scalars and operators in the given linear expression.";
 

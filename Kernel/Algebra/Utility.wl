@@ -49,6 +49,9 @@ operatorPower::usage =
 operatorExp::usage =
     "exponential of the operator truncated at the given order.";
 
+operatorPolynomial::usage =
+    "polynomial of the operator.";
+
 
 (* ::Subsection:: *)
 (*Utility*)
@@ -237,6 +240,20 @@ operatorExp[op_,1,t_:1] :=
 operatorExp[op_,max_Integer?Positive,t_:1] :=
     Module[{n},
         id+op*t+Sum[NonCommutativeMultiply@@ConstantArray[op,n]*t^n/n!,{n,2,max}]
+    ];
+
+
+operatorPolynomial[op_,var_,poly_] :=
+    With[{
+            poly1 = Expand[poly,var]
+        },
+        {
+            const = Coefficient[poly1,var,0]
+        },
+        {
+            rest = poly1-const
+        },
+        const*id+ReplaceAll[rest,Power[var,n_.]:>operatorPower[op,n]]/;PolynomialExpressionQ[poly1,var]
     ];
 
 

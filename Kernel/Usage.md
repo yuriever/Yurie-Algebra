@@ -108,6 +108,8 @@
 
 * `#!wl operatorExp` - exponential of the operator truncated at the given order.
 
+* `#!wl operatorPolynomial` - polynomial of the operator.
+
 * `#!wl operatorSeparate` - separate scalars and operators in the given linear expression.
 
 * `#!wl scalarSimplify` - simplify the scalar part of the expression.
