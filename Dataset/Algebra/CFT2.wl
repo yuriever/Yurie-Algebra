@@ -208,33 +208,33 @@ $algebraList//algebraDefine;
     "Generator"->{prim},
     "Relation"->{
         (* Boundary condition *)
-        prim[rank_,a_][h_,hb_]:>0/;a<=0,
-        prim[rank_,a_][h_,hb_]:>0/;a>rank,
+        prim[rank_,a_,h_,hb_]:>0/;a<=0,
+        prim[rank_,a_,h_,hb_]:>0/;a>rank,
         (* Annihilation rule *)
-        L[1]**prim[rank_,a_][h_,hb_]:>0,
-        Lb[1]**prim[rank_,a_][h_,hb_]:>0
+        L[1]**prim[rank_,a_,h_,hb_]:>0,
+        Lb[1]**prim[rank_,a_,h_,hb_]:>0
     },
     "Printing"->{
-        prim[rank_,a_][h_,hb_]:>Subsuperscript[Ket[{h,hb}],rank,a]
+        prim[rank_,a_,h_,hb_]:>Subsuperscript[Ket[{h,hb}],rank,a]
     }
 |>//algebraAdd["VermaLog","VermaLogUpper","VermaLogLower"];
 
 
 "Relation"->{
-    conjugate[prim[rank_,a_][h_,hb_]]**prim[rank_,b_][h_,hb_]:>KroneckerDelta[a+b,rank+1],
-    conjugate[prim[rank_,a_][h_,hb_]]**L[-1]:>0,
-    conjugate[prim[rank_,a_][h_,hb_]]**Lb[-1]:>0
+    conjugate[prim[rank_,a_,h_,hb_]]**prim[rank_,b_,h_,hb_]:>KroneckerDelta[a+b,rank+1],
+    conjugate[prim[rank_,a_,h_,hb_]]**L[-1]:>0,
+    conjugate[prim[rank_,a_,h_,hb_]]**Lb[-1]:>0
 }//algebraAdd["VermaLogIP"];
 
 
 "Relation"->{
-    L[0]**prim[rank_,a_][h_,hb_]:>h*prim[rank,a][h,hb]+1/2*prim[rank,a+1][h,hb],
-    Lb[0]**prim[rank_,a_][h_,hb_]:>hb*prim[rank,a][h,hb]+1/2*prim[rank,a+1][h,hb]
+    L[0]**prim[rank_,a_,h_,hb_]:>h*prim[rank,a,h,hb]+1/2*prim[rank,a+1,h,hb],
+    Lb[0]**prim[rank_,a_,h_,hb_]:>hb*prim[rank,a,h,hb]+1/2*prim[rank,a+1,h,hb]
 }//algebraAdd["VermaLog","VermaLogUpper"];
 
 "Relation"->{
-    L[0]**prim[rank_,a_][h_,hb_]:>h*prim[rank,a][h,hb]+1/2*prim[rank,a-1][h,hb],
-    Lb[0]**prim[rank_,a_][h_,hb_]:>hb*prim[rank,a][h,hb]+1/2*prim[rank,a-1][h,hb]
+    L[0]**prim[rank_,a_,h_,hb_]:>h*prim[rank,a,h,hb]+1/2*prim[rank,a-1,h,hb],
+    Lb[0]**prim[rank_,a_,h_,hb_]:>hb*prim[rank,a,h,hb]+1/2*prim[rank,a-1,h,hb]
 }//algebraAdd["VermaLogLower"];
 
 
@@ -271,33 +271,33 @@ $algebraList//algebraDefine;
     "Generator"->{prim},
     "Relation"->{
         (* Boundary condition *)
-        prim[rank_,a_][h_,hb_]:>0/;a<=0,
-        prim[rank_,a_][h_,hb_]:>0/;a>rank,
+        prim[rank_,a_,h_,hb_]:>0/;a<=0,
+        prim[rank_,a_,h_,hb_]:>0/;a>rank,
         (* Annihilation rule *)
-        L[n_]**prim[rank_,a_][h_,hb_]:>0/;n>=1,
-        Lb[n_]**prim[rank_,a_][h_,hb_]:>0/;n>=1
+        L[n_]**prim[rank_,a_,h_,hb_]:>0/;n>=1,
+        Lb[n_]**prim[rank_,a_,h_,hb_]:>0/;n>=1
     },
     "Printing"->{
-        prim[rank_,a_][h_,hb_]:>Subsuperscript[Ket[{h,hb}],rank,a]
+        prim[rank_,a_,h_,hb_]:>Subsuperscript[Ket[{h,hb}],rank,a]
     }
 |>//algebraAdd["LocalVermaLog","LocalVermaLogUpper","LocalVermaLogLower"];
 
 
 "Relation"->{
-    conjugate[prim[rank_,a_][h_,hb_]]**prim[rank_,b_][h_,hb_]:>KroneckerDelta[a+b,rank+1],
-    conjugate[prim[rank_,a_][h_,hb_]]**L[n_]:>0/;n<=-1,
-    conjugate[prim[rank_,a_][h_,hb_]]**Lb[n_]:>0/;n<=-1
+    conjugate[prim[rank_,a_,h_,hb_]]**prim[rank_,b_,h_,hb_]:>KroneckerDelta[a+b,rank+1],
+    conjugate[prim[rank_,a_,h_,hb_]]**L[n_]:>0/;n<=-1,
+    conjugate[prim[rank_,a_,h_,hb_]]**Lb[n_]:>0/;n<=-1
 }//algebraAdd["LocalVermaLogIP"];
 
 
 "Relation"->{
-    L[0]**prim[rank_,a_][h_,hb_]:>h*prim[rank,a][h,hb]+1/2*prim[rank,a+1][h,hb],
-    Lb[0]**prim[rank_,a_][h_,hb_]:>hb*prim[rank,a][h,hb]+1/2*prim[rank,a+1][h,hb]
+    L[0]**prim[rank_,a_,h_,hb_]:>h*prim[rank,a,h,hb]+1/2*prim[rank,a+1,h,hb],
+    Lb[0]**prim[rank_,a_,h_,hb_]:>hb*prim[rank,a,h,hb]+1/2*prim[rank,a+1,h,hb]
 }//algebraAdd["LocalVermaLog","LocalVermaLogUpper"];
 
 "Relation"->{
-    L[0]**prim[rank_,a_][h_,hb_]:>h*prim[rank,a][h,hb]+1/2*prim[rank,a-1][h,hb],
-    Lb[0]**prim[rank_,a_][h_,hb_]:>hb*prim[rank,a][h,hb]+1/2*prim[rank,a-1][h,hb]
+    L[0]**prim[rank_,a_,h_,hb_]:>h*prim[rank,a,h,hb]+1/2*prim[rank,a-1,h,hb],
+    Lb[0]**prim[rank_,a_,h_,hb_]:>hb*prim[rank,a,h,hb]+1/2*prim[rank,a-1,h,hb]
 }//algebraAdd["LocalVermaLogLower"];
 
 
@@ -347,14 +347,11 @@ Lbpower[k_,n_Integer] :=
     operatorPower[Lb[k],n];
 
 
-desc[h_,hb_][n_Integer,m_Integer] :=
-    operatorPower[L[-1],n]**operatorPower[Lb[-1],m]**prim[h,hb];
+desc[h_,hb_,n_Integer,nb_Integer] :=
+    operatorPower[L[-1],n]**operatorPower[Lb[-1],nb]**prim[h,hb];
 
-desc[rank1_,rank2_,a1_,a2_][h_,hb_][n_Integer,m_Integer] :=
-    operatorPower[L[-1],n]**operatorPower[Lb[-1],m]**prim[rank1,rank2,a1,a2][h,hb];
-
-desc[rank_,a_][h_,hb_][n_Integer,m_Integer] :=
-    operatorPower[L[-1],n]**operatorPower[Lb[-1],m]**prim[rank,a][h,hb];
+desc[rank_,a_,h_,hb_,n_Integer,nb_Integer] :=
+    operatorPower[L[-1],n]**operatorPower[Lb[-1],nb]**prim[rank,a,h,hb];
 
 
 (* ::Subsection:: *)

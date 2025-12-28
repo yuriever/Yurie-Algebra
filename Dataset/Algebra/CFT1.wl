@@ -180,29 +180,29 @@ $algebraList//algebraDefine;
     "Generator"->{prim},
     "Relation"->{
         (* Boundary condition *)
-        prim[rank_,a_][h_]:>0/;a<=0,
-        prim[rank_,a_][h_]:>0/;a>rank,
+        prim[rank_,a_,h_]:>0/;a<=0,
+        prim[rank_,a_,h_]:>0/;a>rank,
         (* Annihilation rule *)
-        L[1]**prim[rank_,a_][h_]:>0
+        L[1]**prim[rank_,a_,h_]:>0
     },
     "Printing"->{
-        prim[rank_,a_][h_]:>Subsuperscript[Ket[{h}],rank,a]
+        prim[rank_,a_,h_]:>Subsuperscript[Ket[{h}],rank,a]
     }
 |>//algebraAdd["VermaLog","VermaLogUpper","VermaLogLower"];
 
 
 "Relation"->{
-    conjugate[prim[rank_,a_][h_]]**prim[rank_,b_][h_]:>KroneckerDelta[a+b,rank+1],
-    conjugate[prim[rank_,a_][h_]]**L[-1]:>0
+    conjugate[prim[rank_,a_,h_]]**prim[rank_,b_,h_]:>KroneckerDelta[a+b,rank+1],
+    conjugate[prim[rank_,a_,h_]]**L[-1]:>0
 }//algebraAdd["VermaLogIP"];
 
 
 "Relation"->{
-    L[0]**prim[rank_,a_][h_]:>h*prim[rank,a][h]+prim[rank,a+1][h]
+    L[0]**prim[rank_,a_,h_]:>h*prim[rank,a,h]+prim[rank,a+1,h]
 }//algebraAdd["VermaLog","VermaLogUpper"];
 
 "Relation"->{
-    L[0]**prim[rank_,a_][h_]:>h*prim[rank,a][h]+prim[rank,a-1][h]
+    L[0]**prim[rank_,a_,h_]:>h*prim[rank,a,h]+prim[rank,a-1,h]
 }//algebraAdd["VermaLogLower"];
 
 
@@ -236,29 +236,29 @@ $algebraList//algebraDefine;
     "Generator"->{prim},
     "Relation"->{
         (* Boundary condition *)
-        prim[rank_,a_][h_]:>0/;a<=0,
-        prim[rank_,a_][h_]:>0/;a>rank,
+        prim[rank_,a_,h_]:>0/;a<=0,
+        prim[rank_,a_,h_]:>0/;a>rank,
         (* Annihilation rule *)
-        L[n_]**prim[rank_,a_][h_]:>0/;n>=1
+        L[n_]**prim[rank_,a_,h_]:>0/;n>=1
     },
     "Printing"->{
-        prim[rank_,a_][h_]:>Subsuperscript[Ket[{h}],rank,a]
+        prim[rank_,a_,h_]:>Subsuperscript[Ket[{h}],rank,a]
     }
 |>//algebraAdd["LocalVermaLog","LocalVermaLogUpper","LocalVermaLogLower"];
 
 
 "Relation"->{
-    conjugate[prim[rank_,a_][h_]]**prim[rank_,b_][h_]:>KroneckerDelta[a+b,rank+1],
-    conjugate[prim[rank_,a_][h_]]**L[n_]:>0/;n<=-1
+    conjugate[prim[rank_,a_,h_]]**prim[rank_,b_,h_]:>KroneckerDelta[a+b,rank+1],
+    conjugate[prim[rank_,a_,h_]]**L[n_]:>0/;n<=-1
 }//algebraAdd["LocalVermaLogIP"];
 
 
 "Relation"->{
-    L[0]**prim[rank_,a_][h_]:>h*prim[rank,a][h]+prim[rank,a+1][h]
+    L[0]**prim[rank_,a_,h_]:>h*prim[rank,a,h]+prim[rank,a+1,h]
 }//algebraAdd["LocalVermaLog","LocalVermaLogUpper"];
 
 "Relation"->{
-    L[0]**prim[rank_,a_][h_]:>h*prim[rank,a][h]+prim[rank,a-1][h]
+    L[0]**prim[rank_,a_,h_]:>h*prim[rank,a,h]+prim[rank,a-1,h]
 }//algebraAdd["LocalVermaLogLower"];
 
 
@@ -294,7 +294,7 @@ Lpower[k_,n_Integer] :=
 desc[h_,n_Integer] :=
     operatorPower[L[-1],n]**prim[h];
 
-desc[rank_,a_][h_,n_Integer] :=
+desc[rank_,a_,h_,n_Integer] :=
     operatorPower[L[-1],n]**prim[rank,a,h];
 
 

@@ -209,32 +209,32 @@ $algebraList//algebraDefine;
     "Generator"->{prim},
     "Relation"->{
         (* Boundary condition *)
-        prim[rank_,a_][h_,ξ_]:>0/;a<=0,
-        prim[rank_,a_][h_,ξ_]:>0/;a>rank,
+        prim[rank_,a_,h_,ξ_]:>0/;a<=0,
+        prim[rank_,a_,h_,ξ_]:>0/;a>rank,
         (* Annihilation rule *)
-        L[0]**prim[rank_,a_][h_,ξ_]:>h*prim[rank,a][h,ξ],
-        L[1]**prim[rank_,a_][h_,ξ_]:>0,
-        M[1]**prim[rank_,a_][h_,ξ_]:>0
+        L[0]**prim[rank_,a_,h_,ξ_]:>h*prim[rank,a,h,ξ],
+        L[1]**prim[rank_,a_,h_,ξ_]:>0,
+        M[1]**prim[rank_,a_,h_,ξ_]:>0
     },
     "Printing"->{
-        prim[rank_,a_][h_,ξ_]:>Subsuperscript[Ket[{h,ξ}],rank,a]
+        prim[rank_,a_,h_,ξ_]:>Subsuperscript[Ket[{h,ξ}],rank,a]
     }
 |>//algebraAdd["VermaM0","VermaM0Upper","VermaM0Lower"];
 
 
 "Relation"->{
-    conjugate[prim[rank_,a_][h_,ξ_]]**prim[rank_,b_][h_,ξ_]:>KroneckerDelta[a+b,rank+1],
-    conjugate[prim[rank_,a_][h_,ξ_]]**L[-1]:>0,
-    conjugate[prim[rank_,a_][h_,ξ_]]**M[-1]:>0
+    conjugate[prim[rank_,a_,h_,ξ_]]**prim[rank_,b_,h_,ξ_]:>KroneckerDelta[a+b,rank+1],
+    conjugate[prim[rank_,a_,h_,ξ_]]**L[-1]:>0,
+    conjugate[prim[rank_,a_,h_,ξ_]]**M[-1]:>0
 }//algebraAdd["VermaM0IP"];
 
 
 "Relation"->{
-    M[0]**prim[rank_,a_][h_,ξ_]:>ξ*prim[rank,a][h,ξ]+prim[rank,a+1][h,ξ]
+    M[0]**prim[rank_,a_,h_,ξ_]:>ξ*prim[rank,a,h,ξ]+prim[rank,a+1,h,ξ]
 }//algebraAdd["VermaM0","VermaM0Upper"];
 
 "Relation"->{
-    M[0]**prim[rank_,a_][h_,ξ_]:>ξ*prim[rank,a][h,ξ]+prim[rank,a-1][h,ξ]
+    M[0]**prim[rank_,a_,h_,ξ_]:>ξ*prim[rank,a,h,ξ]+prim[rank,a-1,h,ξ]
 }//algebraAdd["VermaM0Lower"];
 
 
@@ -271,32 +271,32 @@ $algebraList//algebraDefine;
     "Generator"->{prim},
     "Relation"->{
         (* Boundary condition *)
-        prim[rank_,a_][h_,ξ_]:>0/;a<=0,
-        prim[rank_,a_][h_,ξ_]:>0/;a>rank,
+        prim[rank_,a_,h_,ξ_]:>0/;a<=0,
+        prim[rank_,a_,h_,ξ_]:>0/;a>rank,
         (* Annihilation rule *)
-        L[0]**prim[rank_,a_][h_,ξ_]:>h*prim[rank,a][h,ξ],
-        L[n_]**prim[rank_,a_][h_,ξ_]:>0/;n>=1,
-        M[n_]**prim[rank_,a_][h_,ξ_]:>0/;n>=1
+        L[0]**prim[rank_,a_,h_,ξ_]:>h*prim[rank,a,h,ξ],
+        L[n_]**prim[rank_,a_,h_,ξ_]:>0/;n>=1,
+        M[n_]**prim[rank_,a_,h_,ξ_]:>0/;n>=1
     },
     "Printing"->{
-        prim[rank_,a_][h_,ξ_]:>Subsuperscript[Ket[{h,ξ}],rank,a]
+        prim[rank_,a_,h_,ξ_]:>Subsuperscript[Ket[{h,ξ}],rank,a]
     }
 |>//algebraAdd["LocalVermaM0","LocalVermaM0Upper","LocalVermaM0Lower"];
 
 
 "Relation"->{
-    conjugate[prim[rank_,a_][h_,ξ_]]**prim[rank_,b_][h_,ξ_]:>KroneckerDelta[a+b,rank+1],
-    conjugate[prim[rank_,a_][h_,ξ_]]**L[n_]:>0/;n<=-1,
-    conjugate[prim[rank_,a_][h_,ξ_]]**M[n_]:>0/;n<=-1
+    conjugate[prim[rank_,a_,h_,ξ_]]**prim[rank_,b_,h_,ξ_]:>KroneckerDelta[a+b,rank+1],
+    conjugate[prim[rank_,a_,h_,ξ_]]**L[n_]:>0/;n<=-1,
+    conjugate[prim[rank_,a_,h_,ξ_]]**M[n_]:>0/;n<=-1
 }//algebraAdd["LocalVermaM0IP"];
 
 
 "Relation"->{
-    M[0]**prim[rank_,a_][h_,ξ_]:>ξ*prim[rank,a][h,ξ]+prim[rank,a+1][h,ξ]
+    M[0]**prim[rank_,a_,h_,ξ_]:>ξ*prim[rank,a,h,ξ]+prim[rank,a+1,h,ξ]
 }//algebraAdd["LocalVermaM0","LocalVermaM0Upper"];
 
 "Relation"->{
-    M[0]**prim[rank_,a_][h_,ξ_]:>ξ*prim[rank,a][h,ξ]+prim[rank,a-1][h,ξ]
+    M[0]**prim[rank_,a_,h_,ξ_]:>ξ*prim[rank,a,h,ξ]+prim[rank,a-1,h,ξ]
 }//algebraAdd["LocalVermaM0Lower"];
 
 
