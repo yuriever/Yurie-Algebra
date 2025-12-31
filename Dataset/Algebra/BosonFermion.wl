@@ -52,14 +52,10 @@ Begin["`Private`"];
 (*Algebra*)
 
 
-$algebraList = {
+algebraDefine[
     "Boson","Fermion","BosonFermion",
     "Vacuum","BosonVacuum","FermionVacuum"
-};
-
-$algebraList//algebraUnset//Quiet;
-
-$algebraList//algebraDefine;
+];
 
 
 (* ::Subsubsection:: *)

@@ -43,11 +43,7 @@ Begin["`Private`"];
 (*Algebra*)
 
 
-$algebraList = {"TrigHopf"};
-
-$algebraList//algebraUnset//Quiet;
-
-$algebraList//algebraDefine;
+algebraDefine["TrigHopf"];
 
 
 <|

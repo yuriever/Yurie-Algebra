@@ -46,11 +46,7 @@ Begin["`Private`"];
 (*Algebra*)
 
 
-$algebraList = {"BCGhost","Vacuum"};
-
-$algebraList//algebraUnset//Quiet;
-
-$algebraList//algebraDefine;
+algebraDefine["BCGhost","Vacuum"];
 
 
 (* ::Text:: *)

@@ -55,11 +55,7 @@ Begin["`Private`"];
 (*X>H>Y*)
 
 
-$algebraList = {"SL2","VermaModule","VermaModuleExtension"};
-
-$algebraList//algebraUnset//Quiet;
-
-$algebraList//algebraDefine;
+algebraDefine["SL2","VermaModule","VermaModuleExtension"];
 
 
 (* ::Subsubsection:: *)

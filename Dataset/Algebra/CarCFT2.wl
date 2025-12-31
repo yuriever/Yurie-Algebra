@@ -75,7 +75,7 @@ Begin["`Private`"];
 (*Algebra*)
 
 
-$algebraList = {
+algebraDefine[
     "CA","CAIP",
     (*  *)
     "Verma","VermaIP",
@@ -86,11 +86,7 @@ $algebraList = {
     "LocalVermaM0","LocalVermaM0Upper","LocalVermaM0Lower","LocalVermaM0IP",
     (*  *)
     "Vacuum","VacuumIP"
-};
-
-$algebraList//algebraUnset//Quiet;
-
-$algebraList//algebraDefine;
+];
 
 
 (* ::Subsubsection:: *)

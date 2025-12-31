@@ -46,11 +46,7 @@ Begin["`Private`"];
 (*Algebra*)
 
 
-$algebraList = {"YBE"};
-
-$algebraList//algebraUnset//Quiet;
-
-$algebraList//algebraDefine;
+algebraDefine["YBE"];
 
 
 <|

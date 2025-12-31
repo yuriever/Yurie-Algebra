@@ -43,11 +43,7 @@ Begin["`Private`"];
 (*Algebra*)
 
 
-$algebraList = {"Sweedler"};
-
-$algebraList//algebraUnset//Quiet;
-
-$algebraList//algebraDefine;
+algebraDefine["Sweedler"];
 
 
 <|

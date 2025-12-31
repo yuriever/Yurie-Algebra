@@ -40,11 +40,7 @@ Begin["`Private`"];
 (*Algebra*)
 
 
-$algebraList = {"BinomialHopf"};
-
-$algebraList//algebraUnset//Quiet;
-
-$algebraList//algebraDefine;
+algebraDefine["BinomialHopf"];
 
 
 (* ::Subsubsection:: *)

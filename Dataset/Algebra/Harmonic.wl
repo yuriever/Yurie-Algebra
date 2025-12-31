@@ -49,11 +49,7 @@ Begin["`Private`"];
 (*Algebra*)
 
 
-$algebraList = {"HarmonicOscillator","Vacuum"};
-
-$algebraList//algebraUnset//Quiet;
-
-$algebraList//algebraDefine;
+algebraDefine["HarmonicOscillator","Vacuum"];
 
 
 (* ::Subsubsection:: *)
