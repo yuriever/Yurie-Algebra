@@ -7,6 +7,12 @@
 Needs["Yurie`Algebra`"];
 
 
+BeginPackage["Yurie`Algebra`BinomialHopf`"];
+
+
+EndPackage[];
+
+
 (* ::Section:: *)
 (*Begin*)
 

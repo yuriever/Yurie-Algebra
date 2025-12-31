@@ -7,6 +7,12 @@
 Needs["Yurie`Algebra`"];
 
 
+BeginPackage["Yurie`Algebra`CFT2`"];
+
+
+EndPackage[];
+
+
 (* ::Section:: *)
 (*Begin*)
 

@@ -7,6 +7,12 @@
 Needs["Yurie`Algebra`"];
 
 
+BeginPackage["Yurie`Algebra`TrigHopf`"];
+
+
+EndPackage[];
+
+
 (* ::Section:: *)
 (*Begin*)
 

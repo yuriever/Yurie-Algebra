@@ -7,6 +7,12 @@
 Needs["Yurie`Algebra`"];
 
 
+BeginPackage["Yurie`Algebra`Sweedler`"];
+
+
+EndPackage[];
+
+
 (* ::Section:: *)
 (*Begin*)
 
