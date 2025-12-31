@@ -100,13 +100,45 @@ VerificationTest[
 ]
 
 VerificationTest[
+    expr = {a[1]*x + a[2]*y, a[3]*x + a[4]*y}
+    ,
+    {x*a[1] + y*a[2], x*a[3] + y*a[4]}
+    ,
+    TestID->"[12] operatorCoefficient.nb"
+]
+
+VerificationTest[
+    operatorCoefficient[x][expr]
+    ,
+    {id*a[1], id*a[3]}
+    ,
+    TestID->"[13] operatorCoefficient.nb"
+]
+
+VerificationTest[
+    operatorCoefficient[{x, y}][expr[[1]]]
+    ,
+    {id*a[1], id*a[2]}
+    ,
+    TestID->"[14] operatorCoefficient.nb"
+]
+
+VerificationTest[
+    operatorCoefficient[{x, y}][expr]
+    ,
+    {{id*a[1], id*a[2]}, {id*a[3], id*a[4]}}
+    ,
+    TestID->"[15] operatorCoefficient.nb"
+]
+
+VerificationTest[
     algebraDefault[]; 
     algebraUnset[]; 
     $algebraDefault
     ,
     {}
     ,
-    TestID->"[12] operatorCoefficient.nb"
+    TestID->"[16] operatorCoefficient.nb"
 ]
 
 VerificationTest[

@@ -233,6 +233,15 @@ operatorPower[op_,n_Integer?Positive] :=
     NonCommutativeMultiply@@ConstantArray[op,n];
 
 
+(* Symbolic exponent. *)
+
+operatorPower[n_Integer?NonNegative][op_] :=
+    operatorPower[op,n];
+
+Derivative[1][operatorPower[n_]][op_] :=
+    n*operatorPower[n-1][op];
+
+
 operatorExp[op_,0,t_:1] :=
     id;
 
@@ -272,14 +281,19 @@ operatorPolynomial[op_,var_,poly_] :=
 
 
 operatorCoefficient[state_][expr_] :=
-    expr//
-        operatorCoefficientKernel[state]//
+    operatorCoefficientKernel[state][expr]//
         operatorCleanup;
 
+operatorCoefficient[state_][exprList_List] :=
+    Map[operatorCoefficientKernel[state],exprList]//
+        operatorCleanup;
 
-operatorCoefficient[state_][expr_List] :=
-    expr//
-        Map[operatorCoefficientKernel[state]]//
+operatorCoefficient[stateList_List][expr_] :=
+    Map[operatorCoefficientKernel[#][expr]&,stateList]//
+        operatorCleanup;
+
+operatorCoefficient[stateList_List][exprList_List] :=
+    Outer[operatorCoefficientKernel[#2][#1]&,exprList,stateList]//
         operatorCleanup;
 
 
