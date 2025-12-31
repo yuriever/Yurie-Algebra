@@ -288,14 +288,21 @@ algebraDefine[
 (*Constant*)
 
 
-$CarCFT = <|
-    "Index"->{-1,0,1},
-    "L"->{L[-1],L[0],L[1]},
-    "M"->{M[-1],M[0],M[1]},
-    "LM"->{L[-1],L[0],L[1],M[-1],M[0],M[1]},
-    "Casimir1"->2(L[0]-id)**M[0]-L[-1]**M[1]-M[-1]**L[1],
-    "Casimir2"->M[0]**M[0]-M[-1]**M[1]
-|>;
+With[{
+        casimir1 = 2(L[0]-id)**M[0]-L[-1]**M[1]-M[-1]**L[1],
+        casimir2 = M[0]**M[0]-M[-1]**M[1]
+    },
+    $CarCFT = <|
+        "Index"->{-1,0,1},
+        "L"->{L[-1],L[0],L[1]},
+        "M"->{M[-1],M[0],M[1]},
+        "LM"->{L[-1],L[0],L[1],M[-1],M[0],M[1]},
+        "Casimir1"->casimir1,
+        "Casimir2"->casimir2,
+        "C1"->casimir1,
+        "C2"->casimir2
+    |>;
+];
 
 
 (* ::Subsection:: *)

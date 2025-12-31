@@ -289,14 +289,23 @@ algebraDefine[
 (*Constant*)
 
 
-$CFT = <|
-    "Index"->{-1,0,1},
-    "L"->{L[-1],L[0],L[1]},
-    "Lb"->{Lb[-1],Lb[0],Lb[1]},
-    "LLb"->{L[-1],L[0],L[1],Lb[-1],Lb[0],Lb[1]},
-    "Casimir"->L[0]**L[0]-L[0]-L[-1]**L[1],
-    "Casimirb"->Lb[0]**Lb[0]-Lb[0]-Lb[-1]**Lb[1]
-|>;
+With[{
+        casimir = L[0]**L[0]-L[0]-L[-1]**L[1],
+        casimirb = Lb[0]**Lb[0]-Lb[0]-Lb[-1]**Lb[1]
+    },
+    $CFT = <|
+        "Index"->{-1,0,1},
+        "L"->{L[-1],L[0],L[1]},
+        "Lb"->{Lb[-1],Lb[0],Lb[1]},
+        "LLb"->{L[-1],L[0],L[1],Lb[-1],Lb[0],Lb[1]},
+        "Casimir"->casimir,
+        "Casimirb"->casimirb,
+        "C"->casimir,
+        "Cb"->casimirb,
+        "Ch"->Function[h,casimir-h*(h-1)id],
+        "Chb"->Function[hb,casimirb-hb*(hb-1)id]
+    |>;
+];
 
 
 (* ::Subsection:: *)
