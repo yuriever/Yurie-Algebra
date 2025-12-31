@@ -258,6 +258,55 @@ operatorPolynomial[op_,var_,poly_] :=
 
 
 (* ::Subsection:: *)
+(*Utility: operatorCoefficient*)
+
+
+(* ::Subsubsection:: *)
+(*Message*)
+
+
+(* ::Subsubsection:: *)
+(*Main*)
+
+
+operatorCoefficient[state_][expr_] :=
+    operatorCoefficientKernel[state][expr]//
+        ReplaceRepeated[{
+            Verbatim[NonCommutativeMultiply][co_]:>co,
+            Verbatim[NonCommutativeMultiply][___,0,___]:>0
+        }];
+
+
+(* ::Subsubsection:: *)
+(*Helper*)
+
+
+operatorCoefficientKernel[state_][expr_Plus] :=
+    Map[
+        operatorCoefficientKernel[state],
+        expr
+    ];
+
+operatorCoefficientKernel[state_][scalar_.*NonCommutativeMultiply[co__,state_]] :=
+    scalar*NonCommutativeMultiply[co];
+
+operatorCoefficientKernel[state_][scalar_.*NonCommutativeMultiply[co__,state2_]] :=
+    scalar*NonCommutativeMultiply[co]**operatorCoefficientKernel[state][state2];
+
+operatorCoefficientKernel[state_][scalar_?scalarQ*state_] :=
+    scalar*id;
+
+operatorCoefficientKernel[state_][scalar_?scalarQ*state2_] :=
+    scalar*operatorCoefficientKernel[state][state2];
+
+operatorCoefficientKernel[state_][state_] :=
+    id;
+
+operatorCoefficientKernel[state_][state2_] :=
+    0;
+
+
+(* ::Subsection:: *)
 (*Utility: operatorSeparate*)
 
 
