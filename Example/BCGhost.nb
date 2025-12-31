@@ -283,7 +283,7 @@ Cell[BoxData[
 },
 Editable->True,
 WindowSize->{1280, 1387},
-WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 TaggingRules-><|"TryRealOnly" -> False|>,
 FrontEndVersion->"14.3 for Mac OS X ARM (64-bit) (July 8, 2025)",
 StyleDefinitions->"Yurie.nb",
@@ -337,6 +337,4 @@ Cell[7864, 276, 128, 3, 41, "Output",ExpressionUUID->"e8c77f9c-6885-4a0b-b03d-cb
 }
 ]
 *)
-
-(* End of internal cache information *)
 

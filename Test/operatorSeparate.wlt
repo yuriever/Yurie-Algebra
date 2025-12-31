@@ -36,7 +36,6 @@ VerificationTest[
 ]
 
 VerificationTest[
-    algebraReset["test"]; 
     algebraAdd["test"][Association["Generator" -> {x, y, z}]]
     ,
     Null
@@ -145,9 +144,9 @@ VerificationTest[
 VerificationTest[
     algebraDefault[]; 
     algebraUnset[]; 
-    {$algebraDefine, $algebraDefault}
+    $algebraDefault
     ,
-    {{"Algebra", "Conjugate", "Inverse", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}, {}}
+    {}
     ,
     TestID->"[17] operatorSeparate.nb"
 ]

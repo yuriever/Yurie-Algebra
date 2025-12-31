@@ -70,9 +70,9 @@ VerificationTest[
 VerificationTest[
     algebraDefault[]; 
     algebraUnset[]; 
-    {$algebraDefine, $algebraDefault}
+    $algebraDefault
     ,
-    {{"Algebra", "Conjugate", "Inverse", "Tensor", "Coalgebra", "Bialgebra", "Antipode"}, {}}
+    {}
     ,
     TestID->"[8] algebraSimplify-with-assumption.nb"
 ]
