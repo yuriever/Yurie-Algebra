@@ -98,18 +98,20 @@
 
 * `#!wl commSim` - simplify the commutator.
 
-* `#!wl commIn` - define the (anti-)commutator with the given order and condition.
+* `#!wl commIn` - define the (anti-)commutator with the specified order and condition.
 
 * `#!wl adjoint` - the adjoint action of Lie algebra.
 
-* `#!wl adjointExp` - the adjoint action of formal Lie group truncated at the given order.
+* `#!wl adjointExp` - the adjoint action of formal Lie group truncated at the specified order.
 
 * `#!wl operatorPower` - power of the operator.
 
-* `#!wl operatorExp` - exponential of the operator truncated at the given order.
+* `#!wl operatorExp` - exponential of the operator truncated at the specified order.
 
 * `#!wl operatorPolynomial` - polynomial of the operator.
 
-* `#!wl operatorSeparate` - separate scalars and operators in the given linear expression.
+* `#!wl operatorCoefficient` - extract the coefficient of the operator in the expression.
+
+* `#!wl operatorSeparate` - separate scalars and operators in the linear expression.
 
 * `#!wl scalarSimplify` - simplify the scalar part of the expression.

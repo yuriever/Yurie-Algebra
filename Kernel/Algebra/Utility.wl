@@ -25,7 +25,7 @@ commSim::usage =
     "simplify the commutator.";
 
 commIn::usage =
-    "define the (anti-)commutator with the given order and condition.";
+    "define the (anti-)commutator with the specified order and condition.";
 
 
 (* ::Subsection:: *)
@@ -36,7 +36,7 @@ adjoint::usage =
     "the adjoint action of Lie algebra.";
 
 adjointExp::usage =
-    "the adjoint action of formal Lie group truncated at the given order.";
+    "the adjoint action of formal Lie group truncated at the specified order.";
 
 
 (* ::Subsection:: *)
@@ -47,7 +47,7 @@ operatorPower::usage =
     "power of the operator.";
 
 operatorExp::usage =
-    "exponential of the operator truncated at the given order.";
+    "exponential of the operator truncated at the specified order.";
 
 operatorPolynomial::usage =
     "polynomial of the operator.";
@@ -57,9 +57,11 @@ operatorPolynomial::usage =
 (*Utility*)
 
 
-operatorSeparate::usage =
-    "separate scalars and operators in the given linear expression.";
+operatorCoefficient::usage =
+    "extract the coefficient of the operator in the expression.";
 
+operatorSeparate::usage =
+    "separate scalars and operators in the linear expression.";
 
 scalarSimplify::usage =
     "simplify the scalar part of the expression.";
