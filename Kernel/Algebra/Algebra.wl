@@ -210,7 +210,6 @@ algebraShowKernel[algData_] :=
         {
             algData["Generator"]//algebraShowUnit["Generator"],
             algData["Relation"]//dropInternalRelation//algebraShowUnit["Relation"],
-            (* algData["Printing"]//algebraShowUnit["Printing"], *)
             algData["Rank"]//algebraShowUnit["Rank"],
             algData["Parity"]//algebraShowUnit["Parity"]
         },
@@ -240,6 +239,7 @@ algebraShowUnit[planet:"Relation"|"Printing"|"Rank"|"Parity"][data_] :=
 
 hideEmptyPlanet[data_][unit_] :=
     If[data=!={},
+        (* Then *)
         unit,
         (* Else *)
         Nothing
@@ -249,9 +249,6 @@ hideEmptyPlanet[data_][unit_] :=
 dropInternalRelation[data_] :=
     DeleteCases[data,Alternatives@@Map[Verbatim,algebraInternal[All]["Relation"]]];
 
-
-hideContextMark::usage =
-    "hide context mark in algebra data.";
 
 hideContextMark/:MakeBoxes[hideContextMark[expr_],form_] :=
     Block[{Internal`$ContextMarks = False},

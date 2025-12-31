@@ -272,11 +272,15 @@ operatorPolynomial[op_,var_,poly_] :=
 
 
 operatorCoefficient[state_][expr_] :=
-    operatorCoefficientKernel[state][expr]//
-        ReplaceRepeated[{
-            Verbatim[NonCommutativeMultiply][co_]:>co,
-            Verbatim[NonCommutativeMultiply][___,0,___]:>0
-        }];
+    expr//
+        operatorCoefficientKernel[state]//
+        operatorCleanup;
+
+
+operatorCoefficient[state_][expr_List] :=
+    expr//
+        Map[operatorCoefficientKernel[state]]//
+        operatorCleanup;
 
 
 (* ::Subsubsection:: *)
@@ -306,6 +310,13 @@ operatorCoefficientKernel[state_][state_] :=
 
 operatorCoefficientKernel[state_][state2_] :=
     0;
+
+
+operatorCleanup[expr_] :=
+    expr//ReplaceRepeated[{
+        Verbatim[NonCommutativeMultiply][co_]:>co,
+        Verbatim[NonCommutativeMultiply][___,0,___]:>0
+    }];
 
 
 (* ::Subsection:: *)
@@ -351,7 +362,10 @@ operatorSeparate[expr_,opts:OptionsPattern[]] :=
     ]//Catch;
 
 operatorSeparate[exprList_List,opts:OptionsPattern[]] :=
-    exprList//Flatten//DeleteCases[0]//Map[operatorSeparate[#,opts]&]//Flatten;
+    exprList//
+        Flatten//DeleteCases[0]//
+        Map[operatorSeparate[#,opts]&]//
+        Flatten;
 
 
 (* ::Subsubsection:: *)

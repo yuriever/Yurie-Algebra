@@ -205,8 +205,8 @@ printNC[expr_] :=
 (*Message*)
 
 
-tensorank::rankNotMatch =
-    "the tensor ranks in `` do not match.";
+tensorank::RankNotMatch =
+    "The tensor ranks in `` do not match.";
 
 
 (* ::Subsubsection:: *)
@@ -232,7 +232,7 @@ tensorankKernel[Optional[k_?scalarQ]*x_tensor] :=
 tensorankKernel[Optional[k_?scalarQ]*x_NonCommutativeMultiply] :=
     (
         If[AllSameBy[x,tensorankKernel]===False,
-            Message[tensorank::rankNotMatch,x];
+            Message[tensorank::RankNotMatch,x];
             Throw@Defer@tensorankKernel[x]
         ];
         tensorankKernel@First@x

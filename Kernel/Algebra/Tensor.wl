@@ -119,7 +119,7 @@ tensorPermute[cycle_Cycles][x_tensor] :=
     Permute[x,cycle];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*End*)
 
 
