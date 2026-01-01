@@ -227,11 +227,11 @@ algebraDefine[
 
 "Relation"->{
     M[0]**prim[rank_,a_,h_,ξ_]:>ξ*prim[rank,a,h,ξ]+prim[rank,a+1,h,ξ]
-}//algebraAdd["VermaM0","VermaM0Upper"];
+}//algebraAdd["VermaM0Upper"];
 
 "Relation"->{
     M[0]**prim[rank_,a_,h_,ξ_]:>ξ*prim[rank,a,h,ξ]+prim[rank,a-1,h,ξ]
-}//algebraAdd["VermaM0Lower"];
+}//algebraAdd["VermaM0Lower","VermaM0"];
 
 
 (* ::Subsubsection:: *)
@@ -283,11 +283,11 @@ algebraDefine[
 
 "Relation"->{
     M[0]**prim[rank_,a_,h_,ξ_]:>ξ*prim[rank,a,h,ξ]+prim[rank,a+1,h,ξ]
-}//algebraAdd["LocalVermaM0","LocalVermaM0Upper"];
+}//algebraAdd["LocalVermaM0Upper"];
 
 "Relation"->{
     M[0]**prim[rank_,a_,h_,ξ_]:>ξ*prim[rank,a,h,ξ]+prim[rank,a-1,h,ξ]
-}//algebraAdd["LocalVermaM0Lower"];
+}//algebraAdd["LocalVermaM0Lower","LocalVermaM0"];
 
 
 (* ::Subsection:: *)

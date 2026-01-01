@@ -226,12 +226,12 @@ algebraDefine[
 "Relation"->{
     L[0]**prim[rank_,a_,h_,hb_]:>h*prim[rank,a,h,hb]+1/2*prim[rank,a+1,h,hb],
     Lb[0]**prim[rank_,a_,h_,hb_]:>hb*prim[rank,a,h,hb]+1/2*prim[rank,a+1,h,hb]
-}//algebraAdd["VermaLog","VermaLogUpper"];
+}//algebraAdd["VermaLogUpper"];
 
 "Relation"->{
     L[0]**prim[rank_,a_,h_,hb_]:>h*prim[rank,a,h,hb]+1/2*prim[rank,a-1,h,hb],
     Lb[0]**prim[rank_,a_,h_,hb_]:>hb*prim[rank,a,h,hb]+1/2*prim[rank,a-1,h,hb]
-}//algebraAdd["VermaLogLower"];
+}//algebraAdd["VermaLogLower","VermaLog"];
 
 
 (* ::Subsubsection:: *)
@@ -283,12 +283,12 @@ algebraDefine[
 "Relation"->{
     L[0]**prim[rank_,a_,h_,hb_]:>h*prim[rank,a,h,hb]+1/2*prim[rank,a+1,h,hb],
     Lb[0]**prim[rank_,a_,h_,hb_]:>hb*prim[rank,a,h,hb]+1/2*prim[rank,a+1,h,hb]
-}//algebraAdd["LocalVermaLog","LocalVermaLogUpper"];
+}//algebraAdd["LocalVermaLogUpper"];
 
 "Relation"->{
     L[0]**prim[rank_,a_,h_,hb_]:>h*prim[rank,a,h,hb]+1/2*prim[rank,a-1,h,hb],
     Lb[0]**prim[rank_,a_,h_,hb_]:>hb*prim[rank,a,h,hb]+1/2*prim[rank,a-1,h,hb]
-}//algebraAdd["LocalVermaLogLower"];
+}//algebraAdd["LocalVermaLogLower","LocalVermaLog"];
 
 
 (* ::Subsection:: *)

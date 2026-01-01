@@ -195,11 +195,11 @@ algebraDefine[
 
 "Relation"->{
     L[0]**prim[rank_,a_,h_]:>h*prim[rank,a,h]+prim[rank,a+1,h]
-}//algebraAdd["VermaLog","VermaLogUpper"];
+}//algebraAdd["VermaLogUpper"];
 
 "Relation"->{
     L[0]**prim[rank_,a_,h_]:>h*prim[rank,a,h]+prim[rank,a-1,h]
-}//algebraAdd["VermaLogLower"];
+}//algebraAdd["VermaLogLower","VermaLog"];
 
 
 (* ::Subsubsection:: *)
@@ -245,11 +245,11 @@ algebraDefine[
 
 "Relation"->{
     L[0]**prim[rank_,a_,h_]:>h*prim[rank,a,h]+prim[rank,a+1,h]
-}//algebraAdd["LocalVermaLog","LocalVermaLogUpper"];
+}//algebraAdd["LocalVermaLogUpper"];
 
 "Relation"->{
     L[0]**prim[rank_,a_,h_]:>h*prim[rank,a,h]+prim[rank,a-1,h]
-}//algebraAdd["LocalVermaLogLower"];
+}//algebraAdd["LocalVermaLogLower","LocalVermaLog"];
 
 
 (* ::Subsection:: *)
