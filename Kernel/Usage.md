@@ -26,6 +26,8 @@
 
 * `#!wl checkLieModule` - check the action on Lie module.
 
+* `#!wl checkConjugate` - check the involution of conjugation.
+
 * `#!wl checkCoassociativity` - check the coassociativity of comultiplication.
 
 * `#!wl checkCounitality` - check the counitality of counit.

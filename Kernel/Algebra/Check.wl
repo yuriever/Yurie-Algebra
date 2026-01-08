@@ -20,6 +20,9 @@ checkLieBracket::usage =
 checkLieModule::usage =
     "check the action on Lie module.";
 
+checkConjugate::usage =
+    "check the involution of conjugation.";
+
 checkCoassociativity::usage =
     "check the coassociativity of comultiplication.";
 
@@ -60,6 +63,14 @@ checkLieModule[x_,y_,z_] :=
             algebraSimplify[commSim[x,y]**z]-
             algebraSimplify[x**algebraSimplify[y**z]]+
             algebraSimplify[y**algebraSimplify[x**z]]
+        ];
+
+
+checkConjugate[x_,y_] :=
+    {x,y}->
+        scalarSimplify[
+            commSim[conjugate[x],conjugate[y]]+
+            algebraSimplify[conjugate[commSim[x,y]]]
         ];
 
 

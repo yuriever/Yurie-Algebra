@@ -46,6 +46,9 @@ checkLieBracket::usage =
 checkLieModule::usage =
     "check the action on Lie module.";
 
+checkConjugate::usage =
+    "check the involution of conjugation.";
+
 checkCoassociativity::usage =
     "check the coassociativity of comultiplication.";
 
