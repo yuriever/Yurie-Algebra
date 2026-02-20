@@ -338,18 +338,18 @@ Lbmonomial[n__] :=
     Map[Lb,NonCommutativeMultiply[n]];
 
 
-Lpower[k_,n_Integer?NonNegative] :=
+Lpower[k_,n_] :=
     operatorPower[L[k],n];
 
 
-Lbpower[k_,n_Integer?NonNegative] :=
+Lbpower[k_,n_] :=
     operatorPower[Lb[k],n];
 
 
-desc[h_,hb_,n_Integer?NonNegative,nb_Integer?NonNegative] :=
+desc[h_,hb_,n_,nb_] :=
     operatorPower[L[-1],n]**operatorPower[Lb[-1],nb]**prim[h,hb];
 
-desc[rank_,a_,h_,hb_,n_Integer?NonNegative,nb_Integer?NonNegative] :=
+desc[rank_,a_,h_,hb_,n_,nb_] :=
     operatorPower[L[-1],n]**operatorPower[Lb[-1],nb]**prim[rank,a,h,hb];
 
 
