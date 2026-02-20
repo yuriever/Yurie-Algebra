@@ -223,20 +223,17 @@ adjointExp[op_,max_Integer?Positive,t_:1][expr_] :=
 (*Power*)
 
 
-operatorPower[op_,0] :=
+operatorPower[op_,n_] :=
+    operatorPower[n][op];
+
+operatorPower[0][op_] :=
     id;
 
-operatorPower[op_,1] :=
+operatorPower[1][op_] :=
     op;
 
-operatorPower[op_,n_Integer?Positive] :=
+operatorPower[n_Integer?Positive][op_] :=
     NonCommutativeMultiply@@ConstantArray[op,n];
-
-
-(* Symbolic exponent. *)
-
-operatorPower[n_Integer?NonNegative][op_] :=
-    operatorPower[op,n];
 
 Derivative[1][operatorPower[n_]][op_] :=
     n*operatorPower[n-1][op];
