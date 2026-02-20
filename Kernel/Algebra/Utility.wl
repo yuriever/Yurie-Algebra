@@ -235,8 +235,18 @@ operatorPower[1][op_] :=
 operatorPower[n_Integer?Positive][op_] :=
     NonCommutativeMultiply@@ConstantArray[op,n];
 
-Derivative[1][operatorPower[n_]][op_] :=
-    n*operatorPower[n-1][op];
+
+Derivative[k_][operatorPower[n_]][op_] :=
+    FunctionExpand[n!/(n-k)!]*operatorPower[n-k][op];
+
+operatorPower/:op_**operatorPower[n_][op_] :=
+    operatorPower[n+1][op];
+
+operatorPower/:operatorPower[n_][op_]**op_ :=
+    operatorPower[n+1][op];
+
+operatorPower/:operatorPower[n_][op_]**operatorPower[m_][op_] :=
+    operatorPower[n+m][op];
 
 
 operatorExp[op_,0,t_:1] :=
