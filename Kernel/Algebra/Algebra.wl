@@ -184,66 +184,140 @@ complementRuleList[list_List] :=
 
 
 (* ::Subsubsection:: *)
+(*Option*)
+
+
+algebraShow//Options = {
+    "HideInternal"->True
+};
+
+
+(* ::Subsubsection:: *)
 (*Main*)
 
 
 algebraShow[alg_String?algebraDefineQ] :=
-    clusterGet[$algebraCluster,"StarData"][alg]//algebraShowKernel;
+    algebraShowKernel[alg,False,False,False];
 
-algebraShow[] :=
-    (
-        clusterGet[$algebraCluster,"StarDefaultList"]//algebraShowUnit["Default"]//Print;
-        clusterGet[$algebraCluster,"StarDefaultData"]//algebraShowKernel
-    );
+algebraShow[opts:OptionsPattern[]] :=
+    algebraShowKernel[Default,False,True,OptionValue["HideInternal"]];
+
+algebraShow[All,opts:OptionsPattern[]] :=
+    algebraShowKernel[Default,True,True,OptionValue["HideInternal"]];
 
 
 (* ::Subsubsection:: *)
 (*Helper*)
 
 
-algebraShowKernel[algData_] :=
-    TableForm[
-        {
-            algData["Generator"]//algebraShowUnit["Generator"],
-            algData["Relation"]//dropInternalRelation//algebraShowUnit["Relation"],
-            algData["Rank"]//algebraShowUnit["Rank"],
-            algData["Parity"]//algebraShowUnit["Parity"]
+algebraShowKernel[alg_,ifShowDefine_?BooleanQ,ifShowDefault_?BooleanQ,ifHideInternal_?BooleanQ] :=
+    With[{
+            size = AbsoluteCurrentValue[EvaluationNotebook[],WindowSize],
+            algData =
+                If[alg===Default,
+                    (* Then *)
+                    clusterGet[$algebraCluster,"StarDefaultData"],
+                    (* Else *)
+                    clusterGet[$algebraCluster,"StarData"][alg]
+                ]
         },
-        TableSpacing->{4,2},
-        TableAlignments->{Left,Top}
+        {
+            widthNumber = UpTo@Round[size[[1]]/320],
+            height = UpTo@Round[size[[2]]/4]
+        },
+        Panel[
+            TableForm[
+                {
+                    If[ifShowDefine,
+                        (* Then *)
+                        $algebraDefine//algebraShowUnit["Define",widthNumber,height],
+                        (* Else *)
+                        Nothing
+                    ],
+
+                    If[ifShowDefault,
+                        (* Then *)
+                        $algebraDefault//algebraShowUnit["Default",widthNumber,height],
+                        (* Else *)
+                        Nothing
+                    ],
+
+                    algData["Generator"]//algebraShowUnit["Generator",widthNumber,height],
+                    algData["Relation"]//dropInternalRelation[ifHideInternal]//algebraShowUnit["Relation",widthNumber,height],
+                    algData["Rank"]//algebraShowUnit["Rank",widthNumber,height],
+                    algData["Parity"]//algebraShowUnit["Parity",widthNumber,height]
+                },
+                TableSpacing->{5,5},
+                TableAlignments->{Left,Top}
+            ]
+        ]
     ];
 
 
-algebraShowUnit["Default"][data_] :=
+algebraShowUnit[planet:"Define"|"Default",widthNumber_,height_][data_] :=
+    TableForm[
+        Partition[
+            Map[coloringInternalAlgebra,data],
+            widthNumber
+        ]
+    ]//algebraShowUnitPane[planet,widthNumber,height];
+
+
+algebraShowUnit[planet:"Generator",widthNumber_,height_][data_] :=
+    TableForm[
+        Partition[algebraPrint[data],widthNumber]
+    ]//algebraShowUnitPane[planet,widthNumber,height];
+
+
+algebraShowUnit[planet:"Relation"|"Printing"|"Rank"|"Parity",widthNumber_,height_][data:Except[{}]] :=
     Style[
-        StringRiffle[data,{"Default: ",", ","."}],
-        StandardBlue
-    ];
+        Column[
+            Map[hideContextMark,algebraPrint[data],{1}],
+            Left,1
+        ],
+        LineBreakWithin->False
+    ]//algebraShowUnitPane[planet,widthNumber,height];
 
-algebraShowUnit["Generator"][data_] :=
+algebraShowUnit[planet:"Relation"|"Printing"|"Rank"|"Parity",___][{}] :=
+    Nothing;
+
+
+algebraShowUnitPane[planet_,widthNumber_,height_][data_] :=
     {
-        "Generator",
-        Row[data,Spacer[4]]
-    }//hideEmptyPlanet[data]//algebraPrint;
+        Style[planet,colorOfPlanet[planet]],
+        Pane[
+            data,
+            ImageSize->{Automatic,height},
+            Scrollbars->False,
+            AppearanceElements->None
+        ]
+    };
 
-algebraShowUnit[planet:"Relation"|"Printing"|"Rank"|"Parity"][data_] :=
-    {
-        planet,
-        data//Map[hideContextMark,#,{1}]&//TableForm
-    }//hideEmptyPlanet[data]//algebraPrint;
+
+colorOfPlanet["Define"] :=
+    StandardBlue;
+
+colorOfPlanet["Default"] :=
+    StandardBlue;
+
+colorOfPlanet["Generator"|"Relation"|"Printing"|"Rank"|"Parity"] :=
+    StandardCyan;
 
 
-hideEmptyPlanet[data_][unit_] :=
-    If[data=!={},
+coloringInternalAlgebra[alg_] :=
+    If[MemberQ[$algebraInternal,alg],
         (* Then *)
-        unit,
+        Style[alg,Underlined],
         (* Else *)
-        Nothing
+        alg
     ];
 
 
-dropInternalRelation[data_] :=
+dropInternalRelation[True][data_] :=
     DeleteCases[data,Alternatives@@Map[Verbatim,algebraInternal[All]["Relation"]]];
+
+dropInternalRelation[False][data_] :=
+    data;
 
 
 hideContextMark/:MakeBoxes[hideContextMark[expr_],form_] :=
