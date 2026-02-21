@@ -62,7 +62,7 @@ algebraInternal["Algebra"] = <|
         x_**id:>x
     },
     "Printing"->{
-        id->1
+        id->"\[DoubleStruckOne]"
     },
     "Rank"->{},
     "Parity"->{}

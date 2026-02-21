@@ -108,7 +108,7 @@ VerificationTest[
     algebraAdd["alg1", "alg2"]["Printing" -> {x -> 1}]; 
     printing[]
     ,
-    {id -> 1, x -> 1}
+    {id -> "", x -> 1}
     ,
     TestID->"[11] algebraCluster.nb"
 ]
