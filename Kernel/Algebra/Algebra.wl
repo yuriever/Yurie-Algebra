@@ -255,17 +255,24 @@ algebraShowKernel[alg_,ifShowDefine_?BooleanQ,ifShowDefault_?BooleanQ,ifHideInte
 
 
 algebraShowUnit[planet:"Define"|"Default",widthNumber_,height_][data_] :=
-    TableForm[
+    Grid[
         Partition[
             Map[coloringInternalAlgebra,data],
             widthNumber
-        ]
+        ],
+        Alignment->{Left,Top},
+        Spacings->{2,0.5}
     ]//algebraShowUnitPane[planet,widthNumber,height];
 
 
 algebraShowUnit[planet:"Generator",widthNumber_,height_][data_] :=
-    TableForm[
-        Partition[algebraPrint[data],widthNumber]
+    Grid[
+        Partition[
+            algebraPrint[data],
+            widthNumber
+        ],
+        Spacings->{2,0.5},
+        Alignment->{Left,Top}
     ]//algebraShowUnitPane[planet,widthNumber,height];
 
 
@@ -287,6 +294,7 @@ algebraShowUnitPane[planet_,widthNumber_,height_][data_] :=
         Style[planet,colorOfPlanet[planet]],
         Pane[
             data,
+            BaselinePosition->Baseline,
             ImageSize->{Automatic,height},
             Scrollbars->False,
             AppearanceElements->None
