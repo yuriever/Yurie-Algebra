@@ -28,25 +28,29 @@ $algebraDefault::usage =
 
 
 algebraDefine::usage =
-    "define the algebras.";
+    "algebraDefine[algs]: define the algebras.";
 
 algebraDefault::usage =
-    "set the default algebras.";
+    "algebraDefault[algs]: set the default algebras.";
 
 algebraReset::usage =
-    "reset the algebras.";
+    "algebraReset[algs]: reset the algebras.";
 
 algebraUnset::usage =
-    "unset the algebras.";
+    "algebraUnset[algs]: unset the algebras.";
 
 algebraAdd::usage =
-    "add elements to the algebras.";
+    "algebraAdd[algs][assoc]: add elements to the algebras.";
 
 algebraMinus::usage =
-    "delete elements from the algebras.";
+    "algebraMinus[algs][assoc]: delete elements from the algebras.";
 
 algebraShow::usage =
-    "show the algebra.";
+    "algebraShow[]: show the default algebra."<>
+    "\n"<>
+    "algebraShow[All]: show all the defined algebras."<>
+    "\n"<>
+    "algebraShow[alg]: show the algebra.";
 
 
 (* ::Subsection:: *)
@@ -57,19 +61,25 @@ Begin["`Private`"];
 
 
 (* ::Subsection:: *)
-(*$algebraDefine*)
+(*Helper*)
 
 
 $algebraDefine :=
     clusterGet[$algebraCluster,"StarList"];
 
 
-(* ::Subsection:: *)
-(*$algebraDefault*)
-
-
 $algebraDefault :=
     clusterGet[$algebraCluster,"StarDefaultList"];
+
+
+algebraDefineQ::usage =
+    "check whether the algebra is defined."
+
+algebraDefineQ[alg_String] :=
+    MemberQ[$algebraDefine,alg];
+
+algebraDefineQ[_] :=
+    False;
 
 
 (* ::Subsection:: *)
@@ -86,20 +96,6 @@ algebraDefine[algs___String|{algs___String},opts:OptionsPattern[]] :=
         (* Else *)
         starDefine[$algebraCluster,{algs}]
     ];
-
-
-(* ::Subsection:: *)
-(*algebraDefineQ*)
-
-
-algebraDefineQ::usage =
-    "check whether the algebra is defined."
-
-algebraDefineQ[alg_String] :=
-    MemberQ[$algebraDefine,alg];
-
-algebraDefineQ[_] :=
-    False;
 
 
 (* ::Subsection:: *)
