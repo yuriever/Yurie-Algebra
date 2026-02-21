@@ -249,8 +249,10 @@ algebraShowKernel[alg_,ifShowDefine_?BooleanQ,ifShowDefault_?BooleanQ,ifHideInte
                 },
                 TableSpacing->{5,5},
                 TableAlignments->{Left,Top}
-            ]
-        ]
+            ],
+            BaseStyle->"Input",
+            FrameMargins->10
+        ]//Magnify[#,0.9]&
     ];
 
 
