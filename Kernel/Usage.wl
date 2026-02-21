@@ -15,25 +15,25 @@ $algebraDefault::usage =
     "list of the default algebras.";
 
 algebraDefine::usage =
-    "define the algebras.";
+    "algebraDefine[algs]: define the algebras.";
 
 algebraDefault::usage =
-    "set the default algebras.";
+    "algebraDefault[algs]: set the default algebras.";
 
 algebraReset::usage =
-    "reset the algebras.";
+    "algebraReset[algs]: reset the algebras.";
 
 algebraUnset::usage =
-    "unset the algebras.";
+    "algebraUnset[algs]: unset the algebras.";
 
 algebraAdd::usage =
-    "add elements to the algebras.";
+    "algebraAdd[algs][assoc]: add elements to the algebras.";
 
 algebraMinus::usage =
-    "delete elements from the algebras.";
+    "algebraMinus[algs][assoc]: delete elements from the algebras.";
 
 algebraShow::usage =
-    "show the algebra.";
+    StringJoin["algebraShow[]: show the default algebra.", "\n", "algebraShow[All]: show all the defined algebras.", "\n", "algebraShow[alg]: show the algebra."];
 
 
 (* ::Subsubsection:: *)

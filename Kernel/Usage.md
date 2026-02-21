@@ -6,19 +6,23 @@
 
 * `#!wl $algebraDefault` - list of the default algebras.
 
-* `#!wl algebraDefine` - define the algebras.
+* `#!wl algebraDefine` - algebraDefine[algs]: define the algebras.
 
-* `#!wl algebraDefault` - set the default algebras.
+* `#!wl algebraDefault` - algebraDefault[algs]: set the default algebras.
 
-* `#!wl algebraReset` - reset the algebras.
+* `#!wl algebraReset` - algebraReset[algs]: reset the algebras.
 
-* `#!wl algebraUnset` - unset the algebras.
+* `#!wl algebraUnset` - algebraUnset[algs]: unset the algebras.
 
-* `#!wl algebraAdd` - add elements to the algebras.
+* `#!wl algebraAdd` - algebraAdd[algs][assoc]: add elements to the algebras.
 
-* `#!wl algebraMinus` - delete elements from the algebras.
+* `#!wl algebraMinus` - algebraMinus[algs][assoc]: delete elements from the algebras.
 
-* `#!wl algebraShow` - show the algebra.
+* `#!wl algebraShow` - algebraShow[]: show the default algebra.
+
+    * algebraShow[All]: show all the defined algebras.
+
+    * algebraShow[alg]: show the algebra.
 
 ## Check.wl
 

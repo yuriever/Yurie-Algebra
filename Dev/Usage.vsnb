@@ -2,11 +2,18 @@
  "cells": [
   {
    "kind": 2,
-   "value": "<<Yurie`Algebra`\n<<Yurie`Algebra`Info`\n<<Yurie`Autocode`\n\nexportPublicSymbolUsage[\n    FileNameJoin[$thisKernelDir,\"Algebra\"],\n    $thisKernelDir,\n    \"ExcludedSymbol\"->{\"compose\"},\n    \"ExcludedFile\"->{\"Variable.wl\",\"Internal.wl\",\"Init.wl\"}\n];\n\nexportArgumentCompletion[\n    $thisCompletionDir,\n    {\n        \"algebraDefine\"->{0,_->4},\n        \"algebraSimplify\",\n        \"operatorSeparate\"->{0,_->2}\n    }\n];",
+   "value": "<<Yurie`Algebra`\n<<Yurie`Algebra`Info`\n<<Yurie`Autocode`\n\nexportPublicSymbolUsage[\n    FileNameJoin[$thisKernelDir,\"Algebra\"],\n    $thisKernelDir,\n    \"ExcludedSymbol\"->{\"compose\"},\n    \"ExcludedFile\"->{\"Variable.wl\",\"Internal.wl\",\"Init.wl\"}\n];\n\nexportArgumentCompletion[\n    $thisCompletionDir,\n    {\n        \"algebraDefine\"->{0,_->4},\n        \"algebraShow\"->{_->2},\n        \"algebraSimplify\",\n        \"operatorSeparate\"->{0,_->2}\n    }\n];",
    "languageId": "wolfram",
    "outputs": [],
    "metadata": {},
-   "executionSummary": {}
+   "executionSummary": {
+    "timing": {
+     "startTime": 1771665530155,
+     "endTime": 1771665530370
+    },
+    "executionOrder": 10,
+    "success": true
+   }
   }
  ]
 }
