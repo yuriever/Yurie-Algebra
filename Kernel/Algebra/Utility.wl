@@ -237,7 +237,7 @@ operatorPower[n_Integer?Positive][op_] :=
 
 
 Derivative[k_][operatorPower[n_]][op_] :=
-    Developer`GammaSimplify[n!/(n-k)!]*operatorPower[n-k][op];
+    FactorialPower[n,k]*operatorPower[n-k][op];
 
 operatorPower/:op_**operatorPower[n_][op_] :=
     operatorPower[n+1][op];
