@@ -92,6 +92,7 @@ algebraDefine//Options = {
 
 algebraDefine[algs___String|{algs___String},opts:OptionsPattern[]] :=
     If[OptionValue["ForceReset"]===True,
+        (* Then *)
         starDefineReset[$algebraCluster,{algs}],
         (* Else *)
         starDefine[$algebraCluster,{algs}]
