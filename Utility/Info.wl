@@ -23,6 +23,9 @@ $thisDatasetDir::usage =
 $thisTestDir::usage =
     "directory of unit test.";
 
+$thisSandboxDir::usage =
+    "directory of sandbox for AI-generation.";
+
 $thisTestSourceDir::usage =
     "directory of source notebook for unit test.";
 
@@ -62,6 +65,9 @@ $thisDatasetDir =
 
 $thisTestDir =
     $thisPaclet["AssetLocation","Test"];
+
+$thisSandboxDir =
+    $thisPaclet["AssetLocation","Sandbox"];
 
 $thisTestSourceDir =
     $thisPaclet["AssetLocation","TestSource"];
